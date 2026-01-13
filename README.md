@@ -28,7 +28,7 @@ Revolutionary energy-time paradigm based on **τ = E/P**
 
 ### Contact
 
-- **Email**: thaoractu@gmail.com
+- **Email**: asemantix@proton.me
 - **Licensing** | **Partnerships** | **Acquisitions**
 
 ---
