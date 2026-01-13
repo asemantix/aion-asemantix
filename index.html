@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AION ASEMANTIX™ | 32 Brevets | L'ère de la tranquillité</title>
+    <meta name="description" content="AION ASEMANTIX - 32 brevets révolutionnaires. Protection native des données, sécurité post-quantique, gestion énergétique du temps.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #08080a;
+            --black-light: #0d0d10;
+            --white: #f8f8f8;
+            --white-dim: #c8c8c8;
+            --gold: #c9a962;
+            --gold-light: #e0c88a;
+            --gold-dark: #8a7340;
+            --gray-300: #a0a0a0;
+            --gray-500: #606060;
+            --gray-700: #2a2a2e;
+            --gray-800: #1a1a1e;
+            
+            --privacy: #00d4ff;
+            --quantum: #a855f7;
+            --tactical: #22c55e;
+            --mesh: #eab308;
+            --fortress: #ef4444;
+            --core: #f97316;
+            --time: #00ffaa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.8;
+        }
+
+        ::selection { background: var(--gold); color: var(--black); }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 8, 10, 0.98);
+            backdrop-filter: blur(20px);
+        }
+
+        .nav-logo {
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .nav-logo .aion {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.3em;
+        }
+
+        .nav-logo .asemantix {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--white);
+            letter-spacing: 0.15em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--gray-300);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--white); }
+
+        .lang-switch {
+            color: var(--gold);
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(201, 169, 98, 0.3);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 4rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(201, 169, 98, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 169, 98, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 0.2em;
+            padding: 0.6rem 1.5rem;
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 .gold { color: var(--gold); }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            color: var(--gray-300);
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        /* Golden Circle Animation */
+        .golden-circle {
+            width: 200px;
+            height: 200px;
+            margin: 3rem auto;
+            position: relative;
+        }
+
+        .golden-circle::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .golden-circle::after {
+            content: '32';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: var(--gold);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-300);
+            letter-spacing: 0.1em;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 4rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--gold);
+        }
+
+        /* Divisions Grid */
+        .divisions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .division-card {
+            background: var(--gray-800);
+            border: 1px solid var(--gray-700);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .division-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .division-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .division-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+        }
+
+        .division-count {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--gold);
+            padding: 0.3rem 0.8rem;
+            border: 1px solid var(--gold);
+        }
+
+        .division-desc {
+            color: var(--gray-300);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .patent-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .patent-chip {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--gray-700);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .patent-chip:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* Division Colors */
+        .division-core .division-name { color: var(--core); }
+        .division-fortress .division-name { color: var(--fortress); }
+        .division-mesh .division-name { color: var(--mesh); }
+        .division-privacy .division-name { color: var(--privacy); }
+        .division-quantum .division-name { color: var(--quantum); }
+        .division-tactical .division-name { color: var(--tactical); }
+        .division-time .division-name { color: var(--time); }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--black-light);
+            border: 1px solid var(--gray-700);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .modal-header {
+            padding: 3rem;
+            border-bottom: 1px solid var(--gray-700);
+            text-align: center;
+        }
+
+        .modal-ref {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            color: var(--gray-300);
+        }
+
+        .modal-body {
+            padding: 2rem 3rem;
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .modal-points {
+            list-style: none;
+        }
+
+        .modal-points li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gray-300);
+        }
+
+        .modal-points li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* Brochure/Slide */
+        .brochure {
+            background: linear-gradient(135deg, var(--black) 0%, var(--gray-800) 100%);
+            border: 1px solid var(--gold);
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .brochure-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .brochure-logo {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold);
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+        }
+
+        .brochure-ref {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--gold);
+        }
+
+        .brochure-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .brochure-subtitle {
+            color: var(--gold);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .brochure-abstract {
+            color: var(--gray-300);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .brochure-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .brochure-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .brochure-feature-icon {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        .brochure-feature-text {
+            font-size: 0.85rem;
+            color: var(--white-dim);
+        }
+
+        .brochure-footer {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-700);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+            background: var(--gray-800);
+        }
+
+        .contact-email {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 4rem;
+            text-align: center;
+            border-top: 1px solid var(--gray-700);
+        }
+
+        .footer-legal {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { padding: 1rem; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            section { padding: 3rem 1.5rem; }
+            .divisions-grid { grid-template-columns: 1fr; }
+            .brochure-features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <a href="#" class="nav-logo">
+            <span class="aion">AION</span>
+            <span class="asemantix">ASEMANTIX™</span>
+        </a>
+        <div class="nav-links">
+            <a href="#divisions">Divisions</a>
+            <a href="tute.html" style="color: #00ffaa;">TUTE τ</a>
+            <a href="#contact">Contact</a>
+            <a href="en.html" class="lang-switch">EN</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">PATENT PORTFOLIO 2025</div>
+            <h1><span class="gold">AION</span> ASEMANTIX™</h1>
+            <p class="hero-tagline">L'ère de la tranquillité a commencé</p>
+            
+            <div class="golden-circle"></div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">32</div>
+                    <div class="stat-label">BREVETS</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">DIVISIONS</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">POSSIBILITÉS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="divisions">
+        <h2 class="section-title">7 Divisions Technologiques</h2>
+        
+        <div class="divisions-grid">
+            <!-- AION Core -->
+            <div class="division-card division-core">
+                <div class="division-header">
+                    <span class="division-name">AION Core</span>
+                    <span class="division-count">5 brevets</span>
+                </div>
+                <p class="division-desc">Fondations cryptographiques. Identifiants polymorphes, validation asémantique, protection native.</p>
+                <div class="patent-list">
+                    <span class="patent-chip" onclick="openModal('pip')">PIP POLYMORPHIC</span>
+                    <span class="patent-chip" onclick="openModal('asemantix')">ASEMANTIX</span>
+                    <span class="patent-chip" onclick="openModal('vch')">VCH</span>
+                    <span class="patent-chip" onclick="openModal('bridge')">BRIDGE</span>
+                    <span class="patent-chip" onclick="openModal('anchors')">ANCHORS</span>
+                </div>
+            </div>
+
+            <!-- AION Fortress -->
+            <div class="division-card division-fortress">
+                <div class="division-header">
+                    <span class="division-name">AION Fortress</span>
+                    <span class="division-count">4 brevets</span>
+                </div>
+                <p class="division-desc">Protection autonome. Authentification énergétique, neutralisation automatique, contrôle d'accès.</p>
+                <div class="patent-list">
+                    <span class="patent-chip" onclick="openModal('heimdall')">HEIMDALL</span>
+                    <span class="patent-chip" onclick="openModal('sekhmet')">SEKHMET</span>
+                    <span class="patent-chip" onclick="openModal('blackbox')">BLACKBOX</span>
+                    <span class="patent-chip" onclick="openModal('sesame')">SESAME</span>
+                </div>
+            </div>
+
+            <!-- AION Mesh -->
+            <div class="division-card division-mesh">
+                <div class="division-header">
+                    <span class="division-name">AION Mesh</span>
+                    <span class="division-count">5 brevets</span>
+                </div>
+                <p class="division-desc">Réseaux décentralisés. Topologie invisible, routage anonymisé, messagerie asémantique.</p>
+                <div class="patent-list">
+                    <span class="patent-chip" onclick="openModal('pipmesh')">PIP MESH</span>
+                    <span class="patent-chip" onclick="openModal('mailbox')">MAILBOX</span>
+                    <span class="patent-chip" onclick="openModal('shadowcrowd')">SHADOW CROWD</span>
+                    <span class="patent-chip" onclick="openModal('energysync')">ENERGYSYNC</span>
+                    <span class="patent-chip" onclick="openModal('orchestrateur')">ORCHESTRATOR</span>
+                </div>
+            </div>
+
+            <!-- AION Privacy -->
+            <div class="division-card division-privacy">
+                <div class="division-header">
+                    <span class="division-name">AION Privacy</span>
+                    <span class="division-count">4 brevets</span>
+                </div>
+                <p class="division-desc">Vie privée absolue. VPN indétectable, identités multiples, mimétisme comportemental.</p>
+                <div class="patent-list">
+                    <span class="patent-chip" onclick="openModal('pipvpn')">PIP VPN</span>
+                    <span class="patent-chip" onclick="openModal('hydra')">HYDRA</span>
+                    <span class="patent-chip" onclick="openModal('cloak')">CLOAK</span>
+                    <span class="patent-chip" onclick="openModal('ghost')">PIP GHOST</span>
+                </div>
+            </div>
+
+            <!-- AION Quantum -->
+            <div class="division-card division-quantum">
+                <div class="division-header">
+                    <span class="division-name">AION Quantum</span>
+                    <span class="division-count">4 brevets</span>
+                </div>
+                <p class="division-desc">Sécurité post-quantique. QKD, résistance aux ordinateurs quantiques, deep space.</p>
+                <div class="patent-list">
+                    <span class="patent-chip" onclick="openModal('quantum')">QUANTUM</span>
+                    <span class="patent-chip" onclick="openModal('rpag')">RPAG</span>
+                    <span class="patent-chip" onclick="openModal('octopus')">OCTOPUS</span>
+                    <span class="patent-chip" onclick="openModal('phoenix')">PHOENIX</span>
+                </div>
+            </div>
+
+            <!-- AION Tactical -->
+            <div class="division-card division-tactical">
+                <div class="division-header">
+                    <span class="division-name">AION Tactical</span>
+                    <span class="division-count">4 brevets</span>
+                </div>
+                <p class="division-desc">Applications terrain. 5G/6G, Internet fantôme, temps endogène, protection intégrée.</p>
+                <div class="patent-list">
+                    <span class="patent-chip" onclick="openModal('pip5g')">PIP-5G</span>
+                    <span class="patent-chip" onclick="openModal('fantom')">FANTOM</span>
+                    <span class="patent-chip" onclick="openModal('chronos')">CHRONOS</span>
+                    <span class="patent-chip" onclick="openModal('pontchronos')">CHRONOS BRIDGE</span>
+                </div>
+            </div>
+
+            <!-- AION Time (NOUVEAU) -->
+            <div class="division-card division-time">
+                <div class="division-header">
+                    <span class="division-name">AION Time</span>
+                    <span class="division-count">6 brevets</span>
+                </div>
+                <p class="division-desc">Temps énergétique universel. Batteries intelligentes, CPU optimisés, cosmologie unifiée. τ = E/P</p>
+                <div class="patent-list">
+                    <span class="patent-chip" onclick="openModal('tute')">TUTE FONDATEUR</span>
+                    <span class="patent-chip" onclick="openModal('tutemod')">TUTE MODULAIRE</span>
+                    <span class="patent-chip" onclick="openModal('tutebat')">TUTE BATTERIE</span>
+                    <span class="patent-chip" onclick="openModal('tutecpu')">TUTE COMPUTE</span>
+                    <span class="patent-chip" onclick="openModal('daeting')">DAET INGÉNIERIE</span>
+                    <span class="patent-chip" onclick="openModal('daetinfo')">DAET INFORMATIQUE</span>
+                </div>
+                <a href="tute.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: var(--time); color: var(--black); text-decoration: none; font-size: 0.85rem;">Découvrir TUTE →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact</h2>
+        <a href="mailto:thaoractu@gmail.com" class="contact-email">thaoractu@gmail.com</a>
+        <p style="margin-top: 1rem; color: var(--gray-300);">Licensing • Partenariats • Acquisitions</p>
+    </section>
+
+    <footer>
+        <div class="footer-legal">© 2025 AION ASEMANTIX™ — Tous droits réservés. Brevets INPI déposés.</div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        const patents = {
+            // === AION CORE ===
+            pip: {
+                ref: "FR2600202",
+                name: "PIP POLYMORPHIC",
+                subtitle: "Brevet fondateur",
+                division: "AION Core",
+                abstract: "Communication non-corrélable via permutation polymorphe des identifiants.",
+                points: [
+                    "Mécanisme de coordination pour changement d'identifiants",
+                    "Non-corrélabilité cryptographique garantie",
+                    "Extensions post-quantiques",
+                    "Base de tout l'écosystème AION"
+                ]
+            },
+            asemantix: {
+                ref: "FR2516793",
+                name: "ASEMANTIX CAMELEON",
+                subtitle: "Fragments polymorphes asémantiques",
+                division: "AION Core",
+                abstract: "Validation de portion utile asémantique avec marqueur polymorphe.",
+                points: [
+                    "Fragments indistinguables du bruit",
+                    "99%+ rejetés sans calcul crypto",
+                    "Forward secrecy via évolution KDF",
+                    "Résistant à la censure"
+                ]
+            },
+            vch: {
+                ref: "FR2600203",
+                name: "VCH",
+                subtitle: "Validation par chaînage d'historique",
+                division: "AION Core",
+                abstract: "Chaînage d'historique pour intégrité et ordonnancement.",
+                points: [
+                    "Engagement de chaîne locale",
+                    "Aucune métadonnée d'ordre transmise",
+                    "Anti-replay et anti-rollback"
+                ]
+            },
+            bridge: {
+                ref: "FR2600280",
+                name: "BRIDGE",
+                subtitle: "Validation conjointe double protection",
+                division: "AION Core",
+                abstract: "Validation conjointe stricte des identifiants et fragments.",
+                points: [
+                    "Validation conjointe sur même index",
+                    "Double protection",
+                    "Anti-attaque hybride"
+                ]
+            },
+            anchors: {
+                ref: "FR2600207",
+                name: "ANCHORS",
+                subtitle: "Resynchronisation par code d'ancrage",
+                division: "AION Core",
+                abstract: "Resynchronisation via code d'ancrage dérivé localement.",
+                points: [
+                    "QR, NFC, mnémonique, audio",
+                    "Modes Genesis, Retro, Jump",
+                    "Aucun serveur requis"
+                ]
+            },
+
+            // === AION FORTRESS ===
+            heimdall: {
+                ref: "FR2600400",
+                name: "HEIMDALL",
+                subtitle: "Authentification énergétique",
+                division: "AION Fortress",
+                abstract: "Authentification via signature énergétique.",
+                points: [
+                    "Secret + empreinte physique",
+                    "Impossible à usurper à distance",
+                    "Profil énergétique de référence"
+                ]
+            },
+            sekhmet: {
+                ref: "FR2600447",
+                name: "SEKHMET",
+                subtitle: "Protection autonome",
+                division: "AION Fortress",
+                abstract: "Protection autonome du dispositif via monitoring du profil énergétique.",
+                points: [
+                    "Détection d'anomalies",
+                    "Neutralisation automatique",
+                    "Chaîne de preuves forensiques"
+                ]
+            },
+            blackbox: {
+                ref: "FR2600204",
+                name: "BLACKBOX",
+                subtitle: "Contrôle d'accès view-once offline",
+                division: "AION Fortress",
+                abstract: "Contrôle d'accès local pour contenu chiffré.",
+                points: [
+                    "Double contrôle",
+                    "View-once puis effacement",
+                    "Preuve cryptographique"
+                ]
+            },
+            sesame: {
+                ref: "FR2600010",
+                name: "SESAME",
+                subtitle: "Commande IoT sur canal hostile",
+                division: "AION Fortress",
+                abstract: "Commande de dispositif contraint avec économie d'énergie critique.",
+                points: [
+                    "99%+ bruit rejeté sans calcul",
+                    "Hiérarchie de commandes",
+                    "Anti-replay garanti"
+                ]
+            },
+
+            // === AION MESH ===
+            pipmesh: {
+                ref: "FR2600209",
+                name: "PIP MESH",
+                subtitle: "Réseau mesh à topologie invisible",
+                division: "AION Mesh",
+                abstract: "Réseau mesh avec identifiants non-corrélables.",
+                points: [
+                    "Topologie invisible",
+                    "Routage multi-hop anonymisé",
+                    "Impossible de compter les nœuds"
+                ]
+            },
+            mailbox: {
+                ref: "FR2600019",
+                name: "MAILBOX",
+                subtitle: "Dead drop numérique aveugle",
+                division: "AION Mesh",
+                abstract: "Messagerie asynchrone via boîte aux lettres asémantique aveugle.",
+                points: [
+                    "Serveur aveugle: ne peut rien distinguer",
+                    "99%+ filtré sans calcul",
+                    "Résistant à la censure"
+                ]
+            },
+            shadowcrowd: {
+                ref: "FR2600341",
+                name: "SHADOW CROWD",
+                subtitle: "Anonymat collectif de groupe",
+                division: "AION Mesh",
+                abstract: "Anonymat collectif avec profil de référence commun.",
+                points: [
+                    "Trafic statistiquement identique",
+                    "Décorrélation active inter-membres",
+                    "Impossible d'isoler un individu"
+                ]
+            },
+            energysync: {
+                ref: "FR2600343",
+                name: "ENERGYSYNC",
+                subtitle: "Coordination clockless par énergie",
+                division: "AION Mesh",
+                abstract: "Coordination de groupe via indicateur énergétique local.",
+                points: [
+                    "Synchronisation basée sur l'énergie",
+                    "Aucune horloge externe nécessaire",
+                    "Essaims de drones, véhicules"
+                ]
+            },
+            orchestrateur: {
+                ref: "—",
+                name: "ORCHESTRATOR",
+                subtitle: "Orchestration multi-canal adaptative",
+                division: "AION Mesh",
+                abstract: "Orchestration adaptative du transport asémantique.",
+                points: [
+                    "Agnostique au canal",
+                    "Décision en temps constant",
+                    "Capacité d'audit ex post"
+                ]
+            },
+
+            // === AION PRIVACY ===
+            pipvpn: {
+                ref: "FR2600251",
+                name: "PIP VPN",
+                subtitle: "VPN indétectable et inblocable",
+                division: "AION Privacy",
+                abstract: "Réseau privé virtuel avec identifiants réseau non-corrélables.",
+                points: [
+                    "IPs polymorphes: pool cloud/CDN/résidentiel",
+                    "Zéro signature DPI: imitation HTTPS/QUIC parfaite",
+                    "Contre-mesures anti-ML",
+                    "Fonctionne en Chine, Iran, Russie"
+                ]
+            },
+            hydra: {
+                ref: "FR2600333",
+                name: "HYDRA",
+                subtitle: "Identités réseau multiples simultanées",
+                division: "AION Privacy",
+                abstract: "Gestion de multiples identités réseau sur un seul appareil.",
+                points: [
+                    "Multiples identités actives simultanément",
+                    "Isolation cryptographique garantie",
+                    "Décorrélation active inter-identités"
+                ]
+            },
+            cloak: {
+                ref: "FR2600321",
+                name: "CLOAK",
+                subtitle: "Mimétisme comportemental anti-ML",
+                division: "AION Privacy",
+                abstract: "Communication via tunnel chiffré avec mimétisme de profil comportemental.",
+                points: [
+                    "Sélection de profil (streaming, appel vidéo, gaming)",
+                    "Score de déviation Kolmogorov-Smirnov",
+                    "Indistinguabilité statistique formelle"
+                ]
+            },
+            ghost: {
+                ref: "FR2600240",
+                name: "PIP GHOST",
+                subtitle: "Appareil fantôme intraçable",
+                division: "AION Privacy",
+                abstract: "Procédé pour rendre un appareil intraçable sur un réseau.",
+                points: [
+                    "Identifiants distincts pour chaque échange",
+                    "Mode autonome, cloud, ou hybride",
+                    "Fonctionne avec destinations arbitraires"
+                ]
+            },
+
+            // === AION QUANTUM ===
+            quantum: {
+                ref: "FR2600313",
+                name: "QUANTUM",
+                subtitle: "Sécurité post-quantique via QKD",
+                division: "AION Quantum",
+                abstract: "Identifiants polymorphes initialisés par distribution quantique de clés.",
+                points: [
+                    "Sécurité inconditionnelle (théorie de l'information)",
+                    "Résistant aux ordinateurs quantiques",
+                    "Protection contre store-now-decrypt-later"
+                ]
+            },
+            rpag: {
+                ref: "FR2600021",
+                name: "RPAG",
+                subtitle: "Communication interplanétaire clockless",
+                division: "AION Quantum",
+                abstract: "Communication polymorphe clockless autonome pour environnements sans infrastructure.",
+                points: [
+                    "Fonctionne sans horloge ni synchronisation",
+                    "Multi-porteuse: radio, optique, acoustique, QR",
+                    "Supporte les latences Terre-Mars"
+                ]
+            },
+            octopus: {
+                ref: "FR2600020",
+                name: "OCTOPUS",
+                subtitle: "Messagerie Deep Space",
+                division: "AION Quantum",
+                abstract: "Messagerie sécurisée sur canal hostile avec couche de transport asémantique.",
+                points: [
+                    "Messages indistinguables du bruit",
+                    "Supporte latences 4-24 minutes",
+                    "Modes WHISPER et COMPLIANT"
+                ]
+            },
+            phoenix: {
+                ref: "FR2600311",
+                name: "PHOENIX",
+                subtitle: "Récupération de session serverless",
+                division: "AION Quantum",
+                abstract: "Récupération automatique de session via jeton de résurrection.",
+                points: [
+                    "Fenêtre glissante de points de récupération",
+                    "Aucun serveur nécessaire",
+                    "Pas de retransmission d'état"
+                ]
+            },
+
+            // === AION TACTICAL ===
+            pip5g: {
+                ref: "FR2600261",
+                name: "PIP-5G",
+                subtitle: "Identifiants handover non-corrélables",
+                division: "AION Tactical",
+                abstract: "Procédé de handover d'identifiants non-corrélables en réseaux cellulaires 5G/6G.",
+                points: [
+                    "Nouvel identifiant crypto-décorrélé à chaque handover",
+                    "Compatible 4G, 5G, 6G et réseaux non-terrestres",
+                    "Protection contre IMSI catchers",
+                    "6 couches de protection"
+                ]
+            },
+            fantom: {
+                ref: "FR2600245",
+                name: "FANTOM INTERNET",
+                subtitle: "Internet anonyme sans infrastructure",
+                division: "AION Tactical",
+                abstract: "Connexion Internet anonyme sans infrastructure fixe.",
+                points: [
+                    "Multi-connectivité: cellulaire, satellite, WiFi, mesh",
+                    "Aucun identifiant stable",
+                    "Non-géolocalisable"
+                ]
+            },
+            chronos: {
+                ref: "FR2600320",
+                name: "CHRONOS",
+                subtitle: "Temps local endogène",
+                division: "AION Tactical",
+                abstract: "Gestion du temps local. Le temps émerge du système lui-même.",
+                points: [
+                    "Référence temporelle endogène",
+                    "Aucune horloge externe nécessaire",
+                    "Protection anti-replay"
+                ]
+            },
+            pontchronos: {
+                ref: "FR2600323",
+                name: "CHRONOS BRIDGE",
+                subtitle: "Triple protection intégrée",
+                division: "AION Tactical",
+                abstract: "Intégration CHRONOS + PIP + CLOAK.",
+                points: [
+                    "Trois couches synchronisées",
+                    "Anti-ML, anti-corrélation, anti-timing",
+                    "Protection complète"
+                ]
+            },
+
+            // === AION TIME (NOUVEAU) ===
+            tute: {
+                ref: "FR-TUTE-001",
+                name: "TUTE FONDATEUR",
+                subtitle: "Système universel de calcul du temps énergétique",
+                division: "AION Time",
+                abstract: "Dispositif de mesure et d'analyse du temps énergétique fondé sur τ = E/P. Le temps émerge comme pulsation énergétique.",
+                points: [
+                    "Loi fondamentale: τ = E/P",
+                    "Vitesse du temps: vₜ = P/E",
+                    "Entropie énergétique: S(t) = σ₀·t³·P/E",
+                    "4 modules: Acquisition E, Mesure P, Calcul, Interface",
+                    "34 revendications",
+                    "22 exemples d'industrialisation"
+                ]
+            },
+            tutemod: {
+                ref: "FR-TUTE-002",
+                name: "TUTE MODULAIRE",
+                subtitle: "Dispositif modulaire pour mesure, synchronisation et simulation",
+                division: "AION Time",
+                abstract: "Architecture modulaire intégrée utilisant la métrique TUTE pour applications variées.",
+                points: [
+                    "Unité de traitement énergétique",
+                    "Base de données dynamiques",
+                    "Interface logicielle/API",
+                    "Système d'apprentissage adaptatif",
+                    "Sous-modules: Trajector, Evolver, Metricor, Qlab, TerraScan, Entropia, Clock, Sync"
+                ]
+            },
+            tutebat: {
+                ref: "FR-TUTE-003",
+                name: "TUTE BATTERIE",
+                subtitle: "Gestion intelligente de batterie via temps énergétique",
+                division: "AION Time",
+                abstract: "Système BMS optimisé pour véhicules électriques et smartphones utilisant τ = E/P.",
+                points: [
+                    "Surveillance usure via action Sτ",
+                    "Prédiction dynamique dτ/dt",
+                    "Régulation adaptative",
+                    "+20-40 km autonomie/cycle",
+                    "+250-500 cycles de vie",
+                    "CPU 0.5% vs 5-10% Kalman"
+                ]
+            },
+            tutecpu: {
+                ref: "FR-TUTE-004",
+                name: "TUTE COMPUTE",
+                subtitle: "Optimisation CPU/GPU via temps énergétique",
+                division: "AION Time",
+                abstract: "Système d'optimisation informatique pour CPU/GPU/FPGA utilisant la métrique TUTE.",
+                points: [
+                    "Planification dynamique (min Sτ)",
+                    "Analyse prédictive dτ/dt",
+                    "Orchestrateur distribué (ds²)",
+                    "-20% consommation/cycle",
+                    "+15% efficacité clusters",
+                    "Prédiction pics thermiques"
+                ]
+            },
+            daeting: {
+                ref: "FR-DAET-001",
+                name: "DAET INGÉNIERIE",
+                subtitle: "Gestion des systèmes énergétiques",
+                division: "AION Time",
+                abstract: "Dispositif et procédé d'analyse énergétique temporelle pour batteries, panneaux solaires, réseaux intelligents.",
+                points: [
+                    "Optimisation batteries lithium-ion",
+                    "MPPT adaptatif panneaux solaires",
+                    "Smart grid optimization",
+                    "Cadre unifié énergie-temps"
+                ]
+            },
+            daetinfo: {
+                ref: "FR-DAET-002",
+                name: "DAET INFORMATIQUE",
+                subtitle: "Gestion des systèmes informatiques",
+                division: "AION Time",
+                abstract: "Dispositif et procédé d'analyse énergétique temporelle pour IA, CPU, GPU, Cloud.",
+                points: [
+                    "Optimisation charge CPU/GPU",
+                    "Datacenters efficaces",
+                    "IA à temps propre",
+                    "Edge computing optimisé"
+                ]
+            }
+        };
+
+        function openModal(patentId) {
+            const p = patents[patentId];
+            if (!p) return;
+            
+            const pointsHtml = p.points.map(pt => `<li>${pt}</li>`).join('');
+            
+            document.getElementById('modal-body').innerHTML = `
+                <div class="modal-header">
+                    <div class="modal-ref">${p.ref}</div>
+                    <h2 class="modal-title">${p.name}</h2>
+                    <p class="modal-subtitle">${p.subtitle}</p>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="modal-section">
+                        <div class="modal-section-title">DIVISION</div>
+                        <p>${p.division}</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <div class="modal-section-title">RÉSUMÉ</div>
+                        <p>${p.abstract}</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <div class="modal-section-title">POINTS CLÉS</div>
+                        <ul class="modal-points">${pointsHtml}</ul>
+                    </div>
+                    
+                    <!-- Brochure intégrée -->
+                    <div class="brochure">
+                        <div class="brochure-header">
+                            <span class="brochure-logo">AION ASEMANTIX™</span>
+                            <span class="brochure-ref">${p.ref}</span>
+                        </div>
+                        <h3 class="brochure-title">${p.name}</h3>
+                        <p class="brochure-subtitle">${p.subtitle}</p>
+                        <p class="brochure-abstract">${p.abstract}</p>
+                        <div class="brochure-features">
+                            ${p.points.slice(0, 4).map(pt => `
+                                <div class="brochure-feature">
+                                    <span class="brochure-feature-icon">✓</span>
+                                    <span class="brochure-feature-text">${pt}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="brochure-footer">
+                            <span>${p.division}</span>
+                            <span>© 2025 AION ASEMANTIX™</span>
+                            <span>thaoractu@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('modal')) {
+                closeModal();
+            }
+        };
+        
+        // Nav scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('nav');
+            if (window.scrollY > 50) {
+                nav.style.borderBottom = '1px solid rgba(201, 169, 98, 0.2)';
+            } else {
+                nav.style.borderBottom = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
