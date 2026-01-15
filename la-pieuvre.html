@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Pieuvre | AION ASEMANTIX™ | Écosystème de Souveraineté Numérique</title>
+    <meta name="description" content="La Pieuvre AION - 32 brevets interconnectés formant l'écosystème complet de souveraineté numérique post-quantique.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #08080a;
+            --black-light: #0d0d10;
+            --white: #f8f8f8;
+            --white-dim: #c8c8c8;
+            --gold: #c9a962;
+            --gold-light: #e0c88a;
+            --gold-dark: #8a7340;
+            --gray-300: #a0a0a0;
+            --gray-500: #606060;
+            --gray-700: #2a2a2e;
+            --gray-800: #1a1a1e;
+            
+            --privacy: #00d4ff;
+            --quantum: #a855f7;
+            --tactical: #22c55e;
+            --mesh: #eab308;
+            --fortress: #ef4444;
+            --core: #f97316;
+            --time: #00ffaa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.8;
+        }
+
+        ::selection { background: var(--gold); color: var(--black); }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 8, 10, 0.98);
+            backdrop-filter: blur(20px);
+        }
+
+        .nav-logo {
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .nav-logo .aion {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.3em;
+        }
+
+        .nav-logo .asemantix {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--white);
+            letter-spacing: 0.15em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--gray-300);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--white); }
+        .nav-links a.active { color: var(--gold); }
+
+        .lang-switch {
+            color: var(--gold);
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(201, 169, 98, 0.3);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 4rem 4rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(201, 169, 98, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 169, 98, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 0.2em;
+            padding: 0.6rem 1.5rem;
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            letter-spacing: 0.02em;
+            text-shadow: 0 0 80px rgba(201, 169, 98, 0.3);
+        }
+
+        .hero h1 .gold { 
+            color: var(--gold); 
+            font-style: italic;
+        }
+
+        .hero h1 .a-tilt {
+            display: inline-block;
+            transform: rotate(-12deg) translateY(5px);
+            margin-right: 0.05em;
+            font-size: 1.1em;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: var(--gray-300);
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Octopus SVG */
+        .octopus-visual {
+            margin: 3rem auto;
+            max-width: 500px;
+        }
+
+        .octopus-svg {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 40px rgba(201, 169, 98, 0.3));
+        }
+
+        .octopus-svg .body {
+            fill: url(#goldGradient);
+        }
+
+        .octopus-svg .tentacle {
+            fill: none;
+            stroke-width: 10;
+            stroke-linecap: round;
+            opacity: 0.8;
+        }
+
+        .octopus-svg .eye { fill: var(--black); }
+        .octopus-svg .pupil { fill: var(--gold); }
+
+        /* Sections */
+        section {
+            padding: 6rem 4rem;
+        }
+
+        /* Produits Stratégiques */
+        .products-strategic {
+            background: linear-gradient(180deg, var(--black) 0%, var(--black-light) 100%);
+            border-bottom: 1px solid var(--gold-dark);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* La 5ème carte (POST-QUANTUM) prend toute la largeur */
+        .products-grid .product-card:nth-child(5) {
+            grid-column: 1 / -1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--black);
+            border: 2px solid var(--gold-dark);
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .product-card-highlight {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, var(--black) 0%, rgba(201, 169, 98, 0.1) 100%);
+            box-shadow: 0 0 40px rgba(201, 169, 98, 0.2);
+        }
+
+        .product-card-highlight .product-tagline {
+            font-size: 1.4rem;
+            letter-spacing: 0.05em;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(201, 169, 98, 0.25);
+        }
+
+        .product-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--black);
+            background: var(--gold);
+            padding: 0.3rem 0.8rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .product-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-tagline {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .product-description {
+            color: var(--gray-300);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .product-features li {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--gray-300);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        .product-market {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--gray-500);
+            letter-spacing: 0.1em;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-800);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-cta {
+            display: block;
+            text-align: center;
+            padding: 1rem;
+            background: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+        }
+
+        .product-cta:hover {
+            background: var(--gold-light);
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-300);
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        /* Metaphor Section */
+        .metaphor {
+            background: var(--black-light);
+        }
+
+        .metaphor-grid {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .metaphor-column {
+            background: var(--gray-800);
+            padding: 2.5rem;
+            border: 1px solid var(--gray-700);
+        }
+
+        .metaphor-column.spider {
+            border-color: var(--gray-600);
+        }
+
+        .metaphor-column.octopus {
+            border-color: var(--gold-dark);
+            box-shadow: 0 0 30px rgba(201, 169, 98, 0.1);
+        }
+
+        .metaphor-column h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-700);
+        }
+
+        .metaphor-column h3 .emoji { font-size: 2.5rem; }
+        .metaphor-column.spider h3 { color: var(--gray-400); }
+        .metaphor-column.octopus h3 { color: var(--gold); }
+
+        .metaphor-list {
+            list-style: none;
+        }
+
+        .metaphor-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-700);
+            font-size: 1rem;
+            color: var(--gray-300);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            line-height: 1.6;
+        }
+
+        .metaphor-list li:last-child { border-bottom: none; }
+        .metaphor-list .icon { font-size: 1.3rem; min-width: 30px; }
+        .spider .metaphor-list .icon { color: #ef4444; }
+        .octopus .metaphor-list .icon { color: #22c55e; }
+
+        .metaphor-vs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 5rem;
+        }
+
+        .metaphor-vs span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--gray-600);
+            font-style: italic;
+        }
+
+        /* Abolitions Grid */
+        .abolitions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .abolition-card {
+            background: var(--gray-800);
+            border: 1px solid var(--gray-700);
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .abolition-card::before {
+            content: '→';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--gold);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .abolition-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(201, 169, 98, 0.15);
+        }
+
+        .abolition-card:hover::before {
+            opacity: 1;
+        }
+
+        .abolition-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .abolition-card .old {
+            color: #ef4444;
+            text-decoration: line-through;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .abolition-card .new {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .abolition-card .patent {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--gray-500);
+        }
+
+        .abolition-card .click-hint {
+            font-size: 0.75rem;
+            color: var(--gold);
+            opacity: 0;
+            transition: opacity 0.3s;
+            margin-top: 1rem;
+        }
+
+        .abolition-card:hover .click-hint {
+            opacity: 1;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+            background: var(--black-light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .contact-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--gray-300);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .contact-email {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--gold);
+            transition: all 0.3s;
+        }
+
+        .contact-email:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .contact-interests {
+            margin-top: 2rem;
+        }
+
+        .contact-interests span {
+            display: inline-block;
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            margin: 0.25rem;
+            background: var(--gray-800);
+            color: var(--gray-300);
+            border: 1px solid var(--gray-700);
+        }
+
+        /* Form */
+        .contact-form {
+            background: var(--gray-800);
+            padding: 2.5rem;
+            border: 1px solid var(--gray-700);
+        }
+
+        .contact-form h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--black);
+            border: 1px solid var(--gray-700);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--gray-500);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c9a962' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+
+        .form-group select option {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: var(--gold);
+            border: none;
+            color: var(--black);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .form-submit:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .form-note {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 4rem;
+            text-align: center;
+            border-top: 1px solid var(--gray-800);
+        }
+
+        .footer-legal {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal.active { display: block; }
+
+        .modal-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--black-light);
+            border: 1px solid var(--gray-700);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            padding: 2rem 3rem;
+            border-bottom: 1px solid var(--gray-700);
+            text-align: center;
+        }
+
+        .modal-ref {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            color: var(--gray-300);
+        }
+
+        .modal-body {
+            padding: 2rem 3rem;
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .modal-points {
+            list-style: none;
+        }
+
+        .modal-points li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gray-300);
+        }
+
+        .modal-points li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .modal-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            padding: 0.4rem 0.8rem;
+            background: var(--gray-800);
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+            nav { padding: 1rem 2rem; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 4.5rem; }
+            section { padding: 3rem 1.5rem; }
+            .metaphor-grid { 
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .metaphor-column {
+                padding: 2rem;
+            }
+            .metaphor-vs { 
+                padding: 1rem 0;
+            }
+            .metaphor-vs span {
+                transform: rotate(90deg);
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <span class="aion">AION</span>
+            <span class="asemantix">ASEMANTIX™</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html#divisions">Divisions</a>
+            <a href="la-pieuvre.html" class="active" style="color: #c9a962;">🐙 La Pieuvre</a>
+            <a href="tute.html" style="color: #00ffaa;">TUTE τ</a>
+            <a href="#contact">Contact</a>
+            <a href="the-octopus.html" class="lang-switch">EN</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">ÉCOSYSTÈME DE SOUVERAINETÉ NUMÉRIQUE</div>
+            <h1>L<span class="a-tilt">a</span> <span class="gold">Pieuvre</span></h1>
+            <p class="hero-tagline">
+                32 brevets interconnectés. 7 tentacules. Un seul organisme.<br>
+                L'architecture complète de protection post-quantique.
+            </p>
+            
+            <!-- Octopus SVG -->
+            <div class="octopus-visual">
+                <svg class="octopus-svg" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#e0c88a"/>
+                            <stop offset="50%" style="stop-color:#c9a962"/>
+                            <stop offset="100%" style="stop-color:#8a7340"/>
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Tentacles -->
+                    <path class="tentacle" stroke="#00d4ff" d="M200,170 Q120,190 50,270 Q30,300 40,315"/>
+                    <path class="tentacle" stroke="#a855f7" d="M200,170 Q150,200 100,280 Q85,310 90,320"/>
+                    <path class="tentacle" stroke="#22c55e" d="M200,170 Q200,220 200,280 Q200,310 200,320"/>
+                    <path class="tentacle" stroke="#eab308" d="M200,170 Q250,200 300,280 Q315,310 310,320"/>
+                    <path class="tentacle" stroke="#ef4444" d="M200,170 Q280,190 350,270 Q370,300 360,315"/>
+                    <path class="tentacle" stroke="#f97316" d="M200,170 Q140,150 80,170 Q30,185 10,200"/>
+                    <path class="tentacle" stroke="#00ffaa" d="M200,170 Q260,150 320,170 Q370,185 390,200"/>
+                    
+                    <!-- Body -->
+                    <ellipse class="body" cx="200" cy="115" rx="85" ry="65"/>
+                    <ellipse class="body" cx="200" cy="75" rx="55" ry="45"/>
+                    
+                    <!-- Eyes -->
+                    <ellipse class="eye" cx="168" cy="110" rx="16" ry="20"/>
+                    <ellipse class="eye" cx="232" cy="110" rx="16" ry="20"/>
+                    <ellipse class="pupil" cx="171" cy="113" rx="7" ry="10"/>
+                    <ellipse class="pupil" cx="235" cy="113" rx="7" ry="10"/>
+                    <ellipse fill="#fff" opacity="0.6" cx="174" cy="108" rx="3" ry="4"/>
+                    <ellipse fill="#fff" opacity="0.6" cx="238" cy="108" rx="3" ry="4"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUITS STRATÉGIQUES -->
+    <section class="products-strategic">
+        <h2 class="section-title">5 Innovations Ready to Market</h2>
+        <p class="section-subtitle">Brevets déposés. Clients identifiés. Déploiement immédiat.</p>
+        
+        <div class="products-grid">
+            <!-- PIP VPN -->
+            <div class="product-card">
+                <div class="product-badge">B2B LICENSING</div>
+                <div class="product-name">PIP VPN</div>
+                <div class="product-tagline">Le VPN imblocable</div>
+                <p class="product-description">
+                    Premier VPN au monde indétectable par DPI, résistant au machine learning, 
+                    impossible à bloquer. L'IP change à chaque requête.
+                </p>
+                <ul class="product-features">
+                    <li>Indétectable par Deep Packet Inspection</li>
+                    <li>Résistant aux classificateurs ML</li>
+                    <li>Mimétisme streaming/visio (CLOAK)</li>
+                    <li>Passe tous les pare-feux</li>
+                </ul>
+                <div class="product-market">CLIENTS : ProtonVPN • NordVPN • ExpressVPN • Mullvad</div>
+                <a href="#contact" class="product-cta">PROPOSER LICENSING →</a>
+            </div>
+            
+            <!-- PIP 5G -->
+            <div class="product-card">
+                <div class="product-badge">TÉLÉCOMS & SPATIAL</div>
+                <div class="product-name">PIP 5G</div>
+                <div class="product-tagline">Privacy native pour mobiles</div>
+                <p class="product-description">
+                    Handover cellulaire à identifiants non corrélables. Nouvel identifiant 
+                    à chaque antenne. Protection IMSI catchers. Compatible satellite.
+                </p>
+                <ul class="product-features">
+                    <li>Nouvel ID à chaque handover</li>
+                    <li>Compatible 4G, 5G, 6G, LEO</li>
+                    <li>Protection contre IMSI catchers</li>
+                    <li>Starlink Phone ready</li>
+                </ul>
+                <div class="product-market">CLIENTS : Elon Musk • Starlink • Orange • Deutsche Telekom</div>
+                <a href="#contact" class="product-cta">CONTACTER POUR DÉMO →</a>
+            </div>
+            
+            <!-- ENERGYSYNC -->
+            <div class="product-card">
+                <div class="product-badge">DÉFENSE & INDUSTRIE</div>
+                <div class="product-name">ENERGYSYNC</div>
+                <div class="product-tagline">Essaims sans horloge</div>
+                <p class="product-description">
+                    Synchronisation d'essaims de drones sans GPS, sans NTP, sans horloge externe.
+                    Coordination par énergie. Fonctionne en environnement hostile.
+                </p>
+                <ul class="product-features">
+                    <li>Zéro dépendance GPS/NTP</li>
+                    <li>Coordination par seuils énergétiques</li>
+                    <li>Résistant au brouillage</li>
+                    <li>Essaims véhicules autonomes</li>
+                </ul>
+                <div class="product-market">CLIENTS : DGA • Thales • Dassault • DARPA • NATO</div>
+                <a href="#contact" class="product-cta">DEMANDER BRIEFING →</a>
+            </div>
+            
+            <!-- OCTOPUS -->
+            <div class="product-card">
+                <div class="product-badge">DEEP SPACE</div>
+                <div class="product-name">OCTOPUS</div>
+                <div class="product-tagline">Communiquer avec Mars</div>
+                <p class="product-description">
+                    Messagerie sécurisée sur canaux hostiles avec latence extrême.
+                    De la Terre à Mars : 24 minutes de délai, zéro problème.
+                </p>
+                <ul class="product-features">
+                    <li>Tolère latences de 3 à 24 minutes</li>
+                    <li>Trafic indistinguable du bruit</li>
+                    <li>Sans horloge synchronisée</li>
+                    <li>Post-quantique natif</li>
+                </ul>
+                <div class="product-market">CLIENTS : SpaceX • NASA • ESA • CNES • Blue Origin</div>
+                <a href="#contact" class="product-cta">EXPLORER LE SPATIAL →</a>
+            </div>
+            
+            <!-- POST-QUANTUM -->
+            <div class="product-card product-card-highlight">
+                <div class="product-badge">SÉCURITÉ ULTIME</div>
+                <div class="product-name">POST-QUANTUM</div>
+                <div class="product-tagline">Store now, decrypt NEVER</div>
+                <p class="product-description">
+                    Toute la stack AION est post-quantique native. Vos données 
+                    interceptées aujourd'hui resteront illisibles pour toujours.
+                </p>
+                <ul class="product-features">
+                    <li>ML-KEM (Kyber) — échange de clés</li>
+                    <li>ML-DSA (Dilithium) — signatures</li>
+                    <li>AES-256 + SHA-3 — symétrique</li>
+                    <li>QKD ready — sécurité inconditionnelle</li>
+                </ul>
+                <div class="product-market">CLIENTS : Banques • Gouvernements • Défense • Santé • Énergie</div>
+                <a href="#contact" class="product-cta">SÉCURISER MON AVENIR →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Métaphore -->
+    <section class="metaphor">
+        <h2 class="section-title">Pourquoi la Pieuvre ?</h2>
+        <p class="section-subtitle">Internet est une toile d'araignée — nous créons un organisme vivant.</p>
+        
+        <div class="metaphor-grid">
+            <div class="metaphor-column spider">
+                <h3><span class="emoji">🕷️</span> L'Araignée</h3>
+                <ul class="metaphor-list">
+                    <li><span class="icon">✗</span> Tisse une toile <strong>fixe</strong> et visible</li>
+                    <li><span class="icon">✗</span> Attend sa proie <strong>passivement</strong></li>
+                    <li><span class="icon">✗</span> Toile <strong>fragile</strong>, facile à détruire</li>
+                    <li><span class="icon">✗</span> <strong>1 seul cerveau</strong></li>
+                    <li><span class="icon">✗</span> Forme <strong>immuable</strong></li>
+                    <li><span class="icon">✗</span> Aucune défense si attaquée</li>
+                    <li><span class="icon">✗</span> <strong>Piège</strong> les autres</li>
+                </ul>
+            </div>
+            
+            <div class="metaphor-vs">
+                <span>vs</span>
+            </div>
+            
+            <div class="metaphor-column octopus">
+                <h3><span class="emoji">🐙</span> La Pieuvre</h3>
+                <ul class="metaphor-list">
+                    <li><span class="icon">✓</span> Se <strong>déplace</strong> librement, sans trace</li>
+                    <li><span class="icon">✓</span> <strong>Chasse</strong> activement, s'adapte</li>
+                    <li><span class="icon">✓</span> Corps <strong>fluide</strong>, passe partout</li>
+                    <li><span class="icon">✓</span> <strong>9 cerveaux</strong> (1 central + 8 tentacules)</li>
+                    <li><span class="icon">✓</span> Change de <strong>couleur, texture, forme</strong></li>
+                    <li><span class="icon">✓</span> Jette de <strong>l'encre</strong> pour disparaître</li>
+                    <li><span class="icon">✓</span> Se <strong>libère</strong> elle-même</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ce qu'AION abolit -->
+    <section>
+        <h2 class="section-title">Ce que la Pieuvre abolit</h2>
+        <p class="section-subtitle">Pas une amélioration — une rupture civilisationnelle.</p>
+        
+        <div class="abolitions-grid">
+            <div class="abolition-card" onclick="showModal('pip')">
+                <div class="icon">📍</div>
+                <div class="old">Adresse IP permanente</div>
+                <div class="new">→ Identités polymorphiques</div>
+                <div class="patent">PIP POLYMORPHIC · FR2600202</div>
+                <div class="click-hint">Voir le brevet →</div>
+            </div>
+            
+            <div class="abolition-card" onclick="showModal('fantom')">
+                <div class="icon">📦</div>
+                <div class="old">Box Internet obligatoire</div>
+                <div class="new">→ Connexion sans infrastructure</div>
+                <div class="patent">FANTOM INTERNET · FR2600245</div>
+                <div class="click-hint">Voir le brevet →</div>
+            </div>
+            
+            <div class="abolition-card" onclick="showModal('chronos')">
+                <div class="icon">⏰</div>
+                <div class="old">Serveurs de temps (NTP/GPS)</div>
+                <div class="new">→ Temps énergétique souverain</div>
+                <div class="patent">CHRONOS · FR2600320</div>
+                <div class="click-hint">Voir le brevet →</div>
+            </div>
+            
+            <div class="abolition-card" onclick="showModal('asemantix')">
+                <div class="icon">📊</div>
+                <div class="old">Métadonnées exploitables</div>
+                <div class="new">→ Trafic indistinguable du bruit</div>
+                <div class="patent">ASEMANTIX · FR2516793</div>
+                <div class="click-hint">Voir le brevet →</div>
+            </div>
+            
+            <div class="abolition-card" onclick="showModal('pipvpn')">
+                <div class="icon">🔐</div>
+                <div class="old">VPN détectable et traçable</div>
+                <div class="new">→ VPN imblocable</div>
+                <div class="patent">PIP VPN + CLOAK · FR2600251</div>
+                <div class="click-hint">Voir le brevet →</div>
+            </div>
+            
+            <div class="abolition-card" onclick="showModal('pip5g')">
+                <div class="icon">🔌</div>
+                <div class="old">Dépendance câbles / Fibre</div>
+                <div class="new">→ Multi-canal (Satellite, 5G, Mesh)</div>
+                <div class="patent">PIP-5G · FR2600261</div>
+                <div class="click-hint">Voir le brevet →</div>
+            </div>
+            
+            <div class="abolition-card" onclick="showModal('tute')">
+                <div class="icon">💻</div>
+                <div class="old">Ordinateur matériel confiscable</div>
+                <div class="new">→ Ordinateur liquide immatériel</div>
+                <div class="patent">TUTE · τ = E/P</div>
+                <div class="click-hint">Voir le brevet →</div>
+            </div>
+            
+            <div class="abolition-card" onclick="showModal('quantum')">
+                <div class="icon">⚛️</div>
+                <div class="old">Cryptographie vulnérable au quantique</div>
+                <div class="new">→ Post-quantique sur toutes les couches</div>
+                <div class="patent">QUANTUM · FR2600313</div>
+                <div class="click-hint">Voir le brevet →</div>
+            </div>
+            
+            <div class="abolition-card" onclick="showModal('blackbox')">
+                <div class="icon">👁️</div>
+                <div class="old">Données visibles même chiffrées</div>
+                <div class="new">→ View-once avec preuve d'effacement</div>
+                <div class="patent">BLACKBOX · FR2600204</div>
+                <div class="click-hint">Voir le brevet →</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contactez-nous</h2>
+        <p class="section-subtitle">Licensing, partenariats technologiques, acquisitions — parlons de vos besoins.</p>
+        
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>AION ASEMANTIX™</h3>
+                <p>
+                    32 brevets révolutionnaires couvrant la souveraineté numérique complète : 
+                    identités polymorphes, temps énergétique, trafic asémantique, sécurité post-quantique.
+                </p>
+                <p>
+                    Nous cherchons des partenaires visionnaires pour déployer 
+                    l'ère de la tranquillité numérique.
+                </p>
+                
+                <a href="/cdn-cgi/l/email-protection#016072646c606f7568794171736e756e6f2f6c64" class="contact-email"><span class="__cf_email__" data-cfemail="432230262e222d372a3b0333312c372c2d6d2e26">[email&#160;protected]</span></a>
+                
+                <div class="contact-interests">
+                    <span>Licensing</span>
+                    <span>Partenariat R&D</span>
+                    <span>Acquisition</span>
+                    <span>Intégration OEM</span>
+                    <span>Investissement</span>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Laissez-nous un message</h3>
+                <form action="https://formsubmit.co/asemantix@proton.me" method="POST">
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://asemantix.tech/la-pieuvre.html">
+                    <input type="hidden" name="_subject" value="[AION La Pieuvre] Nouveau contact">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>NOM</label>
+                            <input type="text" name="name" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label>ORGANISATION</label>
+                            <input type="text" name="organization" placeholder="Entreprise / Institution">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>EMAIL</label>
+                        <input type="email" name="email" placeholder="votre@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>CENTRE D'INTÉRÊT</label>
+                        <select name="interest" required>
+                            <option value="">Sélectionnez votre intérêt principal...</option>
+                            <option value="licensing">Licensing de brevets</option>
+                            <option value="partnership">Partenariat technologique</option>
+                            <option value="integration">Intégration OEM / SDK</option>
+                            <option value="investment">Investissement / Acquisition</option>
+                            <option value="vpn">VPN / Privacy (PIP VPN, CLOAK)</option>
+                            <option value="5g">Télécoms / 5G-6G (PIP-5G)</option>
+                            <option value="defense">Défense / Tactique</option>
+                            <option value="iot">IoT / Systèmes embarqués</option>
+                            <option value="quantum">Post-quantique / QKD</option>
+                            <option value="tute">TUTE / Batteries / CPU</option>
+                            <option value="other">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>MESSAGE</label>
+                        <textarea name="message" placeholder="Décrivez votre projet ou vos questions..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">ENVOYER LE MESSAGE →</button>
+                    
+                    <p class="form-note">Nous répondons sous 48h. Vos données ne sont jamais partagées.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-legal">© 2025 AION ASEMANTIX™ — Tous droits réservés. Brevets INPI déposés.</div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        const patents = {
+            pip: {
+                ref: "FR2600202",
+                name: "PIP POLYMORPHIC",
+                subtitle: "Brevet fondateur — Identifiants non corrélables",
+                abstract: "Procédé de communication à identifiants réseau non corrélables par permutation polymorphique. Fondement de toute l'architecture AION.",
+                points: [
+                    "Adresse IP différente à chaque échange",
+                    "Ratchet cryptographique unidirectionnel",
+                    "Non-corrélabilité cryptographique prouvée",
+                    "Forward secrecy (effacement des états passés)",
+                    "Fonctionne sans horloge partagée (clockless)"
+                ],
+                tags: ["FONDATION", "RATCHET", "CLOCKLESS"]
+            },
+            asemantix: {
+                ref: "FR2516793",
+                name: "ASEMANTIX CAMELEON",
+                subtitle: "Validation de fragments asémantiques",
+                abstract: "Procédé de validation locale de fragments asémantiques avec marqueur polymorphe. Le trafic transmis est mathématiquement indistinguable du bruit aléatoire.",
+                points: [
+                    "Portion utile de 256 bits minimum",
+                    "Marqueur polymorphe changeant à chaque index",
+                    "Filtrage ultra-rapide (99%+ rejeté)",
+                    "Aucune métadonnée : ni header, ni timestamp",
+                    "Ancre monotone pour anti-rejeu"
+                ],
+                tags: ["ASÉMANTIQUE", "POLYMORPHE", "BRUIT"]
+            },
+            chronos: {
+                ref: "FR2600320",
+                name: "CHRONOS",
+                subtitle: "Temps thermodynamique local",
+                abstract: "Procédé de gestion du temps thermodynamique local τ = E/P. Le temps émerge de l'énergie consommée, impossible à manipuler de l'extérieur.",
+                points: [
+                    "Temps souverain sans serveur NTP ni GPS",
+                    "Formule : τ = Energie / Puissance",
+                    "τ démarre à zéro, croît de façon monotone",
+                    "Anti-rejeu par fraîcheur énergétique",
+                    "Applications : IoT, spatial, tactique"
+                ],
+                tags: ["TEMPS", "ÉNERGÉTIQUE", "CLOCKLESS"]
+            },
+            fantom: {
+                ref: "FR2600245",
+                name: "FANTOM INTERNET",
+                subtitle: "Connexion anonyme sans infrastructure",
+                abstract: "Système de connexion Internet anonyme sans infrastructure fixe, multi-connectivité (cellulaire, satellite, WiFi, mesh).",
+                points: [
+                    "Multi-canal : 4G/5G, satellite, WiFi, mesh",
+                    "Permutation d'identifiants intégrée",
+                    "Aucune infrastructure fixe nécessaire",
+                    "Aucun contrat nominatif",
+                    "Non géolocalisable"
+                ],
+                tags: ["NOMADE", "SANS-FIL", "ANONYME"]
+            },
+            pipvpn: {
+                ref: "FR2600251",
+                name: "PIP VPN",
+                subtitle: "VPN imblocable à identifiants non corrélables",
+                abstract: "VPN où l'IP change à chaque requête, rendant le VPN indétectable par DPI, imblocable par liste noire, et résistant à la classification ML.",
+                points: [
+                    "IP change à chaque requête",
+                    "Aucune signature protocolaire détectable",
+                    "Pool d'IP diversifié",
+                    "Contre-mesures anti-ML intégrées",
+                    "Compatible avec CLOAK"
+                ],
+                tags: ["VPN", "ANTI-CENSURE", "ANTI-ML"]
+            },
+            pip5g: {
+                ref: "FR2600261",
+                name: "PIP-5G",
+                subtitle: "Handover cellulaire à identifiants non corrélables",
+                abstract: "Procédé de handover à identifiants non corrélables dans les réseaux mobiles 5G/6G.",
+                points: [
+                    "Nouvel identifiant à chaque handover",
+                    "Non-corrélabilité inter-stations de base",
+                    "Compatible 5G et préparé pour 6G",
+                    "Protection contre IMSI catchers"
+                ],
+                tags: ["5G", "6G", "MOBILITÉ"]
+            },
+            tute: {
+                ref: "FR-TUTE-001",
+                name: "TUTE FONDATEUR",
+                subtitle: "Système universel de temps énergétique",
+                abstract: "Dispositif de mesure et d'analyse du temps énergétique fondé sur τ = E/P. Le temps émerge comme pulsation énergétique.",
+                points: [
+                    "Loi fondamentale: τ = E/P",
+                    "Vitesse du temps: vₜ = P/E",
+                    "4 modules: Acquisition E, Mesure P, Calcul, Interface",
+                    "34 revendications",
+                    "22 exemples d'industrialisation"
+                ],
+                tags: ["TEMPS", "ÉNERGIE", "UNIVERSEL"]
+            },
+            quantum: {
+                ref: "FR2600313",
+                name: "QUANTUM",
+                subtitle: "PIP initialisé par QKD",
+                abstract: "Procédé de communication à identifiants polymorphes initialisés par distribution quantique de clés. Sécurité inconditionnelle.",
+                points: [
+                    "Clé quantique établie par protocole QKD",
+                    "Sécurité information-théorique",
+                    "Résistance au store-now-decrypt-later",
+                    "Incassable même avec ordinateur quantique"
+                ],
+                tags: ["QKD", "INCONDITIONNEL", "POST-QUANTIQUE"]
+            },
+            blackbox: {
+                ref: "FR2600204",
+                name: "BLACKBOX",
+                subtitle: "Contrôle d'accès view-once offline",
+                abstract: "Procédé de contrôle d'accès local à contenus chiffrés avec double contrôle et restitution unique.",
+                points: [
+                    "Double contrôle : secret appareil + facteur humain",
+                    "Restitution view-once",
+                    "Effacement sécurisé avec preuve crypto",
+                    "Fonctionne totalement hors ligne"
+                ],
+                tags: ["VIEW-ONCE", "EFFACEMENT", "OFFLINE"]
+            }
+        };
+
+        function showModal(id) {
+            const p = patents[id];
+            if (!p) return;
+            
+            document.getElementById('modal-body').innerHTML = `
+                <div class="modal-header">
+                    <div class="modal-ref">${p.ref}</div>
+                    <h2 class="modal-title">${p.name}</h2>
+                    <p class="modal-subtitle">${p.subtitle}</p>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-section">
+                        <div class="modal-section-title">DESCRIPTION</div>
+                        <p>${p.abstract}</p>
+                    </div>
+                    <div class="modal-section">
+                        <div class="modal-section-title">CARACTÉRISTIQUES</div>
+                        <ul class="modal-points">
+                            ${p.points.map(pt => `<li>${pt}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="modal-tags">
+                        ${p.tags.map(t => `<span class="modal-tag">${t}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('modal').classList.add('active');
+         
