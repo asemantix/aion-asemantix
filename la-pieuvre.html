@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Pieuvre | AION ASEMANTIX™ | 32 Brevets • 7 Divisions</title>
-    <meta name="description" content="La Pieuvre AION - 32 brevets interconnectés formant l'écosystème complet de souveraineté numérique post-quantique.">
+    <title>La Pieuvre | AION ASEMANTIX™ | 37 Brevets • 7 Divisions</title>
+    <meta name="description" content="La Pieuvre AION - 37 brevets interconnectés formant l'écosystème complet de souveraineté numérique post-quantique.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,6 +72,13 @@
             font-weight: 600;
             color: var(--gold);
             letter-spacing: 0.3em;
+        }
+
+        .nav-logo .asemantix {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--white);
+            letter-spacing: 0.15em;
         }
 
         .nav-links {
@@ -647,12 +654,120 @@
             color: var(--black);
         }
 
+        /* Products Ready to Market */
+        .products-section {
+            background: linear-gradient(180deg, var(--black) 0%, var(--black-light) 100%);
+            padding: 5rem 4rem;
+            border-bottom: 1px solid var(--gold-dark);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--black);
+            border: 1px solid var(--gray-700);
+            padding: 1.8rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .product-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(201, 169, 98, 0.2);
+        }
+
+        .product-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--black);
+            background: var(--gold);
+            padding: 0.25rem 0.6rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-ref {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--gray-500);
+            margin-bottom: 0.3rem;
+        }
+
+        .product-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .product-tagline {
+            font-size: 0.95rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .product-description {
+            color: var(--gray-300);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-features li {
+            padding: 0.35rem 0;
+            font-size: 0.8rem;
+            color: var(--gray-300);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .product-market {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--gray-500);
+            letter-spacing: 0.05em;
+            padding-top: 0.8rem;
+            border-top: 1px solid var(--gray-800);
+        }
+
         /* Responsive */
         @media (max-width: 900px) {
             nav { padding: 1rem 2rem; }
             .nav-links { display: none; }
             .hero h1 { font-size: 4rem; }
             section { padding: 3rem 1.5rem; }
+            .products-section { padding: 3rem 1.5rem; }
+            .products-grid { grid-template-columns: 1fr; }
             .metaphor-grid { 
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -665,12 +780,16 @@
 <body>
 
     <nav>
-        <a href="#" class="nav-logo">
+        <a href="index.html" class="nav-logo">
             <span class="aion">AION</span>
+            <span class="asemantix">ASEMANTIX™</span>
         </a>
         <div class="nav-links">
-            <a href="#ecosystem">Écosystème</a>
-            <a href="#metaphor">Pourquoi la Pieuvre</a>
+            <a href="index.html">Accueil</a>
+            <a href="#products" style="color: var(--gold);">Ready to Market</a>
+            <a href="#metaphor">Araignée vs Pieuvre</a>
+            <a href="#ecosystem">37 Brevets</a>
+            <a href="tute.html" style="color: #00ffaa;">TUTE τ</a>
         </div>
     </nav>
 
@@ -680,7 +799,7 @@
             <div class="hero-badge">ÉCOSYSTÈME DE SOUVERAINETÉ NUMÉRIQUE</div>
             <h1>L<span class="a-tilt">a</span> <span class="gold">Pieuvre</span></h1>
             <p class="hero-tagline">
-                32 brevets interconnectés. 7 tentacules. Un seul organisme.<br>
+                37 brevets interconnectés. 7 tentacules. Un seul organisme.<br>
                 L'architecture complète de protection post-quantique.
             </p>
             
@@ -717,6 +836,260 @@
                     <ellipse fill="#fff" opacity="0.6" cx="238" cy="108" rx="3" ry="4"/>
                 </svg>
             </div>
+        </div>
+    </section>
+
+    <!-- READY TO MARKET -->
+    <section class="products-section" id="products">
+        <h2 class="section-title">Ready to Market</h2>
+        <p class="section-subtitle">Brevets déposés. Clients identifiés. Licences disponibles immédiatement.</p>
+        
+        <div class="products-grid">
+            <!-- PIP VPN -->
+            <div class="product-card">
+                <div class="product-badge">LICENSING B2B</div>
+                <div class="product-ref">FR2600251</div>
+                <div class="product-name">PIP VPN</div>
+                <div class="product-tagline">Le VPN imblocable</div>
+                <p class="product-description">Premier VPN indétectable par DPI, résistant au ML, impossible à bloquer. L'IP change à chaque requête.</p>
+                <ul class="product-features">
+                    <li>Indétectable par Deep Packet Inspection</li>
+                    <li>Résistant aux classificateurs ML</li>
+                    <li>Fonctionne en Chine, Iran, Russie</li>
+                </ul>
+                <div class="product-market">CLIENTS : ProtonVPN • NordVPN • ExpressVPN • Mullvad</div>
+            </div>
+            
+            <!-- PIP-5G -->
+            <div class="product-card">
+                <div class="product-badge">TÉLÉCOMS</div>
+                <div class="product-ref">FR2600261</div>
+                <div class="product-name">PIP-5G</div>
+                <div class="product-tagline">Privacy native mobile</div>
+                <p class="product-description">Nouvel identifiant cryptographiquement non corrélable à chaque handover. Compatible 4G, 5G, 6G, satellite.</p>
+                <ul class="product-features">
+                    <li>Nouvel ID à chaque antenne</li>
+                    <li>Protection IMSI catchers</li>
+                    <li>Starlink Phone ready</li>
+                </ul>
+                <div class="product-market">CLIENTS : Starlink • Orange • Deutsche Telekom • Vodafone</div>
+            </div>
+            
+            <!-- OCTOPUS -->
+            <div class="product-card">
+                <div class="product-badge">DEEP SPACE</div>
+                <div class="product-ref">FR2600020</div>
+                <div class="product-name">OCTOPUS</div>
+                <div class="product-tagline">Messagerie Terre-Mars</div>
+                <p class="product-description">Messagerie sécurisée sur canal hostile. Messages indistinguables du bruit. Tolère latences 4-24 minutes.</p>
+                <ul class="product-features">
+                    <li>Communications interplanétaires</li>
+                    <li>Sans horloge synchronisée</li>
+                    <li>Post-quantique natif</li>
+                </ul>
+                <div class="product-market">CLIENTS : SpaceX • NASA • ESA • CNES • Blue Origin</div>
+            </div>
+            
+            <!-- ENERGYSYNC -->
+            <div class="product-card">
+                <div class="product-badge">DÉFENSE</div>
+                <div class="product-ref">FR2600343</div>
+                <div class="product-name">ENERGYSYNC</div>
+                <div class="product-tagline">Essaims sans horloge</div>
+                <p class="product-description">Coordination d'essaims par indicateur énergétique local, sans GPS, sans NTP. Résistant au brouillage.</p>
+                <ul class="product-features">
+                    <li>Zéro dépendance GPS/NTP</li>
+                    <li>Coordination par seuils énergétiques</li>
+                    <li>Essaims drones, véhicules autonomes</li>
+                </ul>
+                <div class="product-market">CLIENTS : DGA • Thales • Dassault • DARPA • NATO</div>
+            </div>
+            
+            <!-- SESAME -->
+            <div class="product-card">
+                <div class="product-badge">IoT INDUSTRIEL</div>
+                <div class="product-ref">FR2600010</div>
+                <div class="product-name">SESAME</div>
+                <div class="product-tagline">Commande IoT hostile</div>
+                <p class="product-description">Commande de dispositifs contraints avec économie d'énergie critique. 99%+ du bruit rejeté sans calcul crypto.</p>
+                <ul class="product-features">
+                    <li>Ultra low-power</li>
+                    <li>Hiérarchie de commandes</li>
+                    <li>SCADA, médical, drones</li>
+                </ul>
+                <div class="product-market">CLIENTS : Siemens • Schneider • ABB • Industrie 4.0</div>
+            </div>
+            
+            <!-- CLOAK -->
+            <div class="product-card">
+                <div class="product-badge">ANTI-CENSURE</div>
+                <div class="product-ref">FR2600321</div>
+                <div class="product-name">CLOAK</div>
+                <div class="product-tagline">Mimétisme anti-ML</div>
+                <p class="product-description">Le trafic VPN imite parfaitement le streaming, la visioconférence, le gaming. Indistinguabilité statistique formelle.</p>
+                <ul class="product-features">
+                    <li>Profils comportementaux adaptatifs</li>
+                    <li>Score Kolmogorov-Smirnov</li>
+                    <li>Ajustement boucle fermée</li>
+                </ul>
+                <div class="product-market">CLIENTS : VPN providers • ONG • Journalistes • Dissidents</div>
+            </div>
+            
+            <!-- VCH -->
+            <div class="product-card">
+                <div class="product-badge">INTÉGRITÉ</div>
+                <div class="product-ref">FR2600203</div>
+                <div class="product-name">VCH</div>
+                <div class="product-tagline">Chaînage d'historique</div>
+                <p class="product-description">Intégrité et ordonnancement sans métadonnées transmises. Anti-rejeu et anti-rollback cryptographique.</p>
+                <ul class="product-features">
+                    <li>Engagement de chaîne local</li>
+                    <li>Variantes MAC, signature, ZK</li>
+                    <li>Compatible blockchain</li>
+                </ul>
+                <div class="product-market">CLIENTS : Banques • Paiements • Supply chain • Notaires</div>
+            </div>
+            
+            <!-- ANCHORS -->
+            <div class="product-card">
+                <div class="product-badge">RÉSILIENCE</div>
+                <div class="product-ref">FR2600207</div>
+                <div class="product-name">ANCHORS</div>
+                <div class="product-tagline">Resync sans serveur</div>
+                <p class="product-description">Resynchronisation via QR, NFC, mnémonique, audio. Sans serveur ni horloge synchronisée.</p>
+                <ul class="product-features">
+                    <li>Multi-canaux : QR, NFC, audio</li>
+                    <li>Modes Genesis, Retro, Jump</li>
+                    <li>Récupération après désync</li>
+                </ul>
+                <div class="product-market">CLIENTS : Messageries • Militaire • Systèmes critiques</div>
+            </div>
+            
+            <!-- HEIMDALL -->
+            <div class="product-card">
+                <div class="product-badge">SÉCURITÉ</div>
+                <div class="product-ref">FR2600400</div>
+                <div class="product-name">HEIMDALL</div>
+                <div class="product-tagline">Auth énergétique</div>
+                <p class="product-description">Authentification = secret + empreinte énergétique. Impossible à usurper à distance. Profil physique unique.</p>
+                <ul class="product-features">
+                    <li>Secret + empreinte hardware</li>
+                    <li>Non reproductible à distance</li>
+                    <li>Anti-clonage natif</li>
+                </ul>
+                <div class="product-market">CLIENTS : EDR • Enterprise Security • Banking</div>
+            </div>
+            
+            <!-- BLACKBOX -->
+            <div class="product-card">
+                <div class="product-badge">DRM</div>
+                <div class="product-ref">FR2600204</div>
+                <div class="product-name">BLACKBOX</div>
+                <div class="product-tagline">View-once offline</div>
+                <p class="product-description">Double contrôle, restitution view-once, effacement sécurisé avec preuve cryptographique. 100% offline.</p>
+                <ul class="product-features">
+                    <li>Secret appareil + facteur humain</li>
+                    <li>Preuve d'effacement</li>
+                    <li>Fonctionne hors ligne</li>
+                </ul>
+                <div class="product-market">CLIENTS : Santé • Juridique • Médias • Renseignement</div>
+            </div>
+            
+            <!-- PIP SATELLITE -->
+            <div class="product-card">
+                <div class="product-badge">SATELLITE</div>
+                <div class="product-ref">FR2600504</div>
+                <div class="product-name">PIP SATELLITE</div>
+                <div class="product-tagline">Handover multi-constellations</div>
+                <p class="product-description">Communication LEO/MEO/GEO sans corrélation d'identité. Transition aveugle entre opérateurs.</p>
+                <ul class="product-features">
+                    <li>Identifiant distinct par constellation</li>
+                    <li>Transition aveugle</li>
+                    <li>Maritime, aviation, IoT global</li>
+                </ul>
+                <div class="product-market">CLIENTS : Starlink • OneWeb • Iridium • Inmarsat</div>
+            </div>
+            
+            <!-- MAILBOX -->
+            <div class="product-card">
+                <div class="product-badge">MESSAGERIE</div>
+                <div class="product-ref">FR2600019</div>
+                <div class="product-name">MAILBOX</div>
+                <div class="product-tagline">Dead drop aveugle</div>
+                <p class="product-description">Boîte aux lettres asémantique. Le serveur ne peut rien distinguer. Résistant à la censure.</p>
+                <ul class="product-features">
+                    <li>Serveur aveugle</li>
+                    <li>99%+ filtré sans calcul</li>
+                    <li>Réseaux intermittents</li>
+                </ul>
+                <div class="product-market">CLIENTS : Signal • Whistleblowing • ONG • Presse</div>
+            </div>
+            
+            <!-- TUTE BATTERIE -->
+            <div class="product-card">
+                <div class="product-badge" style="background: #00ffaa; color: #08080a;">TUTE τ</div>
+                <div class="product-ref">FR26005XX</div>
+                <div class="product-name" style="color: #00ffaa;">TUTE BATTERIE</div>
+                <div class="product-tagline">État de charge = temps</div>
+                <p class="product-description">Le niveau de batterie devient une référence temporelle universelle. Synchronisation sans horloge ni réseau.</p>
+                <ul class="product-features">
+                    <li>SoC comme indicateur temporel</li>
+                    <li>Indépendant GPS/NTP</li>
+                    <li>Véhicules électriques, IoT, grids</li>
+                </ul>
+                <div class="product-market">CLIENTS : Tesla • CATL • BYD • Panasonic • Automotive</div>
+            </div>
+            
+            <!-- TUTE CPU -->
+            <div class="product-card">
+                <div class="product-badge" style="background: #00ffaa; color: #08080a;">TUTE τ</div>
+                <div class="product-ref">FR26005XX</div>
+                <div class="product-name" style="color: #00ffaa;">TUTE CPU</div>
+                <div class="product-tagline">Cycles CPU = horloge</div>
+                <p class="product-description">Les cycles processeur remplacent l'horloge système. Temps énergétique universel pour datacenter.</p>
+                <ul class="product-features">
+                    <li>Cycles comme référence temporelle</li>
+                    <li>Anti-manipulation horloge</li>
+                    <li>Datacenters, cloud, HPC</li>
+                </ul>
+                <div class="product-market">CLIENTS : Intel • AMD • ARM • Qualcomm • NVIDIA</div>
+            </div>
+        </div>
+        
+        <!-- TOP SECRET SECTION -->
+        <div style="margin-top: 4rem; padding: 3rem; border: 2px solid #ef4444; background: rgba(239, 68, 68, 0.05);">
+            <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #ef4444; text-align: center; margin-bottom: 0.5rem;">
+                ⚠️ TOP SECRET ⚠️
+            </h3>
+            <p style="text-align: center; color: #a0a0a0; font-size: 0.9rem; margin-bottom: 2rem;">
+                Brevets stratégiques en cours de rédaction
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                <!-- CLASSIFIED 1 -->
+                <div style="background: #08080a; border: 1px solid #ef4444; padding: 2rem; text-align: center;">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; color: #ef4444; letter-spacing: 0.2em; margin-bottom: 1rem;">
+                        ████████████
+                    </div>
+                    <div style="display: inline-block; background: #ef4444; color: #08080a; padding: 0.3rem 1rem; font-size: 0.7rem; letter-spacing: 0.1em;">
+                        🔒 CLASSIFIED
+                    </div>
+                </div>
+                
+                <!-- CLASSIFIED 2 -->
+                <div style="background: #08080a; border: 1px solid #ef4444; padding: 2rem; text-align: center;">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; color: #ef4444; letter-spacing: 0.2em; margin-bottom: 1rem;">
+                        ████████████
+                    </div>
+                    <div style="display: inline-block; background: #ef4444; color: #08080a; padding: 0.3rem 1rem; font-size: 0.7rem; letter-spacing: 0.1em;">
+                        🔒 CLASSIFIED
+                    </div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; color: #606060; font-size: 0.8rem; margin-top: 2rem;">
+                Informations disponibles sous NDA uniquement — <span style="color: #c9a962;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="315042545c505f4558497141435e455e5f1f5c54">[email&#160;protected]</a></span>
+            </p>
         </div>
     </section>
 
@@ -760,7 +1133,7 @@
 
     <!-- Section Écosystème Radial -->
     <section class="ecosystem-section" id="ecosystem">
-        <h2 class="section-title">32 brevets • 7 divisions</h2>
+        <h2 class="section-title">37 brevets • 7 divisions</h2>
         <p class="section-subtitle">Cliquez sur un médaillon pour voir tous les brevets de la division</p>
 
         <div class="ecosystem">
@@ -818,7 +1191,7 @@
     </section>
 
     <footer>
-        <div class="footer-legal">© 2025 AION ASEMANTIX™ — Tous droits réservés. 32 brevets INPI déposés.</div>
+        <div class="footer-legal">© 2026 AION ASEMANTIX™ — Tous droits réservés. 37 brevets INPI déposés.</div>
     </footer>
 
     <!-- Modal Division -->
@@ -831,7 +1204,7 @@
         <div class="patent-modal" id="patentContent"></div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const divisions = {
             privacy: {
                 icon: "👻",
@@ -915,7 +1288,7 @@
                     { ref: "FR2600519", name: "TUTE GRID", subtitle: "Optimisation réseau énergétique", desc: "Temps énergétique τ_i = E_i/P_i comme métrique pivot pour orchestrer les réseaux.", tags: ["SMART GRID", "ÉNERGIE"], points: ["Temps énergétique réseau τ_i", "Prédiction de risques réseau", "Routage d'énergie par priorité", "Coordination multi-technologies"] },
                     { ref: "FR2600542", name: "TOKEN TUTE", subtitle: "Dispositif portable d'horodatage", desc: "Dispositif portable avec temps énergétique souverain, indépendant de tout serveur.", tags: ["HORODATAGE", "PORTABLE"], points: ["Source d'énergie autonome", "Temps τ = E/P calculé localement", "Élément sécurisé interne", "Algorithmes post-quantiques"] },
                     { ref: "FR2600514", name: "AION PAY", subtitle: "Transaction financière asémantique", desc: "Paiement indistinguable du bruit avec preuve zero-knowledge.", tags: ["FINANCE", "ZKP"], points: ["Encapsulation asémantique", "Preuve cryptographique ZK", "Anonymat vérifiable", "Compatible régulation (divulgation sélective)"] },
-                    { ref: "FR2600512", name: "CONSTELLATION", subtitle: "Handover inter-constellations satellites", desc: "Communication multi-constellations sans corrélation d'identité.", tags: ["SATELLITE", "LEO/MEO/GEO"], points: ["Identifiants polymorphes par constellation", "Synchronisation asémantique", "Transition aveugle entre opérateurs"] }
+                    { ref: "FR2600504", name: "PIP SATELLITE", subtitle: "Handover inter-constellations sans corrélation", desc: "Communication via plusieurs constellations satellitaires (LEO, MEO, GEO) sans corrélation d'identité. Transition aveugle.", tags: ["SATELLITE", "LEO/MEO/GEO", "HANDOVER"], points: ["Identifiant polymorphe distinct par constellation", "Synchronisation asémantique inter-constellation", "Transition aveugle : aucun opérateur ne lie les sessions", "Applications : téléphonie satellite, IoT global, défense"] }
                 ]
             }
         };
@@ -1014,13 +1387,4 @@
         // Fermer avec Escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                if (document.getElementById('patentModal').classList.contains('active')) {
-                    closePatent();
-                } else {
-                    closeDivision();
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+                if (document.get
