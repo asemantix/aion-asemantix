@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AION ASEMANTIX™ | 37 Brevets | L'ère de la tranquillité</title>
-    <meta name="description" content="AION ASEMANTIX - 37 brevets révolutionnaires. Protection native des données, sécurité post-quantique, gestion énergétique du temps.">
+    <title>AION ASEMANTIX™ | 35 Brevets | L'ère de la tranquillité</title>
+    <meta name="description" content="AION ASEMANTIX - 35 brevets révolutionnaires. Protection native des données, sécurité post-quantique, gestion énergétique du temps.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -175,7 +174,7 @@
         }
 
         .golden-circle::after {
-            content: '37';
+            content: '35';
             position: absolute;
             inset: 0;
             display: flex;
@@ -546,7 +545,7 @@
             
             <div class="hero-stats">
                 <div class="stat-item">
-                    <div class="stat-number">37</div>
+                    <div class="stat-number">35</div>
                     <div class="stat-label">BREVETS</div>
                 </div>
                 <div class="stat-item">
@@ -683,7 +682,7 @@
     </section>
 
     <footer>
-        <div class="footer-legal">© 2026 AION ASEMANTIX™ — Tous droits réservés. 37 brevets INPI déposés.</div>
+        <div class="footer-legal">© 2026 AION ASEMANTIX™ — Tous droits réservés. 35 brevets INPI déposés.</div>
     </footer>
 
     <!-- Modal -->
@@ -1205,3 +1204,13 @@
 
         // Fermer avec clic extérieur
         document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Fermer avec Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
