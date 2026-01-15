@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AION ASEMANTIX™ | 32 Brevets | L'ère de la tranquillité</title>
-    <meta name="description" content="AION ASEMANTIX - 32 brevets révolutionnaires. Protection native des données, sécurité post-quantique, gestion énergétique du temps.">
+    <title>AION ASEMANTIX™ | 37 Brevets | L'ère de la tranquillité</title>
+    <meta name="description" content="AION ASEMANTIX - 37 brevets révolutionnaires. Protection native des données, sécurité post-quantique, gestion énergétique du temps.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -175,7 +175,7 @@
         }
 
         .golden-circle::after {
-            content: '32';
+            content: '37';
             position: absolute;
             inset: 0;
             display: flex;
@@ -538,7 +538,7 @@
 
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">PATENT PORTFOLIO 2025</div>
+            <div class="hero-badge">PATENT PORTFOLIO 2026</div>
             <h1><span class="gold">AION</span> ASEMANTIX™</h1>
             <p class="hero-tagline">L'ère de la tranquillité a commencé</p>
             
@@ -546,7 +546,7 @@
             
             <div class="hero-stats">
                 <div class="stat-item">
-                    <div class="stat-number">32</div>
+                    <div class="stat-number">37</div>
                     <div class="stat-label">BREVETS</div>
                 </div>
                 <div class="stat-item">
@@ -669,7 +669,7 @@
                     <span class="patent-chip" onclick="openModal('tutegrid')">TUTE GRID</span>
                     <span class="patent-chip" onclick="openModal('tokentute')">TOKEN TUTE</span>
                     <span class="patent-chip" onclick="openModal('aionpay')">AION PAY</span>
-                    <span class="patent-chip" onclick="openModal('constellation')">CONSTELLATION</span>
+                    <span class="patent-chip" onclick="openModal('pipsatellite')">PIP SATELLITE</span>
                 </div>
                 <a href="tute.html" class="division-link" style="background: var(--tute); color: var(--black);">Découvrir TUTE τ →</a>
             </div>
@@ -678,12 +678,12 @@
 
     <section id="contact" class="contact">
         <h2 class="section-title">Contact</h2>
-        <a href="mailto:asemantix@proton.me" class="contact-email">asemantix@proton.me</a>
+        <a href="/cdn-cgi/l/email-protection#79180a1c1418170d100139090b160d161757141c" class="contact-email"><span class="__cf_email__" data-cfemail="563725333b3738223f2e16262439223938783b33">[email&#160;protected]</span></a>
         <p style="margin-top: 1rem; color: var(--gray-300);">Licensing • Partenariats • Acquisitions</p>
     </section>
 
     <footer>
-        <div class="footer-legal">© 2025 AION ASEMANTIX™ — Tous droits réservés. 32 brevets INPI déposés.</div>
+        <div class="footer-legal">© 2026 AION ASEMANTIX™ — Tous droits réservés. 37 brevets INPI déposés.</div>
     </footer>
 
     <!-- Modal -->
@@ -691,7 +691,7 @@
         <div class="modal-content" id="modal-content"></div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const patents = {
             // === AION CORE ===
             pip: {
@@ -833,6 +833,21 @@
                     "Fonctionne en Chine, Iran, Russie"
                 ],
                 tags: ["VPN", "ANTI-CENSURE", "ANTI-ML"]
+            },
+            pip5g: {
+                ref: "FR2600261",
+                name: "PIP-5G",
+                subtitle: "Privacy native mobile 5G/6G",
+                division: "AION Privacy",
+                divisionColor: "#00d4ff",
+                abstract: "Nouvel identifiant cryptographiquement non corrélable à chaque handover. Compatible 4G, 5G, 6G, satellite.",
+                points: [
+                    "Nouvel ID à chaque changement d'antenne",
+                    "Protection contre IMSI catchers",
+                    "Compatible Starlink Phone",
+                    "Aucune corrélation inter-cellules"
+                ],
+                tags: ["5G", "MOBILE", "HANDOVER"]
             },
             ghost: {
                 ref: "FR2600240",
@@ -1128,20 +1143,21 @@
                 ],
                 tags: ["FINANCE", "ZKP"]
             },
-            constellation: {
-                ref: "FR2600512",
-                name: "CONSTELLATION",
-                subtitle: "Handover inter-constellations satellites",
+            pipsatellite: {
+                ref: "FR2600504",
+                name: "PIP SATELLITE",
+                subtitle: "Handover inter-constellations sans corrélation",
                 division: "AION TUTE",
                 divisionColor: "#00ffaa",
-                abstract: "Communication multi-constellations sans corrélation d'identité.",
+                abstract: "Communication via plusieurs constellations satellitaires (LEO, MEO, GEO) sans que les transitions ne permettent la corrélation de l'identité du terminal. Transition aveugle où aucun opérateur ne peut lier les sessions.",
                 points: [
-                    "Identifiants polymorphes par constellation",
-                    "Synchronisation asémantique",
-                    "Transition aveugle entre opérateurs",
-                    "Compatible LEO/MEO/GEO"
+                    "Identifiant polymorphe distinct par constellation",
+                    "Synchronisation asémantique inter-constellation",
+                    "Transition aveugle : aucun opérateur ne lie les sessions",
+                    "Continuité session sans référence temporelle externe",
+                    "Applications : téléphonie satellite, IoT global, maritime, défense"
                 ],
-                tags: ["SATELLITE", "LEO/MEO/GEO"]
+                tags: ["SATELLITE", "LEO/MEO/GEO", "HANDOVER"]
             }
         };
 
@@ -1189,13 +1205,3 @@
 
         // Fermer avec clic extérieur
         document.getElementById('modal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-
-        // Fermer avec Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
-    </script>
-</body>
-</html>
