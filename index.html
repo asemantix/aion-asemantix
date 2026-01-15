@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,7 +31,7 @@
             --mesh: #eab308;
             --fortress: #ef4444;
             --core: #f97316;
-            --time: #00ffaa;
+            --tute: #00ffaa;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -197,9 +198,7 @@
             margin-top: 3rem;
         }
 
-        .stat-item {
-            text-align: center;
-        }
+        .stat-item { text-align: center; }
 
         .stat-number {
             font-family: 'Cormorant Garamond', serif;
@@ -214,9 +213,7 @@
         }
 
         /* Sections */
-        section {
-            padding: 6rem 4rem;
-        }
+        section { padding: 6rem 4rem; }
 
         .section-title {
             font-family: 'Cormorant Garamond', serif;
@@ -285,39 +282,75 @@
             background: var(--gray-700);
             cursor: pointer;
             transition: all 0.2s;
+            border: 1px solid transparent;
         }
 
         .patent-chip:hover {
             background: var(--gold);
             color: var(--black);
+            transform: translateY(-2px);
         }
 
         /* Division Colors */
         .division-core .division-name { color: var(--core); }
+        .division-core .patent-chip:hover { background: var(--core); }
+        
         .division-fortress .division-name { color: var(--fortress); }
+        .division-fortress .patent-chip:hover { background: var(--fortress); }
+        
         .division-mesh .division-name { color: var(--mesh); }
+        .division-mesh .patent-chip:hover { background: var(--mesh); }
+        
         .division-privacy .division-name { color: var(--privacy); }
+        .division-privacy .patent-chip:hover { background: var(--privacy); }
+        
         .division-quantum .division-name { color: var(--quantum); }
+        .division-quantum .patent-chip:hover { background: var(--quantum); }
+        
         .division-tactical .division-name { color: var(--tactical); }
-        .division-time .division-name { color: var(--time); }
+        .division-tactical .patent-chip:hover { background: var(--tactical); }
+        
+        .division-tute .division-name { color: var(--tute); }
+        .division-tute .patent-chip:hover { background: var(--tute); }
+
+        .division-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
 
         /* Modal */
-        .modal {
+        .modal-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(10px);
             z-index: 2000;
             overflow-y: auto;
             padding: 2rem;
+            align-items: flex-start;
+            justify-content: center;
         }
 
+        .modal-overlay.active { display: flex; }
+
         .modal-content {
-            max-width: 900px;
-            margin: 0 auto;
+            max-width: 700px;
+            width: 100%;
+            margin: auto;
             background: var(--black-light);
             border: 1px solid var(--gray-700);
             position: relative;
+            animation: modalIn 0.3s ease;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .modal-close {
@@ -325,62 +358,93 @@
             top: 1rem;
             right: 1rem;
             background: none;
-            border: none;
-            color: var(--white);
-            font-size: 2rem;
+            border: 1px solid var(--gray-700);
+            color: var(--gray-300);
+            width: 36px;
+            height: 36px;
+            font-size: 1.5rem;
             cursor: pointer;
             z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            border-color: var(--gold);
+            color: var(--gold);
         }
 
         .modal-header {
-            padding: 3rem;
+            padding: 2rem 2.5rem;
             border-bottom: 1px solid var(--gray-700);
-            text-align: center;
+            position: relative;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--gold);
+        }
+
+        .modal-division-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            padding: 0.3rem 0.7rem;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.1em;
         }
 
         .modal-ref {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--gold);
             margin-bottom: 0.5rem;
         }
 
         .modal-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.2rem;
+            margin-bottom: 0.3rem;
         }
 
         .modal-subtitle {
             color: var(--gray-300);
+            font-size: 1rem;
         }
 
-        .modal-body {
-            padding: 2rem 3rem;
-        }
+        .modal-body { padding: 2rem 2.5rem; }
 
-        .modal-section {
-            margin-bottom: 2rem;
-        }
+        .modal-section { margin-bottom: 1.8rem; }
 
         .modal-section-title {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--gold);
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
+            font-size: 0.7rem;
+            color: var(--gray-500);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.8rem;
         }
 
-        .modal-points {
-            list-style: none;
+        .modal-abstract {
+            color: var(--gray-300);
+            line-height: 1.7;
         }
+
+        .modal-points { list-style: none; }
 
         .modal-points li {
-            padding: 0.5rem 0;
+            padding: 0.6rem 0;
             padding-left: 1.5rem;
             position: relative;
             color: var(--gray-300);
+            border-bottom: 1px solid var(--gray-800);
         }
+
+        .modal-points li:last-child { border-bottom: none; }
 
         .modal-points li::before {
             content: '→';
@@ -389,84 +453,37 @@
             color: var(--gold);
         }
 
-        /* Brochure/Slide */
-        .brochure {
-            background: linear-gradient(135deg, var(--black) 0%, var(--gray-800) 100%);
-            border: 1px solid var(--gold);
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-
-        .brochure-header {
+        .modal-tags {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--gold);
-            padding-bottom: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .brochure-logo {
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--gold);
-            font-size: 1.2rem;
-            letter-spacing: 0.2em;
-        }
-
-        .brochure-ref {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--gold);
-        }
-
-        .brochure-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .brochure-subtitle {
-            color: var(--gold);
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .brochure-abstract {
-            color: var(--gray-300);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .brochure-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .brochure-feature {
-            display: flex;
-            align-items: flex-start;
+            flex-wrap: wrap;
             gap: 0.5rem;
+            margin-top: 1rem;
         }
 
-        .brochure-feature-icon {
+        .modal-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            padding: 0.3rem 0.6rem;
+            background: var(--gray-800);
             color: var(--gold);
-            font-size: 1rem;
         }
 
-        .brochure-feature-text {
-            font-size: 0.85rem;
-            color: var(--white-dim);
-        }
-
-        .brochure-footer {
+        .modal-cta {
+            display: block;
+            text-align: center;
+            padding: 1rem;
+            background: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
             margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--gray-700);
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: var(--gray-500);
+            transition: all 0.3s;
+        }
+
+        .modal-cta:hover {
+            background: var(--gold-light);
         }
 
         /* Contact */
@@ -501,7 +518,6 @@
             .hero h1 { font-size: 2.5rem; }
             section { padding: 3rem 1.5rem; }
             .divisions-grid { grid-template-columns: 1fr; }
-            .brochure-features { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -547,202 +563,491 @@
 
     <section id="divisions">
         <h2 class="section-title">7 Divisions Technologiques</h2>
+        <p style="text-align: center; color: var(--gray-300); margin-top: -2rem; margin-bottom: 3rem;">Cliquez sur un brevet pour en savoir plus</p>
         
         <div class="divisions-grid">
             <!-- AION Core -->
             <div class="division-card division-core">
                 <div class="division-header">
-                    <span class="division-name">AION Core</span>
-                    <span class="division-count">5 brevets</span>
+                    <span class="division-name">⚡ AION Core</span>
+                    <span class="division-count">6 brevets</span>
                 </div>
-                <p class="division-desc">Fondations cryptographiques. Identifiants polymorphes, validation asémantique, protection native.</p>
+                <p class="division-desc">Technologies fondamentales — le cœur de l'écosystème. Identifiants polymorphes, validation asémantique, temps thermodynamique.</p>
                 <div class="patent-list">
                     <span class="patent-chip" onclick="openModal('pip')">PIP POLYMORPHIC</span>
-                    <span class="patent-chip" onclick="openModal('asemantix')">ASEMANTIX</span>
-                    <span class="patent-chip" onclick="openModal('vch')">VCH</span>
-                    <span class="patent-chip" onclick="openModal('bridge')">BRIDGE</span>
+                    <span class="patent-chip" onclick="openModal('chronos')">CHRONOS</span>
+                    <span class="patent-chip" onclick="openModal('pontchronos')">PONT CHRONOS</span>
+                    <span class="patent-chip" onclick="openModal('phoenix')">PHOENIX</span>
                     <span class="patent-chip" onclick="openModal('anchors')">ANCHORS</span>
-                </div>
-            </div>
-
-            <!-- AION Fortress -->
-            <div class="division-card division-fortress">
-                <div class="division-header">
-                    <span class="division-name">AION Fortress</span>
-                    <span class="division-count">4 brevets</span>
-                </div>
-                <p class="division-desc">Protection autonome. Authentification énergétique, neutralisation automatique, contrôle d'accès.</p>
-                <div class="patent-list">
-                    <span class="patent-chip" onclick="openModal('heimdall')">HEIMDALL</span>
-                    <span class="patent-chip" onclick="openModal('sekhmet')">SEKHMET</span>
+                    <span class="patent-chip" onclick="openModal('vch')">VCH</span>
                     <span class="patent-chip" onclick="openModal('blackbox')">BLACKBOX</span>
-                    <span class="patent-chip" onclick="openModal('sesame')">SESAME</span>
-                </div>
-            </div>
-
-            <!-- AION Mesh -->
-            <div class="division-card division-mesh">
-                <div class="division-header">
-                    <span class="division-name">AION Mesh</span>
-                    <span class="division-count">5 brevets</span>
-                </div>
-                <p class="division-desc">Réseaux décentralisés. Topologie invisible, routage anonymisé, messagerie asémantique.</p>
-                <div class="patent-list">
-                    <span class="patent-chip" onclick="openModal('pipmesh')">PIP MESH</span>
-                    <span class="patent-chip" onclick="openModal('mailbox')">MAILBOX</span>
-                    <span class="patent-chip" onclick="openModal('shadowcrowd')">SHADOW CROWD</span>
-                    <span class="patent-chip" onclick="openModal('energysync')">ENERGYSYNC</span>
-                    <span class="patent-chip" onclick="openModal('orchestrateur')">ORCHESTRATOR</span>
                 </div>
             </div>
 
             <!-- AION Privacy -->
             <div class="division-card division-privacy">
                 <div class="division-header">
-                    <span class="division-name">AION Privacy</span>
-                    <span class="division-count">4 brevets</span>
+                    <span class="division-name">👻 AION Privacy</span>
+                    <span class="division-count">6 brevets</span>
                 </div>
-                <p class="division-desc">Vie privée absolue. VPN indétectable, identités multiples, mimétisme comportemental.</p>
+                <p class="division-desc">Invisibilisation des identités sur tous les réseaux. VPN indétectable, identités multiples, mimétisme comportemental.</p>
                 <div class="patent-list">
+                    <span class="patent-chip" onclick="openModal('pip5g')">PIP-5G</span>
                     <span class="patent-chip" onclick="openModal('pipvpn')">PIP VPN</span>
+                    <span class="patent-chip" onclick="openModal('ghost')">PIP GHOST</span>
                     <span class="patent-chip" onclick="openModal('hydra')">HYDRA</span>
                     <span class="patent-chip" onclick="openModal('cloak')">CLOAK</span>
-                    <span class="patent-chip" onclick="openModal('ghost')">PIP GHOST</span>
+                    <span class="patent-chip" onclick="openModal('fantom')">FANTOM INTERNET</span>
                 </div>
             </div>
 
             <!-- AION Quantum -->
             <div class="division-card division-quantum">
                 <div class="division-header">
-                    <span class="division-name">AION Quantum</span>
-                    <span class="division-count">4 brevets</span>
+                    <span class="division-name">⚛️ AION Quantum</span>
+                    <span class="division-count">2 brevets</span>
                 </div>
-                <p class="division-desc">Sécurité post-quantique. QKD, résistance aux ordinateurs quantiques, deep space.</p>
+                <p class="division-desc">Sécurité post-quantique — résiste aux ordinateurs quantiques. Distribution quantique de clés, sécurité inconditionnelle.</p>
                 <div class="patent-list">
                     <span class="patent-chip" onclick="openModal('quantum')">QUANTUM</span>
-                    <span class="patent-chip" onclick="openModal('rpag')">RPAG</span>
-                    <span class="patent-chip" onclick="openModal('octopus')">OCTOPUS</span>
-                    <span class="patent-chip" onclick="openModal('phoenix')">PHOENIX</span>
+                    <span class="patent-chip" onclick="openModal('pip')">PIP POST-QUANTIQUE</span>
                 </div>
             </div>
 
             <!-- AION Tactical -->
             <div class="division-card division-tactical">
                 <div class="division-header">
-                    <span class="division-name">AION Tactical</span>
-                    <span class="division-count">4 brevets</span>
+                    <span class="division-name">🛰️ AION Tactical</span>
+                    <span class="division-count">6 brevets</span>
                 </div>
-                <p class="division-desc">Applications terrain. 5G/6G, Internet fantôme, temps endogène, protection intégrée.</p>
+                <p class="division-desc">Communications sur canaux hostiles — de la Terre à Mars. Messagerie Deep Space, clockless, latences extrêmes.</p>
                 <div class="patent-list">
-                    <span class="patent-chip" onclick="openModal('pip5g')">PIP-5G</span>
-                    <span class="patent-chip" onclick="openModal('fantom')">FANTOM</span>
-                    <span class="patent-chip" onclick="openModal('chronos')">CHRONOS</span>
-                    <span class="patent-chip" onclick="openModal('pontchronos')">CHRONOS BRIDGE</span>
+                    <span class="patent-chip" onclick="openModal('rpag')">RPAG</span>
+                    <span class="patent-chip" onclick="openModal('octopus')">OCTOPUS</span>
+                    <span class="patent-chip" onclick="openModal('mailbox')">MAILBOX</span>
+                    <span class="patent-chip" onclick="openModal('asemantix')">ASEMANTIX</span>
+                    <span class="patent-chip" onclick="openModal('sesame')">SESAME</span>
+                    <span class="patent-chip" onclick="openModal('bridge')">BRIDGE</span>
                 </div>
             </div>
 
-            <!-- AION Time (NOUVEAU) -->
-            <div class="division-card division-time">
+            <!-- AION Mesh -->
+            <div class="division-card division-mesh">
                 <div class="division-header">
-                    <span class="division-name">AION Time</span>
-                    <span class="division-count">6 brevets</span>
+                    <span class="division-name">🌐 AION Mesh</span>
+                    <span class="division-count">3 brevets</span>
                 </div>
-                <p class="division-desc">Temps énergétique universel. Batteries intelligentes, CPU optimisés, cosmologie unifiée. τ = E/P</p>
+                <p class="division-desc">Réseaux maillés intraçables — topologie invisible. Anonymat collectif, coordination par énergie.</p>
                 <div class="patent-list">
-                    <span class="patent-chip" onclick="openModal('tute')">TUTE FONDATEUR</span>
-                    <span class="patent-chip" onclick="openModal('tutemod')">TUTE MODULAIRE</span>
-                    <span class="patent-chip" onclick="openModal('tutebat')">TUTE BATTERIE</span>
-                    <span class="patent-chip" onclick="openModal('tutecpu')">TUTE COMPUTE</span>
-                    <span class="patent-chip" onclick="openModal('daeting')">DAET INGÉNIERIE</span>
-                    <span class="patent-chip" onclick="openModal('daetinfo')">DAET INFORMATIQUE</span>
+                    <span class="patent-chip" onclick="openModal('pipmesh')">PIP MESH</span>
+                    <span class="patent-chip" onclick="openModal('shadowcrowd')">SHADOW CROWD</span>
+                    <span class="patent-chip" onclick="openModal('energysync')">ENERGYSYNC</span>
                 </div>
-                <a href="tute.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: var(--time); color: var(--black); text-decoration: none; font-size: 0.85rem;">Découvrir TUTE →</a>
+            </div>
+
+            <!-- AION Fortress -->
+            <div class="division-card division-fortress">
+                <div class="division-header">
+                    <span class="division-name">🛡️ AION Fortress</span>
+                    <span class="division-count">2 brevets</span>
+                </div>
+                <p class="division-desc">Protection autonome des endpoints — détection et neutralisation. Authentification énergétique, forensique.</p>
+                <div class="patent-list">
+                    <span class="patent-chip" onclick="openModal('heimdall')">HEIMDALL</span>
+                    <span class="patent-chip" onclick="openModal('sekhmet')">SEKHMET</span>
+                </div>
+            </div>
+
+            <!-- AION TUTE -->
+            <div class="division-card division-tute">
+                <div class="division-header">
+                    <span class="division-name">⏱️ AION TUTE</span>
+                    <span class="division-count">4 brevets</span>
+                </div>
+                <p class="division-desc">Temps Universel Thermodynamique Énergétique. τ = E/P — batteries, CPU, horodatage souverain, finance.</p>
+                <div class="patent-list">
+                    <span class="patent-chip" onclick="openModal('tutegrid')">TUTE GRID</span>
+                    <span class="patent-chip" onclick="openModal('tokentute')">TOKEN TUTE</span>
+                    <span class="patent-chip" onclick="openModal('aionpay')">AION PAY</span>
+                    <span class="patent-chip" onclick="openModal('constellation')">CONSTELLATION</span>
+                </div>
+                <a href="tute.html" class="division-link" style="background: var(--tute); color: var(--black);">Découvrir TUTE τ →</a>
             </div>
         </div>
     </section>
 
     <section id="contact" class="contact">
         <h2 class="section-title">Contact</h2>
-        <a href="/cdn-cgi/l/email-protection#7d09151c120f1c1e09083d1a101c1411531e1210" class="contact-email"><span class="__cf_email__" data-cfemail="f4809c959b8695978081b49399959d98da979b99">[email&#160;protected]</span></a>
+        <a href="mailto:asemantix@proton.me" class="contact-email">asemantix@proton.me</a>
         <p style="margin-top: 1rem; color: var(--gray-300);">Licensing • Partenariats • Acquisitions</p>
     </section>
 
     <footer>
-        <div class="footer-legal">© 2025 AION ASEMANTIX™ — Tous droits réservés. Brevets INPI déposés.</div>
+        <div class="footer-legal">© 2025 AION ASEMANTIX™ — Tous droits réservés. 32 brevets INPI déposés.</div>
     </footer>
 
     <!-- Modal -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">×</button>
-            <div id="modal-body"></div>
-        </div>
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content" id="modal-content"></div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         const patents = {
             // === AION CORE ===
             pip: {
                 ref: "FR2600202",
-                name: "PIP POLYMORPHIC",
-                subtitle: "Brevet fondateur",
+                name: "PIP POLYMORPHIQUE",
+                subtitle: "Brevet fondateur — identifiants non corrélables",
                 division: "AION Core",
-                abstract: "Communication non-corrélable via permutation polymorphe des identifiants.",
+                divisionColor: "#f97316",
+                abstract: "Communication à identifiants réseau non corrélables par permutation polymorphique. Fondement de toute l'architecture AION.",
                 points: [
-                    "Mécanisme de coordination pour changement d'identifiants",
-                    "Non-corrélabilité cryptographique garantie",
-                    "Extensions post-quantiques",
-                    "Base de tout l'écosystème AION"
-                ]
+                    "Adresse IP différente à chaque échange",
+                    "Ratchet cryptographique unidirectionnel",
+                    "Non-corrélabilité cryptographique prouvée",
+                    "Forward secrecy (effacement des états passés)",
+                    "Fonctionne sans horloge partagée (clockless)"
+                ],
+                tags: ["FONDATION", "RATCHET", "CLOCKLESS"]
             },
-            asemantix: {
-                ref: "FR2516793",
-                name: "ASEMANTIX CAMELEON",
-                subtitle: "Fragments polymorphes asémantiques",
+            chronos: {
+                ref: "FR2600320",
+                name: "CHRONOS",
+                subtitle: "Temps thermodynamique local",
                 division: "AION Core",
-                abstract: "Validation de portion utile asémantique avec marqueur polymorphe.",
+                divisionColor: "#f97316",
+                abstract: "τ = E/P — le temps émerge de l'énergie consommée, pas d'une horloge externe. Impossible à manipuler de l'extérieur.",
                 points: [
-                    "Fragments indistinguables du bruit",
-                    "99%+ rejetés sans calcul crypto",
-                    "Forward secrecy via évolution KDF",
-                    "Résistant à la censure"
-                ]
+                    "Temps souverain sans serveur NTP ni GPS",
+                    "Formule : τ = Énergie / Puissance",
+                    "τ démarre à zéro, croît de façon monotone",
+                    "Anti-rejeu par fraîcheur énergétique",
+                    "Applications : IoT, spatial, tactique"
+                ],
+                tags: ["TEMPS", "ÉNERGÉTIQUE", "CLOCKLESS"]
+            },
+            pontchronos: {
+                ref: "FR2600323",
+                name: "PONT CHRONOS",
+                subtitle: "Triple protection intégrée",
+                division: "AION Core",
+                divisionColor: "#f97316",
+                abstract: "CHRONOS + PIP + CLOAK synchronisés par temps thermodynamique. Triple couche de protection coordonnée.",
+                points: [
+                    "Temps thermodynamique comme référentiel",
+                    "Identifiants polymorphes synchronisés",
+                    "Mimétisme comportemental coordonné",
+                    "Anti-ML, anti-corrélation, anti-timing"
+                ],
+                tags: ["INTÉGRATION", "TRIPLE PROTECTION"]
+            },
+            phoenix: {
+                ref: "FR2600311",
+                name: "PHOENIX",
+                subtitle: "Reprise de session sans serveur",
+                division: "AION Core",
+                divisionColor: "#f97316",
+                abstract: "Résurrection de session par jeton et recomputation locale. Aucun serveur nécessaire.",
+                points: [
+                    "Fenêtre glissante de checkpoints",
+                    "Jeton de résurrection",
+                    "Sans serveur, sans retransmission d'état",
+                    "Récupération automatique après coupure"
+                ],
+                tags: ["RÉSILIENCE", "RATCHET"]
+            },
+            anchors: {
+                ref: "FR2600207",
+                name: "ANCHORS",
+                subtitle: "Resynchronisation par code d'ancre",
+                division: "AION Core",
+                divisionColor: "#f97316",
+                abstract: "Resynchronisation via QR, NFC, mnémonique — sans serveur ni horloge synchronisée.",
+                points: [
+                    "Canaux : QR, NFC, mnémonique, audio",
+                    "Modes : Genesis, Retro, Jump",
+                    "Sans serveur ni horloge synchronisée",
+                    "Récupération après désynchronisation"
+                ],
+                tags: ["RESYNC", "OFFLINE"]
             },
             vch: {
                 ref: "FR2600203",
                 name: "VCH",
                 subtitle: "Validation par chaînage d'historique",
                 division: "AION Core",
-                abstract: "Chaînage d'historique pour intégrité et ordonnancement.",
+                divisionColor: "#f97316",
+                abstract: "Intégrité et ordonnancement sans métadonnées transmises. Anti-rejeu et anti-rollback.",
                 points: [
-                    "Engagement de chaîne locale",
-                    "Aucune métadonnée d'ordre transmise",
-                    "Anti-replay et anti-rollback"
-                ]
+                    "Engagement de chaîne C_i local",
+                    "Variantes : MAC, signature, preuve ZK",
+                    "Anti-rejeu et anti-rollback",
+                    "Aucune métadonnée d'ordre transmise"
+                ],
+                tags: ["INTÉGRITÉ", "ANTI-REJEU"]
+            },
+            blackbox: {
+                ref: "FR2600204",
+                name: "BLACKBOX",
+                subtitle: "Contrôle d'accès view-once offline",
+                division: "AION Core",
+                divisionColor: "#f97316",
+                abstract: "Double contrôle, restitution view-once, effacement sécurisé avec preuve cryptographique.",
+                points: [
+                    "Secret appareil + facteur humain",
+                    "Restitution view-once puis effacement",
+                    "Preuve cryptographique d'effacement",
+                    "Fonctionne totalement hors ligne"
+                ],
+                tags: ["DRM", "OFFLINE", "VIEW-ONCE"]
+            },
+
+            // === AION PRIVACY ===
+            pip5g: {
+                ref: "FR2600261",
+                name: "PIP-5G",
+                subtitle: "Handover à identifiants non corrélables",
+                division: "AION Privacy",
+                divisionColor: "#00d4ff",
+                abstract: "Nouvel identifiant cryptographiquement non corrélable à chaque handover. Compatible 4G, 5G, 6G et satellites.",
+                points: [
+                    "Nouvel identifiant à chaque antenne",
+                    "Protection contre IMSI catchers",
+                    "6 couches de protection",
+                    "Probabilité de corrélation < 2^-128",
+                    "Compatible Starlink Phone"
+                ],
+                tags: ["MOBILE", "5G/6G", "UNIQUE AU MONDE"]
+            },
+            pipvpn: {
+                ref: "FR2600251",
+                name: "PIP VPN",
+                subtitle: "VPN indétectable et imblocable",
+                division: "AION Privacy",
+                divisionColor: "#00d4ff",
+                abstract: "VPN à identifiants non corrélables. Indétectable par DPI, imblocable par pare-feux, résistant au ML.",
+                points: [
+                    "IP polymorphes cloud/CDN/résidentielles",
+                    "Zéro signature DPI",
+                    "Contre-mesures anti-ML intégrées",
+                    "Fonctionne en Chine, Iran, Russie"
+                ],
+                tags: ["VPN", "ANTI-CENSURE", "ANTI-ML"]
+            },
+            ghost: {
+                ref: "FR2600240",
+                name: "PIP GHOST",
+                subtitle: "Dispositif fantôme non traçable",
+                division: "AION Privacy",
+                divisionColor: "#00d4ff",
+                abstract: "Identifiants distincts pour chaque échange, sans coordination avec les destinations.",
+                points: [
+                    "Mode autonome : ratchet local",
+                    "Mode cloud : IP distincte à chaque requête",
+                    "Fonctionne avec destinations arbitraires",
+                    "Aucune trace persistante"
+                ],
+                tags: ["ANTI-TRACKING", "MODE CLOUD"]
+            },
+            hydra: {
+                ref: "FR2600333",
+                name: "HYDRA",
+                subtitle: "Identités réseau multiples simultanées",
+                division: "AION Privacy",
+                divisionColor: "#00d4ff",
+                abstract: "Plusieurs identités réseau actives simultanément sur un unique dispositif.",
+                points: [
+                    "Graine cryptographique propre par identité",
+                    "Décorrélation active inter-identités",
+                    "Isolation cryptographique garantie",
+                    "Compartimentage parfait"
+                ],
+                tags: ["MULTI-IDENTITÉS", "COMPARTIMENTAGE"]
+            },
+            cloak: {
+                ref: "FR2600321",
+                name: "CLOAK",
+                subtitle: "Mimétisme comportemental anti-ML",
+                division: "AION Privacy",
+                divisionColor: "#00d4ff",
+                abstract: "Le trafic VPN imite parfaitement le streaming, la visioconférence, le gaming.",
+                points: [
+                    "Profils comportementaux (streaming, visio, jeu)",
+                    "Score d'écart Kolmogorov-Smirnov",
+                    "Ajustement en boucle fermée",
+                    "Indistinguabilité statistique formelle"
+                ],
+                tags: ["ANTI-DPI", "MIMÉTISME"]
+            },
+            fantom: {
+                ref: "FR2600245",
+                name: "FANTOM INTERNET",
+                subtitle: "Internet anonyme sans infrastructure",
+                division: "AION Privacy",
+                divisionColor: "#00d4ff",
+                abstract: "Connexion Internet anonyme multi-connectivité cellulaire, satellite, WiFi, mesh.",
+                points: [
+                    "Aucune infrastructure fixe nécessaire",
+                    "Aucun identifiant stable",
+                    "Non géolocalisable",
+                    "Abonnement anonyme possible"
+                ],
+                tags: ["SANS INFRASTRUCTURE", "NOMADE"]
+            },
+
+            // === AION QUANTUM ===
+            quantum: {
+                ref: "FR2600313",
+                name: "QUANTUM",
+                subtitle: "Sécurité post-quantique par QKD",
+                division: "AION Quantum",
+                divisionColor: "#a855f7",
+                abstract: "Identifiants polymorphes initialisés par distribution quantique de clés. Sécurité inconditionnelle.",
+                points: [
+                    "Clé quantique K_Q par QKD",
+                    "Sécurité inconditionnelle (théorie de l'information)",
+                    "Résistant aux ordinateurs quantiques",
+                    "Protection store-now-decrypt-later"
+                ],
+                tags: ["QKD", "POST-QUANTIQUE", "INCASSABLE"]
+            },
+
+            // === AION TACTICAL ===
+            rpag: {
+                ref: "FR2600021",
+                name: "RPAG",
+                subtitle: "Communication interplanétaire clockless",
+                division: "AION Tactical",
+                divisionColor: "#22c55e",
+                abstract: "Communication polymorphique autonome sans horloge, y compris interplanétaire.",
+                points: [
+                    "Sans horloge ni synchronisation",
+                    "Multi-porteuses : radio, optique, acoustique, QR",
+                    "Supporte latences Terre-Mars (4-24 min)",
+                    "Validation par recomputation locale"
+                ],
+                tags: ["INTERPLANÉTAIRE", "CLOCKLESS"]
+            },
+            octopus: {
+                ref: "FR2600020",
+                name: "OCTOPUS",
+                subtitle: "Messagerie Deep Space",
+                division: "AION Tactical",
+                divisionColor: "#22c55e",
+                abstract: "Messagerie sécurisée sur canal hostile, messages indistinguables du bruit.",
+                points: [
+                    "Messages indistinguables du bruit",
+                    "Supporte latences 4-24 minutes",
+                    "Acquittement implicite par ancre",
+                    "Modes WHISPER et COMPLIANT"
+                ],
+                tags: ["MESSAGERIE", "DEEP SPACE"]
+            },
+            mailbox: {
+                ref: "FR2600019",
+                name: "MAILBOX",
+                subtitle: "Dead drop numérique aveugle",
+                division: "AION Tactical",
+                divisionColor: "#22c55e",
+                abstract: "Boîte aux lettres asémantique — le serveur ne distingue rien.",
+                points: [
+                    "Serveur aveugle : ne peut rien distinguer",
+                    "Filtrage polymorphe local : 99%+ rejeté",
+                    "Résistant à la censure",
+                    "Fonctionne sur réseaux intermittents"
+                ],
+                tags: ["DEAD DROP", "ANONYME"]
+            },
+            asemantix: {
+                ref: "FR2516793",
+                name: "ASEMANTIX CAMELEON",
+                subtitle: "Fragments asémantiques polymorphes",
+                division: "AION Tactical",
+                divisionColor: "#22c55e",
+                abstract: "Portions utiles indistinguables du bruit avec marqueur polymorphe.",
+                points: [
+                    "Fragments passent tests NIST SP 800-22",
+                    "Marqueur change à chaque index",
+                    "Filtrage rapide : 99%+ rejeté sans crypto",
+                    "Forward secrecy par évolution KDF"
+                ],
+                tags: ["FONDATION", "POLYMORPHE", "BRUIT"]
+            },
+            sesame: {
+                ref: "FR2600010",
+                name: "SESAME",
+                subtitle: "Commande IoT sur canal hostile",
+                division: "AION Tactical",
+                divisionColor: "#22c55e",
+                abstract: "Commande de dispositifs contraints avec économie d'énergie critique.",
+                points: [
+                    "99%+ du bruit rejeté sans crypto",
+                    "Économie d'énergie critique",
+                    "Hiérarchie de commandes",
+                    "Applications : drones, SCADA, médical"
+                ],
+                tags: ["IoT", "LOW-POWER"]
             },
             bridge: {
                 ref: "FR2600280",
                 name: "BRIDGE",
                 subtitle: "Validation conjointe double protection",
-                division: "AION Core",
-                abstract: "Validation conjointe stricte des identifiants et fragments.",
+                division: "AION Tactical",
+                divisionColor: "#22c55e",
+                abstract: "Validation conjointe stricte des identifiants réseau et fragments asémantiques.",
                 points: [
                     "Validation conjointe sur même index",
                     "Double protection",
-                    "Anti-attaque hybride"
-                ]
+                    "Résistance attaques hybrides"
+                ],
+                tags: ["ANTI-INJECTION", "COUPLAGE"]
             },
-            anchors: {
-                ref: "FR2600207",
-                name: "ANCHORS",
-                subtitle: "Resynchronisation par code d'ancrage",
-                division: "AION Core",
-                abstract: "Resynchronisation via code d'ancrage dérivé localement.",
+
+            // === AION MESH ===
+            pipmesh: {
+                ref: "FR2600209",
+                name: "PIP MESH",
+                subtitle: "Réseau maillé à topologie invisible",
+                division: "AION Mesh",
+                divisionColor: "#eab308",
+                abstract: "Réseau maillé à identifiants non corrélables. Topologie invisible pour tout observateur.",
                 points: [
-                    "QR, NFC, mnémonique, audio",
-                    "Modes Genesis, Retro, Jump",
-                    "Aucun serveur requis"
-                ]
+                    "Identifiants changeants pour chaque nœud",
+                    "Topologie invisible pour observateur",
+                    "Impossible de compter les nœuds",
+                    "Routage multi-hop anonymisé"
+                ],
+                tags: ["MESH", "ANONYME"]
+            },
+            shadowcrowd: {
+                ref: "FR2600341",
+                name: "SHADOW CROWD",
+                subtitle: "Anonymat collectif de groupe",
+                division: "AION Mesh",
+                divisionColor: "#eab308",
+                abstract: "Tous les membres du groupe ont un trafic statistiquement identique.",
+                points: [
+                    "Profil de référence commun",
+                    "Décorrélation active inter-membres",
+                    "Impossible d'isoler un individu",
+                    "Trafic factice coordonné"
+                ],
+                tags: ["GROUPE", "TRAFIC FACTICE"]
+            },
+            energysync: {
+                ref: "FR2600343",
+                name: "ENERGYSYNC",
+                subtitle: "Coordination par énergie clockless",
+                division: "AION Mesh",
+                divisionColor: "#eab308",
+                abstract: "Coordination de groupe par indicateur énergétique local, sans horloge externe.",
+                points: [
+                    "Synchronisation par seuils énergétiques",
+                    "Sans NTP/GPS",
+                    "Applications : essaims drones, véhicules",
+                    "Résistant au brouillage"
+                ],
+                tags: ["CLOCKLESS", "ESSAIMS"]
             },
 
             // === AION FORTRESS ===
@@ -751,349 +1056,92 @@
                 name: "HEIMDALL",
                 subtitle: "Authentification énergétique",
                 division: "AION Fortress",
-                abstract: "Authentification via signature énergétique.",
+                divisionColor: "#ef4444",
+                abstract: "Signature = secret + empreinte énergétique. Impossible à usurper à distance.",
                 points: [
                     "Secret + empreinte physique",
-                    "Impossible à usurper à distance",
-                    "Profil énergétique de référence"
-                ]
+                    "Profil énergétique de référence",
+                    "Grandeur physique non reproductible",
+                    "Authentification hardware"
+                ],
+                tags: ["AUTHENTIFICATION", "HARDWARE"]
             },
             sekhmet: {
                 ref: "FR2600447",
                 name: "SEKHMET",
-                subtitle: "Protection autonome",
+                subtitle: "Protection autonome par profil énergétique",
                 division: "AION Fortress",
-                abstract: "Protection autonome du dispositif via monitoring du profil énergétique.",
+                divisionColor: "#ef4444",
+                abstract: "Détection d'anomalies, neutralisation automatique, preuves chaînées.",
                 points: [
-                    "Détection d'anomalies",
-                    "Neutralisation automatique",
-                    "Chaîne de preuves forensiques"
-                ]
-            },
-            blackbox: {
-                ref: "FR2600204",
-                name: "BLACKBOX",
-                subtitle: "Contrôle d'accès view-once offline",
-                division: "AION Fortress",
-                abstract: "Contrôle d'accès local pour contenu chiffré.",
-                points: [
-                    "Double contrôle",
-                    "View-once puis effacement",
-                    "Preuve cryptographique"
-                ]
-            },
-            sesame: {
-                ref: "FR2600010",
-                name: "SESAME",
-                subtitle: "Commande IoT sur canal hostile",
-                division: "AION Fortress",
-                abstract: "Commande de dispositif contraint avec économie d'énergie critique.",
-                points: [
-                    "99%+ bruit rejeté sans calcul",
-                    "Hiérarchie de commandes",
-                    "Anti-replay garanti"
-                ]
+                    "Détection par profil normal",
+                    "Neutralisation automatique graduée",
+                    "Journal chaîné cryptographiquement",
+                    "Détecte menaces connues ET inconnues"
+                ],
+                tags: ["EDR", "AUTONOME", "FORENSIQUE"]
             },
 
-            // === AION MESH ===
-            pipmesh: {
-                ref: "FR2600209",
-                name: "PIP MESH",
-                subtitle: "Réseau mesh à topologie invisible",
-                division: "AION Mesh",
-                abstract: "Réseau mesh avec identifiants non-corrélables.",
+            // === AION TUTE ===
+            tutegrid: {
+                ref: "FR2600519",
+                name: "TUTE GRID",
+                subtitle: "Optimisation réseau énergétique",
+                division: "AION TUTE",
+                divisionColor: "#00ffaa",
+                abstract: "Temps énergétique τ_i = E_i/P_i comme métrique pivot pour orchestrer les réseaux.",
                 points: [
-                    "Topologie invisible",
-                    "Routage multi-hop anonymisé",
-                    "Impossible de compter les nœuds"
-                ]
+                    "Temps énergétique réseau τ_i",
+                    "Prédiction de risques réseau",
+                    "Routage d'énergie par priorité",
+                    "Coordination multi-technologies"
+                ],
+                tags: ["SMART GRID", "ÉNERGIE"]
             },
-            mailbox: {
-                ref: "FR2600019",
-                name: "MAILBOX",
-                subtitle: "Dead drop numérique aveugle",
-                division: "AION Mesh",
-                abstract: "Messagerie asynchrone via boîte aux lettres asémantique aveugle.",
+            tokentute: {
+                ref: "FR2600542",
+                name: "TOKEN TUTE",
+                subtitle: "Dispositif portable d'horodatage",
+                division: "AION TUTE",
+                divisionColor: "#00ffaa",
+                abstract: "Dispositif portable avec temps énergétique souverain, indépendant de tout serveur.",
                 points: [
-                    "Serveur aveugle: ne peut rien distinguer",
-                    "99%+ filtré sans calcul",
-                    "Résistant à la censure"
-                ]
+                    "Source d'énergie autonome",
+                    "Temps τ = E/P calculé localement",
+                    "Élément sécurisé interne",
+                    "Algorithmes post-quantiques"
+                ],
+                tags: ["HORODATAGE", "PORTABLE"]
             },
-            shadowcrowd: {
-                ref: "FR2600341",
-                name: "SHADOW CROWD",
-                subtitle: "Anonymat collectif de groupe",
-                division: "AION Mesh",
-                abstract: "Anonymat collectif avec profil de référence commun.",
+            aionpay: {
+                ref: "FR2600514",
+                name: "AION PAY",
+                subtitle: "Transaction financière asémantique",
+                division: "AION TUTE",
+                divisionColor: "#00ffaa",
+                abstract: "Paiement indistinguable du bruit avec preuve zero-knowledge.",
                 points: [
-                    "Trafic statistiquement identique",
-                    "Décorrélation active inter-membres",
-                    "Impossible d'isoler un individu"
-                ]
+                    "Encapsulation asémantique",
+                    "Preuve cryptographique ZK",
+                    "Anonymat vérifiable",
+                    "Compatible régulation (divulgation sélective)"
+                ],
+                tags: ["FINANCE", "ZKP"]
             },
-            energysync: {
-                ref: "FR2600343",
-                name: "ENERGYSYNC",
-                subtitle: "Coordination clockless par énergie",
-                division: "AION Mesh",
-                abstract: "Coordination de groupe via indicateur énergétique local.",
+            constellation: {
+                ref: "FR2600512",
+                name: "CONSTELLATION",
+                subtitle: "Handover inter-constellations satellites",
+                division: "AION TUTE",
+                divisionColor: "#00ffaa",
+                abstract: "Communication multi-constellations sans corrélation d'identité.",
                 points: [
-                    "Synchronisation basée sur l'énergie",
-                    "Aucune horloge externe nécessaire",
-                    "Essaims de drones, véhicules"
-                ]
-            },
-            orchestrateur: {
-                ref: "—",
-                name: "ORCHESTRATOR",
-                subtitle: "Orchestration multi-canal adaptative",
-                division: "AION Mesh",
-                abstract: "Orchestration adaptative du transport asémantique.",
-                points: [
-                    "Agnostique au canal",
-                    "Décision en temps constant",
-                    "Capacité d'audit ex post"
-                ]
-            },
-
-            // === AION PRIVACY ===
-            pipvpn: {
-                ref: "FR2600251",
-                name: "PIP VPN",
-                subtitle: "VPN indétectable et inblocable",
-                division: "AION Privacy",
-                abstract: "Réseau privé virtuel avec identifiants réseau non-corrélables.",
-                points: [
-                    "IPs polymorphes: pool cloud/CDN/résidentiel",
-                    "Zéro signature DPI: imitation HTTPS/QUIC parfaite",
-                    "Contre-mesures anti-ML",
-                    "Fonctionne en Chine, Iran, Russie"
-                ]
-            },
-            hydra: {
-                ref: "FR2600333",
-                name: "HYDRA",
-                subtitle: "Identités réseau multiples simultanées",
-                division: "AION Privacy",
-                abstract: "Gestion de multiples identités réseau sur un seul appareil.",
-                points: [
-                    "Multiples identités actives simultanément",
-                    "Isolation cryptographique garantie",
-                    "Décorrélation active inter-identités"
-                ]
-            },
-            cloak: {
-                ref: "FR2600321",
-                name: "CLOAK",
-                subtitle: "Mimétisme comportemental anti-ML",
-                division: "AION Privacy",
-                abstract: "Communication via tunnel chiffré avec mimétisme de profil comportemental.",
-                points: [
-                    "Sélection de profil (streaming, appel vidéo, gaming)",
-                    "Score de déviation Kolmogorov-Smirnov",
-                    "Indistinguabilité statistique formelle"
-                ]
-            },
-            ghost: {
-                ref: "FR2600240",
-                name: "PIP GHOST",
-                subtitle: "Appareil fantôme intraçable",
-                division: "AION Privacy",
-                abstract: "Procédé pour rendre un appareil intraçable sur un réseau.",
-                points: [
-                    "Identifiants distincts pour chaque échange",
-                    "Mode autonome, cloud, ou hybride",
-                    "Fonctionne avec destinations arbitraires"
-                ]
-            },
-
-            // === AION QUANTUM ===
-            quantum: {
-                ref: "FR2600313",
-                name: "QUANTUM",
-                subtitle: "Sécurité post-quantique via QKD",
-                division: "AION Quantum",
-                abstract: "Identifiants polymorphes initialisés par distribution quantique de clés.",
-                points: [
-                    "Sécurité inconditionnelle (théorie de l'information)",
-                    "Résistant aux ordinateurs quantiques",
-                    "Protection contre store-now-decrypt-later"
-                ]
-            },
-            rpag: {
-                ref: "FR2600021",
-                name: "RPAG",
-                subtitle: "Communication interplanétaire clockless",
-                division: "AION Quantum",
-                abstract: "Communication polymorphe clockless autonome pour environnements sans infrastructure.",
-                points: [
-                    "Fonctionne sans horloge ni synchronisation",
-                    "Multi-porteuse: radio, optique, acoustique, QR",
-                    "Supporte les latences Terre-Mars"
-                ]
-            },
-            octopus: {
-                ref: "FR2600020",
-                name: "OCTOPUS",
-                subtitle: "Messagerie Deep Space",
-                division: "AION Quantum",
-                abstract: "Messagerie sécurisée sur canal hostile avec couche de transport asémantique.",
-                points: [
-                    "Messages indistinguables du bruit",
-                    "Supporte latences 4-24 minutes",
-                    "Modes WHISPER et COMPLIANT"
-                ]
-            },
-            phoenix: {
-                ref: "FR2600311",
-                name: "PHOENIX",
-                subtitle: "Récupération de session serverless",
-                division: "AION Quantum",
-                abstract: "Récupération automatique de session via jeton de résurrection.",
-                points: [
-                    "Fenêtre glissante de points de récupération",
-                    "Aucun serveur nécessaire",
-                    "Pas de retransmission d'état"
-                ]
-            },
-
-            // === AION TACTICAL ===
-            pip5g: {
-                ref: "FR2600261",
-                name: "PIP-5G",
-                subtitle: "Identifiants handover non-corrélables",
-                division: "AION Tactical",
-                abstract: "Procédé de handover d'identifiants non-corrélables en réseaux cellulaires 5G/6G.",
-                points: [
-                    "Nouvel identifiant crypto-décorrélé à chaque handover",
-                    "Compatible 4G, 5G, 6G et réseaux non-terrestres",
-                    "Protection contre IMSI catchers",
-                    "6 couches de protection"
-                ]
-            },
-            fantom: {
-                ref: "FR2600245",
-                name: "FANTOM INTERNET",
-                subtitle: "Internet anonyme sans infrastructure",
-                division: "AION Tactical",
-                abstract: "Connexion Internet anonyme sans infrastructure fixe.",
-                points: [
-                    "Multi-connectivité: cellulaire, satellite, WiFi, mesh",
-                    "Aucun identifiant stable",
-                    "Non-géolocalisable"
-                ]
-            },
-            chronos: {
-                ref: "FR2600320",
-                name: "CHRONOS",
-                subtitle: "Temps local endogène",
-                division: "AION Tactical",
-                abstract: "Gestion du temps local. Le temps émerge du système lui-même.",
-                points: [
-                    "Référence temporelle endogène",
-                    "Aucune horloge externe nécessaire",
-                    "Protection anti-replay"
-                ]
-            },
-            pontchronos: {
-                ref: "FR2600323",
-                name: "CHRONOS BRIDGE",
-                subtitle: "Triple protection intégrée",
-                division: "AION Tactical",
-                abstract: "Intégration CHRONOS + PIP + CLOAK.",
-                points: [
-                    "Trois couches synchronisées",
-                    "Anti-ML, anti-corrélation, anti-timing",
-                    "Protection complète"
-                ]
-            },
-
-            // === AION TIME (NOUVEAU) ===
-            tute: {
-                ref: "FR-TUTE-001",
-                name: "TUTE FONDATEUR",
-                subtitle: "Système universel de calcul du temps énergétique",
-                division: "AION Time",
-                abstract: "Dispositif de mesure et d'analyse du temps énergétique fondé sur τ = E/P. Le temps émerge comme pulsation énergétique.",
-                points: [
-                    "Loi fondamentale: τ = E/P",
-                    "Vitesse du temps: vₜ = P/E",
-                    "Entropie énergétique: S(t) = σ₀·t³·P/E",
-                    "4 modules: Acquisition E, Mesure P, Calcul, Interface",
-                    "34 revendications",
-                    "22 exemples d'industrialisation"
-                ]
-            },
-            tutemod: {
-                ref: "FR-TUTE-002",
-                name: "TUTE MODULAIRE",
-                subtitle: "Dispositif modulaire pour mesure, synchronisation et simulation",
-                division: "AION Time",
-                abstract: "Architecture modulaire intégrée utilisant la métrique TUTE pour applications variées.",
-                points: [
-                    "Unité de traitement énergétique",
-                    "Base de données dynamiques",
-                    "Interface logicielle/API",
-                    "Système d'apprentissage adaptatif",
-                    "Sous-modules: Trajector, Evolver, Metricor, Qlab, TerraScan, Entropia, Clock, Sync"
-                ]
-            },
-            tutebat: {
-                ref: "FR-TUTE-003",
-                name: "TUTE BATTERIE",
-                subtitle: "Gestion intelligente de batterie via temps énergétique",
-                division: "AION Time",
-                abstract: "Système BMS optimisé pour véhicules électriques et smartphones utilisant τ = E/P.",
-                points: [
-                    "Surveillance usure via action Sτ",
-                    "Prédiction dynamique dτ/dt",
-                    "Régulation adaptative",
-                    "+20-40 km autonomie/cycle",
-                    "+250-500 cycles de vie",
-                    "CPU 0.5% vs 5-10% Kalman"
-                ]
-            },
-            tutecpu: {
-                ref: "FR-TUTE-004",
-                name: "TUTE COMPUTE",
-                subtitle: "Optimisation CPU/GPU via temps énergétique",
-                division: "AION Time",
-                abstract: "Système d'optimisation informatique pour CPU/GPU/FPGA utilisant la métrique TUTE.",
-                points: [
-                    "Planification dynamique (min Sτ)",
-                    "Analyse prédictive dτ/dt",
-                    "Orchestrateur distribué (ds²)",
-                    "-20% consommation/cycle",
-                    "+15% efficacité clusters",
-                    "Prédiction pics thermiques"
-                ]
-            },
-            daeting: {
-                ref: "FR-DAET-001",
-                name: "DAET INGÉNIERIE",
-                subtitle: "Gestion des systèmes énergétiques",
-                division: "AION Time",
-                abstract: "Dispositif et procédé d'analyse énergétique temporelle pour batteries, panneaux solaires, réseaux intelligents.",
-                points: [
-                    "Optimisation batteries lithium-ion",
-                    "MPPT adaptatif panneaux solaires",
-                    "Smart grid optimization",
-                    "Cadre unifié énergie-temps"
-                ]
-            },
-            daetinfo: {
-                ref: "FR-DAET-002",
-                name: "DAET INFORMATIQUE",
-                subtitle: "Gestion des systèmes informatiques",
-                division: "AION Time",
-                abstract: "Dispositif et procédé d'analyse énergétique temporelle pour IA, CPU, GPU, Cloud.",
-                points: [
-                    "Optimisation charge CPU/GPU",
-                    "Datacenters efficaces",
-                    "IA à temps propre",
-                    "Edge computing optimisé"
-                ]
+                    "Identifiants polymorphes par constellation",
+                    "Synchronisation asémantique",
+                    "Transition aveugle entre opérateurs",
+                    "Compatible LEO/MEO/GEO"
+                ],
+                tags: ["SATELLITE", "LEO/MEO/GEO"]
             }
         };
 
@@ -1101,72 +1149,53 @@
             const p = patents[patentId];
             if (!p) return;
             
-            const pointsHtml = p.points.map(pt => `<li>${pt}</li>`).join('');
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
             
-            document.getElementById('modal-body').innerHTML = `
+            content.innerHTML = `
+                <button class="modal-close" onclick="closeModal()">×</button>
                 <div class="modal-header">
+                    <div class="modal-division-badge" style="background: ${p.divisionColor}; color: #000;">${p.division}</div>
                     <div class="modal-ref">${p.ref}</div>
                     <h2 class="modal-title">${p.name}</h2>
                     <p class="modal-subtitle">${p.subtitle}</p>
                 </div>
-                
                 <div class="modal-body">
                     <div class="modal-section">
-                        <div class="modal-section-title">DIVISION</div>
-                        <p>${p.division}</p>
+                        <div class="modal-section-title">DESCRIPTION</div>
+                        <p class="modal-abstract">${p.abstract}</p>
                     </div>
-                    
                     <div class="modal-section">
-                        <div class="modal-section-title">RÉSUMÉ</div>
-                        <p>${p.abstract}</p>
+                        <div class="modal-section-title">CARACTÉRISTIQUES CLÉS</div>
+                        <ul class="modal-points">
+                            ${p.points.map(pt => `<li>${pt}</li>`).join('')}
+                        </ul>
                     </div>
-                    
-                    <div class="modal-section">
-                        <div class="modal-section-title">POINTS CLÉS</div>
-                        <ul class="modal-points">${pointsHtml}</ul>
+                    <div class="modal-tags">
+                        ${p.tags.map(t => `<span class="modal-tag">${t}</span>`).join('')}
                     </div>
-                    
-                    <!-- Brochure intégrée -->
-                    <div class="brochure">
-                        <div class="brochure-header">
-                            <span class="brochure-logo">AION ASEMANTIX™</span>
-                            <span class="brochure-ref">${p.ref}</span>
-                        </div>
-                        <h3 class="brochure-title">${p.name}</h3>
-                        <p class="brochure-subtitle">${p.subtitle}</p>
-                        <p class="brochure-abstract">${p.abstract}</p>
-                        <div class="brochure-features">
-                            ${p.points.slice(0, 4).map(pt => `
-                                <div class="brochure-feature">
-                                    <span class="brochure-feature-icon">✓</span>
-                                    <span class="brochure-feature-text">${pt}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                        <div class="brochure-footer">
-                            <span>${p.division}</span>
-                            <span>© 2025 AION ASEMANTIX™</span>
-                            <span>thaoractu@gmail.com</span>
-                        </div>
-                    </div>
+                    <a href="la-pieuvre.html" class="modal-cta">VOIR L'ÉCOSYSTÈME COMPLET →</a>
                 </div>
             `;
             
-            document.getElementById('modal').style.display = 'block';
+            modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-            document.body.style.overflow = 'auto';
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        window.onclick = function(event) {
-            if (event.target === document.getElementById('modal')) {
-                closeModal();
-            }
-        };
-        
-        // Nav scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('nav');
+        // Fermer avec clic extérieur
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Fermer avec Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
