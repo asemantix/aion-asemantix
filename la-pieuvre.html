@@ -286,17 +286,17 @@
 
         .ecosystem {
             position: relative;
-            width: 520px;
-            height: 520px;
-            max-width: 92vw;
-            max-height: 92vw;
+            width: 700px;
+            height: 700px;
+            max-width: 95vw;
+            max-height: 95vw;
         }
 
         .center {
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 110px; height: 110px;
+            width: 140px; height: 140px;
             background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
             border-radius: 50%;
             display: flex;
@@ -308,7 +308,7 @@
 
         .center-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.7rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--black);
             letter-spacing: 0.2em;
@@ -330,7 +330,7 @@
         /* 7 Médaillons */
         .medallion {
             position: absolute;
-            width: 80px; height: 80px;
+            width: 110px; height: 110px;
             border-radius: 50%;
             display: flex;
             flex-direction: column;
@@ -338,31 +338,31 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 2px solid;
+            border: 3px solid;
             background: var(--black);
             z-index: 20;
         }
 
         .medallion:hover {
-            box-shadow: 0 0 25px currentColor;
+            box-shadow: 0 0 30px currentColor;
         }
 
-        .medallion-icon { font-size: 1.4rem; margin-bottom: 0.15rem; }
+        .medallion-icon { font-size: 2rem; margin-bottom: 0.3rem; }
         .medallion-name {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.45rem;
-            letter-spacing: 0.05em;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
             text-align: center;
         }
 
         /* Positions 7 médaillons */
-        .m-privacy { top: 3%; left: 50%; transform: translateX(-50%); border-color: var(--privacy); color: var(--privacy); }
-        .m-quantum { top: 18%; right: 8%; border-color: var(--quantum); color: var(--quantum); }
-        .m-tactical { top: 50%; right: 0%; transform: translateY(-50%); border-color: var(--tactical); color: var(--tactical); }
-        .m-mesh { bottom: 18%; right: 8%; border-color: var(--mesh); color: var(--mesh); }
-        .m-fortress { bottom: 3%; left: 50%; transform: translateX(-50%); border-color: var(--fortress); color: var(--fortress); }
-        .m-core { bottom: 18%; left: 8%; border-color: var(--core); color: var(--core); }
-        .m-tute { top: 18%; left: 8%; border-color: var(--tute); color: var(--tute); }
+        .m-privacy { top: 2%; left: 50%; transform: translateX(-50%); border-color: var(--privacy); color: var(--privacy); }
+        .m-quantum { top: 15%; right: 5%; border-color: var(--quantum); color: var(--quantum); }
+        .m-tactical { top: 50%; right: -2%; transform: translateY(-50%); border-color: var(--tactical); color: var(--tactical); }
+        .m-mesh { bottom: 15%; right: 5%; border-color: var(--mesh); color: var(--mesh); }
+        .m-fortress { bottom: 2%; left: 50%; transform: translateX(-50%); border-color: var(--fortress); color: var(--fortress); }
+        .m-core { bottom: 15%; left: 5%; border-color: var(--core); color: var(--core); }
+        .m-tute { top: 15%; left: 5%; border-color: var(--tute); color: var(--tute); }
 
         .instruction {
             margin-top: 2rem;
