@@ -1,3 +1,5 @@
+
+               
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -338,10 +340,10 @@
             transition: all 0.3s ease;
             border: 2px solid;
             background: var(--black);
+            z-index: 20;
         }
 
         .medallion:hover {
-            transform: scale(1.15);
             box-shadow: 0 0 25px currentColor;
         }
 
@@ -1121,7 +1123,7 @@
             </div>
             
             <p style="text-align: center; color: #606060; font-size: 0.8rem; margin-top: 2rem;">
-                Informations disponibles sous NDA uniquement — <span style="color: #c9a962;">asemantix@proton.me</span>
+                Informations disponibles sous NDA uniquement — <span style="color: #c9a962;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e9889a8c8488879d8091a9999b869d8687c7848c">[email&#160;protected]</a></span>
             </p>
         </div>
     </section>
@@ -1237,7 +1239,7 @@
         <div class="patent-modal" id="patentContent"></div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const divisions = {
             privacy: {
                 icon: "👻",
@@ -1421,4 +1423,12 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 if (document.getElementById('patentModal').classList.contains('active')) {
-               
+                    closePatent();
+                } else if (document.getElementById('divisionModal').classList.contains('active')) {
+                    closeDivision();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
