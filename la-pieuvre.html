@@ -1057,73 +1057,165 @@
             </div>
         </div>
         
-        <!-- TOP SECRET SECTION -->
-        <div style="margin-top: 4rem; padding: 3rem; border: 2px solid #ef4444; background: rgba(239, 68, 68, 0.05);">
-            <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #ef4444; text-align: center; margin-bottom: 0.5rem;">
-                ⚠️ TOP SECRET ⚠️
+        <!-- TOP SECRET SECTION — REVEALED -->
+        <div style="margin-top: 4rem; padding: 3rem; border: 2px solid #c9a962; background: linear-gradient(135deg, rgba(201, 169, 98, 0.08), rgba(0, 212, 255, 0.04)); position: relative; overflow: hidden;">
+            <!-- Animated corner glow -->
+            <div style="position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(201,169,98,0.15) 0%,transparent 70%);pointer-events:none;"></div>
+            <div style="position:absolute;bottom:-50px;left:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(0,212,255,0.1) 0%,transparent 70%);pointer-events:none;"></div>
+            
+            <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #c9a962; text-align: center; margin-bottom: 0.5rem; letter-spacing: 0.15em;">
+                🔓 BREVETS STRATÉGIQUES DÉPOSÉS 🔓
             </h3>
-            <p style="text-align: center; color: #a0a0a0; font-size: 0.9rem; margin-bottom: 2rem;">
-                Brevets stratégiques en cours de rédaction
+            <p style="text-align: center; color: #a0a0a0; font-size: 0.9rem; margin-bottom: 2.5rem;">
+                L'informatique post-quantique de demain — déjà brevetée
             </p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-                <!-- CLASSIFIED 1 - Avec figure mystère -->
-                <div style="background: #08080a; border: 1px solid #ef4444; padding: 1.5rem; text-align: center;">
-                    <!-- Mini figure -->
-                    <svg viewBox="0 0 200 150" width="200" height="150" style="margin-bottom: 1rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                
+                <!-- ORDINATEUR LIQUIDE -->
+                <div style="background: linear-gradient(135deg, #08080a, #0d1520); border: 2px solid #00d4ff; border-radius: 12px; padding: 2rem; text-align: center; position: relative; transition: all 0.3s; box-shadow: 0 0 40px rgba(0,212,255,0.08);">
+                    <!-- Glow pulse -->
+                    <div style="position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 30px rgba(0,212,255,0.06);pointer-events:none;"></div>
+                    
+                    <!-- Mini figure SVG -->
+                    <svg viewBox="0 0 200 150" width="200" height="150" style="margin-bottom: 1.2rem;">
                         <defs>
-                            <linearGradient id="liqFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <linearGradient id="liqFlow2" x1="0%" y1="0%" x2="100%" y2="0%">
                                 <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.8"/>
                                 <stop offset="50%" style="stop-color:#a855f7;stop-opacity:0.9"/>
                                 <stop offset="100%" style="stop-color:#00ffaa;stop-opacity:0.8"/>
                             </linearGradient>
-                            <linearGradient id="goldG" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <linearGradient id="goldG2" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" style="stop-color:#e0c88a"/>
                                 <stop offset="100%" style="stop-color:#8a7340"/>
                             </linearGradient>
                         </defs>
                         <!-- Cloud P2P -->
-                        <ellipse cx="100" cy="25" rx="70" ry="18" fill="none" stroke="#00d4ff" stroke-width="0.5" opacity="0.5"/>
+                        <ellipse cx="100" cy="25" rx="70" ry="18" fill="none" stroke="#00d4ff" stroke-width="0.8" opacity="0.6">
+                            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite"/>
+                        </ellipse>
+                        <text x="100" y="29" fill="#00d4ff" font-size="8" font-family="monospace" text-anchor="middle" opacity="0.5">P2P FRAGMENTS CHIFFRÉS</text>
                         <rect x="50" y="18" width="8" height="5" rx="1" fill="none" stroke="#00d4ff" stroke-width="0.5" opacity="0.6"/>
                         <rect x="75" y="22" width="8" height="5" rx="1" fill="none" stroke="#a855f7" stroke-width="0.5" opacity="0.6"/>
                         <rect x="117" y="20" width="8" height="5" rx="1" fill="none" stroke="#00ffaa" stroke-width="0.5" opacity="0.6"/>
                         <rect x="142" y="18" width="8" height="5" rx="1" fill="none" stroke="#00d4ff" stroke-width="0.5" opacity="0.6"/>
                         <!-- Dispositif portable central -->
-                        <circle cx="100" cy="80" r="22" fill="#08080a" stroke="url(#goldG)" stroke-width="2"/>
-                        <path d="M95,70 L105,70 L105,75 L100,75 L100,90 L95,90 Z" fill="url(#goldG)" opacity="0.9"/>
-                        <circle cx="100" cy="80" r="17" fill="none" stroke="#00ffaa" stroke-width="0.5" stroke-dasharray="3,2"/>
+                        <circle cx="100" cy="80" r="22" fill="#08080a" stroke="url(#goldG2)" stroke-width="2"/>
+                        <path d="M95,70 L105,70 L105,75 L100,75 L100,90 L95,90 Z" fill="url(#goldG2)" opacity="0.9"/>
+                        <circle cx="100" cy="80" r="17" fill="none" stroke="#00ffaa" stroke-width="0.5" stroke-dasharray="3,2">
+                            <animateTransform attributeName="transform" type="rotate" from="0 100 80" to="360 100 80" dur="8s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="100" y="84" fill="#c9a962" font-size="6" font-family="monospace" text-anchor="middle">TOKEN</text>
                         <!-- Hôtes -->
                         <rect x="25" y="110" width="25" height="18" rx="2" fill="#1a1a1a" stroke="#606060" stroke-width="1"/>
+                        <text x="37" y="122" fill="#606060" font-size="5" font-family="monospace" text-anchor="middle">PC</text>
                         <rect x="88" y="125" width="12" height="20" rx="2" fill="#1a1a1a" stroke="#606060" stroke-width="1"/>
+                        <text x="94" y="138" fill="#606060" font-size="4" font-family="monospace" text-anchor="middle">📱</text>
                         <rect x="150" y="110" width="25" height="18" rx="2" fill="#1a1a1a" stroke="#606060" stroke-width="1"/>
-                        <!-- Flux -->
-                        <path d="M70,35 Q85,55 92,58" fill="none" stroke="url(#liqFlow)" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.7"/>
-                        <path d="M130,35 Q115,55 108,58" fill="none" stroke="url(#liqFlow)" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.7"/>
-                        <path d="M85,95 Q60,105 45,110" fill="none" stroke="url(#liqFlow)" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.6"/>
-                        <path d="M100,102 Q100,112 100,125" fill="none" stroke="url(#liqFlow)" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.6"/>
-                        <path d="M115,95 Q140,105 155,110" fill="none" stroke="url(#liqFlow)" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.6"/>
+                        <text x="162" y="122" fill="#606060" font-size="5" font-family="monospace" text-anchor="middle">TV</text>
+                        <!-- Flux animés -->
+                        <path d="M70,35 Q85,55 92,58" fill="none" stroke="url(#liqFlow2)" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.7">
+                            <animate attributeName="stroke-dashoffset" values="0;-12" dur="1s" repeatCount="indefinite"/>
+                        </path>
+                        <path d="M130,35 Q115,55 108,58" fill="none" stroke="url(#liqFlow2)" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.7">
+                            <animate attributeName="stroke-dashoffset" values="0;-12" dur="1s" repeatCount="indefinite"/>
+                        </path>
+                        <path d="M85,95 Q60,105 45,110" fill="none" stroke="url(#liqFlow2)" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.6">
+                            <animate attributeName="stroke-dashoffset" values="0;12" dur="1.5s" repeatCount="indefinite"/>
+                        </path>
+                        <path d="M100,102 Q100,112 100,125" fill="none" stroke="url(#liqFlow2)" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.6">
+                            <animate attributeName="stroke-dashoffset" values="0;12" dur="1.5s" repeatCount="indefinite"/>
+                        </path>
+                        <path d="M115,95 Q140,105 155,110" fill="none" stroke="url(#liqFlow2)" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.6">
+                            <animate attributeName="stroke-dashoffset" values="0;12" dur="1.5s" repeatCount="indefinite"/>
+                        </path>
                     </svg>
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: #ef4444; letter-spacing: 0.2em; margin-bottom: 0.8rem;">
-                        ████████████
+                    
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: #00d4ff; letter-spacing: 0.1em; margin-bottom: 0.3rem; font-weight: 600;">
+                        ORDINATEUR LIQUIDE
                     </div>
-                    <div style="display: inline-block; background: #ef4444; color: #08080a; padding: 0.3rem 1rem; font-size: 0.7rem; letter-spacing: 0.1em;">
-                        🔒 CLASSIFIED
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #c9a962; letter-spacing: 0.15em; margin-bottom: 1rem;">
+                        FR2600673
                     </div>
+                    <p style="font-size: 0.85rem; color: #a0a0a0; line-height: 1.7; margin-bottom: 1.2rem; text-align: left;">
+                        Votre environnement numérique <strong style="color:#00d4ff;">n'existe sur aucun appareil</strong>. Il vit sous forme de fragments chiffrés indistinguables du bruit, répartis sur un réseau pair-à-pair mondial. Un dispositif portable (token souverain) le matérialise temporairement en RAM sur n'importe quel hôte — PC public, smartphone, TV. À la déconnexion : <strong style="color:#00ffaa;">dématérialisation sans trace</strong>.
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 1rem;">
+                        <span style="font-size:0.65rem;background:rgba(0,212,255,0.1);color:#00d4ff;padding:3px 8px;border-radius:3px;border:1px solid rgba(0,212,255,0.25);">POST-QUANTIQUE</span>
+                        <span style="font-size:0.65rem;background:rgba(0,255,170,0.1);color:#00ffaa;padding:3px 8px;border-radius:3px;border:1px solid rgba(0,255,170,0.25);">ZERO TRACE</span>
+                        <span style="font-size:0.65rem;background:rgba(201,169,98,0.1);color:#c9a962;padding:3px 8px;border-radius:3px;border:1px solid rgba(201,169,98,0.25);">TEMPS τ</span>
+                        <span style="font-size:0.65rem;background:rgba(168,85,247,0.1);color:#a855f7;padding:3px 8px;border-radius:3px;border:1px solid rgba(168,85,247,0.25);">P2P CHIFFRÉ</span>
+                    </div>
+                    <ul style="text-align:left;list-style:none;padding:0;font-size:0.8rem;color:#808080;line-height:2;">
+                        <li>✓ L'hôte n'a <strong style="color:#fff;">jamais accès aux clés</strong></li>
+                        <li>✓ Identités polymorphiques <strong style="color:#fff;">non corrélables</strong></li>
+                        <li>✓ Algorithmes <strong style="color:#fff;">ML-KEM, ML-DSA, AES-256</strong></li>
+                        <li>✓ Temps énergétique souverain <strong style="color:#c9a962;">τ = E/(P+ε)</strong></li>
+                    </ul>
                 </div>
                 
-                <!-- CLASSIFIED 2 -->
-                <div style="background: #08080a; border: 1px solid #ef4444; padding: 2rem; text-align: center;">
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; color: #ef4444; letter-spacing: 0.2em; margin-bottom: 1rem;">
-                        ████████████
+                <!-- Q-DOS -->
+                <div style="background: linear-gradient(135deg, #08080a, #0f0a18); border: 2px solid #a855f7; border-radius: 12px; padding: 2rem; text-align: center; position: relative; transition: all 0.3s; box-shadow: 0 0 40px rgba(168,85,247,0.08);">
+                    <div style="position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 30px rgba(168,85,247,0.06);pointer-events:none;"></div>
+                    
+                    <!-- Q-DOS figure SVG -->
+                    <svg viewBox="0 0 200 150" width="200" height="150" style="margin-bottom: 1.2rem;">
+                        <defs>
+                            <linearGradient id="qGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#a855f7;stop-opacity:0.9"/>
+                                <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0.8"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Boot chain -->
+                        <rect x="20" y="15" width="160" height="22" rx="3" fill="none" stroke="#a855f7" stroke-width="1" opacity="0.6"/>
+                        <text x="100" y="30" fill="#a855f7" font-size="8" font-family="monospace" text-anchor="middle" opacity="0.8">Q-BOOT · ML-DSA CHAIN OF TRUST</text>
+                        <!-- Layers -->
+                        <rect x="30" y="48" width="140" height="18" rx="2" fill="rgba(168,85,247,0.15)" stroke="#a855f7" stroke-width="0.5"/>
+                        <text x="100" y="60" fill="#a855f7" font-size="7" font-family="monospace" text-anchor="middle">Q-KERNEL · SIGNATURES VÉRIFIÉES</text>
+                        <rect x="30" y="72" width="140" height="18" rx="2" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="0.5"/>
+                        <text x="100" y="84" fill="#00d4ff" font-size="7" font-family="monospace" text-anchor="middle">Q-DISK · ML-KEM + AES-256-XTS</text>
+                        <rect x="30" y="96" width="68" height="18" rx="2" fill="rgba(0,255,170,0.1)" stroke="#00ffaa" stroke-width="0.5"/>
+                        <text x="64" y="108" fill="#00ffaa" font-size="7" font-family="monospace" text-anchor="middle">Q-FILES</text>
+                        <rect x="102" y="96" width="68" height="18" rx="2" fill="rgba(201,169,98,0.1)" stroke="#c9a962" stroke-width="0.5"/>
+                        <text x="136" y="108" fill="#c9a962" font-size="7" font-family="monospace" text-anchor="middle">Q-NET TLS 1.3</text>
+                        <!-- TPM -->
+                        <rect x="60" y="124" width="80" height="18" rx="4" fill="#08080a" stroke="url(#qGrad)" stroke-width="1.5"/>
+                        <text x="100" y="136" fill="#c9a962" font-size="7" font-family="monospace" text-anchor="middle" font-weight="bold">Q-TPM SECURE</text>
+                        <!-- Shield -->
+                        <circle cx="100" cy="136" r="30" fill="none" stroke="#a855f7" stroke-width="0.3" stroke-dasharray="2,2" opacity="0.3">
+                            <animateTransform attributeName="transform" type="rotate" from="0 100 136" to="360 100 136" dur="12s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                    
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: #a855f7; letter-spacing: 0.1em; margin-bottom: 0.3rem; font-weight: 600;">
+                        Q-DOS
                     </div>
-                    <div style="display: inline-block; background: #ef4444; color: #08080a; padding: 0.3rem 1rem; font-size: 0.7rem; letter-spacing: 0.1em;">
-                        🔒 CLASSIFIED
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: #808080; letter-spacing: 0.1em; margin-bottom: 0.2rem;">
+                        QUANTUM RESISTANT DISK OPERATING SYSTEM
                     </div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #c9a962; letter-spacing: 0.15em; margin-bottom: 1rem;">
+                        FR2600578
+                    </div>
+                    <p style="font-size: 0.85rem; color: #a0a0a0; line-height: 1.7; margin-bottom: 1.2rem; text-align: left;">
+                        Système d'exploitation dont <strong style="color:#a855f7;">100% des primitives cryptographiques</strong> sont résistantes aux attaques quantiques — du boot au réseau, <strong style="color:#a855f7;">by design</strong>. Chaîne de confiance ML-DSA, disque protégé par ML-KEM + AES-256-XTS, système de fichiers chiffré par fichier, TLS 1.3 hybride, module de confiance post-quantique.
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 1rem;">
+                        <span style="font-size:0.65rem;background:rgba(168,85,247,0.1);color:#a855f7;padding:3px 8px;border-radius:3px;border:1px solid rgba(168,85,247,0.25);">ML-DSA</span>
+                        <span style="font-size:0.65rem;background:rgba(0,212,255,0.1);color:#00d4ff;padding:3px 8px;border-radius:3px;border:1px solid rgba(0,212,255,0.25);">ML-KEM</span>
+                        <span style="font-size:0.65rem;background:rgba(0,255,170,0.1);color:#00ffaa;padding:3px 8px;border-radius:3px;border:1px solid rgba(0,255,170,0.25);">AES-256-XTS</span>
+                        <span style="font-size:0.65rem;background:rgba(201,169,98,0.1);color:#c9a962;padding:3px 8px;border-radius:3px;border:1px solid rgba(201,169,98,0.25);">SHAKE256</span>
+                    </div>
+                    <ul style="text-align:left;list-style:none;padding:0;font-size:0.8rem;color:#808080;line-height:2;">
+                        <li>✓ Chaîne de confiance <strong style="color:#fff;">100% quantum-safe</strong></li>
+                        <li>✓ Clé maître disque <strong style="color:#fff;">jamais en clair</strong></li>
+                        <li>✓ Chiffrement <strong style="color:#fff;">par fichier</strong> + ACL signées</li>
+                        <li>✓ Paradigme <strong style="color:#a855f7;">quantum-safe by design</strong></li>
+                    </ul>
                 </div>
             </div>
             
-            <p style="text-align: center; color: #606060; font-size: 0.8rem; margin-top: 2rem;">
-                Informations disponibles sous NDA uniquement — <span style="color: #c9a962;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e9889a8c8488879d8091a9999b869d8687c7848c">[email&#160;protected]</a></span>
+            <p style="text-align: center; color: #808080; font-size: 0.85rem; margin-top: 2rem; line-height: 1.6;">
+                Ces brevets stratégiques sont déposés à l'INPI — <span style="color: #c9a962;">asemantix@proton.me</span>
             </p>
         </div>
     </section>
