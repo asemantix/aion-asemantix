@@ -1,4 +1,5 @@
 
+          
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -131,25 +132,23 @@
             width: 100%;
         }
 
-        /* ====== LOGO ASCII AION ====== */
-        .hero-ascii-logo {
+        /* ====== LOGO FIGURATIF DORÉ ====== */
+        .hero-logo-img {
             margin: 0 auto 2rem;
             text-align: center;
         }
 
-        .ascii-logo {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(0.6rem, 2.5vw, 1.4rem);
-            line-height: 1.15;
-            color: var(--teal);
-            white-space: pre;
-            display: inline-block;
-            text-shadow: 0 0 30px rgba(0, 255, 170, 0.3);
-            letter-spacing: 0.05em;
+        .gold-logo {
+            width: 480px;
+            max-width: 80vw;
+            height: auto;
+            filter: drop-shadow(0 0 40px rgba(201, 169, 98, 0.4)) drop-shadow(0 0 80px rgba(201, 169, 98, 0.15));
+            animation: logoGlow 4s ease-in-out infinite alternate;
         }
 
-        .ascii-logo-line {
-            display: block;
+        @keyframes logoGlow {
+            from { filter: drop-shadow(0 0 30px rgba(201, 169, 98, 0.3)) drop-shadow(0 0 60px rgba(201, 169, 98, 0.1)); }
+            to { filter: drop-shadow(0 0 50px rgba(201, 169, 98, 0.5)) drop-shadow(0 0 100px rgba(201, 169, 98, 0.2)); }
         }
 
         /* Petite mention AION discrète */
@@ -564,7 +563,7 @@
             .flow-items { flex-direction: column; }
             .flow-arrow { transform: rotate(90deg); }
             .baseline { font-size: 1.2rem; letter-spacing: 0.1em; }
-            .ascii-logo { font-size: 0.45rem; }
+            .gold-logo { width: 280px; }
             .hero-slogan { font-size: 1.4rem; }
         }
     </style>
@@ -586,14 +585,9 @@
 <section class="hero">
     <div class="hero-content">
         
-        <!-- LOGO ASCII AION CLAIR -->
-        <div class="hero-ascii-logo">
-            <pre class="ascii-logo"><span class="ascii-logo-line">█████╗  ██╗  ██████╗  ███╗   ██╗</span>
-<span class="ascii-logo-line">██╔══██╗ ██║ ██╔═══██╗ ████╗  ██║</span>
-<span class="ascii-logo-line">███████║ ██║ ██║   ██║ ██╔██╗ ██║</span>
-<span class="ascii-logo-line">██╔══██║ ██║ ██║   ██║ ██║╚██╗██║</span>
-<span class="ascii-logo-line">██║  ██║ ██║ ╚██████╔╝ ██║ ╚████║</span>
-<span class="ascii-logo-line">╚═╝  ╚═╝ ╚═╝  ╚═════╝  ╚═╝  ╚═══╝</span></pre>
+        <!-- LOGO FIGURATIF DORÉ -->
+        <div class="hero-logo-img">
+            <img src="AION_LOGO_FIGURATIF_OR.png" alt="AION ASEMANTIX" class="gold-logo">
             <p class="logo-brand-small">AION ASEMANTIX TECHNOLOGIES</p>
         </div>
         
