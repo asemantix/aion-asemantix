@@ -414,6 +414,255 @@
     <h1><span style="color:var(--gold);">AION</span> ASEMANTIX™</h1>
     <p>
       Page d’accueil premium et simple : <b>7 divisions</b> + <b>brevets cliquables</b> + recherche.
-      (Tu pourras ensuite cré
+      (Tu pourras ensuite créer des pages séparées, mais ici tout est déjà exploitable.)
+    </p>
+
+    <div class="stats" aria-label="Statistiques">
+      <div class="stat"><div class="n" id="statPatents">—</div><div class="l">Brevets</div></div>
+      <div class="stat"><div class="n">7</div><div class="l">Divisions</div></div>
+      <div class="stat"><div class="n">∞</div><div class="l">Extensions</div></div>
+    </div>
+  </main>
+
+  <section id="divisions">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-title">7 divisions</div>
+          <div class="section-desc">
+            Tape un mot-clé (PIP, VPN, τ, QKD…) et clique un brevet pour ouvrir sa fiche.
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+
+      <div class="toolbar">
+        <div class="search" role="search">
+          <input id="q" placeholder="Rechercher..." />
+        </div>
+        <div class="chipbar" id="filters"></div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-title">Contact</div>
+          <div class="section-desc">Licensing • Partenariats • Acquisition • Dossier technique</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+
+      <div class="card" style="margin-top:14px;">
+        <div class="cardhead">
+          <div>
+            <div class="accent"></div>
+            <div class="name">Écrire</div>
+            <div class="desc">Email direct (modifiable en bas du fichier).</div>
+          </div>
+          <a class="count" href="mailto:thaoractu@gmail.com">thaoractu@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 AION ASEMANTIX™ — Tous droits réservés.</footer>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modalbox" role="dialog" aria-modal="true" aria-labelledby="mtitle">
+      <div class="mhead">
+        <div>
+          <div class="mref" id="mref"></div>
+          <div class="mtitle" id="mtitle"></div>
+          <div class="msub" id="msub"></div>
+        </div>
+        <button class="close" id="closeBtn">FERMER</button>
+      </div>
+      <div class="mbody">
+        <div class="panel">
+          <div class="ptitle">Résumé</div>
+          <div id="mabstract" style="color:var(--muted); font-size:14px; line-height:1.6;"></div>
+        </div>
+        <div class="panel">
+          <div class="ptitle">Points clés</div>
+          <ul class="plist" id="mpoints"></ul>
+          <div class="ptitle" style="margin-top:14px;">Tags</div>
+          <div class="tagline" id="mtags"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // === DONNÉES (EXEMPLE) ===
+    // Remplace/complète ici quand tu veux. Mais le site marche déjà sans rien toucher.
+    const divisions = [
+      { key:"core", name:"AION Core", accent:"core", desc:"Fondations asémantiques, validation, identifiants polymorphes.",
+        patents:[
+          {label:"PIP POLYMORPHIC", ref:"FR2600202", subtitle:"Brevet fondateur", abstract:"Communication non-corrélable via permutation polymorphe des identifiants.",
+            points:["Coordination d’identifiants","Non-corrélabilité","Extensions post-quantiques","Base de l’écosystème"], tags:["core","pip","polymorphic"]},
+          {label:"ASEMANTIX", ref:"FR2516793", subtitle:"Fragments polymorphes", abstract:"Validation asémantique avec marqueur polymorphe.",
+            points:["Fragments indistinguables du bruit","Filtrage massif sans crypto","Forward secrecy","Résistant à la censure"], tags:["asémantique","filtrage","kdf"]},
+        ]
+      },
+      { key:"fortress", name:"AION Fortress", accent:"fortress", desc:"Protection autonome, contrôle d’accès, neutralisation.",
+        patents:[
+          {label:"HEIMDALL", ref:"FR2600400", subtitle:"Authentification énergétique", abstract:"Authentification via signature énergétique.",
+            points:["Secret + empreinte physique","Anti-usurpation à distance","Profil de référence"], tags:["auth","energie"]},
+        ]
+      },
+      { key:"mesh", name:"AION Mesh", accent:"mesh", desc:"Réseaux décentralisés, topologie invisible, messagerie asémantique.",
+        patents:[
+          {label:"PIP MESH", ref:"FR2600209", subtitle:"Topologie invisible", abstract:"Mesh avec identifiants non-corrélables.",
+            points:["Multi-hop anonymisé","Impossible de compter les nœuds"], tags:["mesh","anonymat"]},
+        ]
+      },
+      { key:"privacy", name:"AION Privacy", accent:"privacy", desc:"VPN indétectable, identités multiples, mimétisme comportemental.",
+        patents:[
+          {label:"PIP VPN", ref:"FR2600251", subtitle:"VPN indétectable", abstract:"Réseau privé virtuel avec identifiants réseau non-corrélables.",
+            points:["IPs polymorphes","Anti-DPI","Anti-ML"], tags:["vpn","privacy"]},
+        ]
+      },
+      { key:"quantum", name:"AION Quantum", accent:"quantum", desc:"Sécurité post-quantique, QKD, résilience long-terme.",
+        patents:[
+          {label:"QUANTUM", ref:"FR2600313", subtitle:"QKD", abstract:"Initialisation par distribution quantique de clés.",
+            points:["Sécurité informationnelle","Résistant au quantique","Store-now-decrypt-later"], tags:["pq","qkd"]},
+        ]
+      },
+      { key:"tactical", name:"AION Tactical", accent:"tactical", desc:"Terrain, 5G/6G, internet fantôme, temps endogène.",
+        patents:[
+          {label:"PIP-5G", ref:"FR2600261", subtitle:"Handover non-corrélable", abstract:"Handover d’identifiants non-corrélables en réseaux 5G/6G.",
+            points:["Nouvel ID à chaque handover","Anti-IMSI catcher","Multi-réseaux"], tags:["5g","6g","mobile"]},
+        ]
+      },
+      { key:"time", name:"AION Time", accent:"time", desc:"Temps énergétique universel : τ = E/P.",
+        patents:[
+          {label:"TUTE FONDATEUR", ref:"FR-TUTE-001", subtitle:"τ = E/P", abstract:"Le temps comme pulsation énergétique universelle.",
+            points:["τ = E/P","vₜ = P/E","Entropie énergétique","Modules mesure/calcul"], tags:["tute","tau","energie"]},
+        ]
+      }
+    ];
+
+    const grid = document.getElementById("grid");
+    const q = document.getElementById("q");
+    const filters = document.getElementById("filters");
+    const statPatents = document.getElementById("statPatents");
+
+    const allPatents = divisions.flatMap(d => d.patents.map(p => ({...p, division:d.name, divisionKey:d.key})));
+    statPatents.textContent = allPatents.length;
+
+    let activeFilter = "all";
+
+    function mkFilterChip(key, label){
+      const b = document.createElement("div");
+      b.className = "filterchip" + (key===activeFilter ? " active":"");
+      b.textContent = label;
+      b.onclick = () => { activeFilter = key; redraw(); };
+      return b;
+    }
+
+    function renderFilters(){
+      filters.innerHTML = "";
+      filters.appendChild(mkFilterChip("all","Tout"));
+      divisions.forEach(d => filters.appendChild(mkFilterChip(d.key, d.name)));
+    }
+
+    function match(p, term){
+      const t = (term||"").trim().toLowerCase();
+      if(!t) return true;
+      return [
+        p.label, p.ref, p.subtitle, p.abstract, p.division,
+        ...(p.points||[]), ...(p.tags||[])
+      ].join(" ").toLowerCase().includes(t);
+    }
+
+    function redraw(){
+      renderFilters();
+      const term = q.value || "";
+      grid.innerHTML = "";
+
+      divisions.forEach(d => {
+        if(activeFilter !== "all" && d.key !== activeFilter) return;
+
+        const pats = d.patents.filter(p => match({...p, division:d.name}, term));
+        if(pats.length === 0) return;
+
+        const card = document.createElement("div");
+        card.className = `card ${d.key}`;
+
+        card.innerHTML = `
+          <div class="cardhead">
+            <div>
+              <div class="accent"></div>
+              <div class="name">${d.name}</div>
+            </div>
+            <div class="count">${pats.length} brevets</div>
+          </div>
+          <div class="desc">${d.desc}</div>
+          <div class="patents"></div>
+        `;
+
+        const list = card.querySelector(".patents");
+        pats.forEach(p => {
+          const chip = document.createElement("div");
+          chip.className = "pch";
+          chip.textContent = p.label;
+          chip.onclick = () => openModal({...p, division:d.name});
+          list.appendChild(chip);
+        });
+
+        grid.appendChild(card);
+      });
+    }
+
+    // Modal
+    const modal = document.getElementById("modal");
+    const closeBtn = document.getElementById("closeBtn");
+    const mref = document.getElementById("mref");
+    const mtitle = document.getElementById("mtitle");
+    const msub = document.getElementById("msub");
+    const mabstract = document.getElementById("mabstract");
+    const mpoints = document.getElementById("mpoints");
+    const mtags = document.getElementById("mtags");
+
+    function openModal(p){
+      mref.textContent = p.ref || "—";
+      mtitle.textContent = p.label || "Brevet";
+      msub.textContent = `${p.division || ""} • ${p.subtitle || ""}`.trim();
+      mabstract.textContent = p.abstract || "";
+      mpoints.innerHTML = (p.points||[]).map(x => `<li>${x}</li>`).join("");
+      mtags.innerHTML = (p.tags||[]).map(t => `<span class="tag">${t}</span>`).join("");
+
+      modal.classList.add("on");
+      modal.setAttribute("aria-hidden","false");
+      document.body.style.overflow="hidden";
+    }
+    function closeModal(){
+      modal.classList.remove("on");
+      modal.setAttribute("aria-hidden","true");
+      document.body.style.overflow="auto";
+    }
+    closeBtn.onclick = closeModal;
+    modal.addEventListener("click", (e)=>{ if(e.target===modal) closeModal(); });
+    window.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeModal(); });
+
+    // nav border
+    const nav = document.getElementById("nav");
+    window.addEventListener("scroll", ()=>{
+      if(window.scrollY > 20) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
+    });
+
+    q.addEventListener("input", redraw);
+    redraw();
+  </script>
+</body>
+</html>
+
 
 
