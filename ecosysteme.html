@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AION - L'Écosystème</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(ellipse at center, #0a0a1a 0%, #000005 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        .title {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .title h1 {
+            font-size: 36px;
+            font-weight: 300;
+            color: #fff;
+            letter-spacing: 15px;
+        }
+        
+        .title h2 {
+            font-size: 18px;
+            color: #888;
+            font-weight: 300;
+            letter-spacing: 5px;
+        }
+        
+        .ecosystem {
+            position: relative;
+            width: 100%;
+            height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Centre - L'utilisateur */
+        .center {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #ffd700 0%, #ff8c00 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.5);
+            z-index: 10;
+        }
+        
+        .center-icon {
+            font-size: 40px;
+        }
+        
+        .center-text {
+            font-size: 12px;
+            font-weight: 700;
+            color: #000;
+            text-align: center;
+        }
+        
+        /* Premier anneau - TOKEN TUTE */
+        .ring1 {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 2px dashed rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+        }
+        
+        /* Deuxième anneau - Couches fondamentales */
+        .ring2 {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        /* Troisième anneau - Applications */
+        .ring3 {
+            position: absolute;
+            width: 550px;
+            height: 550px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        /* Nodes */
+        .node {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .node:hover {
+            transform: scale(1.1);
+        }
+        
+        .node-icon {
+            font-size: 24px;
+            margin-bottom: 3px;
+        }
+        
+        .node-name {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        /* Token TUTE - autour du centre */
+        .token {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -170%);
+        }
+        
+        /* Couche TUTE */
+        .tute {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            box-shadow: 0 0 20px rgba(155, 89, 182, 0.5);
+        }
+        
+        .tute1 { top: 15%; left: 50%; transform: translateX(-50%); }
+        .tute2 { top: 25%; left: 20%; }
+        .tute3 { top: 25%; right: 20%; }
+        
+        /* Couche PIP */
+        .pip {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
+        }
+        
+        .pip1 { top: 50%; left: 8%; transform: translateY(-50%); }
+        .pip2 { bottom: 25%; left: 15%; }
+        .pip3 { top: 35%; left: 12%; }
+        
+        /* Couche FANTOM */
+        .fantom {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+        }
+        
+        .fantom1 { top: 50%; right: 8%; transform: translateY(-50%); }
+        .fantom2 { bottom: 25%; right: 15%; }
+        
+        /* Couche ASEMANTIX */
+        .asemantix {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f39c12, #d68910);
+            box-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
+        }
+        
+        .asemantix1 { bottom: 10%; left: 30%; }
+        .asemantix2 { bottom: 10%; right: 30%; }
+        
+        /* Applications */
+        .app {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            box-shadow: 0 0 15px rgba(26, 188, 156, 0.4);
+        }
+        
+        .app1 { top: 5%; left: 25%; }
+        .app2 { top: 5%; right: 25%; }
+        .app3 { bottom: 5%; left: 50%; transform: translateX(-50%); }
+        
+        /* Sécurité */
+        .security {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
+        }
+        
+        .security1 { top: 35%; right: 12%; }
+        .security2 { bottom: 15%; left: 50%; transform: translateX(-50%); }
+        
+        /* Lignes de connexion */
+        .connections {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .connections svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .connection-line {
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 1;
+            fill: none;
+        }
+        
+        .connection-line-strong {
+            stroke: rgba(0, 212, 255, 0.3);
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        /* Légende */
+        .legend {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        /* Ordinateur Liquide - grand cercle englobant */
+        .liquid-computer {
+            position: absolute;
+            width: 650px;
+            height: 650px;
+            border: 3px solid rgba(0, 212, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 15px;
+        }
+        
+        .liquid-label {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #00d4ff;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1>AION</h1>
+        <h2>L'ÉCOSYSTÈME DE LA SOUVERAINETÉ NUMÉRIQUE</h2>
+    </div>
+    
+    <div class="ecosystem">
+        <!-- Cercle Ordinateur Liquide -->
+        <div class="liquid-computer">
+            <span class="liquid-label">ORDINATEUR LIQUIDE</span>
+        </div>
+        
+        <!-- Anneaux -->
+        <div class="ring1"></div>
+        <div class="ring2"></div>
+        <div class="ring3"></div>
+        
+        <!-- Centre - L'utilisateur -->
+        <div class="center">
+            <div class="center-icon">👤</div>
+            <div class="center-text">VOUS<br>24 MOTS</div>
+        </div>
+        
+        <!-- Token TUTE - Premier cercle -->
+        <div class="node token" style="top: 22%; left: 50%; transform: translateX(-50%);">
+            <div class="node-icon">🔐</div>
+            <div class="node-name">TOKEN<br>TUTE</div>
+        </div>
+        
+        <!-- TUTE - Temps -->
+        <div class="node tute tute1" style="top: 8%; left: 35%;">
+            <div class="node-icon">⏱️</div>
+            <div class="node-name">TUTE</div>
+        </div>
+        
+        <div class="node tute" style="top: 8%; right: 35%;">
+            <div class="node-icon">🔋</div>
+            <div class="node-name">TUTE<br>BATT</div>
+        </div>
+        
+        <div class="node tute" style="top: 18%; left: 18%;">
+            <div class="node-icon">💻</div>
+            <div class="node-name">TUTE<br>CPU</div>
+        </div>
+        
+        <div class="node tute" style="top: 18%; right: 18%;">
+            <div class="node-icon">🌌</div>
+            <div class="node-name">TUTE<br>COSMOS</div>
+        </div>
+        
+        <div class="node tute" style="top: 32%; left: 10%;">
+            <div class="node-icon">⚡</div>
+            <div class="node-name">TUTE<br>GRID</div>
+        </div>
+        
+        <!-- PIP - Identités -->
+        <div class="node pip" style="top: 45%; left: 5%;">
+            <div class="node-icon">🎭</div>
+            <div class="node-name">PIP</div>
+        </div>
+        
+        <div class="node pip" style="bottom: 35%; left: 8%;">
+            <div class="node-icon">📡</div>
+            <div class="node-name">PIP<br>5G</div>
+        </div>
+        
+        <div class="node pip" style="bottom: 22%; left: 15%;">
+            <div class="node-icon">🛰️</div>
+            <div class="node-name">PIP<br>SAT</div>
+        </div>
+        
+        <div class="node pip" style="bottom: 12%; left: 28%;">
+            <div class="node-icon">👻</div>
+            <div class="node-name">PIP<br>GHOST</div>
+        </div>
+        
+        <!-- FANTOM - Communication -->
+        <div class="node fantom" style="top: 45%; right: 5%;">
+            <div class="node-icon">📶</div>
+            <div class="node-name">FANTOM</div>
+        </div>
+        
+        <div class="node fantom" style="bottom: 35%; right: 8%;">
+            <div class="node-icon">🌐</div>
+            <div class="node-name">FANTOM<br>NET</div>
+        </div>
+        
+        <div class="node fantom" style="top: 32%; right: 10%;">
+            <div class="node-icon">🎭</div>
+            <div class="node-name">CLOAK</div>
+        </div>
+        
+        <!-- ASEMANTIX -->
+        <div class="node asemantix" style="bottom: 12%; right: 28%;">
+            <div class="node-icon">🦎</div>
+            <div class="node-name">ASEMANTIX</div>
+        </div>
+        
+        <div class="node asemantix" style="bottom: 22%; right: 15%;">
+            <div class="node-icon">🐙</div>
+            <div class="node-name">OCTOPUS</div>
+        </div>
+        
+        <div class="node asemantix" style="bottom: 5%; left: 42%;">
+            <div class="node-icon">📬</div>
+            <div class="node-name">MAILBOX</div>
+        </div>
+        
+        <div class="node asemantix" style="bottom: 5%; right: 42%;">
+            <div class="node-icon">🚪</div>
+            <div class="node-name">SESAME</div>
+        </div>
+        
+        <!-- Sécurité -->
+        <div class="node security" style="bottom: 28%; left: 50%; transform: translateX(-50%);">
+            <div class="node-icon">👁️</div>
+            <div class="node-name">HEIMDALL</div>
+        </div>
+        
+        <div class="node security" style="bottom: 18%; left: 38%;">
+            <div class="node-icon">🦁</div>
+            <div class="node-name">SEKHMET</div>
+        </div>
+        
+        <!-- Applications -->
+        <div class="node app" style="top: 3%; left: 50%; transform: translateX(-50%);">
+            <div class="node-icon">💰</div>
+            <div class="node-name">AION<br>PAY</div>
+        </div>
+        
+        <div class="node app" style="bottom: 18%; right: 38%;">
+            <div class="node-icon">👥</div>
+            <div class="node-name">SHADOW<br>CROWD</div>
+        </div>
+        
+        <div class="node app" style="top: 55%; left: 50%; transform: translateX(-50%);">
+            <div class="node-icon">🐉</div>
+            <div class="node-name">HYDRA</div>
+        </div>
+    </div>
+    
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #9b59b6;"></div>
+            <span>Temps (TUTE)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #2ecc71;"></div>
+            <span>Identité (PIP)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #e74c3c;"></div>
+            <span>Communication (FANTOM)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #f39c12;"></div>
+            <span>Données (ASEMANTIX)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #e91e63;"></div>
+            <span>Sécurité</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background: #1abc9c;"></div>
+            <span>Applications</span>
+        </div>
+    </div>
+</body>
+</html>

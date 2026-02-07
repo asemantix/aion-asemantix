@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEIMDALL - Authentification par empreinte énergétique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #0d4f4f 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .product-name {
+            font-size: 52px;
+            font-weight: 800;
+            color: #4ecdc4;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 26px;
+            color: #ff6b6b;
+            font-weight: 300;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 18px;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            color: #4ecdc4;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-title .emoji {
+            font-size: 30px;
+        }
+        
+        .section-content {
+            font-size: 20px;
+            line-height: 1.5;
+            color: #e0e0e0;
+        }
+        
+        .highlight {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+        
+        .highlight-green {
+            color: #4ecdc4;
+            font-weight: 600;
+        }
+        
+        .scenario {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .scenario-box {
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .scenario-hacker {
+            background: rgba(255, 107, 107, 0.15);
+            border: 2px solid #ff6b6b;
+        }
+        
+        .scenario-you {
+            background: rgba(78, 205, 196, 0.15);
+            border: 2px solid #4ecdc4;
+        }
+        
+        .scenario-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .scenario-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .scenario-content {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        
+        .formula-box {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .formula {
+            font-size: 22px;
+            font-family: monospace;
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+        
+        .formula-explain {
+            font-size: 16px;
+            color: #aaa;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 18px;
+            background: rgba(78, 205, 196, 0.1);
+            border-radius: 12px;
+        }
+        
+        .feature-icon {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+        
+        .feature-text {
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+        
+        .footer {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .brand {
+            font-size: 16px;
+            color: #666;
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="icon">👁️</div>
+        <div class="product-name">HEIMDALL</div>
+        <div class="tagline">Votre appareil a une empreinte unique. On la vérifie.</div>
+    </div>
+    
+    <div class="main-content">
+        <div class="section">
+            <div class="section-title">
+                <span class="emoji">🔓</span>
+                Le problème des mots de passe
+            </div>
+            <div class="section-content">
+                Un hacker vole votre mot de passe. Il peut se connecter <span class="highlight">depuis n'importe où</span> 
+                dans le monde. La banque, le site web... personne ne voit la différence.
+            </div>
+        </div>
+        
+        <div class="scenario">
+            <div class="scenario-box scenario-hacker">
+                <div class="scenario-icon">🦹</div>
+                <div class="scenario-title" style="color: #ff6b6b;">Le hacker (Russie)</div>
+                <div class="scenario-content">
+                    Il a volé votre mot de passe.<br>
+                    Il essaie de se connecter.<br>
+                    <strong style="color: #ff6b6b;">Son appareil n'a pas<br>la bonne empreinte → BLOQUÉ</strong>
+                </div>
+            </div>
+            <div class="scenario-box scenario-you">
+                <div class="scenario-icon">👤</div>
+                <div class="scenario-title" style="color: #4ecdc4;">Vous (votre laptop)</div>
+                <div class="scenario-content">
+                    Vous tapez votre mot de passe.<br>
+                    Votre appareil a sa signature unique.<br>
+                    <strong style="color: #4ecdc4;">Empreinte correcte → ACCÈS</strong>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <span class="emoji">⚡</span>
+                Comment ça marche ?
+            </div>
+            <div class="section-content">
+                Chaque appareil consomme de l'électricité d'une façon <span class="highlight-green">unique</span>.
+                C'est comme une <span class="highlight-green">empreinte digitale</span>, mais pour votre ordinateur.
+                <br><br>
+                HEIMDALL vérifie cette empreinte <span class="highlight-green">en plus</span> du mot de passe.
+            </div>
+        </div>
+        
+        <div class="formula-box">
+            <div class="formula">Signature = Empreinte énergétique + Mot de passe</div>
+            <div class="formula-explain">Le mot de passe seul ne suffit pas. Il faut aussi le bon appareil.</div>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🔋</div>
+                <div class="feature-text">Mesure la<br>consommation</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🛡️</div>
+                <div class="feature-text">Double<br>vérification</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🚫</div>
+                <div class="feature-text">Bloque les<br>imposteurs</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="brand">CHRONOS TECHNOLOGY</div>
+    </div>
+</body>
+</html>

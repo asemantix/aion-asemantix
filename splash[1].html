@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AION ASEMANTIX™ | L'ère de la tranquillité</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #08080a;
+            --white: #f8f8f8;
+            --gold: #c9a962;
+            --gold-light: #e0c88a;
+            --gold-dim: rgba(201, 169, 98, 0.15);
+            --gray-300: #a0a0a0;
+            --gray-500: #606060;
+            --teal: #00ffaa;
+            --red: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        /* === CANVAS === */
+        #particles, #celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        #particles { z-index: 1; }
+        #celebration { z-index: 4; }
+
+        /* Grille */
+        .grid-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(201, 169, 98, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 169, 98, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Vignette */
+        .vignette {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, var(--black) 85%);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* Lueur centrale */
+        .central-glow {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(201, 169, 98, 0.08) 0%, transparent 70%);
+            z-index: 2;
+            animation: glowPulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        /* Anneaux */
+        .ring {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(201, 169, 98, 0.25);
+            border-radius: 50%;
+            z-index: 3;
+            pointer-events: none;
+            animation: ringExpand 5s ease-out infinite;
+        }
+        .ring:nth-child(2) { animation-delay: 1.25s; }
+        .ring:nth-child(3) { animation-delay: 2.5s; }
+        .ring:nth-child(4) { animation-delay: 3.75s; }
+
+        @keyframes ringExpand {
+            0% { width: 100px; height: 100px; opacity: 0.5; }
+            100% { width: 900px; height: 900px; opacity: 0; }
+        }
+
+        /* Coins */
+        .corner {
+            position: fixed;
+            width: 60px; height: 60px;
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            z-index: 5;
+        }
+        .corner-tl { top: 2rem; left: 2rem; border-right: none; border-bottom: none; }
+        .corner-tr { top: 2rem; right: 2rem; border-left: none; border-bottom: none; }
+        .corner-bl { bottom: 2rem; left: 2rem; border-right: none; border-top: none; }
+        .corner-br { bottom: 2rem; right: 2rem; border-left: none; border-top: none; }
+
+        /* === ÉCRANS === */
+        .screen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            transition: opacity 1s ease, transform 1s ease;
+            z-index: 20;
+        }
+
+        .screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-30px);
+        }
+
+        /* === ÉCRAN 1 === */
+        .logo-container img {
+            width: 90vw;
+            max-width: 500px;
+            height: auto;
+            filter: drop-shadow(0 0 60px rgba(0, 255, 170, 0.15));
+        }
+
+        .golden-line {
+            width: 280px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 2rem 0;
+        }
+
+        .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.6rem, 4vw, 2.5rem);
+            font-weight: 300;
+            letter-spacing: 0.4em;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+        .title span { color: var(--gold); font-weight: 500; }
+
+        .tagline {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            color: var(--gray-300);
+            margin-top: 0.8rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2.5rem;
+        }
+        .stat { text-align: center; }
+        .stat-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.7rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+
+        .continue-btn {
+            margin-top: 3rem;
+            padding: 1.2rem 2.5rem;
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .continue-btn:hover {
+            border-color: var(--gold);
+            color: var(--white);
+            box-shadow: 0 0 30px rgba(201, 169, 98, 0.3);
+        }
+
+        /* === ÉCRAN 2 === */
+        #screen2 { background: var(--black); }
+
+        .threat-badge {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            color: var(--red);
+            text-transform: uppercase;
+            padding: 0.8rem 2rem;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            background: rgba(239, 68, 68, 0.08);
+            margin-bottom: 3rem;
+        }
+
+        .ibm-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.5rem, 4vw, 2.4rem);
+            font-style: italic;
+            color: var(--gray-300);
+            text-align: center;
+            max-width: 900px;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        .ibm-quote strong {
+            color: var(--red);
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .ibm-source {
+            font-size: 1rem;
+            color: var(--gray-500);
+            letter-spacing: 0.1em;
+            margin-bottom: 3rem;
+        }
+
+        .timeline {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .timeline-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 3rem;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            background: rgba(239, 68, 68, 0.05);
+            border-radius: 6px;
+            min-width: 220px;
+        }
+        .timeline-year {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--red);
+            line-height: 1;
+        }
+        .timeline-name {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--white);
+            letter-spacing: 0.05em;
+            margin: 0.6rem 0 0.4rem;
+        }
+        .timeline-desc {
+            font-size: 1rem;
+            color: var(--gray-500);
+        }
+
+        .separator {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 1rem 0 2.5rem;
+        }
+
+        .response-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            font-weight: 500;
+            color: var(--gold);
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .response-main em {
+            color: var(--teal);
+            font-style: normal;
+        }
+
+        .response-sub {
+            font-size: 1.3rem;
+            color: var(--gray-300);
+            letter-spacing: 0.1em;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .enter-btn {
+            padding: 1.3rem 4rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border: none;
+            color: var(--black);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 40px rgba(201, 169, 98, 0.4);
+        }
+        .enter-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(201, 169, 98, 0.6);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .footer-line {
+            width: 50px;
+            height: 1px;
+            background: var(--gray-500);
+        }
+        .footer-text {
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: var(--gray-500);
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--black);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: loaderFade 0.5s ease-out 0.2s forwards;
+        }
+        @keyframes loaderFade {
+            to { opacity: 0; pointer-events: none; }
+        }
+        .loader-ring {
+            width: 40px; height: 40px;
+            border: 1px solid var(--gold-dim);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline { flex-direction: column; gap: 1.5rem; }
+            .timeline-item { 
+                flex-direction: row; 
+                gap: 1.5rem; 
+                min-width: auto;
+                width: 100%;
+                max-width: 340px;
+                padding: 1.5rem 2rem;
+                align-items: center;
+            }
+            .timeline-year { font-size: 2.5rem; }
+            .timeline-name { font-size: 1.1rem; margin: 0; }
+            .timeline-desc { font-size: 0.85rem; }
+            .stats { gap: 2rem; }
+            .response-main { font-size: 2rem; }
+            .response-sub { font-size: 1.1rem; }
+        }
+
+        @media (max-width: 500px) {
+            .corner { display: none; }
+            .threat-badge { font-size: 0.8rem; }
+            .ibm-quote { font-size: 1.2rem; padding: 0 1rem; }
+            .timeline-item { padding: 1.2rem 1.5rem; max-width: 300px; }
+            .timeline-year { font-size: 2rem; }
+            .response-main { font-size: 1.6rem; }
+            .response-sub { font-size: 1rem; }
+            .enter-btn { padding: 1rem 2.5rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loader -->
+    <div class="loader"><div class="loader-ring"></div></div>
+
+    <!-- Fond -->
+    <canvas id="particles"></canvas>
+    <canvas id="celebration"></canvas>
+    <div class="grid-overlay"></div>
+    <div class="vignette"></div>
+    <div class="central-glow"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+
+    <!-- Coins -->
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <!-- ÉCRAN 1 -->
+    <div id="screen1" class="screen">
+        <div class="logo-container">
+            <img src="AION_ANIMATION_LONGUE.gif" alt="AION ASEMANTIX">
+        </div>
+        <div class="golden-line"></div>
+        <h1 class="title"><span>Aion</span> Asemantix</h1>
+        <p class="tagline">Invisible · Intraçable · Incassable</p>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">31</div>
+                <div class="stat-label">Brevets</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">7</div>
+                <div class="stat-label">Divisions</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">∞</div>
+                <div class="stat-label">Protection</div>
+            </div>
+        </div>
+        <button class="continue-btn" onclick="showScreen2()">Pourquoi maintenant ?</button>
+    </div>
+
+    <!-- ÉCRAN 2 -->
+    <div id="screen2" class="screen hidden">
+        <div class="threat-badge">⚠ Alerte Quantique — Juin 2025</div>
+        <p class="ibm-quote">
+            « IBM is charting the next frontier in quantum computing. […] 
+            <strong>A large-scale, fault-tolerant quantum computer.</strong> »
+        </p>
+        <p class="ibm-source">— Arvind Krishna, Chairman & CEO IBM</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-year">2029</span>
+                <span class="timeline-name">IBM Starling</span>
+                <span class="timeline-desc">RSA cassé en heures</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-year">2033</span>
+                <span class="timeline-name">IBM Blue Jay</span>
+                <span class="timeline-desc">1 milliard d'opérations</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <p class="response-main"><em>Harvest Now,</em> Decrypt Never.</p>
+        <p class="response-sub">IBM construit l'arme. Nous avons construit le bouclier.</p>
+        <button class="enter-btn" onclick="enterSite()">Découvrir AION</button>
+        <div class="footer">
+            <div class="footer-line"></div>
+            <span class="footer-text">Post-Quantum Security</span>
+            <div class="footer-line"></div>
+        </div>
+    </div>
+
+    <script>
+        // === PARTICULES DE FOND ===
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            celebCanvas.width = window.innerWidth;
+            celebCanvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.golden = Math.random() > 0.7;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.golden 
+                    ? `rgba(201, 169, 98, ${this.opacity})`
+                    : `rgba(255, 255, 255, ${this.opacity * 0.5})`;
+                ctx.fill();
+            }
+        }
+
+        const particles = [];
+        for (let i = 0; i < 50; i++) particles.push(new Particle());
+
+        function drawConnections() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(201, 169, 98, ${(1 - dist / 120) * 0.1})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            drawConnections();
+            requestAnimationFrame(animateParticles);
+        }
+
+        // === CELEBRATION : PARTICULES DORÉES QUI MONTENT ===
+        const celebCanvas = document.getElementById('celebration');
+        const celebCtx = celebCanvas.getContext('2d');
+
+        class GoldenParticle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * celebCanvas.width;
+                this.y = celebCanvas.height + 20;
+                this.size = Math.random() * 3 + 1;
+                this.speedY = Math.random() * 1.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.6 + 0.2;
+                this.wobble = Math.random() * Math.PI * 2;
+                this.wobbleSpeed = Math.random() * 0.02 + 0.01;
+            }
+            update() {
+                this.y -= this.speedY;
+                this.wobble += this.wobbleSpeed;
+                this.x += Math.sin(this.wobble) * 0.5 + this.speedX;
+                if (this.y < celebCanvas.height * 0.2) this.opacity -= 0.008;
+                if (this.y < -20 || this.opacity <= 0) this.reset();
+            }
+            draw() {
+                celebCtx.save();
+                celebCtx.globalAlpha = this.opacity;
+                const gradient = celebCtx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 3);
+                gradient.addColorStop(0, 'rgba(201, 169, 98, 1)');
+                gradient.addColorStop(0.5, 'rgba(201, 169, 98, 0.3)');
+                gradient.addColorStop(1, 'rgba(201, 169, 98, 0)');
+                celebCtx.beginPath();
+                celebCtx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+                celebCtx.fillStyle = gradient;
+                celebCtx.fill();
+                celebCtx.beginPath();
+                celebCtx.arc(this.x, this.y, this.size * 0.5, 0, Math.PI * 2);
+                celebCtx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                celebCtx.fill();
+                celebCtx.restore();
+            }
+        }
+
+        class Star {
+            constructor() {
+                this.x = Math.random() * celebCanvas.width;
+                this.y = Math.random() * celebCanvas.height * 0.7;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.twinkleSpeed = Math.random() * 0.03 + 0.01;
+                this.twinklePhase = Math.random() * Math.PI * 2;
+                this.baseOpacity = Math.random() * 0.3 + 0.1;
+            }
+            update() { this.twinklePhase += this.twinkleSpeed; }
+            draw() {
+                const opacity = this.baseOpacity + Math.sin(this.twinklePhase) * 0.2;
+                celebCtx.save();
+                celebCtx.globalAlpha = Math.max(0, opacity);
+                celebCtx.beginPath();
+                celebCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                celebCtx.fillStyle = '#c9a962';
+                celebCtx.fill();
+                celebCtx.restore();
+            }
+        }
+
+        const goldenParticles = [];
+        const stars = [];
+        for (let i = 0; i < 35; i++) {
+            const p = new GoldenParticle();
+            p.y = Math.random() * celebCanvas.height;
+            goldenParticles.push(p);
+        }
+        for (let i = 0; i < 25; i++) stars.push(new Star());
+
+        function animateCelebration() {
+            celebCtx.clearRect(0, 0, celebCanvas.width, celebCanvas.height);
+            stars.forEach(s => { s.update(); s.draw(); });
+            goldenParticles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateCelebration);
+        }
+
+        // === INIT ===
+        resize();
+        window.addEventListener('resize', resize);
+        animateParticles();
+        animateCelebration();
+
+        // === NAVIGATION ===
+        function showScreen2() {
+            document.getElementById('screen1').classList.add('hidden');
+            document.getElementById('screen2').classList.remove('hidden');
+        }
+
+        function enterSite() {
+            document.body.style.transition = 'opacity 0.8s ease';
+            document.body.style.opacity = '0';
+            setTimeout(() => { window.location.href = 'index.html'; }, 800);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                if (!document.getElementById('screen1').classList.contains('hidden')) showScreen2();
+                else enterSite();
+            }
+            if (e.key === 'Escape') {
+                document.getElementById('screen2').classList.add('hidden');
+                document.getElementById('screen1').classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

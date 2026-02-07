@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AION - Écosystème de Souveraineté Numérique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(ellipse at center, #0a1628 0%, #000510 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        /* HEADER */
+        .header {
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+        
+        .header h1 {
+            font-size: 48px;
+            color: #ffd700;
+            letter-spacing: 15px;
+            font-weight: 300;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+        
+        .header .subtitle {
+            font-size: 16px;
+            color: #00d4ff;
+            letter-spacing: 5px;
+            margin-top: 5px;
+        }
+        
+        /* MAIN CONTAINER */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        /* OCTOPUS CONTAINER */
+        .octopus-container {
+            position: relative;
+            width: 900px;
+            height: 900px;
+            margin: 0 auto;
+        }
+        
+        /* CENTER - AION */
+        .center-node {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, #ffd700 0%, #b8860b 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.6), 0 0 100px rgba(255, 215, 0, 0.3);
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .center-node:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 70px rgba(255, 215, 0, 0.8), 0 0 120px rgba(255, 215, 0, 0.5);
+        }
+        
+        /* TENTACLES - SVG LINES */
+        .tentacles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .tentacle {
+            stroke-width: 3;
+            fill: none;
+            opacity: 0.6;
+        }
+        
+        /* FAMILY HUBS */
+        .family-hub {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 50;
+            box-shadow: 0 0 30px currentColor;
+        }
+        
+        .family-hub:hover {
+            transform: scale(1.15);
+        }
+        
+        /* MEDALLIONS */
+        .medallion {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 30;
+            border: 2px solid currentColor;
+            padding: 5px;
+            line-height: 1.1;
+        }
+        
+        .medallion:hover {
+            transform: scale(1.2);
+            z-index: 200;
+        }
+        
+        /* FAMILY COLORS */
+        .family-pip { 
+            background: radial-gradient(circle, #00d4ff 0%, #0077aa 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+        }
+        .family-pip .medallion { 
+            background: rgba(0, 40, 60, 0.9); 
+            color: #00d4ff;
+            border-color: #00d4ff;
+        }
+        
+        .family-asemantix { 
+            background: radial-gradient(circle, #ff6b6b 0%, #aa3333 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(255, 107, 107, 0.6);
+        }
+        .family-asemantix .medallion { 
+            background: rgba(60, 20, 20, 0.9); 
+            color: #ff6b6b;
+            border-color: #ff6b6b;
+        }
+        
+        .family-chronos { 
+            background: radial-gradient(circle, #9b59b6 0%, #5b2a6e 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(155, 89, 182, 0.6);
+        }
+        .family-chronos .medallion { 
+            background: rgba(40, 20, 50, 0.9); 
+            color: #9b59b6;
+            border-color: #9b59b6;
+        }
+        
+        .family-security { 
+            background: radial-gradient(circle, #2ecc71 0%, #1a7a42 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(46, 204, 113, 0.6);
+        }
+        .family-security .medallion { 
+            background: rgba(15, 40, 25, 0.9); 
+            color: #2ecc71;
+            border-color: #2ecc71;
+        }
+        
+        .family-comm { 
+            background: radial-gradient(circle, #f39c12 0%, #a36708 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(243, 156, 18, 0.6);
+        }
+        .family-comm .medallion { 
+            background: rgba(50, 35, 10, 0.9); 
+            color: #f39c12;
+            border-color: #f39c12;
+        }
+        
+        .family-anonymat { 
+            background: radial-gradient(circle, #1abc9c 0%, #0d7a65 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(26, 188, 156, 0.6);
+        }
+        .family-anonymat .medallion { 
+            background: rgba(10, 40, 35, 0.9); 
+            color: #1abc9c;
+            border-color: #1abc9c;
+        }
+        
+        .family-app { 
+            background: radial-gradient(circle, #e74c3c 0%, #922d22 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(231, 76, 60, 0.6);
+        }
+        .family-app .medallion { 
+            background: rgba(50, 15, 15, 0.9); 
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
+        
+        /* MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2a48 100%);
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            border: 2px solid #333;
+        }
+        
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .modal-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .modal-title h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .modal-title .ref {
+            font-family: monospace;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .modal-body {
+            padding: 25px 30px;
+        }
+        
+        .modal-section {
+            margin-bottom: 20px;
+        }
+        
+        .modal-section h3 {
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .modal-section p, .modal-section ul {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .modal-section ul {
+            padding-left: 20px;
+        }
+        
+        .modal-section li {
+            margin-bottom: 8px;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .tag-pq { background: rgba(155, 89, 182, 0.3); color: #9b59b6; }
+        .tag-pip { background: rgba(0, 212, 255, 0.3); color: #00d4ff; }
+        .tag-asem { background: rgba(255, 107, 107, 0.3); color: #ff6b6b; }
+        
+        /* LEGEND */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+        
+        .legend-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+        
+        /* REVOLUTION BANNER */
+        .revolution-banner {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 212, 255, 0.1));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+        }
+        
+        .revolution-banner h2 {
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .revolution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .revolution-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        
+        .revolution-item .icon {
+            font-size: 24px;
+        }
+        
+        .revolution-item .old {
+            text-decoration: line-through;
+            color: #ff6b6b;
+            font-size: 13px;
+        }
+        
+        .revolution-item .new {
+            color: #4ecdc4;
+            font-size: 12px;
+        }
+        
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 12px;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>AION</h1>
+    <div class="subtitle">ÉCOSYSTÈME DE SOUVERAINETÉ NUMÉRIQUE</div>
+</div>
+
+<div class="main-container">
+    <div class="octopus-container">
+        <!-- SVG TENTACLES -->
+        <svg class="tentacles" viewBox="0 0 900 900">
+            <!-- PIP -->
+            <path class="tentacle" stroke="#00d4ff" d="M450,450 Q350,300 200,150"/>
+            <!-- ASEMANTIX -->
+            <path class="tentacle" stroke="#ff6b6b" d="M450,450 Q550,300 700,150"/>
+            <!-- CHRONOS -->
+            <path class="tentacle" stroke="#9b59b6" d="M450,450 Q600,450 750,450"/>
+            <!-- SECURITY -->
+            <path class="tentacle" stroke="#2ecc71" d="M450,450 Q550,600 700,750"/>
+            <!-- COMM -->
+            <path class="tentacle" stroke="#f39c12" d="M450,450 Q350,600 200,750"/>
+            <!-- ANONYMAT -->
+            <path class="tentacle" stroke="#1abc9c" d="M450,450 Q300,450 150,450"/>
+            <!-- APP -->
+            <path class="tentacle" stroke="#e74c3c" d="M450,450 Q450,550 450,700"/>
+        </svg>
+        
+        <!-- CENTER NODE -->
+        <div class="center-node" onclick="showModal('aion')">
+            🐙<br>AION
+        </div>
+        
+        <!-- FAMILY PIP - TOP LEFT -->
+        <div class="family-hub family-pip" style="left: 160px; top: 110px;" onclick="showModal('pip')">
+            🌐<br>PIP<br>Identité
+        </div>
+        <div class="medallion family-pip" style="left: 70px; top: 50px;" onclick="showModal('pip-vpn')">PIP VPN</div>
+        <div class="medallion family-pip" style="left: 180px; top: 20px;" onclick="showModal('pip-mesh')">PIP MESH</div>
+        <div class="medallion family-pip" style="left: 280px; top: 50px;" onclick="showModal('pip-5g')">PIP 5G</div>
+        <div class="medallion family-pip" style="left: 60px; top: 150px;" onclick="showModal('pip-ghost')">PIP GHOST</div>
+        <div class="medallion family-pip" style="left: 100px; top: 230px;" onclick="showModal('pip-satellite')">PIP SATELLITE</div>
+        <div class="medallion family-pip" style="left: 270px; top: 150px;" onclick="showModal('quantum')">QUANTUM</div>
+        
+        <!-- FAMILY ASEMANTIX - TOP RIGHT -->
+        <div class="family-hub family-asemantix" style="right: 160px; top: 110px;" onclick="showModal('asemantix')">
+            📊<br>ASEMANTIX<br>Données
+        </div>
+        <div class="medallion family-asemantix" style="right: 70px; top: 50px;" onclick="showModal('octopus')">OCTOPUS</div>
+        <div class="medallion family-asemantix" style="right: 180px; top: 20px;" onclick="showModal('mailbox')">MAILBOX</div>
+        <div class="medallion family-asemantix" style="right: 280px; top: 50px;" onclick="showModal('sesame')">SESAME</div>
+        <div class="medallion family-asemantix" style="right: 60px; top: 150px;" onclick="showModal('rpag')">RPAG</div>
+        <div class="medallion family-asemantix" style="right: 270px; top: 150px;" onclick="showModal('bridge')">BRIDGE</div>
+        
+        <!-- FAMILY CHRONOS - RIGHT -->
+        <div class="family-hub family-chronos" style="right: 80px; top: 400px;" onclick="showModal('chronos')">
+            ⏱️<br>CHRONOS<br>Temps
+        </div>
+        <div class="medallion family-chronos" style="right: 20px; top: 300px;" onclick="showModal('energysync')">ENERGYSYNC</div>
+        <div class="medallion family-chronos" style="right: 20px; top: 500px;" onclick="showModal('tute-grid')">TUTE GRID</div>
+        <div class="medallion family-chronos" style="right: 100px; top: 280px;" onclick="showModal('token-tute')">TOKEN TUTE</div>
+        <div class="medallion family-chronos" style="right: 100px; top: 520px;" onclick="showModal('pont-chronos')">PONT CHRONOS</div>
+        
+        <!-- FAMILY SECURITY - BOTTOM RIGHT -->
+        <div class="family-hub family-security" style="right: 160px; bottom: 110px;" onclick="showModal('security')">
+            🛡️<br>SÉCURITÉ
+        </div>
+        <div class="medallion family-security" style="right: 70px; bottom: 50px;" onclick="showModal('blackbox')">BLACKBOX</div>
+        <div class="medallion family-security" style="right: 180px; bottom: 20px;" onclick="showModal('vch')">VCH</div>
+        <div class="medallion family-security" style="right: 280px; bottom: 50px;" onclick="showModal('anchors')">ANCHORS</div>
+        <div class="medallion family-security" style="right: 60px; bottom: 150px;" onclick="showModal('phoenix')">PHOENIX</div>
+        <div class="medallion family-security" style="right: 270px; bottom: 150px;" onclick="showModal('heimdall')">HEIMDALL</div>
+        <div class="medallion family-security" style="right: 170px; bottom: 220px;" onclick="showModal('sekhmet')">SEKHMET</div>
+        
+        <!-- FAMILY COMM - BOTTOM LEFT -->
+        <div class="family-hub family-comm" style="left: 160px; bottom: 110px;" onclick="showModal('comm')">
+            📡<br>COMM<br>Canaux
+        </div>
+        <div class="medallion family-comm" style="left: 70px; bottom: 50px;" onclick="showModal('cloak')">CLOAK</div>
+        <div class="medallion family-comm" style="left: 180px; bottom: 20px;" onclick="showModal('fantom')">FANTOM INTERNET</div>
+        <div class="medallion family-comm" style="left: 280px; bottom: 50px;" onclick="showModal('orchestrateur')">ORCHESTRATEUR</div>
+        
+        <!-- FAMILY ANONYMAT - LEFT -->
+        <div class="family-hub family-anonymat" style="left: 80px; top: 400px;" onclick="showModal('anonymat')">
+            👻<br>ANONYMAT
+        </div>
+        <div class="medallion family-anonymat" style="left: 20px; top: 300px;" onclick="showModal('shadow-crowd')">SHADOW CROWD</div>
+        <div class="medallion family-anonymat" style="left: 20px; top: 500px;" onclick="showModal('hydra')">HYDRA</div>
+        
+        <!-- FAMILY APP - BOTTOM CENTER -->
+        <div class="family-hub family-app" style="left: 400px; bottom: 50px;" onclick="showModal('aion-pay')">
+            💰<br>AION PAY
+        </div>
+    </div>
+    
+    <!-- REVOLUTION BANNER -->
+    <div class="revolution-banner">
+        <h2>🚀 CE QUE L'ÉCOSYSTÈME AION ABOLIT</h2>
+        <div class="revolution-grid">
+            <div class="revolution-item">
+                <span class="icon">📍</span>
+                <div>
+                    <div class="old">IP permanente</div>
+                    <div class="new">→ Identités polymorphiques (PIP)</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">📦</span>
+                <div>
+                    <div class="old">Box Internet</div>
+                    <div class="new">→ FANTOM INTERNET</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">⏰</span>
+                <div>
+                    <div class="old">Serveurs NTP/GPS</div>
+                    <div class="new">→ Temps énergétique (CHRONOS)</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">📊</span>
+                <div>
+                    <div class="old">Métadonnées</div>
+                    <div class="new">→ Trafic asémantique (OCTOPUS)</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">🔐</span>
+                <div>
+                    <div class="old">VPN traçable</div>
+                    <div class="new">→ PIP VPN + CLOAK</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">🔌</span>
+                <div>
+                    <div class="old">Câbles / Fibre</div>
+                    <div class="new">→ Multi-canal (Satellite, 5G, Mesh)</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">💳</span>
+                <div>
+                    <div class="old">Transactions visibles</div>
+                    <div class="new">→ AION PAY</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">💻</span>
+                <div>
+                    <div class="old">Ordinateur matériel confiscable</div>
+                    <div class="new">→ Ordinateur liquide immatériel</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- LEGEND -->
+    <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background: #00d4ff;"></div>Identité (PIP)</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #ff6b6b;"></div>Données (ASEMANTIX)</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #9b59b6;"></div>Temps (CHRONOS)</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #2ecc71;"></div>Sécurité</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #f39c12;"></div>Communication</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #1abc9c;"></div>Anonymat</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #e74c3c;"></div>Application</div>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="modal-header">
+            <div class="modal-icon" id="modal-icon">🐙</div>
+            <div class="modal-title">
+                <h2 id="modal-title">AION</h2>
+                <div class="ref" id="modal-ref">Raison sociale</div>
+            </div>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <!-- Content injected by JS -->
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    AION — SOUVERAINETÉ NUMÉRIQUE — 30 BREVETS
+</div>
+
+<script>
+const patents = {
+    'aion': {
+        title: 'AION',
+        ref: 'Raison sociale',
+        icon: '🐙',
+        color: '#ffd700',
+        description: 'AION est l\'écosystème complet de souveraineté numérique. La Pieuvre dont chaque tentacule représente une famille de brevets interconnectés.',
+        features: [
+            '30 brevets déposés',
+            'Post-quantique sur toutes les couches',
+            'Temps souverain par mesure énergétique',
+            'Identités polymorphiques non corrélables',
+            'Trafic asémantique indistinguable du bruit'
+        ],
+        tags: ['POST-QUANTIQUE', 'SOUVERAINETÉ', 'DÉCENTRALISÉ']
+    },
+    'pip': {
+        title: 'PIP',
+        ref: 'FR2600202 — Brevet père',
+        icon: '🌐',
+        color: '#00d4ff',
+        description: 'Permutation d\'Identifiants Polymorphique. Procédé de communication à identifiants réseau non corrélables par permutation polymorphique.',
+        features: [
+            'Adresse IP différente à chaque échange',
+            'Ratchet cryptographique unidirectionnel',
+            'Non-corrélabilité cryptographique',
+            'Forward secrecy (effacement des états passés)',
+            'Fenêtre de synchronisation sans métadonnée'
+        ],
+        tags: ['POST-QUANTIQUE', 'IDENTITÉ', 'CLOCKLESS']
+    },
+    'pip-vpn': {
+        title: 'PIP VPN',
+        ref: 'FR2600251',
+        icon: '🔐',
+        color: '#00d4ff',
+        description: 'VPN à identifiants non corrélables. IP différente à chaque requête, imblocable par DPI ou liste noire.',
+        features: [
+            'IP change à chaque requête (pas de corrélation)',
+            'Aucune signature protocolaire détectable',
+            'Pool d\'IP diversifié (cloud, CDN, résidentiel)',
+            'Contre-mesures anti-ML',
+            'Post-quantique'
+        ],
+        tags: ['VPN', 'ANTI-CENSURE', 'POST-QUANTIQUE']
+    },
+    'pip-mesh': {
+        title: 'PIP MESH',
+        ref: 'FR2600209',
+        icon: '🕸️',
+        color: '#00d4ff',
+        description: 'Réseau maillé à identifiants non corrélables. Topologie invisible pour un observateur.',
+        features: [
+            'Changement d\'identifiant à chaque saut',
+            'Topologie non reconstructible',
+            'Routage anonymisé multi-sauts',
+            'Smart cities, réseaux tactiques'
+        ],
+        tags: ['MESH', 'ANONYMAT', 'IoT']
+    },
+    'pip-5g': {
+        title: 'PIP 5G',
+        ref: 'FR2600261',
+        icon: '📶',
+        color: '#00d4ff',
+        description: 'Handover cellulaire à identifiants non corrélables. Protection de la vie privée dans les réseaux mobiles.',
+        features: [
+            'Nouvel identifiant à chaque handover',
+            'Non-corrélabilité entre cellules',
+            'Compatible 5G/6G',
+            'Véhicules connectés, IoT mobile'
+        ],
+        tags: ['5G', '6G', 'MOBILITÉ']
+    },
+    'pip-ghost': {
+        title: 'PIP GHOST',
+        ref: 'FR2600240',
+        icon: '👻',
+        color: '#00d4ff',
+        description: 'Dispositif fantôme non traçable. Communication avec destinations arbitraires sans coordination préalable.',
+        features: [
+            'Mode autonome (ratchet local)',
+            'Mode cloud (IP distincte à chaque requête)',
+            'Mode hybride',
+            'Anti-tracking absolu'
+        ],
+        tags: ['GHOST', 'ANTI-TRACKING', 'AUTONOME']
+    },
+    'pip-satellite': {
+        title: 'PIP SATELLITE',
+        ref: 'FR2600504',
+        icon: '🛰️',
+        color: '#00d4ff',
+        description: 'Communications satellitaires à identifiants non corrélables. Handover inter-constellation invisible.',
+        features: [
+            'Identifiants distincts par constellation (LEO/MEO/GEO)',
+            'Transition aveugle inter-opérateurs',
+            'Synchronisation asémantique',
+            'Téléphonie satellite, IoT global, défense'
+        ],
+        tags: ['SATELLITE', 'LEO', 'SPATIAL']
+    },
+    'quantum': {
+        title: 'QUANTUM',
+        ref: 'FR2600313',
+        icon: '⚛️',
+        color: '#00d4ff',
+        description: 'PIP initialisé par distribution quantique de clés (QKD). Sécurité inconditionnelle.',
+        features: [
+            'Clé quantique Kq établie par QKD',
+            'Sécurité information-théorique',
+            'Résistance "store-now-decrypt-later"',
+            'Protection du graphe de communication'
+        ],
+        tags: ['QKD', 'QUANTIQUE', 'INCONDITIONNEL']
+    },
+    'asemantix': {
+        title: 'ASEMANTIX CAMELEON',
+        ref: 'FR2516793 — Brevet père',
+        icon: '🦎',
+        color: '#ff6b6b',
+        description: 'Validation locale de fragments asémantiques avec marqueur polymorphe. Le trafic est indistinguable du bruit.',
+        features: [
+            'Portion utile de 256 bits minimum',
+            'Marqueur polymorphe changeant à chaque index',
+            'Filtrage rapide sans calcul crypto (99% rejeté)',
+            'Aucune métadonnée (ni header, ni timestamp)',
+            'Ancre monotone anti-rejeu'
+        ],
+        tags: ['ASÉMANTIQUE', 'POLYMORPHE', 'POST-QUANTIQUE']
+    },
+    'octopus': {
+        title: 'OCTOPUS',
+        ref: 'FR2600020',
+        icon: '🐙',
+        color: '#ff6b6b',
+        description: 'Messagerie sécurisée sur canal hostile. Transport asémantique + segmentation + acquittement implicite.',
+        features: [
+            'Couche transport asémantique (ASEMANTIX)',
+            'Segmentation en fragments de 4 octets header',
+            'Acquittement implicite par avancement d\'ancre',
+            'Modes WHISPER et COMPLIANT',
+            'Point-à-point, groupe, broadcast'
+        ],
+        tags: ['MESSAGERIE', 'ASÉMANTIQUE', 'MULTICAST']
+    },
+    'mailbox': {
+        title: 'MAILBOX',
+        ref: 'FR2600019',
+        icon: '📬',
+        color: '#ff6b6b',
+        description: 'Boîte aux lettres asémantique. Stockage partagé indifférencié, filtrage local par marqueur caché.',
+        features: [
+            'Espace de stockage "mur de bruit"',
+            'Fragments indistinguables du bruit',
+            'Filtrage polymorphe local (99% rejeté)',
+            'Dead drops numériques',
+            'Messagerie résistante à la censure'
+        ],
+        tags: ['DEAD-DROP', 'ASYNCHRONE', 'CENSURE']
+    },
+    'sesame': {
+        title: 'SESAME',
+        ref: 'FR2600010',
+        icon: '🚪',
+        color: '#ff6b6b',
+        description: 'Commande et contrôle de dispositifs sur canal hostile. Commandes asémantiques pour IoT contraint.',
+        features: [
+            'Commandes indistinguables du bruit',
+            'Filtrage polymorphe économe en énergie',
+            'Hiérarchie de commandes (normal/privilégié/urgence)',
+            'IoT, drones, SCADA, médical'
+        ],
+        tags: ['IoT', 'C2', 'CONTRAINT']
+    },
+    'rpag': {
+        title: 'RPAG',
+        ref: 'FR2600021',
+        icon: '🪐',
+        color: '#ff6b6b',
+        description: 'Communication polymorphique autonome clockless. Synchronisation de registres distribués sans horloge.',
+        features: [
+            'Graine initiale partagée hors-bande',
+            'Dérivation locale KDF sans transmission',
+            'Identifiants polymorphes multi-porteuses',
+            'Communications Terre-Mars, blackouts, tactique'
+        ],
+        tags: ['CLOCKLESS', 'SPATIAL', 'AUTONOME']
+    },
+    'bridge': {
+        title: 'BRIDGE',
+        ref: 'FR2600280',
+        icon: '🌉',
+        color: '#ff6b6b',
+        description: 'Couplage PIP + ASEMANTIX. Validation conjointe identifiant + marqueur pour résistance aux attaques hybrides.',
+        features: [
+            'Validation conjointe stricte et unique',
+            'Même index j pour identifiant et marqueur',
+            'Résistance injection + usurpation',
+            'Sans métadonnée de synchronisation'
+        ],
+        tags: ['HYBRIDE', 'COUPLAGE', 'SÉCURITÉ']
+    },
+    'chronos': {
+        title: 'CHRONOS',
+        ref: 'FR2600320 — Brevet père',
+        icon: '⏱️',
+        color: '#9b59b6',
+        description: 'Temps thermodynamique local. τ = E/P — mesure du temps par l\'énergie consommée.',
+        features: [
+            'Temps souverain sans serveur NTP/GPS',
+            'τ démarre à zéro, croît avec l\'énergie',
+            'Anti-rejeu par fraîcheur énergétique',
+            'Prédiction de durée de fonctionnement'
+        ],
+        tags: ['TEMPS', 'ÉNERGÉTIQUE', 'SOUVERAIN']
+    },
+    'energysync': {
+        title: 'ENERGYSYNC',
+        ref: 'FR2600343',
+        icon: '⚡',
+        color: '#9b59b6',
+        description: 'Coordination de groupe par indicateur énergétique local. Synchronisation sans horloge externe.',
+        features: [
+            'Indicateur E(m) calculé localement',
+            'Séquence de seuils énergétiques communs',
+            'Paramètre d\'évolution T(n) partagé',
+            'Essaims de drones, véhicules, IoT'
+        ],
+        tags: ['GROUPE', 'COORDINATION', 'CLOCKLESS']
+    },
+    'tute-grid': {
+        title: 'TUTE GRID',
+        ref: 'FR2600519',
+        icon: '🔋',
+        color: '#9b59b6',
+        description: 'Optimisation de réseau énergétique par temps énergétique. Orchestration intelligente des flux.',
+        features: [
+            'Temps énergétique réseau τi pour chaque nœud',
+            'Prédiction de risques réseau',
+            'Routage prioritaire vers nœuds critiques',
+            'Smart grid, véhicules électriques'
+        ],
+        tags: ['GRID', 'SMART', 'ÉNERGIE']
+    },
+    'token-tute': {
+        title: 'TOKEN TUTE',
+        ref: 'FR2600542',
+        icon: '🔑',
+        color: '#9b59b6',
+        description: 'Dispositif portable d\'horodatage énergétique. Clé d\'accès à l\'Ordinateur Liquide.',
+        features: [
+            'Source d\'énergie autonome',
+            'Calcul de temps énergétique τ = E/P',
+            'Élément sécurisé (clés post-quantiques)',
+            'Appareil hôte réduit à un écran',
+            'Rien à confisquer aux frontières'
+        ],
+        tags: ['TOKEN', 'PORTABLE', 'SOUVERAIN']
+    },
+    'pont-chronos': {
+        title: 'PONT CHRONOS',
+        ref: 'FR2600323',
+        icon: '🌉',
+        color: '#9b59b6',
+        description: 'Triple protection : CHRONOS + PIP + CLOAK. Tunnel chiffré piloté par temps thermodynamique.',
+        features: [
+            'Temps τth comme référentiel commun',
+            'Permutation d\'identifiants indexée sur τ',
+            'Mimétisme comportemental synchronisé',
+            'Coordination de transitions inter-couches'
+        ],
+        tags: ['TRIPLE', 'VPN', 'INTÉGRÉ']
+    },
+    'blackbox': {
+        title: 'BLACKBOX',
+        ref: 'FR2600204',
+        icon: '📦',
+        color: '#2ecc71',
+        description: 'Contrôle d\'accès local à contenus chiffrés. View-once avec preuve d\'effacement.',
+        features: [
+            'Double contrôle (secret appareil + facteur humain)',
+            'Attestation de fraîcheur sans métadonnée',
+            'Restitution view-once',
+            'Effacement sécurisé avec preuve crypto',
+            'Fonctionne hors ligne'
+        ],
+        tags: ['VIEW-ONCE', 'EFFACEMENT', 'HORS-LIGNE']
+    },
+    'vch': {
+        title: 'VCH',
+        ref: 'FR2600203',
+        icon: '⛓️',
+        color: '#2ecc71',
+        description: 'Validation par Chaînage d\'Historique. Intégrité et ordonnancement sans métadonnées.',
+        features: [
+            'Engagement de chaîne Ci récursif',
+            'Élément de validation Vi sans index transmis',
+            'Variantes : MAC, signature, ZK',
+            'Anti-rejeu, anti-rollback'
+        ],
+        tags: ['CHAÎNAGE', 'INTÉGRITÉ', 'AUDIT']
+    },
+    'anchors': {
+        title: 'ANCHORS',
+        ref: 'FR2600207',
+        icon: '⚓',
+        color: '#2ecc71',
+        description: 'Resynchronisation par code d\'ancre. Récupération d\'état sans serveur.',
+        features: [
+            'Code d\'ancre A(i) dérivé de l\'état Ki',
+            'Présentation via QR, NFC, mnémonique, audio',
+            'Modes Genesis, Retro, Jump',
+            'Validation par recomputation locale'
+        ],
+        tags: ['RESYNC', 'RECOVERY', 'OFFLINE']
+    },
+    'phoenix': {
+        title: 'PHOENIX',
+        ref: 'FR2600311',
+        icon: '🔥',
+        color: '#2ecc71',
+        description: 'Reprise automatique de session à ratchet. Résurrection sans serveur central.',
+        features: [
+            'Fenêtre glissante de checkpoints',
+            'Jeton de résurrection (sélecteur, pas état)',
+            'Validation par recomputation locale',
+            'Sans retransmission d\'état'
+        ],
+        tags: ['REPRISE', 'RATCHET', 'RÉSILIENCE']
+    },
+    'heimdall': {
+        title: 'HEIMDALL',
+        ref: 'FR2600400',
+        icon: '👁️',
+        color: '#2ecc71',
+        description: 'Authentification par signature énergétique. Double facteur : secret + profil physique.',
+        features: [
+            'Indicateur énergétique E(t) mesuré',
+            'Signature S(t) = H(Q(E) || K || ctx || n)',
+            'Profil de référence Pref',
+            'Impossible à reproduire sur autre matériel'
+        ],
+        tags: ['AUTH', 'ÉNERGÉTIQUE', 'ANTI-CLONE']
+    },
+    'sekhmet': {
+        title: 'SEKHMET',
+        ref: 'FR2600447',
+        icon: '🦁',
+        color: '#2ecc71',
+        description: 'Protection autonome par profil énergétique. Détection et neutralisation sans serveur.',
+        features: [
+            'Profil de comportement normal (pas signatures malware)',
+            'Détection d\'anomalies par écart énergétique',
+            'Contre-mesures graduées automatiques',
+            'Journal chaîné pour forensique',
+            'Détection rootkits, espionnage, exfiltration'
+        ],
+        tags: ['EDR', 'AUTONOME', 'FORENSIQUE']
+    },
+    'cloak': {
+        title: 'CLOAK',
+        ref: 'FR2600321',
+        icon: '🧥',
+        color: '#f39c12',
+        description: 'Mimétisme comportemental. Le trafic VPN ressemble à Netflix, Zoom, etc.',
+        features: [
+            'Profils comportementaux (streaming, visio, jeu)',
+            'Transformation temporelle, volumétrique, statistique',
+            'Score d\'écart Kolmogorov-Smirnov',
+            'Ajustement en boucle fermée',
+            'Indistinguable pour classificateurs ML'
+        ],
+        tags: ['MIMÉTISME', 'ANTI-DPI', 'ANTI-ML']
+    },
+    'fantom': {
+        title: 'FANTOM INTERNET',
+        ref: 'FR2600506',
+        icon: '👻',
+        color: '#f39c12',
+        description: 'Connexion Internet anonyme sans infrastructure fixe. Plus de box, plus de câble.',
+        features: [
+            'Multi-connectivité (4G/5G, satellite, WiFi, mesh)',
+            'Permutation d\'identifiants intégrée',
+            'Aucune infrastructure fixe',
+            'Aucun contrat nominatif',
+            'Non géolocalisable'
+        ],
+        tags: ['NOMADE', 'SANS-FIL', 'ANONYME']
+    },
+    'orchestrateur': {
+        title: 'ORCHESTRATEUR',
+        ref: 'En cours',
+        icon: '🎼',
+        color: '#f39c12',
+        description: 'Orchestration adaptative de transport asémantique sur canaux bruts hétérogènes.',
+        features: [
+            'Métriques locales (latence, énergie, divergence)',
+            'Temps thermodynamique comme échelle interne',
+            'Décision en temps constant par PRF',
+            'Audit ex-post par paramètres publics EVOL',
+            'Canaux structurés et bruts (radio, optique)'
+        ],
+        tags: ['ORCHESTRATION', 'MULTI-CANAL', 'ADAPTATIF']
+    },
+    'shadow-crowd': {
+        title: 'SHADOW CROWD',
+        ref: 'FR2600341',
+        icon: '👥',
+        color: '#1abc9c',
+        description: 'Anonymat collectif. Le groupe génère du trafic indistinguable entre membres.',
+        features: [
+            'Paramètre propre Π(m) par membre',
+            'Profil de référence commun Ω',
+            'Trafic factice conforme au profil',
+            'Décorrélation active inter-membres',
+            'Attribution individuelle impossible'
+        ],
+        tags: ['COLLECTIF', 'FOULE', 'ANONYMAT']
+    },
+    'hydra': {
+        title: 'HYDRA',
+        ref: 'FR2600333',
+        icon: '🐉',
+        color: '#1abc9c',
+        description: 'Identités réseau multiples simultanées non corrélables sur un même dispositif.',
+        features: [
+            'Plusieurs identités actives en parallèle',
+            'Graine cryptographique par identité',
+            'Contexte réseau isolé par identité',
+            'Décorrélation active inter-identités',
+            'Isolation cryptographique totale'
+        ],
+        tags: ['MULTI-ID', 'PARALLÈLE', 'ISOLATION']
+    },
+    'aion-pay': {
+        title: 'AION PAY',
+        ref: 'FR2600514',
+        icon: '💰',
+        color: '#e74c3c',
+        description: 'Transaction financière asémantique. Paiement vérifiable mais invisible.',
+        features: [
+            'Représentation indistinguable du bruit',
+            'Preuve ZK de validité (solde, authenticité)',
+            'Vérification sans accès aux données',
+            'Engagements homomorphes',
+            'Divulgation sélective pour régulation'
+        ],
+        tags: ['PAIEMENT', 'ZK', 'PRIVACY']
+    }
+};
+
+function showModal(id) {
+    const data = patents[id];
+    if (!data) return;
+    
+    document.getElementById('modal-title').textContent = data.title;
+    document.getElementById('modal-ref').textContent = data.ref;
+    document.getElementById('modal-icon').textContent = data.icon;
+    document.getElementById('modal-icon').style.background = data.color;
+    
+    let html = `
+        <div class="modal-section">
+            <h3>Description</h3>
+            <p>${data.description}</p>
+        </div>
+        <div class="modal-section">
+            <h3>Caractéristiques</h3>
+            <ul>
+                ${data.features.map(f => `<li>${f}</li>`).join('')}
+            </ul>
+        </div>
+        <div class="modal-section">
+            <h3>Tags</h3>
+            ${data.tags.map(t => `<span class="tag tag-pq">${t}</span>`).join('')}
+        </div>
+    `;
+    
+    document.getElementById('modal-body').innerHTML = html;
+    document.getElementById('modal-overlay').classList.add('active');
+}
+
+function closeModal(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('modal-overlay').classList.remove('active');
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+});
+</script>
+
+</body>
+</html>
