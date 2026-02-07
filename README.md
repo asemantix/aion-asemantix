@@ -1,6 +1,6 @@
 # AION ASEMANTIX™
 
-## 32 Patents | 7 Divisions | The Era of Tranquility
+## 38 Patents | 7 Divisions | The Era of Tranquility
 
 ![Patents](https://img.shields.io/badge/Patents-32-gold)
 ![Divisions](https://img.shields.io/badge/Divisions-7-blue)
