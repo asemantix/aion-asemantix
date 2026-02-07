@@ -489,7 +489,6 @@
         </a>
         <div class="nav-links">
             <a href="#divisions">Divisions</a>
-            <a href="the-octopus.html" style="color: #c9a962;">🐙 The Octopus</a>
             <a href="tute.html" style="color: #00ffaa;">TUTE τ</a>
             <a href="#contact">Contact</a>
             <a href="index.html" class="lang-switch">FR</a>
@@ -632,7 +631,7 @@
 
     <section id="contact" class="contact">
         <h2 class="section-title">Contact</h2>
-        <a href="/cdn-cgi/l/email-protection#f2869a939d8093918687b2959f939b9edc919d9f" class="contact-email"><span class="__cf_email__" data-cfemail="82f6eae3edf0e3e1f6f7c2e5efe3ebeeace1edef">[email&#160;protected]</span></a>
+        <a href="mailto:thaoractu@gmail.com" class="contact-email">thaoractu@gmail.com</a>
         <p style="margin-top: 1rem; color: var(--gray-300);">Licensing • Partnerships • Acquisitions</p>
     </section>
 
@@ -647,7 +646,7 @@
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         const patents = {
             pip: { ref: "FR2600202", name: "PIP POLYMORPHIC", subtitle: "Foundation patent", division: "AION Core", abstract: "Non-correlatable communication via polymorphic identifier permutation.", points: ["Coordination mechanism for changing identifiers", "Cryptographic non-correlatability guaranteed", "Post-quantum extensions", "Foundation of entire AION ecosystem"] },
             asemantix: { ref: "FR2516793", name: "ASEMANTIX CAMELEON", subtitle: "Polymorphic asemantic fragments", division: "AION Core", abstract: "Asemantic useful portion validation with polymorphic marker.", points: ["Fragments indistinguishable from noise", "99%+ rejected without crypto computation", "Forward secrecy via KDF evolution", "Censorship resistant"] },
@@ -735,4 +734,13 @@
         }
 
         function closeModal() {
-            document.getElementById('modal').style.di
+            document.getElementById('modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('modal')) closeModal();
+        };
+    </script>
+</body>
+</html>
