@@ -1,457 +1,1774 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AION - L'Écosystème</title>
-    <style>
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   AION ASEMANTIX™ — Shared Styles
+   ============================================================ */
+
+:root{--bg:#06060a;--bg2:#0c0c12;--bg3:#111118;--w:#f0f0f0;--wd:#a8a8b0;--g:#c9a962;--gl:#e0c88a;--gd:#8a7340;--bd:rgba(255,255,255,0.06);--green:#00e5a0;--green-dim:#00b87f;--purple:#a78bfa;--purple-dim:#7c5fc7;--blue:#00d4ff;--red:#f87171;--orange:#f97316;--rev:#ff6b9d;--tact:#22c55e;--mesh:#eab308}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--w);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}::selection{background:var(--g);color:var(--bg)}
+
+/* NOISE TEXTURE */
+body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,6,10,0.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;padding:0.7rem 2.5rem}
+.nav-logo{display:flex;align-items:center;gap:0.8rem;text-decoration:none}
+.nav-logo img{height:34px;filter:drop-shadow(0 0 6px rgba(201,169,98,0.3))}
+.nav-logo span{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--g);letter-spacing:0.2em}
+.nav-links{display:flex;gap:0.2rem;align-items:center;flex-wrap:wrap}
+.nav-links a{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--wd);text-decoration:none;transition:all 0.3s;font-weight:500;padding:0.4rem 0.6rem;border-radius:4px}
+.nav-links a:hover{color:var(--g);background:rgba(201,169,98,0.06)}
+.nav-links a.active{color:var(--g);background:rgba(201,169,98,0.08)}
+.nav-sep{width:1px;height:14px;background:var(--bd);margin:0 0.2rem}
+
+/* PARTICLES */
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;width:2px;height:2px;background:var(--g);border-radius:50%;opacity:0;animation:pf linear infinite}
+@keyframes pf{0%{opacity:0;transform:translateY(100vh) scale(0)}10%{opacity:0.4}90%{opacity:0.4}100%{opacity:0;transform:translateY(-10vh) scale(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 4px rgba(201,169,98,0.3))}50%{filter:drop-shadow(0 0 12px rgba(201,169,98,0.6))}}
+
+/* PAGE HERO */
+.page-hero{min-height:50vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:7rem 2rem 3rem;position:relative}
+.ph-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.5em;margin-bottom:1rem}
+.ph-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:400;margin-bottom:0.8rem}
+.ph-title em{font-style:italic}
+.ph-sub{font-size:1rem;color:var(--wd);font-weight:300;max-width:650px;margin:0 auto;line-height:1.7}
+
+/* CONTENT */
+.content{max-width:900px;margin:0 auto;padding:0 2.5rem 5rem}
+.content h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:500;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid var(--bd)}
+.content h2 span{color:var(--g)}
+.content p{font-size:0.9rem;color:var(--wd);font-weight:300;line-height:1.9;margin-bottom:1rem}
+.content strong{color:var(--w);font-weight:500}
+.content em{color:var(--gl)}
+.csec{margin-bottom:3rem}
+
+/* COMPARISON */
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+@media(max-width:700px){.cmp-grid{grid-template-columns:1fr}}
+.cmp-card{padding:28px;border-radius:14px;background:var(--bg2);border:1px solid var(--bd);position:relative;overflow:hidden}
+.cmp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.cmp-card.bad{border-color:rgba(248,113,113,0.15)}.cmp-card.bad::before{background:linear-gradient(90deg,var(--red),transparent)}
+.cmp-card.good{border-color:rgba(0,229,160,0.15)}.cmp-card.good::before{background:linear-gradient(90deg,var(--green),var(--purple))}
+.cmp-card h4{font-size:1rem;font-weight:600;margin-bottom:16px}
+.cmp-card.bad h4{color:var(--red)}.cmp-card.good h4{color:var(--green)}
+.cmp-point{display:flex;gap:8px;margin-bottom:10px;font-size:0.8rem;color:var(--wd);line-height:1.5}
+
+/* LAYER STACK */
+.layer-stack{margin:24px 0}
+.ls-item{display:grid;grid-template-columns:44px 180px 1fr 100px;align-items:center;gap:12px;padding:14px 18px;border-radius:10px;margin-bottom:4px;border:1px solid transparent;transition:all 0.3s}
+.ls-item:hover{border-color:var(--bd);background:var(--bg2);transform:translateX(3px)}
+.ls-num{font-family:'JetBrains Mono',monospace;font-size:0.75rem;font-weight:600;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:6px}
+.ls-name{font-family:'JetBrains Mono',monospace;font-size:0.8rem;font-weight:600;letter-spacing:0.04em}
+.ls-desc{font-size:0.8rem;color:var(--wd)}
+.ls-ref{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd);opacity:0.4;text-align:right}
+@media(max-width:800px){.ls-item{grid-template-columns:36px 1fr}.ls-desc,.ls-ref{display:none}}
+
+/* BARRIERS */
+.barrier-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+@media(max-width:800px){.barrier-row{grid-template-columns:1fr}}
+.barrier{padding:22px;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;border-top:2px solid var(--purple-dim)}
+.barrier-badge{font-family:'JetBrains Mono',monospace;font-size:0.6rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,0.08);padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:8px}
+.barrier h5{font-size:0.9rem;font-weight:600;margin-bottom:6px}
+.barrier p{font-size:0.75rem;color:var(--wd);line-height:1.6;margin-bottom:8px}
+.barrier-verdict{font-family:'JetBrains Mono',monospace;font-size:0.6rem;font-weight:600;color:var(--green);background:rgba(0,229,160,0.06);border:1px solid rgba(0,229,160,0.15);padding:3px 8px;border-radius:4px;display:inline-block}
+
+/* FORMULA */
+.formula-box{text-align:center;padding:32px;margin:28px 0;background:linear-gradient(135deg,rgba(167,139,250,0.04),rgba(0,229,160,0.03));border:1px solid rgba(167,139,250,0.15);border-radius:14px}
+.formula{font-family:'JetBrains Mono',monospace;font-size:clamp(0.7rem,1.6vw,0.95rem);font-weight:600;letter-spacing:1px;margin-bottom:10px;background:linear-gradient(135deg,var(--purple),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.formula-sub{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--wd);font-style:italic}
+
+/* PATENT CARDS */
+.patent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:24px 0}
+.patent-card{padding:24px;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;transition:all 0.3s;border-left:3px solid var(--g)}
+.patent-card:hover{border-color:rgba(201,169,98,0.2);transform:translateY(-2px)}
+.patent-card h4{font-family:'JetBrains Mono',monospace;font-size:0.85rem;margin-bottom:4px}
+.patent-card .sub{font-size:0.75rem;color:var(--wd);margin-bottom:8px}
+.patent-card p{font-size:0.8rem;color:var(--wd);line-height:1.6;margin-bottom:8px}
+.patent-card .ref{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd);opacity:0.4}
+
+/* FEATURE GRID */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:24px 0}
+.feat{padding:20px;background:var(--bg2);border:1px solid var(--bd);border-radius:10px;transition:all 0.3s}
+.feat:hover{border-color:rgba(201,169,98,0.15);transform:translateY(-2px)}
+.feat-icon{font-size:1.8rem;margin-bottom:8px}
+.feat-title{font-size:0.9rem;font-weight:600;margin-bottom:4px}
+.feat-text{font-size:0.78rem;color:var(--wd);line-height:1.5}
+
+/* QUOTE */
+.quote{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--gl);border-left:2px solid var(--gd);padding:1.2rem 1.5rem;margin:1.5rem 0}
+
+/* HIGHLIGHT BOX */
+.highlight{background:linear-gradient(135deg,rgba(201,169,98,0.06),rgba(0,229,160,0.03));border-left:3px solid var(--g);padding:1.5rem;border-radius:0 10px 10px 0;margin:1.5rem 0}
+.highlight .hl-title{color:var(--g);font-size:0.95rem;font-weight:500;margin-bottom:10px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--bd);padding:2.5rem;text-align:center}
+.fb{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--g);letter-spacing:0.3em;margin-bottom:0.5rem}
+.fi{font-size:0.65rem;color:var(--wd);opacity:0.4;line-height:1.6}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(25px);transition:opacity 0.6s,transform 0.6s}.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:768px){nav{padding:0.6rem 1rem;flex-wrap:wrap;gap:0.5rem}.nav-links{gap:0.1rem}.nav-links a{font-size:0.5rem;padding:0.3rem 0.4rem}.barrier-row{grid-template-columns:1fr}.cmp-grid{grid-template-columns:1fr}}
+
+</style>
+<style>
+/* PIEUVRE ECOSYSTEME — scoped styles */
+.pieuvre-container { background: var(--bg); }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        @page {
-            size: A4;
-            margin: 0;
-        }
-        
-        body {
+        .pieuvre-container {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: radial-gradient(ellipse at center, #0a0a1a 0%, #000005 100%);
-            color: white;
+            background: radial-gradient(ellipse at center, #0a1628 0%, #000510 100%);
             min-height: 100vh;
-            padding: 20px;
-            overflow: hidden;
+            color: #e0e0e0;
+            overflow-x: hidden;
         }
         
-        .title {
+        /* HEADER */
+        .header {
             text-align: center;
-            margin-bottom: 10px;
+            padding: 30px 20px 10px;
         }
         
-        .title h1 {
-            font-size: 36px;
-            font-weight: 300;
-            color: #fff;
+        .header h1 {
+            font-size: 48px;
+            color: #ffd700;
             letter-spacing: 15px;
-        }
-        
-        .title h2 {
-            font-size: 18px;
-            color: #888;
             font-weight: 300;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+        
+        .header .subtitle {
+            font-size: 16px;
+            color: #00d4ff;
             letter-spacing: 5px;
+            margin-top: 5px;
         }
         
-        .ecosystem {
+        /* MAIN CONTAINER */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        /* OCTOPUS CONTAINER */
+        .octopus-container {
             position: relative;
-            width: 100%;
-            height: 85vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 900px;
+            height: 900px;
+            margin: 0 auto;
         }
         
-        /* Centre - L'utilisateur */
-        .center {
+        /* CENTER - AION */
+        .center-node {
             position: absolute;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, #ffd700 0%, #ff8c00 100%);
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 60px rgba(255, 215, 0, 0.5);
-            z-index: 10;
-        }
-        
-        .center-icon {
-            font-size: 40px;
-        }
-        
-        .center-text {
-            font-size: 12px;
-            font-weight: 700;
-            color: #000;
-            text-align: center;
-        }
-        
-        /* Premier anneau - TOKEN TUTE */
-        .ring1 {
-            position: absolute;
-            width: 220px;
-            height: 220px;
-            border: 2px dashed rgba(0, 212, 255, 0.3);
-            border-radius: 50%;
-        }
-        
-        /* Deuxième anneau - Couches fondamentales */
-        .ring2 {
-            position: absolute;
-            width: 380px;
-            height: 380px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-        }
-        
-        /* Troisième anneau - Applications */
-        .ring3 {
-            position: absolute;
-            width: 550px;
-            height: 550px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-        }
-        
-        /* Nodes */
-        .node {
-            position: absolute;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .node:hover {
-            transform: scale(1.1);
-        }
-        
-        .node-icon {
-            font-size: 24px;
-            margin-bottom: 3px;
-        }
-        
-        .node-name {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        
-        /* Token TUTE - autour du centre */
-        .token {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #00d4ff, #0099cc);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
-            top: 50%;
             left: 50%;
-            transform: translate(-50%, -170%);
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, #ffd700 0%, #b8860b 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.6), 0 0 100px rgba(255, 215, 0, 0.3);
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
         }
         
-        /* Couche TUTE */
-        .tute {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #9b59b6, #8e44ad);
-            box-shadow: 0 0 20px rgba(155, 89, 182, 0.5);
+        .center-node:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 70px rgba(255, 215, 0, 0.8), 0 0 120px rgba(255, 215, 0, 0.5);
         }
         
-        .tute1 { top: 15%; left: 50%; transform: translateX(-50%); }
-        .tute2 { top: 25%; left: 20%; }
-        .tute3 { top: 25%; right: 20%; }
-        
-        /* Couche PIP */
-        .pip {
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
-        }
-        
-        .pip1 { top: 50%; left: 8%; transform: translateY(-50%); }
-        .pip2 { bottom: 25%; left: 15%; }
-        .pip3 { top: 35%; left: 12%; }
-        
-        /* Couche FANTOM */
-        .fantom {
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
-        }
-        
-        .fantom1 { top: 50%; right: 8%; transform: translateY(-50%); }
-        .fantom2 { bottom: 25%; right: 15%; }
-        
-        /* Couche ASEMANTIX */
-        .asemantix {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #f39c12, #d68910);
-            box-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
-        }
-        
-        .asemantix1 { bottom: 10%; left: 30%; }
-        .asemantix2 { bottom: 10%; right: 30%; }
-        
-        /* Applications */
-        .app {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, #1abc9c, #16a085);
-            box-shadow: 0 0 15px rgba(26, 188, 156, 0.4);
-        }
-        
-        .app1 { top: 5%; left: 25%; }
-        .app2 { top: 5%; right: 25%; }
-        .app3 { bottom: 5%; left: 50%; transform: translateX(-50%); }
-        
-        /* Sécurité */
-        .security {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #e91e63, #c2185b);
-            box-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
-        }
-        
-        .security1 { top: 35%; right: 12%; }
-        .security2 { bottom: 15%; left: 50%; transform: translateX(-50%); }
-        
-        /* Lignes de connexion */
-        .connections {
+        /* TENTACLES - SVG LINES */
+        .tentacles {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
+            z-index: 1;
         }
         
-        .connections svg {
+        .tentacle {
+            stroke-width: 3;
+            fill: none;
+            opacity: 0.6;
+        }
+        
+        /* FAMILY HUBS */
+        .family-hub {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 50;
+            box-shadow: 0 0 30px currentColor;
+        }
+        
+        .family-hub:hover {
+            transform: scale(1.15);
+        }
+        
+        /* MEDALLIONS */
+        .medallion {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 30;
+            border: 2px solid currentColor;
+            padding: 5px;
+            line-height: 1.1;
+        }
+        
+        .medallion:hover {
+            transform: scale(1.2);
+            z-index: 200;
+        }
+        
+        /* FAMILY COLORS */
+        .family-pip { 
+            background: radial-gradient(circle, #00d4ff 0%, #0077aa 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+        }
+        .family-pip .medallion { 
+            background: rgba(0, 40, 60, 0.9); 
+            color: #00d4ff;
+            border-color: #00d4ff;
+        }
+        
+        .family-asemantix { 
+            background: radial-gradient(circle, #ff6b6b 0%, #aa3333 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(255, 107, 107, 0.6);
+        }
+        .family-asemantix .medallion { 
+            background: rgba(60, 20, 20, 0.9); 
+            color: #ff6b6b;
+            border-color: #ff6b6b;
+        }
+        
+        .family-chronos { 
+            background: radial-gradient(circle, #9b59b6 0%, #5b2a6e 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(155, 89, 182, 0.6);
+        }
+        .family-chronos .medallion { 
+            background: rgba(40, 20, 50, 0.9); 
+            color: #9b59b6;
+            border-color: #9b59b6;
+        }
+        
+        .family-security { 
+            background: radial-gradient(circle, #2ecc71 0%, #1a7a42 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(46, 204, 113, 0.6);
+        }
+        .family-security .medallion { 
+            background: rgba(15, 40, 25, 0.9); 
+            color: #2ecc71;
+            border-color: #2ecc71;
+        }
+        
+        .family-comm { 
+            background: radial-gradient(circle, #f39c12 0%, #a36708 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(243, 156, 18, 0.6);
+        }
+        .family-comm .medallion { 
+            background: rgba(50, 35, 10, 0.9); 
+            color: #f39c12;
+            border-color: #f39c12;
+        }
+        
+        .family-anonymat { 
+            background: radial-gradient(circle, #1abc9c 0%, #0d7a65 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(26, 188, 156, 0.6);
+        }
+        .family-anonymat .medallion { 
+            background: rgba(10, 40, 35, 0.9); 
+            color: #1abc9c;
+            border-color: #1abc9c;
+        }
+        
+        .family-app { 
+            background: radial-gradient(circle, #e74c3c 0%, #922d22 100%); 
+            color: #fff;
+            box-shadow: 0 0 25px rgba(231, 76, 60, 0.6);
+        }
+        .family-app .medallion { 
+            background: rgba(50, 15, 15, 0.9); 
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
+        
+        /* MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
         
-        .connection-line {
-            stroke: rgba(255, 255, 255, 0.1);
-            stroke-width: 1;
-            fill: none;
-        }
-        
-        .connection-line-strong {
-            stroke: rgba(0, 212, 255, 0.3);
-            stroke-width: 2;
-            fill: none;
-        }
-        
-        /* Légende */
-        .legend {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+        .modal-overlay.active {
             display: flex;
+        }
+        
+        .modal {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2a48 100%);
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            border: 2px solid #333;
+        }
+        
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
             gap: 20px;
-            font-size: 10px;
-            color: #666;
+        }
+        
+        .modal-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .modal-title h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .modal-title .ref {
+            font-family: monospace;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .modal-.pieuvre-container {
+            padding: 25px 30px;
+        }
+        
+        .modal-section {
+            margin-bottom: 20px;
+        }
+        
+        .modal-section h3 {
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .modal-section p, .modal-section ul {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .modal-section ul {
+            padding-left: 20px;
+        }
+        
+        .modal-section li {
+            margin-bottom: 8px;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .tag-pq { background: rgba(155, 89, 182, 0.3); color: #9b59b6; }
+        .tag-pip { background: rgba(0, 212, 255, 0.3); color: #00d4ff; }
+        .tag-asem { background: rgba(255, 107, 107, 0.3); color: #ff6b6b; }
+        
+        /* LEGEND */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            margin-top: 20px;
         }
         
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            font-size: 12px;
         }
         
         .legend-dot {
-            width: 10px;
-            height: 10px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
         }
         
-        /* Ordinateur Liquide - grand cercle englobant */
-        .liquid-computer {
-            position: absolute;
-            width: 650px;
-            height: 650px;
-            border: 3px solid rgba(0, 212, 255, 0.2);
-            border-radius: 50%;
+        /* REVOLUTION BANNER */
+        .revolution-banner {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 212, 255, 0.1));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+        }
+        
+        .revolution-banner h2 {
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .revolution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .revolution-item {
             display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            padding-bottom: 15px;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
         }
         
-        .liquid-label {
-            background: rgba(0, 212, 255, 0.1);
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            color: #00d4ff;
+        .revolution-item .icon {
+            font-size: 24px;
+        }
+        
+        .revolution-item .old {
+            text-decoration: line-through;
+            color: #ff6b6b;
+            font-size: 13px;
+        }
+        
+        .revolution-item .new {
+            color: #4ecdc4;
+            font-size: 12px;
+        }
+        
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 12px;
             letter-spacing: 3px;
         }
-    </style>
-</head>
-<body>
-    <div class="title">
-        <h1>AION</h1>
-        <h2>L'ÉCOSYSTÈME DE LA SOUVERAINETÉ NUMÉRIQUE</h2>
-    </div>
     
-    <div class="ecosystem">
-        <!-- Cercle Ordinateur Liquide -->
-        <div class="liquid-computer">
-            <span class="liquid-label">ORDINATEUR LIQUIDE</span>
+</style>
+<title>Écosystème AION — Vue complète — AION ASEMANTIX™</title>
+</head><body>
+<div class="particles" id="pc"></div>
+<nav>
+  <a class="nav-logo" href="index.html"><img src="AION_LOGO_FIGURATIF_OR.png" alt="AION" onerror="this.style.display='none'"><span>AION ASEMANTIX™</span></a>
+  <div class="nav-links">
+    <a href="index.html" id="nav-home" class="active">Accueil</a>
+    <div class="nav-sep"></div>
+    <a href="asemantique.html" id="nav-asem">Asémanticité</a>
+    <a href="fantom.html" id="nav-fantom">FANTOM</a>
+    <a href="messageries.html" id="nav-msg">Messageries</a>
+    <div class="nav-sep"></div>
+    <a href="post-quantique.html" id="nav-pq">Post-Quantique</a>
+    <a href="ordinateur-liquide.html" id="nav-liquide">Ordinateur Liquide</a>
+    <a href="temps.html" id="nav-temps">Temps τ=E/P</a>
+    <div class="nav-sep"></div>
+    <a href="securite.html" id="nav-secu">Sécurité</a>
+    <a href="reseaux.html" id="nav-mesh">Réseaux</a>
+    <div class="nav-sep"></div>
+    <a href="manifeste.html" id="nav-manifeste">Manifeste</a>
+    <a href="inventrice.html" id="nav-inventrice">L'Inventrice</a>
+  </div>
+</nav>
+
+<section class="page-hero" style="background:radial-gradient(ellipse at 50% 50%,rgba(201,169,98,0.04),transparent 60%)">
+<div>
+<div class="ph-label" style="color:var(--g)">38 BREVETS INPI</div>
+<h1 class="ph-title">L'<em>Écosystème</em> complet</h1>
+<p class="ph-sub">Vue interactive de la souveraineté numérique AION. Cliquez sur chaque nœud pour explorer les brevets et leurs connexions.</p>
+</div>
+</section>
+
+<div class="pieuvre-container" style="max-width:1200px;margin:0 auto;padding:0 1rem 3rem">
+
+
+<div class="header">
+    <h1>AION</h1>
+    <div class="subtitle">ÉCOSYSTÈME DE SOUVERAINETÉ NUMÉRIQUE</div>
+</div>
+
+<div class="main-container">
+    <div class="octopus-container">
+        <!-- SVG TENTACLES -->
+        <svg class="tentacles" viewBox="0 0 900 900">
+            <!-- PIP -->
+            <path class="tentacle" stroke="#00d4ff" d="M450,450 Q350,300 200,150"/>
+            <!-- ASEMANTIX -->
+            <path class="tentacle" stroke="#ff6b6b" d="M450,450 Q550,300 700,150"/>
+            <!-- CHRONOS -->
+            <path class="tentacle" stroke="#9b59b6" d="M450,450 Q600,450 750,450"/>
+            <!-- SECURITY -->
+            <path class="tentacle" stroke="#2ecc71" d="M450,450 Q550,600 700,750"/>
+            <!-- COMM -->
+            <path class="tentacle" stroke="#f39c12" d="M450,450 Q350,600 200,750"/>
+            <!-- ANONYMAT -->
+            <path class="tentacle" stroke="#1abc9c" d="M450,450 Q300,450 150,450"/>
+            <!-- APP -->
+            <path class="tentacle" stroke="#e74c3c" d="M450,450 Q450,550 450,700"/>
+        </svg>
+        
+        <!-- CENTER NODE -->
+        <div class="center-node" onclick="showModal('aion')">
+            🐙<br>AION
         </div>
         
-        <!-- Anneaux -->
-        <div class="ring1"></div>
-        <div class="ring2"></div>
-        <div class="ring3"></div>
-        
-        <!-- Centre - L'utilisateur -->
-        <div class="center">
-            <div class="center-icon">👤</div>
-            <div class="center-text">VOUS<br>24 MOTS</div>
+        <!-- FAMILY PIP - TOP LEFT -->
+        <div class="family-hub family-pip" style="left: 160px; top: 110px;" onclick="showModal('pip')">
+            🌐<br>PIP<br>Identité
         </div>
+        <div class="medallion family-pip" style="left: 70px; top: 50px;" onclick="showModal('pip-vpn')">PIP VPN</div>
+        <div class="medallion family-pip" style="left: 180px; top: 20px;" onclick="showModal('pip-mesh')">PIP MESH</div>
+        <div class="medallion family-pip" style="left: 280px; top: 50px;" onclick="showModal('pip-5g')">PIP 5G</div>
+        <div class="medallion family-pip" style="left: 60px; top: 150px;" onclick="showModal('pip-ghost')">PIP GHOST</div>
+        <div class="medallion family-pip" style="left: 100px; top: 230px;" onclick="showModal('pip-satellite')">PIP SATELLITE</div>
+        <div class="medallion family-pip" style="left: 270px; top: 150px;" onclick="showModal('quantum')">QUANTUM</div>
         
-        <!-- Token TUTE - Premier cercle -->
-        <div class="node token" style="top: 22%; left: 50%; transform: translateX(-50%);">
-            <div class="node-icon">🔐</div>
-            <div class="node-name">TOKEN<br>TUTE</div>
+        <!-- FAMILY ASEMANTIX - TOP RIGHT -->
+        <div class="family-hub family-asemantix" style="right: 160px; top: 110px;" onclick="showModal('asemantix')">
+            📊<br>ASEMANTIX<br>Données
         </div>
+        <div class="medallion family-asemantix" style="right: 70px; top: 50px;" onclick="showModal('octopus')">OCTOPUS</div>
+        <div class="medallion family-asemantix" style="right: 180px; top: 20px;" onclick="showModal('mailbox')">MAILBOX</div>
+        <div class="medallion family-asemantix" style="right: 280px; top: 50px;" onclick="showModal('sesame')">SESAME</div>
+        <div class="medallion family-asemantix" style="right: 60px; top: 150px;" onclick="showModal('rpag')">RPAG</div>
+        <div class="medallion family-asemantix" style="right: 270px; top: 150px;" onclick="showModal('bridge')">BRIDGE</div>
         
-        <!-- TUTE - Temps -->
-        <div class="node tute tute1" style="top: 8%; left: 35%;">
-            <div class="node-icon">⏱️</div>
-            <div class="node-name">TUTE</div>
+        <!-- FAMILY CHRONOS - RIGHT -->
+        <div class="family-hub family-chronos" style="right: 80px; top: 400px;" onclick="showModal('chronos')">
+            ⏱️<br>CHRONOS<br>Temps
         </div>
+        <div class="medallion family-chronos" style="right: 20px; top: 300px;" onclick="showModal('energysync')">ENERGYSYNC</div>
+        <div class="medallion family-chronos" style="right: 20px; top: 500px;" onclick="showModal('tute-grid')">TUTE GRID</div>
+        <div class="medallion family-chronos" style="right: 100px; top: 280px;" onclick="showModal('token-tute')">TOKEN TUTE</div>
+        <div class="medallion family-chronos" style="right: 100px; top: 520px;" onclick="showModal('pont-chronos')">PONT CHRONOS</div>
         
-        <div class="node tute" style="top: 8%; right: 35%;">
-            <div class="node-icon">🔋</div>
-            <div class="node-name">TUTE<br>BATT</div>
+        <!-- FAMILY SECURITY - BOTTOM RIGHT -->
+        <div class="family-hub family-security" style="right: 160px; bottom: 110px;" onclick="showModal('security')">
+            🛡️<br>SÉCURITÉ
         </div>
+        <div class="medallion family-security" style="right: 70px; bottom: 50px;" onclick="showModal('blackbox')">BLACKBOX</div>
+        <div class="medallion family-security" style="right: 180px; bottom: 20px;" onclick="showModal('vch')">VCH</div>
+        <div class="medallion family-security" style="right: 280px; bottom: 50px;" onclick="showModal('anchors')">ANCHORS</div>
+        <div class="medallion family-security" style="right: 60px; bottom: 150px;" onclick="showModal('phoenix')">PHOENIX</div>
+        <div class="medallion family-security" style="right: 270px; bottom: 150px;" onclick="showModal('heimdall')">HEIMDALL</div>
+        <div class="medallion family-security" style="right: 170px; bottom: 220px;" onclick="showModal('sekhmet')">SEKHMET</div>
         
-        <div class="node tute" style="top: 18%; left: 18%;">
-            <div class="node-icon">💻</div>
-            <div class="node-name">TUTE<br>CPU</div>
+        <!-- FAMILY COMM - BOTTOM LEFT -->
+        <div class="family-hub family-comm" style="left: 160px; bottom: 110px;" onclick="showModal('comm')">
+            📡<br>COMM<br>Canaux
         </div>
+        <div class="medallion family-comm" style="left: 70px; bottom: 50px;" onclick="showModal('cloak')">CLOAK</div>
+        <div class="medallion family-comm" style="left: 180px; bottom: 20px;" onclick="showModal('fantom')">FANTOM INTERNET</div>
+        <div class="medallion family-comm" style="left: 280px; bottom: 50px;" onclick="showModal('orchestrateur')">ORCHESTRATEUR</div>
         
-        <div class="node tute" style="top: 18%; right: 18%;">
-            <div class="node-icon">🌌</div>
-            <div class="node-name">TUTE<br>COSMOS</div>
+        <!-- FAMILY ANONYMAT - LEFT -->
+        <div class="family-hub family-anonymat" style="left: 80px; top: 400px;" onclick="showModal('anonymat')">
+            👻<br>ANONYMAT
         </div>
+        <div class="medallion family-anonymat" style="left: 20px; top: 300px;" onclick="showModal('shadow-crowd')">SHADOW CROWD</div>
+        <div class="medallion family-anonymat" style="left: 20px; top: 500px;" onclick="showModal('hydra')">HYDRA</div>
         
-        <div class="node tute" style="top: 32%; left: 10%;">
-            <div class="node-icon">⚡</div>
-            <div class="node-name">TUTE<br>GRID</div>
-        </div>
-        
-        <!-- PIP - Identités -->
-        <div class="node pip" style="top: 45%; left: 5%;">
-            <div class="node-icon">🎭</div>
-            <div class="node-name">PIP</div>
-        </div>
-        
-        <div class="node pip" style="bottom: 35%; left: 8%;">
-            <div class="node-icon">📡</div>
-            <div class="node-name">PIP<br>5G</div>
-        </div>
-        
-        <div class="node pip" style="bottom: 22%; left: 15%;">
-            <div class="node-icon">🛰️</div>
-            <div class="node-name">PIP<br>SAT</div>
-        </div>
-        
-        <div class="node pip" style="bottom: 12%; left: 28%;">
-            <div class="node-icon">👻</div>
-            <div class="node-name">PIP<br>GHOST</div>
-        </div>
-        
-        <!-- FANTOM - Communication -->
-        <div class="node fantom" style="top: 45%; right: 5%;">
-            <div class="node-icon">📶</div>
-            <div class="node-name">FANTOM</div>
-        </div>
-        
-        <div class="node fantom" style="bottom: 35%; right: 8%;">
-            <div class="node-icon">🌐</div>
-            <div class="node-name">FANTOM<br>NET</div>
-        </div>
-        
-        <div class="node fantom" style="top: 32%; right: 10%;">
-            <div class="node-icon">🎭</div>
-            <div class="node-name">CLOAK</div>
-        </div>
-        
-        <!-- ASEMANTIX -->
-        <div class="node asemantix" style="bottom: 12%; right: 28%;">
-            <div class="node-icon">🦎</div>
-            <div class="node-name">ASEMANTIX</div>
-        </div>
-        
-        <div class="node asemantix" style="bottom: 22%; right: 15%;">
-            <div class="node-icon">🐙</div>
-            <div class="node-name">OCTOPUS</div>
-        </div>
-        
-        <div class="node asemantix" style="bottom: 5%; left: 42%;">
-            <div class="node-icon">📬</div>
-            <div class="node-name">MAILBOX</div>
-        </div>
-        
-        <div class="node asemantix" style="bottom: 5%; right: 42%;">
-            <div class="node-icon">🚪</div>
-            <div class="node-name">SESAME</div>
-        </div>
-        
-        <!-- Sécurité -->
-        <div class="node security" style="bottom: 28%; left: 50%; transform: translateX(-50%);">
-            <div class="node-icon">👁️</div>
-            <div class="node-name">HEIMDALL</div>
-        </div>
-        
-        <div class="node security" style="bottom: 18%; left: 38%;">
-            <div class="node-icon">🦁</div>
-            <div class="node-name">SEKHMET</div>
-        </div>
-        
-        <!-- Applications -->
-        <div class="node app" style="top: 3%; left: 50%; transform: translateX(-50%);">
-            <div class="node-icon">💰</div>
-            <div class="node-name">AION<br>PAY</div>
-        </div>
-        
-        <div class="node app" style="bottom: 18%; right: 38%;">
-            <div class="node-icon">👥</div>
-            <div class="node-name">SHADOW<br>CROWD</div>
-        </div>
-        
-        <div class="node app" style="top: 55%; left: 50%; transform: translateX(-50%);">
-            <div class="node-icon">🐉</div>
-            <div class="node-name">HYDRA</div>
+        <!-- FAMILY APP - BOTTOM CENTER -->
+        <div class="family-hub family-app" style="left: 400px; bottom: 50px;" onclick="showModal('aion-pay')">
+            💰<br>AION PAY
         </div>
     </div>
     
+    <!-- REVOLUTION BANNER -->
+    <div class="revolution-banner">
+        <h2>🚀 CE QUE L'ÉCOSYSTÈME AION ABOLIT</h2>
+        <div class="revolution-grid">
+            <div class="revolution-item">
+                <span class="icon">📍</span>
+                <div>
+                    <div class="old">IP permanente</div>
+                    <div class="new">→ Identités polymorphiques (PIP)</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">📦</span>
+                <div>
+                    <div class="old">Box Internet</div>
+                    <div class="new">→ FANTOM INTERNET</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">⏰</span>
+                <div>
+                    <div class="old">Serveurs NTP/GPS</div>
+                    <div class="new">→ Temps énergétique (CHRONOS)</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">📊</span>
+                <div>
+                    <div class="old">Métadonnées</div>
+                    <div class="new">→ Trafic asémantique (OCTOPUS)</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">🔐</span>
+                <div>
+                    <div class="old">VPN traçable</div>
+                    <div class="new">→ PIP VPN + CLOAK</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">🔌</span>
+                <div>
+                    <div class="old">Câbles / Fibre</div>
+                    <div class="new">→ Multi-canal (Satellite, 5G, Mesh)</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">💳</span>
+                <div>
+                    <div class="old">Transactions visibles</div>
+                    <div class="new">→ AION PAY</div>
+                </div>
+            </div>
+            <div class="revolution-item">
+                <span class="icon">💻</span>
+                <div>
+                    <div class="old">Ordinateur matériel confiscable</div>
+                    <div class="new">→ Ordinateur liquide immatériel</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- LEGEND -->
     <div class="legend">
-        <div class="legend-item">
-            <div class="legend-dot" style="background: #9b59b6;"></div>
-            <span>Temps (TUTE)</span>
+        <div class="legend-item"><div class="legend-dot" style="background: #00d4ff;"></div>Identité (PIP)</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #ff6b6b;"></div>Données (ASEMANTIX)</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #9b59b6;"></div>Temps (CHRONOS)</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #2ecc71;"></div>Sécurité</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #f39c12;"></div>Communication</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #1abc9c;"></div>Anonymat</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #e74c3c;"></div>Application</div>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="modal-header">
+            <div class="modal-icon" id="modal-icon">🐙</div>
+            <div class="modal-title">
+                <h2 id="modal-title">AION</h2>
+                <div class="ref" id="modal-ref">Raison sociale</div>
+            </div>
         </div>
-        <div class="legend-item">
-            <div class="legend-dot" style="background: #2ecc71;"></div>
-            <span>Identité (PIP)</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-dot" style="background: #e74c3c;"></div>
-            <span>Communication (FANTOM)</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-dot" style="background: #f39c12;"></div>
-            <span>Données (ASEMANTIX)</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-dot" style="background: #e91e63;"></div>
-            <span>Sécurité</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-dot" style="background: #1abc9c;"></div>
-            <span>Applications</span>
+        <div class="modal-body" id="modal-body">
+            <!-- Content injected by JS -->
         </div>
     </div>
-</body>
-</html>
+</div>
+
+<div class="footer">
+    AION — SOUVERAINETÉ NUMÉRIQUE — 30 BREVETS
+</div>
+
+<script>
+const patents = {
+    'aion': {
+        title: 'AION',
+        ref: 'Raison sociale',
+        icon: '🐙',
+        color: '#ffd700',
+        description: 'AION est l\'écosystème complet de souveraineté numérique. La Pieuvre dont chaque tentacule représente une famille de brevets interconnectés.',
+        features: [
+            '30 brevets déposés',
+            'Post-quantique sur toutes les couches',
+            'Temps souverain par mesure énergétique',
+            'Identités polymorphiques non corrélables',
+            'Trafic asémantique indistinguable du bruit'
+        ],
+        tags: ['POST-QUANTIQUE', 'SOUVERAINETÉ', 'DÉCENTRALISÉ']
+    },
+    'pip': {
+        title: 'PIP',
+        ref: 'FR2600202 — Brevet père',
+        icon: '🌐',
+        color: '#00d4ff',
+        description: 'Permutation d\'Identifiants Polymorphique. Procédé de communication à identifiants réseau non corrélables par permutation polymorphique.',
+        features: [
+            'Identité cryptographique nouvelle toutes les 30 secondes',
+            'Ratchet cryptographique unidirectionnel',
+            'Non-corrélabilité cryptographique',
+            'Forward secrecy (effacement des états passés)',
+            'Fenêtre de synchronisation sans métadonnée'
+        ],
+        tags: ['POST-QUANTIQUE', 'IDENTITÉ', 'CLOCKLESS']
+    },
+    'pip-vpn': {
+        title: 'PIP VPN',
+        ref: 'FR2600251',
+        icon: '🔐',
+        color: '#00d4ff',
+        description: 'VPN à identité cryptographique nouvelle toutes les 30 secondes. Intraçable, incorrélable et inexploitable.',
+        features: [
+            'IP change à chaque requête (pas de corrélation)',
+            'Aucune signature protocolaire détectable',
+            'Pool d\'IP diversifié (cloud, CDN, résidentiel)',
+            'Contre-mesures anti-ML',
+            'Post-quantique'
+        ],
+        tags: ['VPN', 'ANTI-CENSURE', 'POST-QUANTIQUE']
+    },
+    'pip-mesh': {
+        title: 'PIP MESH',
+        ref: 'FR2600209',
+        icon: '🕸️',
+        color: '#00d4ff',
+        description: 'Réseau maillé à identifiants non corrélables. Topologie invisible pour un observateur.',
+        features: [
+            'Changement d\'identifiant à chaque saut',
+            'Topologie non reconstructible',
+            'Routage anonymisé multi-sauts',
+            'Smart cities, réseaux tactiques'
+        ],
+        tags: ['MESH', 'ANONYMAT', 'IoT']
+    },
+    'pip-5g': {
+        title: 'PIP 5G',
+        ref: 'FR2600261',
+        icon: '📶',
+        color: '#00d4ff',
+        description: 'Handover cellulaire à identifiants non corrélables. Protection de la vie privée dans les réseaux mobiles.',
+        features: [
+            'Nouvel identifiant à chaque handover',
+            'Non-corrélabilité entre cellules',
+            'Compatible 5G/6G',
+            'Véhicules connectés, IoT mobile'
+        ],
+        tags: ['5G', '6G', 'MOBILITÉ']
+    },
+    'pip-ghost': {
+        title: 'PIP GHOST',
+        ref: 'FR2600240',
+        icon: '👻',
+        color: '#00d4ff',
+        description: 'Dispositif fantôme non traçable. Communication avec destinations arbitraires sans coordination préalable.',
+        features: [
+            'Mode autonome (ratchet local)',
+            'Mode cloud (IP distincte à chaque requête)',
+            'Mode hybride',
+            'Anti-tracking absolu'
+        ],
+        tags: ['GHOST', 'ANTI-TRACKING', 'AUTONOME']
+    },
+    'pip-satellite': {
+        title: 'PIP SATELLITE',
+        ref: 'FR2600504',
+        icon: '🛰️',
+        color: '#00d4ff',
+        description: 'Communications satellitaires à identifiants non corrélables. Handover inter-constellation invisible.',
+        features: [
+            'Identifiants distincts par constellation (LEO/MEO/GEO)',
+            'Transition aveugle inter-opérateurs',
+            'Synchronisation asémantique',
+            'Téléphonie satellite, IoT global, défense'
+        ],
+        tags: ['SATELLITE', 'LEO', 'SPATIAL']
+    },
+    'quantum': {
+        title: 'QUANTUM',
+        ref: 'FR2600313',
+        icon: '⚛️',
+        color: '#00d4ff',
+        description: 'PIP initialisé par distribution quantique de clés (QKD). Sécurité inconditionnelle.',
+        features: [
+            'Clé quantique Kq établie par QKD',
+            'Sécurité information-théorique',
+            'Résistance "store-now-decrypt-later"',
+            'Protection du graphe de communication'
+        ],
+        tags: ['QKD', 'QUANTIQUE', 'INCONDITIONNEL']
+    },
+    'asemantix': {
+        title: 'ASEMANTIX CAMELEON',
+        ref: 'FR2516793 — Brevet père',
+        icon: '🦎',
+        color: '#ff6b6b',
+        description: 'Validation locale de fragments asémantiques avec marqueur polymorphe. Le trafic est indistinguable du bruit.',
+        features: [
+            'Portion utile de 256 bits minimum',
+            'Marqueur polymorphe changeant à chaque index',
+            'Filtrage rapide sans calcul crypto (99% rejeté)',
+            'Aucune métadonnée (ni header, ni timestamp)',
+            'Ancre monotone anti-rejeu'
+        ],
+        tags: ['ASÉMANTIQUE', 'POLYMORPHE', 'POST-QUANTIQUE']
+    },
+    'octopus': {
+        title: 'OCTOPUS',
+        ref: 'FR2600020',
+        icon: '🐙',
+        color: '#ff6b6b',
+        description: 'Messagerie sécurisée sur canal hostile. Transport asémantique + segmentation + acquittement implicite.',
+        features: [
+            'Couche transport asémantique (ASEMANTIX)',
+            'Segmentation en fragments de 4 octets header',
+            'Acquittement implicite par avancement d\'ancre',
+            'Modes WHISPER et COMPLIANT',
+            'Point-à-point, groupe, broadcast'
+        ],
+        tags: ['MESSAGERIE', 'ASÉMANTIQUE', 'MULTICAST']
+    },
+    'mailbox': {
+        title: 'MAILBOX',
+        ref: 'FR2600019',
+        icon: '📬',
+        color: '#ff6b6b',
+        description: 'Boîte aux lettres asémantique. Stockage partagé indifférencié, filtrage local par marqueur caché.',
+        features: [
+            'Espace de stockage "mur de bruit"',
+            'Fragments indistinguables du bruit',
+            'Filtrage polymorphe local (99% rejeté)',
+            'Dead drops numériques',
+            'Messagerie résistante à la censure'
+        ],
+        tags: ['DEAD-DROP', 'ASYNCHRONE', 'CENSURE']
+    },
+    'sesame': {
+        title: 'SESAME',
+        ref: 'FR2600010',
+        icon: '🚪',
+        color: '#ff6b6b',
+        description: 'Commande et contrôle de dispositifs sur canal hostile. Commandes asémantiques pour IoT contraint.',
+        features: [
+            'Commandes indistinguables du bruit',
+            'Filtrage polymorphe économe en énergie',
+            'Hiérarchie de commandes (normal/privilégié/urgence)',
+            'IoT, drones, SCADA, médical'
+        ],
+        tags: ['IoT', 'C2', 'CONTRAINT']
+    },
+    'rpag': {
+        title: 'RPAG',
+        ref: 'FR2600021',
+        icon: '🪐',
+        color: '#ff6b6b',
+        description: 'Communication polymorphique autonome clockless. Synchronisation de registres distribués sans horloge.',
+        features: [
+            'Graine initiale partagée hors-bande',
+            'Dérivation locale KDF sans transmission',
+            'Identifiants polymorphes multi-porteuses',
+            'Communications Terre-Mars, blackouts, tactique'
+        ],
+        tags: ['CLOCKLESS', 'SPATIAL', 'AUTONOME']
+    },
+    'bridge': {
+        title: 'BRIDGE',
+        ref: 'FR2600280',
+        icon: '🌉',
+        color: '#ff6b6b',
+        description: 'Couplage PIP + ASEMANTIX. Validation conjointe identifiant + marqueur pour résistance aux attaques hybrides.',
+        features: [
+            'Validation conjointe stricte et unique',
+            'Même index j pour identifiant et marqueur',
+            'Résistance injection + usurpation',
+            'Sans métadonnée de synchronisation'
+        ],
+        tags: ['HYBRIDE', 'COUPLAGE', 'SÉCURITÉ']
+    },
+    'chronos': {
+        title: 'CHRONOS',
+        ref: 'FR2600320 — Brevet père',
+        icon: '⏱️',
+        color: '#9b59b6',
+        description: 'Temps thermodynamique local. τ = E/P — mesure du temps par l\'énergie consommée.',
+        features: [
+            'Temps souverain sans serveur NTP/GPS',
+            'τ démarre à zéro, croît avec l\'énergie',
+            'Anti-rejeu par fraîcheur énergétique',
+            'Prédiction de durée de fonctionnement'
+        ],
+        tags: ['TEMPS', 'ÉNERGÉTIQUE', 'SOUVERAIN']
+    },
+    'energysync': {
+        title: 'ENERGYSYNC',
+        ref: 'FR2600343',
+        icon: '⚡',
+        color: '#9b59b6',
+        description: 'Coordination de groupe par indicateur énergétique local. Synchronisation sans horloge externe.',
+        features: [
+            'Indicateur E(m) calculé localement',
+            'Séquence de seuils énergétiques communs',
+            'Paramètre d\'évolution T(n) partagé',
+            'Essaims de drones, véhicules, IoT'
+        ],
+        tags: ['GROUPE', 'COORDINATION', 'CLOCKLESS']
+    },
+    'tute-grid': {
+        title: 'TUTE GRID',
+        ref: 'FR2600519',
+        icon: '🔋',
+        color: '#9b59b6',
+        description: 'Optimisation de réseau énergétique par temps énergétique. Orchestration intelligente des flux.',
+        features: [
+            'Temps énergétique réseau τi pour chaque nœud',
+            'Prédiction de risques réseau',
+            'Routage prioritaire vers nœuds critiques',
+            'Smart grid, véhicules électriques'
+        ],
+        tags: ['GRID', 'SMART', 'ÉNERGIE']
+    },
+    'token-tute': {
+        title: 'TOKEN TUTE',
+        ref: 'FR2600542',
+        icon: '🔑',
+        color: '#9b59b6',
+        description: 'Dispositif portable d\'horodatage énergétique. Clé d\'accès à l\'Ordinateur Liquide.',
+        features: [
+            'Source d\'énergie autonome',
+            'Calcul de temps énergétique τ = E/P',
+            'Élément sécurisé (clés post-quantiques)',
+            'Appareil hôte réduit à un écran',
+            'Rien à confisquer aux frontières'
+        ],
+        tags: ['TOKEN', 'PORTABLE', 'SOUVERAIN']
+    },
+    'pont-chronos': {
+        title: 'PONT CHRONOS',
+        ref: 'FR2600323',
+        icon: '🌉',
+        color: '#9b59b6',
+        description: 'Triple protection : CHRONOS + PIP + CLOAK. Tunnel chiffré piloté par temps thermodynamique.',
+        features: [
+            'Temps τth comme référentiel commun',
+            'Permutation d\'identifiants indexée sur τ',
+            'Mimétisme comportemental synchronisé',
+            'Coordination de transitions inter-couches'
+        ],
+        tags: ['TRIPLE', 'VPN', 'INTÉGRÉ']
+    },
+    'blackbox': {
+        title: 'BLACKBOX',
+        ref: 'FR2600204',
+        icon: '📦',
+        color: '#2ecc71',
+        description: 'Contrôle d\'accès local à contenus chiffrés. View-once avec preuve d\'effacement.',
+        features: [
+            'Double contrôle (secret appareil + facteur humain)',
+            'Attestation de fraîcheur sans métadonnée',
+            'Restitution view-once',
+            'Effacement sécurisé avec preuve crypto',
+            'Fonctionne hors ligne'
+        ],
+        tags: ['VIEW-ONCE', 'EFFACEMENT', 'HORS-LIGNE']
+    },
+    'vch': {
+        title: 'VCH',
+        ref: 'FR2600203',
+        icon: '⛓️',
+        color: '#2ecc71',
+        description: 'Validation par Chaînage d\'Historique. Intégrité et ordonnancement sans métadonnées.',
+        features: [
+            'Engagement de chaîne Ci récursif',
+            'Élément de validation Vi sans index transmis',
+            'Variantes : MAC, signature, ZK',
+            'Anti-rejeu, anti-rollback'
+        ],
+        tags: ['CHAÎNAGE', 'INTÉGRITÉ', 'AUDIT']
+    },
+    'anchors': {
+        title: 'ANCHORS',
+        ref: 'FR2600207',
+        icon: '⚓',
+        color: '#2ecc71',
+        description: 'Resynchronisation par code d\'ancre. Récupération d\'état sans serveur.',
+        features: [
+            'Code d\'ancre A(i) dérivé de l\'état Ki',
+            'Présentation via QR, NFC, mnémonique, audio',
+            'Modes Genesis, Retro, Jump',
+            'Validation par recomputation locale'
+        ],
+        tags: ['RESYNC', 'RECOVERY', 'OFFLINE']
+    },
+    'phoenix': {
+        title: 'PHOENIX',
+        ref: 'FR2600311',
+        icon: '🔥',
+        color: '#2ecc71',
+        description: 'Reprise automatique de session à ratchet. Résurrection sans serveur central.',
+        features: [
+            'Fenêtre glissante de checkpoints',
+            'Jeton de résurrection (sélecteur, pas état)',
+            'Validation par recomputation locale',
+            'Sans retransmission d\'état'
+        ],
+        tags: ['REPRISE', 'RATCHET', 'RÉSILIENCE']
+    },
+    'heimdall': {
+        title: 'HEIMDALL',
+        ref: 'FR2600400',
+        icon: '👁️',
+        color: '#2ecc71',
+        description: 'Authentification par signature énergétique. Double facteur : secret + profil physique.',
+        features: [
+            'Indicateur énergétique E(t) mesuré',
+            'Signature S(t) = H(Q(E) || K || ctx || n)',
+            'Profil de référence Pref',
+            'Impossible à reproduire sur autre matériel'
+        ],
+        tags: ['AUTH', 'ÉNERGÉTIQUE', 'ANTI-CLONE']
+    },
+    'sekhmet': {
+        title: 'SEKHMET',
+        ref: 'FR2600447',
+        icon: '🦁',
+        color: '#2ecc71',
+        description: 'Protection autonome par profil énergétique. Détection et neutralisation sans serveur.',
+        features: [
+            'Profil de comportement normal (pas signatures malware)',
+            'Détection d\'anomalies par écart énergétique',
+            'Contre-mesures graduées automatiques',
+            'Journal chaîné pour forensique',
+            'Détection rootkits, espionnage, exfiltration'
+        ],
+        tags: ['EDR', 'AUTONOME', 'FORENSIQUE']
+    },
+    'cloak': {
+        title: 'CLOAK',
+        ref: 'FR2600321',
+        icon: '🧥',
+        color: '#f39c12',
+        description: 'Mimétisme comportemental. Le trafic VPN ressemble à Netflix, Zoom, etc.',
+        features: [
+            'Profils comportementaux (streaming, visio, jeu)',
+            'Transformation temporelle, volumétrique, statistique',
+            'Score d\'écart Kolmogorov-Smirnov',
+            'Ajustement en boucle fermée',
+            'Indistinguable pour classificateurs ML'
+        ],
+        tags: ['MIMÉTISME', 'ANTI-DPI', 'ANTI-ML']
+    },
+    'fantom': {
+        title: 'FANTOM INTERNET',
+        ref: 'FR2600506',
+        icon: '👻',
+        color: '#f39c12',
+        description: 'Connexion Internet anonyme sans infrastructure fixe. Plus de box, plus de câble.',
+        features: [
+            'Multi-connectivité (4G/5G, satellite, WiFi, mesh)',
+            'Permutation d\'identifiants intégrée',
+            'Aucune infrastructure fixe',
+            'Aucun contrat nominatif',
+            'Non géolocalisable'
+        ],
+        tags: ['NOMADE', 'SANS-FIL', 'ANONYME']
+    },
+    'orchestrateur': {
+        title: 'ORCHESTRATEUR',
+        ref: 'En cours',
+        icon: '🎼',
+        color: '#f39c12',
+        description: 'Orchestration adaptative de transport asémantique sur canaux bruts hétérogènes.',
+        features: [
+            'Métriques locales (latence, énergie, divergence)',
+            'Temps thermodynamique comme échelle interne',
+            'Décision en temps constant par PRF',
+            'Audit ex-post par paramètres publics EVOL',
+            'Canaux structurés et bruts (radio, optique)'
+        ],
+        tags: ['ORCHESTRATION', 'MULTI-CANAL', 'ADAPTATIF']
+    },
+    'shadow-crowd': {
+        title: 'SHADOW CROWD',
+        ref: 'FR2600341',
+        icon: '👥',
+        color: '#1abc9c',
+        description: 'Anonymat collectif. Le groupe génère du trafic indistinguable entre membres.',
+        features: [
+            'Paramètre propre Π(m) par membre',
+            'Profil de référence commun Ω',
+            'Trafic factice conforme au profil',
+            'Décorrélation active inter-membres',
+            'Attribution individuelle impossible'
+        ],
+        tags: ['COLLECTIF', 'FOULE', 'ANONYMAT']
+    },
+    'hydra': {
+        title: 'HYDRA',
+        ref: 'FR2600333',
+        icon: '🐉',
+        color: '#1abc9c',
+        description: 'Identités réseau multiples simultanées non corrélables sur un même dispositif.',
+        features: [
+            'Plusieurs identités actives en parallèle',
+            'Graine cryptographique par identité',
+            'Contexte réseau isolé par identité',
+            'Décorrélation active inter-identités',
+            'Isolation cryptographique totale'
+        ],
+        tags: ['MULTI-ID', 'PARALLÈLE', 'ISOLATION']
+    },
+    'aion-pay': {
+        title: 'AION PAY',
+        ref: 'FR2600514',
+        icon: '💰',
+        color: '#e74c3c',
+        description: 'Transaction financière asémantique. Paiement vérifiable mais invisible.',
+        features: [
+            'Représentation indistinguable du bruit',
+            'Preuve ZK de validité (solde, authenticité)',
+            'Vérification sans accès aux données',
+            'Engagements homomorphes',
+            'Divulgation sélective pour régulation'
+        ],
+        tags: ['PAIEMENT', 'ZK', 'PRIVACY']
+    }
+};
+
+function showModal(id) {
+    const data = patents[id];
+    if (!data) return;
+    
+    document.getElementById('modal-title').textContent = data.title;
+    document.getElementById('modal-ref').textContent = data.ref;
+    document.getElementById('modal-icon').textContent = data.icon;
+    document.getElementById('modal-icon').style.background = data.color;
+    
+    let html = `
+        <div class="modal-section">
+            <h3>Description</h3>
+            <p>${data.description}</p>
+        </div>
+        <div class="modal-section">
+            <h3>Caractéristiques</h3>
+            <ul>
+                ${data.features.map(f => `<li>${f}</li>`).join('')}
+            </ul>
+        </div>
+        <div class="modal-section">
+            <h3>Tags</h3>
+            ${data.tags.map(t => `<span class="tag tag-pq">${t}</span>`).join('')}
+        </div>
+    `;
+    
+    document.getElementById('modal-body').innerHTML = html;
+    document.getElementById('modal-overlay').classList.add('active');
+}
+
+function closeModal(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('modal-overlay').classList.remove('active');
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+});
+</script>
+
+
+</div>
+
+<div style="text-align:center;padding:1rem 0 2rem">
+<a href="index.html" style="display:inline-block;padding:0.7rem 1.8rem;background:linear-gradient(135deg,rgba(201,169,98,0.12),rgba(201,169,98,0.04));border:1px solid rgba(201,169,98,0.25);border-radius:8px;color:var(--g);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.1em">← RETOUR ACCUEIL</a>
+</div>
+
+<footer><div class="fb">AION ASEMANTIX™</div><div class="fi">© 2026 — 38 brevets INPI — asemantix.tech</div></footer>
+<script>
+// Particles
+document.addEventListener('DOMContentLoaded',()=>{
+  const pc=document.getElementById('pc');
+  if(pc){for(let i=0;i<20;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDuration=(8+Math.random()*12)+'s';p.style.animationDelay=Math.random()*10+'s';p.style.width=p.style.height=(1+Math.random()*2)+'px';pc.appendChild(p)}}
+  // Scroll reveal
+  const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+});
+
+
+</script>
+<script>
+
+const patents = {
+    'aion': {
+        title: 'AION',
+        ref: 'Raison sociale',
+        icon: '🐙',
+        color: '#ffd700',
+        description: 'AION est l\'écosystème complet de souveraineté numérique. La Pieuvre dont chaque tentacule représente une famille de brevets interconnectés.',
+        features: [
+            '30 brevets déposés',
+            'Post-quantique sur toutes les couches',
+            'Temps souverain par mesure énergétique',
+            'Identités polymorphiques non corrélables',
+            'Trafic asémantique indistinguable du bruit'
+        ],
+        tags: ['POST-QUANTIQUE', 'SOUVERAINETÉ', 'DÉCENTRALISÉ']
+    },
+    'pip': {
+        title: 'PIP',
+        ref: 'FR2600202 — Brevet père',
+        icon: '🌐',
+        color: '#00d4ff',
+        description: 'Permutation d\'Identifiants Polymorphique. Procédé de communication à identifiants réseau non corrélables par permutation polymorphique.',
+        features: [
+            'Identité cryptographique nouvelle toutes les 30 secondes',
+            'Ratchet cryptographique unidirectionnel',
+            'Non-corrélabilité cryptographique',
+            'Forward secrecy (effacement des états passés)',
+            'Fenêtre de synchronisation sans métadonnée'
+        ],
+        tags: ['POST-QUANTIQUE', 'IDENTITÉ', 'CLOCKLESS']
+    },
+    'pip-vpn': {
+        title: 'PIP VPN',
+        ref: 'FR2600251',
+        icon: '🔐',
+        color: '#00d4ff',
+        description: 'VPN à identité cryptographique nouvelle toutes les 30 secondes. Intraçable, incorrélable et inexploitable.',
+        features: [
+            'IP change à chaque requête (pas de corrélation)',
+            'Aucune signature protocolaire détectable',
+            'Pool d\'IP diversifié (cloud, CDN, résidentiel)',
+            'Contre-mesures anti-ML',
+            'Post-quantique'
+        ],
+        tags: ['VPN', 'ANTI-CENSURE', 'POST-QUANTIQUE']
+    },
+    'pip-mesh': {
+        title: 'PIP MESH',
+        ref: 'FR2600209',
+        icon: '🕸️',
+        color: '#00d4ff',
+        description: 'Réseau maillé à identifiants non corrélables. Topologie invisible pour un observateur.',
+        features: [
+            'Changement d\'identifiant à chaque saut',
+            'Topologie non reconstructible',
+            'Routage anonymisé multi-sauts',
+            'Smart cities, réseaux tactiques'
+        ],
+        tags: ['MESH', 'ANONYMAT', 'IoT']
+    },
+    'pip-5g': {
+        title: 'PIP 5G',
+        ref: 'FR2600261',
+        icon: '📶',
+        color: '#00d4ff',
+        description: 'Handover cellulaire à identifiants non corrélables. Protection de la vie privée dans les réseaux mobiles.',
+        features: [
+            'Nouvel identifiant à chaque handover',
+            'Non-corrélabilité entre cellules',
+            'Compatible 5G/6G',
+            'Véhicules connectés, IoT mobile'
+        ],
+        tags: ['5G', '6G', 'MOBILITÉ']
+    },
+    'pip-ghost': {
+        title: 'PIP GHOST',
+        ref: 'FR2600240',
+        icon: '👻',
+        color: '#00d4ff',
+        description: 'Dispositif fantôme non traçable. Communication avec destinations arbitraires sans coordination préalable.',
+        features: [
+            'Mode autonome (ratchet local)',
+            'Mode cloud (IP distincte à chaque requête)',
+            'Mode hybride',
+            'Anti-tracking absolu'
+        ],
+        tags: ['GHOST', 'ANTI-TRACKING', 'AUTONOME']
+    },
+    'pip-satellite': {
+        title: 'PIP SATELLITE',
+        ref: 'FR2600504',
+        icon: '🛰️',
+        color: '#00d4ff',
+        description: 'Communications satellitaires à identifiants non corrélables. Handover inter-constellation invisible.',
+        features: [
+            'Identifiants distincts par constellation (LEO/MEO/GEO)',
+            'Transition aveugle inter-opérateurs',
+            'Synchronisation asémantique',
+            'Téléphonie satellite, IoT global, défense'
+        ],
+        tags: ['SATELLITE', 'LEO', 'SPATIAL']
+    },
+    'quantum': {
+        title: 'QUANTUM',
+        ref: 'FR2600313',
+        icon: '⚛️',
+        color: '#00d4ff',
+        description: 'PIP initialisé par distribution quantique de clés (QKD). Sécurité inconditionnelle.',
+        features: [
+            'Clé quantique Kq établie par QKD',
+            'Sécurité information-théorique',
+            'Résistance "store-now-decrypt-later"',
+            'Protection du graphe de communication'
+        ],
+        tags: ['QKD', 'QUANTIQUE', 'INCONDITIONNEL']
+    },
+    'asemantix': {
+        title: 'ASEMANTIX CAMELEON',
+        ref: 'FR2516793 — Brevet père',
+        icon: '🦎',
+        color: '#ff6b6b',
+        description: 'Validation locale de fragments asémantiques avec marqueur polymorphe. Le trafic est indistinguable du bruit.',
+        features: [
+            'Portion utile de 256 bits minimum',
+            'Marqueur polymorphe changeant à chaque index',
+            'Filtrage rapide sans calcul crypto (99% rejeté)',
+            'Aucune métadonnée (ni header, ni timestamp)',
+            'Ancre monotone anti-rejeu'
+        ],
+        tags: ['ASÉMANTIQUE', 'POLYMORPHE', 'POST-QUANTIQUE']
+    },
+    'octopus': {
+        title: 'OCTOPUS',
+        ref: 'FR2600020',
+        icon: '🐙',
+        color: '#ff6b6b',
+        description: 'Messagerie sécurisée sur canal hostile. Transport asémantique + segmentation + acquittement implicite.',
+        features: [
+            'Couche transport asémantique (ASEMANTIX)',
+            'Segmentation en fragments de 4 octets header',
+            'Acquittement implicite par avancement d\'ancre',
+            'Modes WHISPER et COMPLIANT',
+            'Point-à-point, groupe, broadcast'
+        ],
+        tags: ['MESSAGERIE', 'ASÉMANTIQUE', 'MULTICAST']
+    },
+    'mailbox': {
+        title: 'MAILBOX',
+        ref: 'FR2600019',
+        icon: '📬',
+        color: '#ff6b6b',
+        description: 'Boîte aux lettres asémantique. Stockage partagé indifférencié, filtrage local par marqueur caché.',
+        features: [
+            'Espace de stockage "mur de bruit"',
+            'Fragments indistinguables du bruit',
+            'Filtrage polymorphe local (99% rejeté)',
+            'Dead drops numériques',
+            'Messagerie résistante à la censure'
+        ],
+        tags: ['DEAD-DROP', 'ASYNCHRONE', 'CENSURE']
+    },
+    'sesame': {
+        title: 'SESAME',
+        ref: 'FR2600010',
+        icon: '🚪',
+        color: '#ff6b6b',
+        description: 'Commande et contrôle de dispositifs sur canal hostile. Commandes asémantiques pour IoT contraint.',
+        features: [
+            'Commandes indistinguables du bruit',
+            'Filtrage polymorphe économe en énergie',
+            'Hiérarchie de commandes (normal/privilégié/urgence)',
+            'IoT, drones, SCADA, médical'
+        ],
+        tags: ['IoT', 'C2', 'CONTRAINT']
+    },
+    'rpag': {
+        title: 'RPAG',
+        ref: 'FR2600021',
+        icon: '🪐',
+        color: '#ff6b6b',
+        description: 'Communication polymorphique autonome clockless. Synchronisation de registres distribués sans horloge.',
+        features: [
+            'Graine initiale partagée hors-bande',
+            'Dérivation locale KDF sans transmission',
+            'Identifiants polymorphes multi-porteuses',
+            'Communications Terre-Mars, blackouts, tactique'
+        ],
+        tags: ['CLOCKLESS', 'SPATIAL', 'AUTONOME']
+    },
+    'bridge': {
+        title: 'BRIDGE',
+        ref: 'FR2600280',
+        icon: '🌉',
+        color: '#ff6b6b',
+        description: 'Couplage PIP + ASEMANTIX. Validation conjointe identifiant + marqueur pour résistance aux attaques hybrides.',
+        features: [
+            'Validation conjointe stricte et unique',
+            'Même index j pour identifiant et marqueur',
+            'Résistance injection + usurpation',
+            'Sans métadonnée de synchronisation'
+        ],
+        tags: ['HYBRIDE', 'COUPLAGE', 'SÉCURITÉ']
+    },
+    'chronos': {
+        title: 'CHRONOS',
+        ref: 'FR2600320 — Brevet père',
+        icon: '⏱️',
+        color: '#9b59b6',
+        description: 'Temps thermodynamique local. τ = E/P — mesure du temps par l\'énergie consommée.',
+        features: [
+            'Temps souverain sans serveur NTP/GPS',
+            'τ démarre à zéro, croît avec l\'énergie',
+            'Anti-rejeu par fraîcheur énergétique',
+            'Prédiction de durée de fonctionnement'
+        ],
+        tags: ['TEMPS', 'ÉNERGÉTIQUE', 'SOUVERAIN']
+    },
+    'energysync': {
+        title: 'ENERGYSYNC',
+        ref: 'FR2600343',
+        icon: '⚡',
+        color: '#9b59b6',
+        description: 'Coordination de groupe par indicateur énergétique local. Synchronisation sans horloge externe.',
+        features: [
+            'Indicateur E(m) calculé localement',
+            'Séquence de seuils énergétiques communs',
+            'Paramètre d\'évolution T(n) partagé',
+            'Essaims de drones, véhicules, IoT'
+        ],
+        tags: ['GROUPE', 'COORDINATION', 'CLOCKLESS']
+    },
+    'tute-grid': {
+        title: 'TUTE GRID',
+        ref: 'FR2600519',
+        icon: '🔋',
+        color: '#9b59b6',
+        description: 'Optimisation de réseau énergétique par temps énergétique. Orchestration intelligente des flux.',
+        features: [
+            'Temps énergétique réseau τi pour chaque nœud',
+            'Prédiction de risques réseau',
+            'Routage prioritaire vers nœuds critiques',
+            'Smart grid, véhicules électriques'
+        ],
+        tags: ['GRID', 'SMART', 'ÉNERGIE']
+    },
+    'token-tute': {
+        title: 'TOKEN TUTE',
+        ref: 'FR2600542',
+        icon: '🔑',
+        color: '#9b59b6',
+        description: 'Dispositif portable d\'horodatage énergétique. Clé d\'accès à l\'Ordinateur Liquide.',
+        features: [
+            'Source d\'énergie autonome',
+            'Calcul de temps énergétique τ = E/P',
+            'Élément sécurisé (clés post-quantiques)',
+            'Appareil hôte réduit à un écran',
+            'Rien à confisquer aux frontières'
+        ],
+        tags: ['TOKEN', 'PORTABLE', 'SOUVERAIN']
+    },
+    'pont-chronos': {
+        title: 'PONT CHRONOS',
+        ref: 'FR2600323',
+        icon: '🌉',
+        color: '#9b59b6',
+        description: 'Triple protection : CHRONOS + PIP + CLOAK. Tunnel chiffré piloté par temps thermodynamique.',
+        features: [
+            'Temps τth comme référentiel commun',
+            'Permutation d\'identifiants indexée sur τ',
+            'Mimétisme comportemental synchronisé',
+            'Coordination de transitions inter-couches'
+        ],
+        tags: ['TRIPLE', 'VPN', 'INTÉGRÉ']
+    },
+    'blackbox': {
+        title: 'BLACKBOX',
+        ref: 'FR2600204',
+        icon: '📦',
+        color: '#2ecc71',
+        description: 'Contrôle d\'accès local à contenus chiffrés. View-once avec preuve d\'effacement.',
+        features: [
+            'Double contrôle (secret appareil + facteur humain)',
+            'Attestation de fraîcheur sans métadonnée',
+            'Restitution view-once',
+            'Effacement sécurisé avec preuve crypto',
+            'Fonctionne hors ligne'
+        ],
+        tags: ['VIEW-ONCE', 'EFFACEMENT', 'HORS-LIGNE']
+    },
+    'vch': {
+        title: 'VCH',
+        ref: 'FR2600203',
+        icon: '⛓️',
+        color: '#2ecc71',
+        description: 'Validation par Chaînage d\'Historique. Intégrité et ordonnancement sans métadonnées.',
+        features: [
+            'Engagement de chaîne Ci récursif',
+            'Élément de validation Vi sans index transmis',
+            'Variantes : MAC, signature, ZK',
+            'Anti-rejeu, anti-rollback'
+        ],
+        tags: ['CHAÎNAGE', 'INTÉGRITÉ', 'AUDIT']
+    },
+    'anchors': {
+        title: 'ANCHORS',
+        ref: 'FR2600207',
+        icon: '⚓',
+        color: '#2ecc71',
+        description: 'Resynchronisation par code d\'ancre. Récupération d\'état sans serveur.',
+        features: [
+            'Code d\'ancre A(i) dérivé de l\'état Ki',
+            'Présentation via QR, NFC, mnémonique, audio',
+            'Modes Genesis, Retro, Jump',
+            'Validation par recomputation locale'
+        ],
+        tags: ['RESYNC', 'RECOVERY', 'OFFLINE']
+    },
+    'phoenix': {
+        title: 'PHOENIX',
+        ref: 'FR2600311',
+        icon: '🔥',
+        color: '#2ecc71',
+        description: 'Reprise automatique de session à ratchet. Résurrection sans serveur central.',
+        features: [
+            'Fenêtre glissante de checkpoints',
+            'Jeton de résurrection (sélecteur, pas état)',
+            'Validation par recomputation locale',
+            'Sans retransmission d\'état'
+        ],
+        tags: ['REPRISE', 'RATCHET', 'RÉSILIENCE']
+    },
+    'heimdall': {
+        title: 'HEIMDALL',
+        ref: 'FR2600400',
+        icon: '👁️',
+        color: '#2ecc71',
+        description: 'Authentification par signature énergétique. Double facteur : secret + profil physique.',
+        features: [
+            'Indicateur énergétique E(t) mesuré',
+            'Signature S(t) = H(Q(E) || K || ctx || n)',
+            'Profil de référence Pref',
+            'Impossible à reproduire sur autre matériel'
+        ],
+        tags: ['AUTH', 'ÉNERGÉTIQUE', 'ANTI-CLONE']
+    },
+    'sekhmet': {
+        title: 'SEKHMET',
+        ref: 'FR2600447',
+        icon: '🦁',
+        color: '#2ecc71',
+        description: 'Protection autonome par profil énergétique. Détection et neutralisation sans serveur.',
+        features: [
+            'Profil de comportement normal (pas signatures malware)',
+            'Détection d\'anomalies par écart énergétique',
+            'Contre-mesures graduées automatiques',
+            'Journal chaîné pour forensique',
+            'Détection rootkits, espionnage, exfiltration'
+        ],
+        tags: ['EDR', 'AUTONOME', 'FORENSIQUE']
+    },
+    'cloak': {
+        title: 'CLOAK',
+        ref: 'FR2600321',
+        icon: '🧥',
+        color: '#f39c12',
+        description: 'Mimétisme comportemental. Le trafic VPN ressemble à Netflix, Zoom, etc.',
+        features: [
+            'Profils comportementaux (streaming, visio, jeu)',
+            'Transformation temporelle, volumétrique, statistique',
+            'Score d\'écart Kolmogorov-Smirnov',
+            'Ajustement en boucle fermée',
+            'Indistinguable pour classificateurs ML'
+        ],
+        tags: ['MIMÉTISME', 'ANTI-DPI', 'ANTI-ML']
+    },
+    'fantom': {
+        title: 'FANTOM INTERNET',
+        ref: 'FR2600506',
+        icon: '👻',
+        color: '#f39c12',
+        description: 'Connexion Internet anonyme sans infrastructure fixe. Plus de box, plus de câble.',
+        features: [
+            'Multi-connectivité (4G/5G, satellite, WiFi, mesh)',
+            'Permutation d\'identifiants intégrée',
+            'Aucune infrastructure fixe',
+            'Aucun contrat nominatif',
+            'Non géolocalisable'
+        ],
+        tags: ['NOMADE', 'SANS-FIL', 'ANONYME']
+    },
+    'orchestrateur': {
+        title: 'ORCHESTRATEUR',
+        ref: 'En cours',
+        icon: '🎼',
+        color: '#f39c12',
+        description: 'Orchestration adaptative de transport asémantique sur canaux bruts hétérogènes.',
+        features: [
+            'Métriques locales (latence, énergie, divergence)',
+            'Temps thermodynamique comme échelle interne',
+            'Décision en temps constant par PRF',
+            'Audit ex-post par paramètres publics EVOL',
+            'Canaux structurés et bruts (radio, optique)'
+        ],
+        tags: ['ORCHESTRATION', 'MULTI-CANAL', 'ADAPTATIF']
+    },
+    'shadow-crowd': {
+        title: 'SHADOW CROWD',
+        ref: 'FR2600341',
+        icon: '👥',
+        color: '#1abc9c',
+        description: 'Anonymat collectif. Le groupe génère du trafic indistinguable entre membres.',
+        features: [
+            'Paramètre propre Π(m) par membre',
+            'Profil de référence commun Ω',
+            'Trafic factice conforme au profil',
+            'Décorrélation active inter-membres',
+            'Attribution individuelle impossible'
+        ],
+        tags: ['COLLECTIF', 'FOULE', 'ANONYMAT']
+    },
+    'hydra': {
+        title: 'HYDRA',
+        ref: 'FR2600333',
+        icon: '🐉',
+        color: '#1abc9c',
+        description: 'Identités réseau multiples simultanées non corrélables sur un même dispositif.',
+        features: [
+            'Plusieurs identités actives en parallèle',
+            'Graine cryptographique par identité',
+            'Contexte réseau isolé par identité',
+            'Décorrélation active inter-identités',
+            'Isolation cryptographique totale'
+        ],
+        tags: ['MULTI-ID', 'PARALLÈLE', 'ISOLATION']
+    },
+    'aion-pay': {
+        title: 'AION PAY',
+        ref: 'FR2600514',
+        icon: '💰',
+        color: '#e74c3c',
+        description: 'Transaction financière asémantique. Paiement vérifiable mais invisible.',
+        features: [
+            'Représentation indistinguable du bruit',
+            'Preuve ZK de validité (solde, authenticité)',
+            'Vérification sans accès aux données',
+            'Engagements homomorphes',
+            'Divulgation sélective pour régulation'
+        ],
+        tags: ['PAIEMENT', 'ZK', 'PRIVACY']
+    }
+};
+
+function showModal(id) {
+    const data = patents[id];
+    if (!data) return;
+    
+    document.getElementById('modal-title').textContent = data.title;
+    document.getElementById('modal-ref').textContent = data.ref;
+    document.getElementById('modal-icon').textContent = data.icon;
+    document.getElementById('modal-icon').style.background = data.color;
+    
+    let html = `
+        <div class="modal-section">
+            <h3>Description</h3>
+            <p>${data.description}</p>
+        </div>
+        <div class="modal-section">
+            <h3>Caractéristiques</h3>
+            <ul>
+                ${data.features.map(f => `<li>${f}</li>`).join('')}
+            </ul>
+        </div>
+        <div class="modal-section">
+            <h3>Tags</h3>
+            ${data.tags.map(t => `<span class="tag tag-pq">${t}</span>`).join('')}
+        </div>
+    `;
+    
+    document.getElementById('modal-body').innerHTML = html;
+    document.getElementById('modal-overlay').classList.add('active');
+}
+
+function closeModal(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('modal-overlay').classList.remove('active');
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+});
+
+</script>
+</body></html>

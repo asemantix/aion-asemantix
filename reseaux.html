@@ -127,10 +127,12 @@ footer{border-top:1px solid var(--bd);padding:2.5rem;text-align:center}
     <a href="fantom.html" id="nav-fantom">FANTOM</a>
     <a href="messageries.html" id="nav-msg">Messageries</a>
     <div class="nav-sep"></div>
-    <a href="revolutionnaires.html" id="nav-rev">Révolutionnaires</a>
+    <a href="post-quantique.html" id="nav-pq">Post-Quantique</a>
+    <a href="ordinateur-liquide.html" id="nav-liquide">Ordinateur Liquide</a>
     <a href="temps.html" id="nav-temps">Temps τ=E/P</a>
+    <div class="nav-sep"></div>
     <a href="securite.html" id="nav-secu">Sécurité</a>
-    <a href="reseaux.html" id="nav-mesh">Réseaux</a>
+    <a href="reseaux.html" id="nav-mesh"  class='active'>Réseaux</a>
     <div class="nav-sep"></div>
     <a href="manifeste.html" id="nav-manifeste">Manifeste</a>
     <a href="inventrice.html" id="nav-inventrice">L'Inventrice</a>
@@ -147,27 +149,27 @@ footer{border-top:1px solid var(--bd);padding:2.5rem;text-align:center}
 </section>
 <div class="content">
 <div class="csec reveal">
-<h2>🕸️ <span>PIP MESH</span> — Réseau maillé invisible</h2>
+<h2><span>PIP MESH</span> — Réseau maillé invisible</h2>
 <p>Chaque nœud change d'identifiant réseau à chaque échange. La <strong>topologie du réseau est invisible</strong> : un observateur ne peut pas déterminer combien de nœuds existent, comment ils sont connectés, ni quel chemin emprunte un message. Même compter les nœuds est impossible.</p>
 <div class="patent-card" style="border-left-color:var(--mesh)"><h4 style="color:var(--mesh)">PIP MESH</h4><div class="sub">ID changeants. Topologie invisible. Impossible compter les nœuds. Multi-hop.</div><div class="ref">FR2600209</div></div>
 </div>
 <div class="csec reveal">
-<h2>📡 <span>PIP-5G</span> — Handover non corrélable</h2>
+<h2><span>PIP-5G</span> — Handover non corrélable</h2>
 <p>À chaque changement d'antenne (handover 4G/5G/6G/satellite), le dispositif reçoit un <strong>nouvel identifiant non corrélable</strong>. Un observateur ne peut pas suivre un utilisateur qui se déplace d'antenne en antenne. 6 couches de protection. Anti IMSI catchers.</p>
 <div class="patent-card" style="border-left-color:var(--mesh)"><h4 style="color:var(--mesh)">PIP-5G</h4><div class="sub">Nouvel ID par antenne. 4G/5G/6G/satellite. Anti IMSI. 6 couches.</div><div class="ref">FR2600261</div></div>
 </div>
 <div class="csec reveal">
-<h2>🛰️ <span>CONSTELLATION</span> — Inter-constellations</h2>
+<h2><span>CONSTELLATION</span> — Inter-constellations</h2>
 <p>Handover entre constellations satellites (Starlink, OneWeb, LEO/MEO/GEO) avec <strong>identifiants polymorphiques par constellation</strong>. La transition est aveugle : le satellite suivant ne sait pas d'où vient l'utilisateur. Synchronisation asémantique.</p>
 <div class="patent-card" style="border-left-color:var(--mesh)"><h4 style="color:var(--mesh)">CONSTELLATION</h4><div class="sub">Multi-constellation. Handover aveugle. Zéro corrélation.</div><div class="ref">FR2600512</div></div>
 </div>
 <div class="csec reveal">
-<h2>⚡ <span>ENERGYSYNC</span> — Coordination sans horloge</h2>
+<h2><span>ENERGYSYNC</span> — Coordination sans horloge</h2>
 <p>Coordination d'essaims (drones, véhicules, robots) <strong>par seuils énergétiques</strong> au lieu d'horloge partagée. Pas de NTP, pas de GPS. Les dispositifs se synchronisent en mesurant leur propre consommation d'énergie. Résistant au brouillage GPS.</p>
 <div class="patent-card" style="border-left-color:var(--mesh)"><h4 style="color:var(--mesh)">ENERGYSYNC</h4><div class="sub">Seuils énergétiques. Sans NTP/GPS. Essaims drones. Anti-brouillage.</div><div class="ref">FR2600343</div></div>
 </div>
 <div class="csec reveal">
-<h2>🎯 <span>ORCHESTRATOR</span> — Multi-canal adaptatif</h2>
+<h2><span>ORCHESTRATOR</span> — Multi-canal adaptatif</h2>
 <p>Orchestration adaptative de communications sur <strong>canaux multiples simultanés</strong>. Décision O(1) — temps constant quelle que soit la complexité. Canal-agnostique : Internet, radio, satellite, mesh, tout à la fois. Audit ex post intégré.</p>
 <div class="patent-card" style="border-left-color:var(--mesh)"><h4 style="color:var(--mesh)">ORCHESTRATOR</h4><div class="sub">Canal-agnostique. Décision O(1). Multi-path. Audit ready.</div><div class="ref">FR2600350</div></div>
 </div>
@@ -190,5 +192,5 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 
 </script>
-<script>document.getElementById('nav-mesh').classList.add('active')</script>
+
 </body></html>

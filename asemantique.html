@@ -123,12 +123,14 @@ footer{border-top:1px solid var(--bd);padding:2.5rem;text-align:center}
   <div class="nav-links">
     <a href="index.html" id="nav-home">Accueil</a>
     <div class="nav-sep"></div>
-    <a href="asemantique.html" id="nav-asem">Asémanticité</a>
+    <a href="asemantique.html" id="nav-asem"  class='active'>Asémanticité</a>
     <a href="fantom.html" id="nav-fantom">FANTOM</a>
     <a href="messageries.html" id="nav-msg">Messageries</a>
     <div class="nav-sep"></div>
-    <a href="revolutionnaires.html" id="nav-rev">Révolutionnaires</a>
+    <a href="post-quantique.html" id="nav-pq">Post-Quantique</a>
+    <a href="ordinateur-liquide.html" id="nav-liquide">Ordinateur Liquide</a>
     <a href="temps.html" id="nav-temps">Temps τ=E/P</a>
+    <div class="nav-sep"></div>
     <a href="securite.html" id="nav-secu">Sécurité</a>
     <a href="reseaux.html" id="nav-mesh">Réseaux</a>
     <div class="nav-sep"></div>
@@ -165,6 +167,17 @@ footer{border-top:1px solid var(--bd);padding:2.5rem;text-align:center}
 <p>Comment le destinataire distingue-t-il son message du bruit ? Le <strong>marqueur polymorphe</strong> (FR2516793) définit k positions de bits dérivées de la clé K et de l'index j. Elles changent intégralement à chaque index. Le récepteur vérifie en O(k) — nanosecondes — <strong>sans crypto</strong>. 99,8% rejeté instantanément.</p>
 </div>
 <div class="csec reveal">
+<h2>Validation <span>locale</span> en action</h2>
+<p style="margin-bottom:1.5rem">L'animation ci-dessous illustre le transit asémantique : les fragments polymorphiques traversent le réseau, validés localement par le marqueur CAMÉLÉON. Le vert signifie « accepté » — le reste est du bruit rejeté.</p>
+<div style="text-align:center;padding:1rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;overflow:hidden">
+<img src="AION_HERO_ANIMATION.gif" alt="Transit asémantique — validation locale" style="max-width:100%;height:auto;border-radius:8px">
+</div>
+</div>
+
+<div style="text-align:center;margin:1.5rem 0">
+<a href="cameleon-proof.html" style="display:inline-block;padding:0.7rem 1.8rem;background:linear-gradient(135deg,rgba(0,255,204,0.12),rgba(0,255,204,0.04));border:1px solid rgba(0,255,204,0.25);border-radius:8px;color:#00ffcc;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.1em;transition:all 0.3s">VOIR LA PREUVE D'EFFICACITÉ CAMÉLÉON →</a>
+</div>
+<div class="csec reveal">
 <h2>Les <span>brevets</span> asémantiques</h2>
 <div class="patent-grid">
 <div class="patent-card" style="border-left-color:var(--purple)"><h4 style="color:var(--purple)">CAMÉLÉON</h4><div class="sub">La fondation</div><p>Portions utiles indistinguables du bruit. Marqueur polymorphe. Filtrage sans crypto.</p><div class="ref">FR2516793</div></div>
@@ -189,5 +202,5 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 
 </script>
-<script>document.getElementById('nav-asem').classList.add('active')</script>
+
 </body></html>

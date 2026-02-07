@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCTOPUS | AION ASEMANTIX™</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #08080a;
+            color: #f8f8f8;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .brochure {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #12121a 0%, #08080a 100%);
+            border: 1px solid #a855f7;
+            position: relative;
+        }
+        
+        .header {
+            padding: 2rem;
+            border-bottom: 1px solid #a855f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #c9a962;
+            letter-spacing: 0.2em;
+        }
+        
+        .ref {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #a855f7;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid #a855f7;
+        }
+        
+        .hero {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid #2a2a2e;
+        }
+        
+        .division-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: #a855f7;
+            padding: 0.4rem 1rem;
+            border: 1px solid #a855f7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a855f7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .abstract {
+            font-size: 1rem;
+            color: #a0a0a0;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .content {
+            padding: 2rem;
+        }
+        
+        .section-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: #a855f7;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #2a2a2e;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+        }
+        
+        .feature-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(168, 85, 247, 0.15);
+            border-radius: 50%;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .feature-text {
+            font-size: 0.85rem;
+            color: #c8c8c8;
+            line-height: 1.5;
+        }
+        
+        .applications {
+            margin-bottom: 2rem;
+        }
+        
+        .app-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .app-tag {
+            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(168, 85, 247, 0.1);
+            color: #a855f7;
+            border-radius: 4px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #0d0d10;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #a855f7;
+        }
+        
+        .stat-label {
+            font-size: 0.65rem;
+            color: #808080;
+            letter-spacing: 0.05em;
+            margin-top: 0.3rem;
+        }
+        
+        .footer {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid #2a2a2e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .contact {
+            font-size: 0.85rem;
+            color: #c9a962;
+        }
+        
+        .legal {
+            font-size: 0.7rem;
+            color: #606060;
+        }
+        
+        @media print {
+            body { background: white; color: black; padding: 0; }
+            .brochure { border: 2px solid #a855f7; }
+            .feature { background: #f5f5f5; }
+            .stats { background: #f0f0f0; }
+        }
+        
+        @media (max-width: 600px) {
+            .features { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr; }
+            .title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="brochure">
+        <div class="header">
+            <div class="logo">AION ASEMANTIX™</div>
+            <div class="ref">FR2600020</div>
+        </div>
+        
+        <div class="hero">
+            <div class="division-badge">AION QUANTUM</div>
+            <h1 class="title">OCTOPUS</h1>
+            <p class="subtitle">Deep Space Messaging</p>
+            <p class="abstract">Secure messaging on hostile channel with asemantic transport layer. Messages are indistinguishable from noise with WHISPER and COMPLIANT modes.</p>
+        </div>
+        
+        <div class="content">
+            <div class="section-title">KEY FEATURES</div>
+            <div class="features">
+                
+                <div class="feature">
+                    <div class="feature-icon">🐙</div>
+                    <div class="feature-text">Messages indistinguishable from noise</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⏱️</div>
+                    <div class="feature-text">Supports 4-24 minute latencies</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🤫</div>
+                    <div class="feature-text">WHISPER mode</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">✅</div>
+                    <div class="feature-text">COMPLIANT mode</div>
+                </div>
+            </div>
+            
+            <div class="applications">
+                <div class="section-title">APPLICATIONS</div>
+                <div class="app-list">
+                    <span class="app-tag">Space Missions</span>
+                    <span class="app-tag">Submarine Comms</span>
+                    <span class="app-tag">Hostile Environments</span>
+                    
+                </div>
+            </div>
+            
+            <div class="stats">
+                
+                <div class="stat">
+                    <span class="stat-value">2</span>
+                    <span class="stat-label">Modes</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">24min</span>
+                    <span class="stat-label">Latency</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">100%</span>
+                    <span class="stat-label">Asemantic</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="contact"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="83f7ebe2ecf1e2e0f7f6c3e4eee2eaefade0ecee">[email&#160;protected]</a> • +33 7 44 47 10 72</div>
+    
