@@ -1,668 +1,419 @@
-<!doctype html>
+
+
+
+
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AION ASEMANTIX™ — 7 Divisions • Brevets</title>
-  <meta name="description" content="AION ASEMANTIX™ — Portfolio brevets structuré en 7 divisions." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AION ASEMANTIX™ — Sovereign Digital Infrastructure</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06060a;--bg2:#0c0c12;--bg3:#111118;--w:#f0f0f0;--wd:#a8a8b0;--g:#c9a962;--gl:#e0c88a;--gd:#8a7340;--bd:rgba(255,255,255,0.06);--core:#f97316;--priv:#00d4ff;--fort:#ef4444;--mesh:#eab308;--quant:#a855f7;--tact:#22c55e;--time:#00ffaa;--rev:#ff6b9d}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--w);line-height:1.7;overflow-x:hidden}::selection{background:var(--g);color:var(--bg)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,6,10,0.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;padding:0.8rem 2.5rem}
+.nav-logo{display:flex;align-items:center;gap:0.8rem;text-decoration:none;cursor:pointer}.nav-logo img{height:38px;filter:drop-shadow(0 0 8px rgba(201,169,98,0.3))}.nav-logo span{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--g);letter-spacing:0.2em}
+.nav-links{display:flex;gap:2rem;align-items:center}.nav-links a{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--wd);text-decoration:none;transition:color 0.3s;font-weight:500;cursor:pointer}.nav-links a:hover,.nav-links a.active{color:var(--g)}
+.page{display:none;min-height:100vh}.page.active{display:block}
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}.particle{position:absolute;width:2px;height:2px;background:var(--g);border-radius:50%;opacity:0;animation:pf linear infinite}
+@keyframes pf{0%{opacity:0;transform:translateY(100vh) scale(0)}10%{opacity:0.4}90%{opacity:0.4}100%{opacity:0;transform:translateY(-10vh) scale(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 4px rgba(201,169,98,0.3))}50%{filter:drop-shadow(0 0 12px rgba(201,169,98,0.6))}}
+@keyframes glowGreen{0%,100%{filter:drop-shadow(0 0 6px rgba(0,255,170,0.2))}50%{filter:drop-shadow(0 0 20px rgba(0,255,170,0.5))}}
+.aion-icon{display:inline-block;animation:glow 3s ease infinite;width:28px;height:28px}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 40%,rgba(201,169,98,0.04) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 20% 80%,rgba(168,85,247,0.03) 0%,transparent 60%);pointer-events:none}
+.hero-logo{max-width:90vw;margin-bottom:2rem;opacity:0;animation:fadeUp 0.8s ease 0.2s forwards}
+.hero-logo-gold{width:420px;filter:drop-shadow(0 0 20px rgba(201,169,98,0.3));animation:fadeUp 0.8s ease 0.2s forwards,glow 4s ease 1s infinite}
+.hero-logo-green{width:500px;filter:drop-shadow(0 0 20px rgba(0,255,170,0.3));animation:fadeUp 0.8s ease 0.2s forwards,glowGreen 4s ease 1s infinite}
+.hero-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.6em;color:var(--g);margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s ease 0.3s forwards}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:400;line-height:1.05;margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.8s ease 0.5s forwards}
+.hero-title em{font-style:italic;color:var(--g)}
+.hero-sub{font-size:1rem;color:var(--wd);font-weight:300;max-width:650px;margin-bottom:3rem;opacity:0;animation:fadeUp 0.8s ease 0.7s forwards}
+.hero-stats{display:flex;gap:3.5rem;margin-top:1rem;opacity:0;animation:fadeUp 0.8s ease 0.9s forwards;flex-wrap:wrap;justify-content:center}
+.hsn{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--g);line-height:1}
+.hsl{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.3em;color:var(--wd);margin-top:0.3rem}
+.dsec{padding:3rem 2.5rem 5rem;max-width:1400px;margin:0 auto}
+.sh{text-align:center;margin-bottom:3rem}.sl2{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.5em;color:var(--gd);margin-bottom:0.8rem}.st2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:400}.st2 span{color:var(--g)}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:1.2rem}
+.dc{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;overflow:hidden;transition:all 0.3s}.dc:hover{border-color:rgba(201,169,98,0.15);box-shadow:0 6px 30px rgba(0,0,0,0.3)}
+.dc.rev{border-color:rgba(255,107,157,0.2);background:linear-gradient(135deg,var(--bg2) 0%,rgba(255,107,157,0.03) 100%)}
+.dh{padding:1.5rem 1.8rem 1rem;cursor:pointer;display:flex;align-items:center;gap:1rem}
+.dcl{width:4px;height:36px;border-radius:2px;flex-shrink:0}.di{flex:1}
+.dn{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;display:flex;align-items:center;gap:0.6rem}
+.dd{font-size:0.75rem;color:var(--wd);font-weight:300;margin-top:0.2rem}
+.dcnt{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;padding:0.25rem 0.6rem;border:1px solid var(--bd);border-radius:16px;color:var(--wd);white-space:nowrap;flex-shrink:0}
+.dtg{font-size:1rem;color:var(--wd);transition:transform 0.3s;cursor:pointer;flex-shrink:0;margin-left:0.5rem}.dc.open .dtg{transform:rotate(180deg)}
+.dp{max-height:0;overflow:hidden;transition:max-height 0.5s ease}.dc.open .dp{max-height:3000px}
+.pi{display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1.8rem 0.8rem 3rem;border-top:1px solid var(--bd);cursor:pointer;transition:background 0.2s}.pi:hover{background:rgba(255,255,255,0.02)}
+.pn{font-family:'JetBrains Mono',monospace;font-size:0.8rem;font-weight:500;letter-spacing:0.04em}.ps{font-size:0.7rem;color:var(--wd);font-weight:300;margin-top:0.1rem}
+.pr{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd);opacity:0.5}.pa{font-size:0.75rem;color:var(--wd);opacity:0;transition:all 0.2s}.pi:hover .pa{opacity:1;transform:translateX(3px)}
+.rb{font-size:0.55rem;background:var(--rev);color:#fff;padding:0.15rem 0.5rem;border-radius:10px;margin-left:0.5rem;font-weight:600}
+.mo{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:2rem}.mo.active{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;max-width:700px;width:100%;max-height:85vh;overflow-y:auto;position:relative;animation:mIn 0.3s ease}
+@keyframes mIn{from{opacity:0;transform:scale(0.95) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.mc{position:sticky;top:0;float:right;z-index:10;background:var(--bg2);border:none;color:var(--wd);font-size:1.4rem;cursor:pointer;padding:1rem 1.3rem;transition:color 0.2s}.mc:hover{color:var(--w)}
+.mb2{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;padding:0.25rem 0.7rem;border:1px solid;border-radius:3px;margin-bottom:0.8rem}
+.mh{padding:2rem 2rem 1.2rem}.mt{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;margin-bottom:0.3rem}.msu{font-size:0.9rem;font-weight:400;margin-bottom:0.8rem}
+.mab{font-size:0.85rem;color:var(--wd);font-weight:300;line-height:1.7}.mbd{padding:0 2rem 2rem}
+.msl3{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;margin-bottom:0.8rem;padding-bottom:0.4rem;border-bottom:1px solid var(--bd)}
+.mfs{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:1.5rem}
+.mf{display:flex;align-items:flex-start;gap:0.6rem;padding:0.7rem;background:rgba(255,255,255,0.02);border-radius:5px}
+.mfi{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:0.8rem;flex-shrink:0}
+.mft{font-size:0.75rem;color:var(--wd);line-height:1.4}
+.mta{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem}.mtg{font-size:0.65rem;padding:0.3rem 0.6rem;border-radius:3px}
+.mss{display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;padding:1rem;background:rgba(0,0,0,0.3);border-radius:7px;margin-bottom:1rem}
+.msv{font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:600;text-align:center}.msl4{font-size:0.55rem;color:var(--wd);text-align:center;margin-top:0.15rem}
+.mrf{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--wd);text-align:right;opacity:0.4}
+.ivh{min-height:65vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:9rem 2.5rem 3rem;position:relative}
+.ivh::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 50%,rgba(201,169,98,0.05) 0%,transparent 60%);pointer-events:none}
+.ivl{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.5em;color:var(--gd);margin-bottom:1.2rem}
+.ivn{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.8rem);font-weight:400;margin-bottom:0.8rem}.ivn em{color:var(--g);font-style:italic}
+.ivtl{font-size:1rem;color:var(--wd);font-weight:300;max-width:600px;margin:0 auto}
+.ivq{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--gl);max-width:650px;margin:2rem auto;padding:1.5rem;border-left:2px solid var(--gd);text-align:left}
+.ivs{display:flex;justify-content:center;gap:3.5rem;padding:2.5rem;background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);margin-bottom:3rem;flex-wrap:wrap}
+.ivsn{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--g);line-height:1;text-align:center}
+.ivsl{font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.25em;color:var(--wd);margin-top:0.2rem;text-align:center}
+.ivc{max-width:850px;margin:0 auto;padding:0 2.5rem 5rem}
+.ivsc{margin-bottom:3rem}.ivst{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:1px solid var(--bd)}.ivst span{color:var(--g)}
+.ivtx{font-size:0.9rem;color:var(--wd);font-weight:300;line-height:1.9}.ivtx p{margin-bottom:1rem}.ivtx strong{color:var(--w);font-weight:500}.ivtx em{color:var(--gl)}
+.ivtm{position:relative;padding-left:1.8rem}.ivtm::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gd),var(--g),var(--gd),transparent)}
+.ivti{margin-bottom:1.8rem;position:relative}.ivti::before{content:'';position:absolute;left:-1.8rem;top:0.35rem;width:6px;height:6px;background:var(--g);border-radius:50%;margin-left:-2.5px;box-shadow:0 0 10px rgba(201,169,98,0.5)}
+.ivty{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--g);letter-spacing:0.2em;margin-bottom:0.2rem}
+.ivtt{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--w);margin-bottom:0.15rem}.ivtd{font-size:0.8rem;color:var(--wd);font-weight:300}
+.ivbg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0.8rem;margin-top:1rem}
+.ivb{background:var(--bg2);border:1px solid var(--bd);border-radius:8px;padding:1.2rem;transition:border-color 0.3s}.ivb:hover{border-color:rgba(201,169,98,0.2)}
+.ivbn{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--g);margin-bottom:0.2rem}.ivbi{font-size:0.75rem;color:var(--w);margin-bottom:0.15rem}.ivba{font-size:0.7rem;color:var(--wd)}
+.tuh{min-height:75vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:9rem 2.5rem 3rem;position:relative}
+.tuh::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 50% at 50% 40%,rgba(0,255,170,0.04) 0%,transparent 60%);pointer-events:none}
+.tub{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.3em;color:var(--time);border:1px solid var(--time);padding:0.35rem 0.9rem;display:inline-block;margin-bottom:1.5rem}
+.tutt{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6rem);font-weight:400;line-height:1}
+.tufh{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--time);margin:1.2rem 0}
+.tus{font-size:1rem;color:var(--wd);font-weight:300;max-width:600px;margin:0 auto}
+.tuc{max-width:850px;margin:0 auto;padding:0 2.5rem 5rem}.tusc{margin-bottom:3rem}
+.tust{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:500;margin-bottom:1.2rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(0,255,170,0.15)}.tust span{color:var(--time)}
+.tutx{font-size:0.9rem;color:var(--wd);font-weight:300;line-height:1.9}.tutx p{margin-bottom:1rem}.tutx strong{color:var(--w);font-weight:500}
+.tufb{background:rgba(0,255,170,0.04);border:1px solid rgba(0,255,170,0.15);border-radius:10px;padding:2rem;text-align:center;margin:1.5rem 0}
+.tufm{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--time);margin-bottom:0.8rem}.tufe{font-size:0.8rem;color:var(--wd);line-height:1.7}
+.tuan{background:rgba(201,169,98,0.06);border-left:3px solid var(--g);padding:1.2rem 1.5rem;border-radius:0 7px 7px 0;margin:1.5rem 0}
+.tuant{font-size:0.9rem;color:var(--g);margin-bottom:0.3rem;font-weight:500}
+.tuag{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.8rem;margin-top:1rem}
+.tuac{background:var(--bg2);border:1px solid var(--bd);border-radius:7px;padding:1.2rem;text-align:center}
+.tuai{font-size:1.8rem;margin-bottom:0.4rem}.tuan2{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--time);letter-spacing:0.08em;margin-bottom:0.2rem}.tuad{font-size:0.75rem;color:var(--wd);font-weight:300}
+footer{border-top:1px solid var(--bd);padding:2.5rem;text-align:center}.fb{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--g);letter-spacing:0.3em;margin-bottom:0.5rem}.fi{font-size:0.7rem;color:var(--wd);opacity:0.5}
+@media(max-width:768px){nav{padding:0.7rem 1.2rem}.nav-links{gap:1rem}.nav-links a{font-size:0.6rem}.dg{grid-template-columns:1fr}.hero-stats{gap:1.8rem}.mfs{grid-template-columns:1fr}.ivs{gap:1.5rem}.hero-logo-gold{width:280px}.hero-logo-green{width:320px}}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg:#050608;
-      --bg2:#090a10;
-      --panel:rgba(255,255,255,.03);
-      --panel2:rgba(255,255,255,.05);
-      --text:#e9e9ee;
-      --muted:#a1a1ab;
-
-      --gold:#c9a962;
-      --gold2:#f0d58a;
-      --line:rgba(201,169,98,.25);
-      --shadow:rgba(0,0,0,.65);
-
-      /* accents par division (optionnels) */
-      --core:#f0d58a;
-      --fortress:#ef4444;
-      --mesh:#eab308;
-      --privacy:#00d4ff;
-      --quantum:#a855f7;
-      --tactical:#22c55e;
-      --time:#00ffaa;
-    }
-
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      background:
-        radial-gradient(1000px 500px at 50% 0%, rgba(201,169,98,.12), transparent 60%),
-        radial-gradient(900px 500px at 15% 35%, rgba(240,213,138,.06), transparent 65%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-      color:var(--text);
-      line-height:1.7;
-      min-height:100vh;
-    }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
-
-    /* NAV */
-    .nav{
-      position:fixed; inset:0 0 auto 0; z-index:50;
-      background:rgba(5,6,8,.72);
-      backdrop-filter: blur(14px);
-      border-bottom:1px solid transparent;
-    }
-    .nav.scrolled{border-bottom:1px solid var(--line)}
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:16px 0; gap:14px;
-    }
-    .brand{
-      display:flex; align-items:baseline; gap:10px;
-      letter-spacing:.22em; text-transform:uppercase;
-      font-family:"Cormorant Garamond", serif;
-      font-weight:600;
-      white-space:nowrap;
-    }
-    .brand small{
-      font-family:Inter, sans-serif;
-      letter-spacing:.16em;
-      color:var(--muted);
-      font-weight:500;
-      font-size:12px;
-      text-transform:uppercase;
-    }
-    .menu{
-      display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end;
-      font-size:13px;
-    }
-    .menu a{
-      color:var(--muted);
-      padding:10px 10px;
-      border:1px solid transparent;
-      border-radius:14px;
-      letter-spacing:.06em;
-    }
-    .menu a:hover{
-      color:var(--text);
-      border-color:rgba(201,169,98,.22);
-      background:rgba(255,255,255,.02);
-    }
-
-    /* HERO */
-    .hero{
-      padding:110px 0 26px;
-      text-align:center;
-    }
-    .logo{
-      width:min(520px, 92vw);
-      height:auto;
-      filter: drop-shadow(0 18px 70px rgba(201,169,98,.18));
-      opacity:.98;
-    }
-    .kicker{
-      margin:16px 0 10px;
-      font-family:"JetBrains Mono", monospace;
-      font-size:12px;
-      letter-spacing:.20em;
-      color:var(--gold);
-      display:inline-block;
-      padding:8px 12px;
-      border:1px solid rgba(201,169,98,.28);
-      background:rgba(255,255,255,.02);
-    }
-    .hero h1{
-      font-family:"Cormorant Garamond", serif;
-      font-weight:500;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-size:clamp(30px, 4vw, 54px);
-      margin:14px 0 8px;
-    }
-    .hero p{
-      max-width:900px;
-      margin:0 auto;
-      color:var(--muted);
-      font-weight:300;
-      font-size:clamp(14px, 1.2vw, 18px);
-    }
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:12px;
-      max-width:760px;
-      margin:26px auto 0;
-    }
-    .stat{
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:14px 12px;
-      background:rgba(255,255,255,.02);
-    }
-    .stat .n{
-      font-family:"Cormorant Garamond", serif;
-      color:var(--gold2);
-      font-size:34px;
-      line-height:1.1;
-    }
-    .stat .l{
-      font-family:"JetBrains Mono", monospace;
-      font-size:11px;
-      color:var(--muted);
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      margin-top:6px;
-    }
-
-    /* SECTION */
-    section{padding:28px 0}
-    .section-head{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
-      margin-bottom:14px;
-    }
-    .section-title{
-      font-family:"JetBrains Mono", monospace;
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:var(--gold2);
-    }
-    .section-desc{color:var(--muted);font-size:14px;max-width:820px}
-    .divider{
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(201,169,98,.25), transparent);
-      margin:10px 0 0;
-    }
-
-    /* TOOLBAR */
-    .toolbar{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-      margin-top:16px;
-    }
-    .search{
-      flex:1; min-width:220px;
-      display:flex;
-      border:1px solid rgba(201,169,98,.22);
-      border-radius:16px;
-      overflow:hidden;
-      background:rgba(0,0,0,.25);
-    }
-    .search input{
-      width:100%;
-      padding:12px 12px;
-      border:0;
-      outline:0;
-      background:transparent;
-      color:var(--text);
-      font-size:14px;
-    }
-    .chipbar{display:flex; gap:8px; flex-wrap:wrap}
-    .filterchip{
-      font-family:"JetBrains Mono", monospace;
-      font-size:11px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      padding:9px 10px;
-      border-radius:999px;
-      border:1px solid rgba(201,169,98,.22);
-      color:var(--muted);
-      background:rgba(255,255,255,.02);
-      cursor:pointer;
-      user-select:none;
-    }
-    .filterchip.active{
-      border-color:rgba(201,169,98,.55);
-      color:var(--text);
-      background:linear-gradient(180deg, rgba(201,169,98,.18), rgba(255,255,255,.02));
-    }
-
-    /* GRID divisions */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(290px, 1fr));
-      gap:14px;
-      margin-top:14px;
-    }
-    .card{
-      border:1px solid rgba(201,169,98,.18);
-      border-radius:18px;
-      padding:16px;
-      background:var(--panel);
-      box-shadow:0 22px 80px var(--shadow);
-      transition:transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-    .card:hover{
-      transform:translateY(-2px);
-      border-color:rgba(201,169,98,.55);
-      background:var(--panel2);
-    }
-
-    .cardhead{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      margin-bottom:10px;
-    }
-    .name{
-      font-family:"Cormorant Garamond", serif;
-      font-size:22px;
-      letter-spacing:.06em;
-    }
-    .count{
-      font-family:"JetBrains Mono", monospace;
-      font-size:11px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--gold);
-      border:1px solid rgba(201,169,98,.35);
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,.02);
-      white-space:nowrap;
-    }
-    .desc{color:var(--muted);font-size:14px;margin-bottom:10px}
-
-    .patents{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    }
-    .pch{
-      font-family:"JetBrains Mono", monospace;
-      font-size:11px;
-      letter-spacing:.08em;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(0,0,0,.20);
-      color:var(--text);
-      cursor:pointer;
-      transition:all .15s ease;
-    }
-    .pch:hover{
-      border-color:rgba(201,169,98,.55);
-      background:rgba(201,169,98,.10);
-    }
-
-    /* accent par division */
-    .accent{height:2px; width:42px; border-radius:999px; background:rgba(201,169,98,.5); margin-bottom:6px}
-    .core .accent{background:var(--core)}
-    .fortress .accent{background:var(--fortress)}
-    .mesh .accent{background:var(--mesh)}
-    .privacy .accent{background:var(--privacy)}
-    .quantum .accent{background:var(--quantum)}
-    .tactical .accent{background:var(--tactical)}
-    .time .accent{background:var(--time)}
-
-    /* MODAL */
-    .modal{
-      position:fixed; inset:0;
-      display:none;
-      place-items:center;
-      background:rgba(0,0,0,.78);
-      z-index:100;
-      padding:18px;
-    }
-    .modal.on{display:grid}
-    .modalbox{
-      width:min(920px, 98vw);
-      border-radius:22px;
-      border:1px solid rgba(201,169,98,.25);
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.25));
-      box-shadow:0 30px 120px rgba(0,0,0,.75);
-      overflow:hidden;
-    }
-    .mhead{
-      padding:22px 22px 14px;
-      border-bottom:1px solid rgba(201,169,98,.18);
-      display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
-    }
-    .mref{
-      font-family:"JetBrains Mono", monospace;
-      font-size:12px;
-      color:var(--gold2);
-      letter-spacing:.12em;
-      margin-bottom:6px;
-    }
-    .mtitle{
-      font-family:"Cormorant Garamond", serif;
-      font-size:30px;
-      letter-spacing:.06em;
-    }
-    .msub{color:var(--muted); font-size:14px; margin-top:6px}
-    .close{
-      border:1px solid rgba(201,169,98,.25);
-      background:rgba(255,255,255,.02);
-      color:var(--text);
-      border-radius:14px;
-      padding:10px 12px;
-      cursor:pointer;
-      font-family:"JetBrains Mono", monospace;
-      font-size:12px;
-    }
-    .close:hover{border-color:rgba(201,169,98,.55)}
-    .mbody{
-      padding:18px 22px 22px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-    }
-    .panel{
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(0,0,0,.20);
-      border-radius:18px;
-      padding:14px;
-    }
-    .ptitle{
-      font-family:"JetBrains Mono", monospace;
-      font-size:11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--gold);
-      margin-bottom:10px;
-    }
-    .plist{margin:0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.6}
-    .tagline{display:flex; flex-wrap:wrap; gap:8px}
-    .tag{
-      font-family:"JetBrains Mono", monospace;
-      font-size:11px;
-      color:var(--muted);
-      border:1px solid rgba(201,169,98,.18);
-      padding:7px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,.02);
-    }
-    @media (max-width: 820px){
-      .stats{grid-template-columns:1fr; max-width:520px}
-      .mbody{grid-template-columns:1fr}
-      .menu{display:none}
-      .nav-inner{justify-content:space-between}
-    }
-
-    footer{
-      padding:34px 0;
-      border-top:1px solid rgba(201,169,98,.18);
-      color:var(--muted);
-      text-align:center;
-      margin-top:16px;
-      font-size:13px;
-    }
-  </style>
+.gcard{display:block;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:1.8rem;transition:all 0.3s;cursor:pointer;position:relative;overflow:hidden}
+.gcard:hover{border-color:rgba(201,169,98,0.3);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.4)}
+.gcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g),var(--time));opacity:0;transition:opacity 0.3s}.gcard:hover::before{opacity:1}
+.gcicon{font-size:2.5rem;margin-bottom:0.8rem}
+.gcname{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--w);margin-bottom:0.3rem}
+.gcdesc{font-size:0.8rem;color:var(--wd);font-weight:300;margin-bottom:0.8rem;line-height:1.5}
+.gctag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;padding:0.2rem 0.5rem;background:rgba(201,169,98,0.12);color:var(--g);border-radius:3px}
+</style>
 </head>
-
 <body>
-  <header class="nav" id="nav">
-    <div class="wrap nav-inner">
-      <a href="#top" class="brand">
-        <span style="color:var(--gold);">AION</span>
-        <span style="opacity:.7;">ASEMANTIX™</span>
-        <small>7 divisions • brevets</small>
-      </a>
-      <nav class="menu" aria-label="Navigation">
-        <a href="#divisions">Divisions</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+<div class="particles" id="pc"></div>
+<nav>
+<a class="nav-logo" onclick="showPage('home')"><img src="AION_LOGO_FIGURATIF_OR.png" alt="AION" onerror="this.style.display=&apos;none&apos;"><span>AION ASEMANTIX\u2122</span></a>
+<div class="nav-links"><a onclick="showPage('home')" id="nav-home" class="active">Accueil</a><a onclick="showPage('tute')" id="nav-tute">Manifeste</a><a onclick="showPage('inventrice')" id="nav-inventrice">L\u2019Inventrice</a></div>
+</nav>
 
-  <main id="top" class="wrap hero">
-    <img class="logo" src="assets/img/AION-LOGO.png" alt="Logo AION figuratif">
-    <div class="kicker">HARVEST NOW, DECRYPT NEVER</div>
-    <h1><span style="color:var(--gold);">AION</span> ASEMANTIX™</h1>
-    <p>
-      Page d’accueil premium et simple : <b>7 divisions</b> + <b>brevets cliquables</b> + recherche.
-      (Tu pourras ensuite créer des pages séparées, mais ici tout est déjà exploitable.)
-    </p>
+<!-- ==================== ACCUEIL ==================== -->
+<div class="page active" id="page-home">
+<section class="hero" style="min-height:100vh;padding-top:6rem">
 
-    <div class="stats" aria-label="Statistiques">
-      <div class="stat"><div class="n" id="statPatents">—</div><div class="l">Brevets</div></div>
-      <div class="stat"><div class="n">7</div><div class="l">Divisions</div></div>
-      <div class="stat"><div class="n">∞</div><div class="l">Extensions</div></div>
-    </div>
-  </main>
+<img src="AION_LOGO_FIGURATIF_OR.png" alt="AION Marqueurs" class="hero-logo hero-logo-gold" style="width:520px;max-width:85vw;margin-bottom:3rem" onerror="this.style.display='none'">
 
-  <section id="divisions">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <div class="section-title">7 divisions</div>
-          <div class="section-desc">
-            Tape un mot-clé (PIP, VPN, τ, QKD…) et clique un brevet pour ouvrir sa fiche.
-          </div>
-        </div>
-      </div>
-      <div class="divider"></div>
+<div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:400;letter-spacing:0.25em;color:var(--g);opacity:0;animation:fadeUp 0.8s ease 0.4s forwards;text-shadow:0 0 40px rgba(201,169,98,0.3)">AION ASEMANTIX<span style="font-size:0.5em;vertical-align:super">™</span></div>
 
-      <div class="toolbar">
-        <div class="search" role="search">
-          <input id="q" placeholder="Rechercher..." />
-        </div>
-        <div class="chipbar" id="filters"></div>
-      </div>
+<div style="width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent);margin:2rem auto;opacity:0;animation:fadeUp 0.6s ease 0.7s forwards"></div>
 
-      <div class="grid" id="grid"></div>
-    </div>
-  </section>
+<div style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:500;letter-spacing:0.35em;color:var(--w);opacity:0;animation:fadeUp 0.8s ease 0.9s forwards;text-transform:uppercase">Harvest Now, Decrypt Never.</div>
 
-  <section id="contact">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <div class="section-title">Contact</div>
-          <div class="section-desc">Licensing • Partenariats • Acquisition • Dossier technique</div>
-        </div>
-      </div>
-      <div class="divider"></div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.5em;color:var(--gd);margin-top:1rem;opacity:0;animation:fadeUp 0.6s ease 1.1s forwards">POST-QUANTUM SECURITY</div>
 
-      <div class="card" style="margin-top:14px;">
-        <div class="cardhead">
-          <div>
-            <div class="accent"></div>
-            <div class="name">Écrire</div>
-            <div class="desc">Email direct (modifiable en bas du fichier).</div>
-          </div>
-          <a class="count" href="mailto:thaoractu@gmail.com">thaoractu@gmail.com</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<div style="width:60px;height:1px;background:var(--gd);margin:2.5rem auto;opacity:0;animation:fadeUp 0.6s ease 1.3s forwards"></div>
 
-  <footer>© 2025 AION ASEMANTIX™ — Tous droits réservés.</footer>
+<p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2vw,1.3rem);color:var(--wd);font-weight:400;max-width:700px;text-align:center;line-height:1.9;opacity:0;animation:fadeUp 0.8s ease 1.4s forwards;font-style:italic">« La surveillance, le blackout, le hacking, le vol de données sont <em style="color:var(--g)">structurellement impossibles</em>.<br>Agnostique aux canaux, asémantique par nature — notre paradigme s’affranchit des infrastructures actuelles et nous permet d’atteindre les océans, les zones contraintes, et même <em style="color:var(--g)">Mars</em> — sans câbles ni fils. »</p>
 
-  <!-- MODAL -->
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modalbox" role="dialog" aria-modal="true" aria-labelledby="mtitle">
-      <div class="mhead">
-        <div>
-          <div class="mref" id="mref"></div>
-          <div class="mtitle" id="mtitle"></div>
-          <div class="msub" id="msub"></div>
-        </div>
-        <button class="close" id="closeBtn">FERMER</button>
-      </div>
-      <div class="mbody">
-        <div class="panel">
-          <div class="ptitle">Résumé</div>
-          <div id="mabstract" style="color:var(--muted); font-size:14px; line-height:1.6;"></div>
-        </div>
-        <div class="panel">
-          <div class="ptitle">Points clés</div>
-          <ul class="plist" id="mpoints"></ul>
-          <div class="ptitle" style="margin-top:14px;">Tags</div>
-          <div class="tagline" id="mtags"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="hero-stats" style="margin-top:3rem;opacity:0;animation:fadeUp 0.8s ease 1.7s forwards">
+<div><div class="hsn">38</div><div class="hsl">BREVETS INPI</div></div>
+<div><div class="hsn">7</div><div class="hsl">DIVISIONS</div></div>
+<div><div class="hsn">τ=E/P</div><div class="hsl">TEMPS SOUVERAIN</div></div>
+<div><div class="hsn">24 min</div><div class="hsl">TERRE → MARS</div></div>
+</div>
 
-  <script>
-    // === DONNÉES (EXEMPLE) ===
-    // Remplace/complète ici quand tu veux. Mais le site marche déjà sans rien toucher.
-    const divisions = [
-      { key:"core", name:"AION Core", accent:"core", desc:"Fondations asémantiques, validation, identifiants polymorphes.",
-        patents:[
-          {label:"PIP POLYMORPHIC", ref:"FR2600202", subtitle:"Brevet fondateur", abstract:"Communication non-corrélable via permutation polymorphe des identifiants.",
-            points:["Coordination d’identifiants","Non-corrélabilité","Extensions post-quantiques","Base de l’écosystème"], tags:["core","pip","polymorphic"]},
-          {label:"ASEMANTIX", ref:"FR2516793", subtitle:"Fragments polymorphes", abstract:"Validation asémantique avec marqueur polymorphe.",
-            points:["Fragments indistinguables du bruit","Filtrage massif sans crypto","Forward secrecy","Résistant à la censure"], tags:["asémantique","filtrage","kdf"]},
-        ]
-      },
-      { key:"fortress", name:"AION Fortress", accent:"fortress", desc:"Protection autonome, contrôle d’accès, neutralisation.",
-        patents:[
-          {label:"HEIMDALL", ref:"FR2600400", subtitle:"Authentification énergétique", abstract:"Authentification via signature énergétique.",
-            points:["Secret + empreinte physique","Anti-usurpation à distance","Profil de référence"], tags:["auth","energie"]},
-        ]
-      },
-      { key:"mesh", name:"AION Mesh", accent:"mesh", desc:"Réseaux décentralisés, topologie invisible, messagerie asémantique.",
-        patents:[
-          {label:"PIP MESH", ref:"FR2600209", subtitle:"Topologie invisible", abstract:"Mesh avec identifiants non-corrélables.",
-            points:["Multi-hop anonymisé","Impossible de compter les nœuds"], tags:["mesh","anonymat"]},
-        ]
-      },
-      { key:"privacy", name:"AION Privacy", accent:"privacy", desc:"VPN indétectable, identités multiples, mimétisme comportemental.",
-        patents:[
-          {label:"PIP VPN", ref:"FR2600251", subtitle:"VPN indétectable", abstract:"Réseau privé virtuel avec identifiants réseau non-corrélables.",
-            points:["IPs polymorphes","Anti-DPI","Anti-ML"], tags:["vpn","privacy"]},
-        ]
-      },
-      { key:"quantum", name:"AION Quantum", accent:"quantum", desc:"Sécurité post-quantique, QKD, résilience long-terme.",
-        patents:[
-          {label:"QUANTUM", ref:"FR2600313", subtitle:"QKD", abstract:"Initialisation par distribution quantique de clés.",
-            points:["Sécurité informationnelle","Résistant au quantique","Store-now-decrypt-later"], tags:["pq","qkd"]},
-        ]
-      },
-      { key:"tactical", name:"AION Tactical", accent:"tactical", desc:"Terrain, 5G/6G, internet fantôme, temps endogène.",
-        patents:[
-          {label:"PIP-5G", ref:"FR2600261", subtitle:"Handover non-corrélable", abstract:"Handover d’identifiants non-corrélables en réseaux 5G/6G.",
-            points:["Nouvel ID à chaque handover","Anti-IMSI catcher","Multi-réseaux"], tags:["5g","6g","mobile"]},
-        ]
-      },
-      { key:"time", name:"AION Time", accent:"time", desc:"Temps énergétique universel : τ = E/P.",
-        patents:[
-          {label:"TUTE FONDATEUR", ref:"FR-TUTE-001", subtitle:"τ = E/P", abstract:"Le temps comme pulsation énergétique universelle.",
-            points:["τ = E/P","vₜ = P/E","Entropie énergétique","Modules mesure/calcul"], tags:["tute","tau","energie"]},
-        ]
-      }
-    ];
+</section>
 
-    const grid = document.getElementById("grid");
-    const q = document.getElementById("q");
-    const filters = document.getElementById("filters");
-    const statPatents = document.getElementById("statPatents");
+<section class="dsec" style="padding-top:1rem">
+<div style="text-align:center;margin-bottom:2rem"><img src="AION_HERO_ANIMATION.gif" alt="AION" style="width:600px;max-width:90vw;filter:drop-shadow(0 0 20px rgba(0,255,170,0.3))" onerror="this.style.display='none'"></div>
+<div class="sh"><div class="sl2">ARCHITECTURE BREVETÉE — 38 BREVETS INPI</div><h2 class="st2">Les <span>7 Divisions</span> & <span>2 Produits Révolutionnaires</span></h2></div>
+<div class="dg" id="dg"></div>
+</section>
 
-    const allPatents = divisions.flatMap(d => d.patents.map(p => ({...p, division:d.name, divisionKey:d.key})));
-    statPatents.textContent = allPatents.length;
+<section class="dsec">
+<div class="sh"><div class="sl2">ILLUSTRATIONS INTERACTIVES</div><h2 class="st2">L’<span>Écosystème</span> en images</h2></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;max-width:1200px;margin:0 auto">
+<a href="pieuvre.html" target="_blank" class="gcard" style="text-decoration:none"><div class="gcicon">🐙</div><div class="gcname">La Pieuvre Interactive</div><div class="gcdesc">Écosystème complet AION — cliquez sur chaque tentacule</div><div class="gctag">INTERACTIF</div></a>
+<a href="ecosysteme.html" target="_blank" class="gcard" style="text-decoration:none"><div class="gcicon">🌌</div><div class="gcname">Écosystème CHRONOS</div><div class="gcdesc">Carte orbitale de la souveraineté numérique</div><div class="gctag">VISUALISATION</div></a>
+<a href="manifeste.html" target="_blank" class="gcard" style="text-decoration:none"><div class="gcicon">📜</div><div class="gcname">Le Manifeste</div><div class="gcdesc">Ce que nous abolissons — La Révolution</div><div class="gctag">MANIFESTE</div></a>
+<a href="fiche-ordinateur-liquide.html" target="_blank" class="gcard" style="text-decoration:none"><div class="gcicon">💧</div><div class="gcname">Ordinateur Liquide</div><div class="gcdesc">La liberté du nomade numérique + schéma technique breveté</div><div class="gctag" style="background:rgba(255,107,157,0.15);color:var(--rev)">★ RÉVOLUTIONNAIRE</div></a>
+<a href="ordinateur-liquide-figure.html" target="_blank" class="gcard" style="text-decoration:none"><div class="gcicon">📐</div><div class="gcname">Ordinateur Liquide — Figure Brevet</div><div class="gcdesc">Schéma technique : dispositif portable, réseau P2P, flux liquides</div><div class="gctag" style="background:rgba(255,107,157,0.15);color:var(--rev)">★ SCHÉMA BREVET</div></a>
 
-    let activeFilter = "all";
+<a href="fiche-pip.html" target="_blank" class="gcard" style="text-decoration:none"><div class="gcicon">🎭</div><div class="gcname">PIP — Identités Polymorphes</div><div class="gcdesc">Changez de visage à chaque connexion</div><div class="gctag" style="background:rgba(0,212,255,0.15);color:var(--priv)">PRIVACY</div></a>
+<a href="fiche-heimdall.html" target="_blank" class="gcard" style="text-decoration:none"><div class="gcicon">👁️</div><div class="gcname">HEIMDALL</div><div class="gcdesc">Votre appareil a une empreinte unique. On la vérifie.</div><div class="gctag" style="background:rgba(239,68,68,0.15);color:var(--fort)">FORTRESS</div></a>
+<a href="fiche-token-tute.html" target="_blank" class="gcard" style="text-decoration:none"><div class="gcicon">🔑</div><div class="gcname">TOKEN TUTE</div><div class="gcdesc">Votre identité numérique dans la poche</div><div class="gctag" style="background:rgba(0,255,170,0.15);color:var(--time)">TIME</div></a>
+<a href="fiche-aion-pay.html" target="_blank" class="gcard" style="text-decoration:none"><div class="gcicon">💰</div><div class="gcname">AION PAY</div><div class="gcdesc">Le paiement que personne ne voit</div><div class="gctag" style="background:rgba(0,255,170,0.15);color:var(--time)">TIME</div></a>
+</div>
+</section>
+<footer><div class="fb">AION ASEMANTIX™</div><div class="fi">© 2025 — asemantix@proton.me • 06 35 03 46 55 — 38 brevets déposés INPI</div></footer>
+</div>
 
-    function mkFilterChip(key, label){
-      const b = document.createElement("div");
-      b.className = "filterchip" + (key===activeFilter ? " active":"");
-      b.textContent = label;
-      b.onclick = () => { activeFilter = key; redraw(); };
-      return b;
-    }
+<!-- ==================== BREVETS (Green Logo) ==================== -->
 
-    function renderFilters(){
-      filters.innerHTML = "";
-      filters.appendChild(mkFilterChip("all","Tout"));
-      divisions.forEach(d => filters.appendChild(mkFilterChip(d.key, d.name)));
-    }
 
-    function match(p, term){
-      const t = (term||"").trim().toLowerCase();
-      if(!t) return true;
-      return [
-        p.label, p.ref, p.subtitle, p.abstract, p.division,
-        ...(p.points||[]), ...(p.tags||[])
-      ].join(" ").toLowerCase().includes(t);
-    }
+<!-- ==================== TUTE ==================== -->
+<div class="page" id="page-tute">
+<section class="hero" style="min-height:auto;padding:8rem 2rem 3rem">
+<h1 class="hero-title" style="opacity:1">Le <em>Manifeste</em></h1>
+<p class="hero-sub" style="opacity:1;max-width:750px">« L’écosystème AION ne protège pas l’utilisateur dans le système actuel. Il crée un nouveau système où la surveillance est structurellement impossible. »</p>
+</section>
 
-    function redraw(){
-      renderFilters();
-      const term = q.value || "";
-      grid.innerHTML = "";
+<div class="ivc" style="max-width:900px">
+<div class="ivsc"><h2 class="ivst">Ce que nous <span>abolissons</span></h2>
+<div class="ivtx">
+<p>L’écosystème AION n’est pas une amélioration incrémentale. C’est une <strong>rupture civilisationnelle</strong> avec le paradigme numérique actuel.</p>
+</div>
 
-      divisions.forEach(d => {
-        if(activeFilter !== "all" && d.key !== activeFilter) return;
+<div style="display:grid;gap:0.8rem;margin-top:1.5rem">
 
-        const pats = d.patents.filter(p => match({...p, division:d.name}, term));
-        if(pats.length === 0) return;
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--bg2);border:1px solid var(--bd);border-radius:8px">
+<div style="font-size:1.5rem;flex-shrink:0">🔐</div>
+<div><div style="color:#ff6b6b;text-decoration:line-through;font-size:0.85rem">L’ADRESSE IP COMME IDENTITÉ PERMANENTE</div>
+<div style="color:var(--priv);font-size:0.85rem;margin-top:0.2rem">→ Identités polymorphiques : nouvelle identité à chaque échange</div>
+<div style="font-size:0.7rem;color:var(--wd);margin-top:0.2rem;font-style:italic">PIP, PIP 5G, PIP Satellite, PIP Ghost</div></div></div>
 
-        const card = document.createElement("div");
-        card.className = `card ${d.key}`;
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--bg2);border:1px solid var(--bd);border-radius:8px">
+<div style="font-size:1.5rem;flex-shrink:0">📊</div>
+<div><div style="color:#ff6b6b;text-decoration:line-through;font-size:0.85rem">LES MÉTADONNÉES EXPLOITABLES</div>
+<div style="color:var(--priv);font-size:0.85rem;margin-top:0.2rem">→ Trafic indistinguable du bruit : aucune métadonnée utile</div>
+<div style="font-size:0.7rem;color:var(--wd);margin-top:0.2rem;font-style:italic">ASEMANTIX, OCTOPUS, MAILBOX</div></div></div>
 
-        card.innerHTML = `
-          <div class="cardhead">
-            <div>
-              <div class="accent"></div>
-              <div class="name">${d.name}</div>
-            </div>
-            <div class="count">${pats.length} brevets</div>
-          </div>
-          <div class="desc">${d.desc}</div>
-          <div class="patents"></div>
-        `;
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--bg2);border:1px solid var(--bd);border-radius:8px">
+<div style="font-size:1.5rem;flex-shrink:0">📦</div>
+<div><div style="color:#ff6b6b;text-decoration:line-through;font-size:0.85rem">LA BOX INTERNET, LES CÂBLES, LA FIBRE</div>
+<div style="color:var(--priv);font-size:0.85rem;margin-top:0.2rem">→ Satellite, cellulaire, mesh, WiFi — tout devient interchangeable</div>
+<div style="font-size:0.7rem;color:var(--wd);margin-top:0.2rem;font-style:italic">FANTOM INTERNET, PIP Satellite</div></div></div>
 
-        const list = card.querySelector(".patents");
-        pats.forEach(p => {
-          const chip = document.createElement("div");
-          chip.className = "pch";
-          chip.textContent = p.label;
-          chip.onclick = () => openModal({...p, division:d.name});
-          list.appendChild(chip);
-        });
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--bg2);border:1px solid var(--bd);border-radius:8px">
+<div style="font-size:1.5rem;flex-shrink:0">🖥️</div>
+<div><div style="color:#ff6b6b;text-decoration:line-through;font-size:0.85rem">L’ORDINATEUR COMME OBJET PHYSIQUE LOCALISÉ</div>
+<div style="color:var(--rev);font-size:0.85rem;margin-top:0.2rem">→ L’Ordinateur Liquide : partout et nulle part</div>
+<div style="font-size:0.7rem;color:var(--wd);margin-top:0.2rem;font-style:italic">ORDINATEUR LIQUIDE + TOKEN TUTE</div></div></div>
 
-        grid.appendChild(card);
-      });
-    }
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--bg2);border:1px solid var(--bd);border-radius:8px">
+<div style="font-size:1.5rem;flex-shrink:0">⏰</div>
+<div><div style="color:#ff6b6b;text-decoration:line-through;font-size:0.85rem">LA DÉPENDANCE AUX SERVEURS DE TEMPS (NTP, GPS)</div>
+<div style="color:var(--time);font-size:0.85rem;margin-top:0.2rem">→ Temps énergétique souverain : τ = E/P</div>
+<div style="font-size:0.7rem;color:var(--wd);margin-top:0.2rem;font-style:italic">CHRONOS, TUTE Batterie, TUTE CPU, TUTE Cosmos, TUTE Grid</div></div></div>
 
-    // Modal
-    const modal = document.getElementById("modal");
-    const closeBtn = document.getElementById("closeBtn");
-    const mref = document.getElementById("mref");
-    const mtitle = document.getElementById("mtitle");
-    const msub = document.getElementById("msub");
-    const mabstract = document.getElementById("mabstract");
-    const mpoints = document.getElementById("mpoints");
-    const mtags = document.getElementById("mtags");
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--bg2);border:1px solid var(--bd);border-radius:8px">
+<div style="font-size:1.5rem;flex-shrink:0">🛡️</div>
+<div><div style="color:#ff6b6b;text-decoration:line-through;font-size:0.85rem">LE VPN CLASSIQUE (IP STABLE, SERVEUR CENTRAL, TRAÇABLE)</div>
+<div style="color:var(--priv);font-size:0.85rem;margin-top:0.2rem">→ VPN polymorphique : IP différente à chaque requête</div>
+<div style="font-size:0.7rem;color:var(--wd);margin-top:0.2rem;font-style:italic">PONT CHRONOS (PIP VPN), CLOAK</div></div></div>
 
-    function openModal(p){
-      mref.textContent = p.ref || "—";
-      mtitle.textContent = p.label || "Brevet";
-      msub.textContent = `${p.division || ""} • ${p.subtitle || ""}`.trim();
-      mabstract.textContent = p.abstract || "";
-      mpoints.innerHTML = (p.points||[]).map(x => `<li>${x}</li>`).join("");
-      mtags.innerHTML = (p.tags||[]).map(t => `<span class="tag">${t}</span>`).join("");
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--bg2);border:1px solid var(--bd);border-radius:8px">
+<div style="font-size:1.5rem;flex-shrink:0">🏦</div>
+<div><div style="color:#ff6b6b;text-decoration:line-through;font-size:0.85rem">LA TRANSPARENCE FORCÉE DES TRANSACTIONS</div>
+<div style="color:var(--time);font-size:0.85rem;margin-top:0.2rem">→ Paiements vérifiables mais invisibles (ZKP)</div>
+<div style="font-size:0.7rem;color:var(--wd);margin-top:0.2rem;font-style:italic">AION PAY</div></div></div>
 
-      modal.classList.add("on");
-      modal.setAttribute("aria-hidden","false");
-      document.body.style.overflow="hidden";
-    }
-    function closeModal(){
-      modal.classList.remove("on");
-      modal.setAttribute("aria-hidden","true");
-      document.body.style.overflow="auto";
-    }
-    closeBtn.onclick = closeModal;
-    modal.addEventListener("click", (e)=>{ if(e.target===modal) closeModal(); });
-    window.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeModal(); });
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--bg2);border:1px solid var(--bd);border-radius:8px">
+<div style="font-size:1.5rem;flex-shrink:0">🔒</div>
+<div><div style="color:#ff6b6b;text-decoration:line-through;font-size:0.85rem">LA CRYPTOGRAPHIE VULNÉRABLE AUX ORDINATEURS QUANTIQUES</div>
+<div style="color:var(--quant);font-size:0.85rem;margin-top:0.2rem">→ Post-quantique sur toutes les couches (ML-KEM, ML-DSA, SHA-3)</div>
+<div style="font-size:0.7rem;color:var(--wd);margin-top:0.2rem;font-style:italic">Tous les brevets</div></div></div>
 
-    // nav border
-    const nav = document.getElementById("nav");
-    window.addEventListener("scroll", ()=>{
-      if(window.scrollY > 20) nav.classList.add("scrolled");
-      else nav.classList.remove("scrolled");
-    });
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--bg2);border:1px solid var(--bd);border-radius:8px">
+<div style="font-size:1.5rem;flex-shrink:0">☁️</div>
+<div><div style="color:#ff6b6b;text-decoration:line-through;font-size:0.85rem">LA DÉPENDANCE AUX FOURNISSEURS CLOUD</div>
+<div style="color:var(--time);font-size:0.85rem;margin-top:0.2rem">→ Stockage P2P distribué, aucun point central</div>
+<div style="font-size:0.7rem;color:var(--wd);margin-top:0.2rem;font-style:italic">ORDINATEUR LIQUIDE (GHOST STORE)</div></div></div>
 
-    q.addEventListener("input", redraw);
-    redraw();
-  </script>
+<div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--bg2);border:1px solid var(--bd);border-radius:8px">
+<div style="font-size:1.5rem;flex-shrink:0">🛂</div>
+<div><div style="color:#ff6b6b;text-decoration:line-through;font-size:0.85rem">LA CONFISCATION POSSIBLE À UNE FRONTIÈRE</div>
+<div style="color:var(--time);font-size:0.85rem;margin-top:0.2rem">→ Rien à confisquer : vos données sont partout et nulle part</div>
+<div style="font-size:0.7rem;color:var(--wd);margin-top:0.2rem;font-style:italic">ORDINATEUR LIQUIDE, TOKEN TUTE</div></div></div>
+
+</div>
+</div>
+
+<div class="ivsc" style="margin-top:3rem"><h2 class="ivst">La <span>liberté</span> retrouvée</h2>
+<div style="background:linear-gradient(135deg,rgba(201,169,98,0.08),rgba(0,255,170,0.05));border-left:3px solid var(--g);padding:1.5rem;border-radius:0 10px 10px 0;margin-top:1rem">
+<div style="font-size:0.95rem;color:var(--g);margin-bottom:0.8rem;font-weight:500">🕊️ Pour la première fois dans l’histoire numérique, un individu peut :</div>
+<div class="ivtx" style="font-size:0.9rem">
+<p>• Communiquer sans être tracé</p>
+<p>• Posséder sans qu’on puisse lui prendre</p>
+<p>• Exister numériquement sans être localisé</p>
+<p>• Traverser les frontières avec sa vie numérique intacte et invisible</p>
+<p>• Payer sans être surveillé</p>
+<p>• Travailler depuis n’importe où sur n’importe quel écran</p>
+</div></div></div>
+
+<div class="ivsc" style="margin-top:2rem"><h2 class="ivst">L’<span>Écosystème</span> AION</h2>
+<div style="text-align:center;margin:1.5rem 0"><a href="ecosysteme.html" target="_blank" class="gcard" style="text-decoration:none;display:inline-block;max-width:400px">
+<div class="gcicon">🌌</div><div class="gcname">Écosystème AION</div><div class="gcdesc">Carte orbitale interactive — l’utilisateur au centre, entouré de TUTE, PIP, FANTOM, ASEMANTIX, Sécurité, Applications</div><div class="gctag">OUVRIR L’ÉCOSYSTÈME INTERACTIF</div>
+</a></div>
+
+<div class="ivq" style="text-align:center;border-left:none;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:2rem;margin:2rem 0">« AION : le temps infini, la souveraineté éternelle. »</div>
+</div>
+
+</div>
+<footer><div class="fb">AION ASEMANTIX™</div><div class="fi">© 2025 — asemantix@proton.me • 06 35 03 46 55</div></footer>
+</div>
+
+<!-- ==================== INVENTRICE ==================== -->
+<div class="page" id="page-inventrice">
+<section class="ivh"><div>
+<div class="ivl">PIANISTE · INVENTRICE · PHILOSOPHE DU TEMPS</div>
+<h1 class="ivn">L’<em>Inventrice</em></h1>
+<p class="ivtl">De la découverte que le temps est énergie à une messagerie Terre–Mars en 24 minutes — l’histoire d’une vision devenue 38 brevets.</p>
+<div class="ivq">« Je ne suis pas scientifique. Mais j’ai découvert le Temps. »</div>
+</div></section>
+<div class="ivs">
+<div><div class="ivsn">38</div><div class="ivsl">BREVETS INPI</div></div>
+<div><div class="ivsn">τ=E/P</div><div class="ivsl">TEMPS DÉCOUVERT</div></div>
+<div><div class="ivsn">24 min</div><div class="ivsl">TERRE → MARS</div></div>
+<div><div class="ivsn">2000</div><div class="ivsl">1ER BREVET</div></div>
+</div>
+<div class="ivc">
+<div class="ivsc"><h2 class="ivst">01 · <span>ENERGEIA</span> — L’énergie en action</h2>
+<div class="ivtx">
+<p><strong>L’univers n’est pas ce qu’on croit.</strong> Il n’y a ni temps, ni espace, ni matière. Seulement <em>ENERGEIA</em> — l’énergie en action.</p>
+<p>Cette découverte a tout changé. De cette intuition philosophique est née une équation fondamentale : <strong>τ = E / P</strong>.</p>
+<p>La physique ne ment pas. Une batterie qui avait 100 joules et qui n’en a plus que 50, avec 10 watts — il s’est passé 5 secondes. <strong>Certitude absolue.</strong></p>
+<p>De cette équation, tout a découlé — un écosystème complet de <strong>souveraineté numérique</strong> qui rend obsolètes les architectures que nous tenons pour acquises.</p>
+</div></div>
+<div class="ivsc"><h2 class="ivst">02 · <span>Chronologie</span></h2>
+<div class="ivtm">
+<div class="ivti"><div class="ivty">2000</div><div class="ivtt">Premier brevet mondial</div><div class="ivtd">Dépôt du premier brevet — le flacon anti-hystérésis. La graine de l’inventrice est plantée.</div></div>
+<div class="ivti"><div class="ivty">AVRIL 2025</div><div class="ivtt">La Découverte du Temps : TUTE</div><div class="ivtd">Formulation de τ = E / P. Le temps mesuré par l’énergie. Avec l’IA, l’univers est revisité — seulement ENERGEIA.</div></div>
+<div class="ivti"><div class="ivty">2025</div><div class="ivtt">La Menace Quantique</div><div class="ivtd">Les ordinateurs quantiques casseront toute la cryptographie actuelle. Les agences stockent déjà les communications.</div></div>
+<div class="ivti"><div class="ivty">2025</div><div class="ivtt">L’Expansion — 38 brevets</div><div class="ivtd">De TUTE naissent PIP, ENERGYSYNC, OCTOPUS, l’Ordinateur Liquide, le Q-DOS. Chaque invention en appelle une autre.</div></div>
+<div class="ivti"><div class="ivty">2026</div><div class="ivtt">AION ASEMANTIX™</div><div class="ivtd">L’ère de la tranquillité. Prêt à licencier. Prêt à investir.</div></div>
+</div></div>
+<div class="ivsc"><h2 class="ivst">03 · <span>Brevets stratégiques</span></h2>
+<div class="ivbg">
+<div class="ivb"><div class="ivbn">TUTE</div><div class="ivbi">Temps énergétique τ = E/P</div><div class="ivba">Fondation de tout le système</div></div>
+<div class="ivb"><div class="ivbn">PIP VPN</div><div class="ivbi">VPN imblocable</div><div class="ivba">ProtonVPN, NordVPN</div></div>
+<div class="ivb"><div class="ivbn">PIP 5G</div><div class="ivbi">Privacy mobile / satellite</div><div class="ivba">Starlink, Orange</div></div>
+<div class="ivb"><div class="ivbn">ENERGYSYNC</div><div class="ivbi">Essaims sans GPS / NTP</div><div class="ivba">DGA, Thales, DARPA</div></div>
+<div class="ivb"><div class="ivbn">OCTOPUS</div><div class="ivbi">Terre → Mars en 24 min</div><div class="ivba">SpaceX, NASA, ESA</div></div>
+<div class="ivb"><div class="ivbn">POST-QUANTUM</div><div class="ivbi">Store now, decrypt NEVER</div><div class="ivba">Banques, Gouvernements</div></div>
+<div class="ivb" style="border-color:rgba(255,107,157,0.3)"><div class="ivbn" style="color:var(--rev)">ORDINATEUR LIQUIDE</div><div class="ivbi">Votre ordinateur partout, nulle part</div><div class="ivba">Disruption totale</div></div>
+<div class="ivb" style="border-color:rgba(255,107,157,0.3)"><div class="ivbn" style="color:var(--rev)">Q-DOS</div><div class="ivbi">OS post-quantique à temps thermodynamique</div><div class="ivba">Remplacement boot chain</div></div>
+</div></div>
+<div class="ivsc"><h2 class="ivst">04 · La <span>Vision</span></h2>
+<div class="ivq" style="margin:0 0 1.5rem 0;font-size:1.2rem">« L’univers n’est pas ce qu’on croit. Il n’y a ni temps, ni espace, ni matière. Seulement ENERGEIA — l’énergie en action. »</div>
+<div class="ivtx"><p><strong>AION ASEMANTIX™</strong> recherche des partenaires stratégiques pour déployer la souveraineté numérique à l’échelle mondiale.</p></div>
+</div></div>
+<footer><div class="fb">AION ASEMANTIX™</div><div class="fi">© 2025 — asemantix@proton.me • 06 35 03 46 55 — L’ère de la tranquillité</div></footer>
+</div>
+
+<!-- MODAL -->
+<div class="mo" id="mo" onclick="if(event.target===this)cM()"><div class="modal" id="mc2"></div></div>
+<script>
+// Particles
+const pc=document.getElementById('pc');for(let i=0;i<25;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDuration=(8+Math.random()*12)+'s';p.style.animationDelay=Math.random()*10+'s';p.style.width=p.style.height=(1+Math.random()*2)+'px';pc.appendChild(p)}
+
+// Animated SVG icons
+function dI(id,c){const I={
+core:'<svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="'+c+'" stroke-width="1.5" opacity="0.8"><animate attributeName="r" values="12;13;12" dur="3s" repeatCount="indefinite"/></circle><circle cx="16" cy="16" r="5" fill="'+c+'" opacity="0.6"><animate attributeName="opacity" values="0.4;0.8;0.4" dur="2s" repeatCount="indefinite"/></circle></svg>',
+privacy:'<svg viewBox="0 0 32 32" fill="none"><path d="M16 4L4 12L4 20L16 28L28 20L28 12Z" stroke="'+c+'" stroke-width="1.5" fill="none" opacity="0.7"><animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" repeatCount="indefinite"/></path><circle cx="16" cy="16" r="3" fill="'+c+'"/></svg>',
+fortress:'<svg viewBox="0 0 32 32" fill="none"><path d="M16 3L5 10L5 22L16 29L27 22L27 10Z" stroke="'+c+'" stroke-width="1.5" fill="'+c+'" fill-opacity="0.1"><animate attributeName="fill-opacity" values="0.05;0.15;0.05" dur="2.5s" repeatCount="indefinite"/></path><path d="M16 10L16 22M10 16L22 16" stroke="'+c+'" stroke-width="1.5"/></svg>',
+mesh:'<svg viewBox="0 0 32 32" fill="none"><circle cx="8" cy="8" r="3" fill="'+c+'" opacity="0.7"/><circle cx="24" cy="8" r="3" fill="'+c+'" opacity="0.7"/><circle cx="16" cy="24" r="3" fill="'+c+'" opacity="0.7"/><line x1="8" y1="8" x2="24" y2="8" stroke="'+c+'" stroke-width="0.8" opacity="0.5"/><line x1="8" y1="8" x2="16" y2="24" stroke="'+c+'" stroke-width="0.8" opacity="0.5"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/></line></svg>',
+quantum:'<svg viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="16" rx="12" ry="6" stroke="'+c+'" stroke-width="1" opacity="0.6"><animateTransform attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="8s" repeatCount="indefinite"/></ellipse><ellipse cx="16" cy="16" rx="12" ry="6" stroke="'+c+'" stroke-width="1" opacity="0.6" transform="rotate(60 16 16)"><animateTransform attributeName="transform" type="rotate" from="60 16 16" to="420 16 16" dur="8s" repeatCount="indefinite"/></ellipse><circle cx="16" cy="16" r="3" fill="'+c+'"><animate attributeName="r" values="2.5;3.5;2.5" dur="2s" repeatCount="indefinite"/></circle></svg>',
+tactical:'<svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="'+c+'" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"><animateTransform attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="12s" repeatCount="indefinite"/></circle><circle cx="16" cy="16" r="7" stroke="'+c+'" stroke-width="1.5" opacity="0.7"/><circle cx="16" cy="16" r="2" fill="'+c+'"/></svg>',
+time:'<svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="'+c+'" stroke-width="1.5" opacity="0.6"><animate attributeName="stroke-opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite"/></circle><line x1="16" y1="16" x2="16" y2="8" stroke="'+c+'" stroke-width="2" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="6s" repeatCount="indefinite"/></line><circle cx="16" cy="16" r="1.5" fill="'+c+'"/></svg>',
+rev:'<svg viewBox="0 0 32 32" fill="none"><path d="M16 2L20 12L30 12L22 18L25 28L16 22L7 28L10 18L2 12L12 12Z" stroke="'+c+'" stroke-width="1.2" fill="'+c+'" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.1;0.25;0.1" dur="2s" repeatCount="indefinite"/></path></svg>'
+};return I[id]||''}
+
+const D=[
+{id:'rev',n:'R\u00c9VOLUTIONNAIRES',c:'var(--rev)',ch:'#ff6b9d',d:"L'aboutissement \u2014 Produits r\u00e9volutionnaires",r:1,p:[
+{n:'ORDINATEUR LIQUIDE',s:'Syst\u00e8me informatique \u00e0 \u00e9tat distribu\u00e9 mondial',rf:'FR26XXXXX',f:['Donn\u00e9es fragment\u00e9es sur milliers de serveurs','Chaque fragment = bruit illisible','Mat\u00e9rialisation via Token sur tout \u00e9cran','Disparition sans trace'],a:['Nomades','Journalisme','Diplomatie','Entreprise'],st:[{v:'\ud83d\udca7',l:'Liquide'},{v:'\u221e',l:'Serveurs'},{v:'Zero',l:'Trace'}]},
+{n:'Q-DOS',s:'OS post-quantique \u00e0 temps thermodynamique',rf:'AION-QR-DOS',f:['Chiffrement disque ML-KEM','Boot s\u00e9curis\u00e9 ML-DSA','Anti-rollback par \u03c4','Anti-snapshot CHRONOS'],a:['OS','Serveurs critiques','Military','Gouvernement'],st:[{v:'Post-Q',l:'Crypto'},{v:'\u03c4=E/P',l:'Anti-roll'},{v:'ML-KEM',l:'Standard'}]}]},
+{id:'core',n:'AION CORE',c:'var(--core)',ch:'#f97316',d:'Le socle \u2014 Identifiants polymorphes & int\u00e9grit\u00e9',p:[
+{n:'PIP POLYMORPHIC',s:'Brevet fondateur \u2014 Communication non corr\u00e9lable',rf:'FR2600202',f:['M\u00e9canisme de coordination','Non-corr\u00e9labilit\u00e9 crypto','Extensions post-quantiques','Fondation \u00e9cosyst\u00e8me'],a:['VPN','Messaging','IoT','5G/6G'],st:[{v:'100%',l:'Non-corr\u00e9l'},{v:'Post-Q',l:'Ready'},{v:'Zero',l:'Metadata'}]},
+{n:'VCH',s:'Validation par cha\u00eenage d\'historique',rf:'FR2600203',f:['Engagement cha\u00eene local','Z\u00e9ro m\u00e9tadonn\u00e9es','Anti-rejeu','Anti-rollback'],a:['Secure Logs','Audit','Messaging'],st:[{v:'100%',l:'Integrity'},{v:'Zero',l:'Metadata'},{v:'Chain',l:'Verified'}]},
+{n:'ASEMANTIX CAMELEON',s:'Fragments as\u00e9mantiques polymorphes',rf:'FR2516793',f:['Fragments NIST SP 800-22','Marqueur polymorphe','99%+ rejet\u00e9 sans crypto','Forward secrecy KDF'],a:['Transport','Deep Space','IoT','Military'],st:[{v:'NIST',l:'Tested'},{v:'99%+',l:'Filtered'},{v:'KDF',l:'Secrecy'}]},
+{n:'BRIDGE',s:'Validation conjointe double protection',rf:'FR2600280',f:['Validation conjointe m\u00eame index','Double protection','R\u00e9sistance hybrides'],a:['Secure Comms','Anti-Injection','Military'],st:[{v:'2x',l:'Protection'},{v:'Joint',l:'Valid'},{v:'Hybrid',l:'Resistant'}]}]},
+{id:'privacy',n:'AION PRIVACY',c:'var(--priv)',ch:'#00d4ff',d:'Vie priv\u00e9e radicale \u2014 Invisibilit\u00e9 & identit\u00e9s multiples',p:[
+{n:'PIP GHOST',s:'Dispositif fant\u00f4me non tra\u00e7able',rf:'FR2600240',f:['ID distincts par \u00e9change','Modes autonome/cloud/hybride','Destinations arbitraires','Z\u00e9ro tra\u00e7abilit\u00e9'],a:['Ghost Phones','Whistleblower','Secure Devices'],st:[{v:'Zero',l:'Trace'},{v:'3',l:'Modes'},{v:'100%',l:'Ghost'}]},
+{n:'PIP VPN',s:'VPN ind\u00e9tectable et imblocable',rf:'FR2600251',f:['IP polymorphes cloud/CDN','Z\u00e9ro signature DPI','Contre-mesures anti-ML','Chine, Iran, Russie'],a:['Privacy','Anti-Censure','Corporate'],st:[{v:'Zero',l:'DPI Sig'},{v:'Anti',l:'ML'},{v:'Global',l:'Access'}]},
+{n:'CLOAK',s:'Mim\u00e9tisme comportemental anti-ML',rf:'FR2600321',f:['Profils comportementaux','Score Kolmogorov-Smirnov','Indistinguabilit\u00e9','Streaming/visio/gaming'],a:['VPN','Censorship Bypass','Privacy'],st:[{v:'K-S',l:'Tested'},{v:'100%',l:'Mimic'},{v:'Anti',l:'ML'}]},
+{n:'HYDRA',s:'Identit\u00e9s r\u00e9seau multiples simultan\u00e9es',rf:'FR2600333',f:['N identit\u00e9s actives','Isolation crypto','D\u00e9corr\u00e9lation active','Mono-appareil'],a:['Multi-Account','Persona','Corporate'],st:[{v:'N',l:'Identities'},{v:'100%',l:'Isolated'},{v:'Active',l:'Decorrel'}]}]},
+{id:'fortress',n:'AION FORTRESS',c:'var(--fort)',ch:'#ef4444',d:'D\u00e9fense autonome \u2014 Authentification & protection',p:[
+{n:'HEIMDALL',s:'Authentification empreinte \u00e9nerg\u00e9tique',rf:'FR2600400',f:['Secret + empreinte physique','Profil \u00e9nerg\u00e9tique','Impossible usurper','Double facteur'],a:['Device Auth','Access Control','IoT'],st:[{v:'Dual',l:'Factor'},{v:'Physical',l:'Proof'},{v:'Zero',l:'Spoof'}]},
+{n:'SEKHMET',s:'Protection autonome profil \u00e9nerg\u00e9tique',rf:'FR2600447',f:['D\u00e9tection profil normal','Neutralisation auto','Journal cha\u00een\u00e9 crypto','Menaces inconnues'],a:['Secure Devices','Military','Critical Infra'],st:[{v:'Auto',l:'Response'},{v:'Forensic',l:'Ready'},{v:'24/7',l:'Protect'}]},
+{n:'SESAME',s:'Commande IoT sur canal hostile',rf:'FR2600010',f:['99%+ bruit rejet\u00e9','\u00c9conomie \u00e9nergie','Hi\u00e9rarchie commandes','Drones/SCADA/m\u00e9dical'],a:['IoT','Drones','SCADA','Medical'],st:[{v:'99%+',l:'Noise Rej'},{v:'\u00b5W',l:'Power'},{v:'Zero',l:'Replay'}]},
+{n:'BLACKBOX',s:'Contr\u00f4le d\'acc\u00e8s view-once offline',rf:'FR2600204',f:['Secret + facteur humain','View-once puis effacement','Preuve crypto effacement'],a:['DRM','Classified','Legal','Military'],st:[{v:'View',l:'Once'},{v:'Proof',l:'Erase'},{v:'Offline',l:'Ready'}]}]},
+{id:'mesh',n:'AION MESH',c:'var(--mesh)',ch:'#eab308',d:'R\u00e9seaux invisibles \u2014 Topologies ind\u00e9tectables',p:[
+{n:'PIP MESH',s:'R\u00e9seau maill\u00e9 topologie invisible',rf:'FR2600209',f:['ID changeants','Topologie invisible','Impossible compter n\u0153uds'],a:['Emergency','Military','Protest'],st:[{v:'\u221e',l:'Nodes'},{v:'Multi',l:'Hop'},{v:'Zero',l:'Topology'}]},
+{n:'MAILBOX',s:'Dead drop num\u00e9rique aveugle',rf:'FR2600019',f:['Serveur 100% aveugle','Filtrage 99%+','R\u00e9sistant censure'],a:['Whistleblowing','Journalism','Anonymous'],st:[{v:'100%',l:'Blind'},{v:'99%+',l:'Filter'},{v:'Async',l:'Delivery'}]},
+{n:'SHADOW CROWD',s:'Anonymat collectif de groupe',rf:'FR2600341',f:['Trafic identique','D\u00e9corr\u00e9lation active','Impossible isoler'],a:['Group Privacy','Activist','Corporate'],st:[{v:'N',l:'Hidden'},{v:'100%',l:'Identical'},{v:'Zero',l:'Isolation'}]},
+{n:'ENERGYSYNC',s:'Coordination clockless par \u00e9nergie',rf:'FR2600343',f:['Seuils \u00e9nerg\u00e9tiques','Sans NTP/GPS','Essaims drones'],a:['Drone Swarms','Vehicles','Robots'],st:[{v:'Zero',l:'Clock'},{v:'Energy',l:'Sync'},{v:'Swarm',l:'Ready'}]},
+{n:'ORCHESTRATOR',s:'Orchestration adaptative multi-canal',rf:'FR2600350',f:['Canal-agnostique','D\u00e9cision O(1)','Audit ex post'],a:['Multi-Path','Critical Comms'],st:[{v:'O(1)',l:'Decision'},{v:'Multi',l:'Channel'},{v:'Audit',l:'Ready'}]}]},
+{id:'quantum',n:'AION QUANTUM',c:'var(--quant)',ch:'#a855f7',d:'Post-quantique \u2014 S\u00e9curit\u00e9 inconditionnelle & espace profond',p:[
+{n:'QUANTUM',s:'S\u00e9curit\u00e9 post-quantique par QKD',rf:'FR2600313',f:['S\u00e9curit\u00e9 inconditionnelle','R\u00e9sistant quantique','Store-now-decrypt-later','QKD'],a:['Gouvernement','Military','Banques'],st:[{v:'\u221e',l:'Secure'},{v:'Post-Q',l:'Ready'},{v:'QKD',l:'Init'}]},
+{n:'OCTOPUS',s:'Messagerie Deep Space',rf:'FR2600020',f:['Messages = bruit','Latences 4-24 min','WHISPER/COMPLIANT','Acquittement ancre'],a:['Space','Submarine','Hostile Env'],st:[{v:'2',l:'Modes'},{v:'24min',l:'Latency'},{v:'100%',l:'Asemantic'}]},
+{n:'RPAG',s:'Communication interplan\u00e9taire clockless',rf:'FR2600021',f:['Sans horloge','Multi-porteuses','Terre-Mars','Recomputation'],a:['Mars','Deep Sea','Remote'],st:[{v:'24min',l:'OK'},{v:'4',l:'Carriers'},{v:'Zero',l:'Clock'}]},
+{n:'PHOENIX',s:'Reprise de session sans serveur',rf:'FR2600311',f:['Checkpoints glissants','Jeton r\u00e9surrection','Sans serveur'],a:['Mobile','Unreliable Net','IoT'],st:[{v:'Auto',l:'Recovery'},{v:'Zero',l:'Server'},{v:'Window',l:'Sliding'}]},
+{n:'ANCHORS',s:'Resynchronisation par code d\'ancre',rf:'FR2600207',f:['QR, NFC, mn\u00e9monique','Genesis, Retro, Jump','Sans serveur'],a:['Offline Sync','Emergency','Field Ops'],st:[{v:'4',l:'Channels'},{v:'3',l:'Modes'},{v:'Zero',l:'Server'}]},
+{n:'CONSTELLATION',s:'Handover inter-constellations',rf:'FR2600512',f:['ID polymorphes/constellation','Synchro as\u00e9mantique','Transition aveugle'],a:['Starlink','OneWeb','LEO/MEO/GEO'],st:[{v:'Multi',l:'Constell'},{v:'Blind',l:'Handover'},{v:'Zero',l:'Correl'}]}]},
+{id:'tactical',n:'AION TACTICAL',c:'var(--tact)',ch:'#22c55e',d:'Op\u00e9rations terrain \u2014 Internet fant\u00f4me & triple protection',p:[
+{n:'CHRONOS',s:'Temps thermodynamique local',rf:'FR2600320',f:['\u03c4 = E/P endog\u00e8ne','Croissance monotone','Anti-rejeu','Sans horloge externe'],a:['Offline','Air-Gapped','Autonomous'],st:[{v:'Zero',l:'Clock'},{v:'Self',l:'Emerging'},{v:'Anti',l:'Replay'}]},
+{n:'PONT CHRONOS',s:'Triple protection int\u00e9gr\u00e9e',rf:'FR2600323',f:['CHRONOS + PIP + CLOAK','Temps thermo r\u00e9f\u00e9rentiel','ID polymorphes synchro','Mim\u00e9tisme'],a:['High-Security','Military','Government'],st:[{v:'3x',l:'Protection'},{v:'Triple',l:'Layer'},{v:'Complete',l:'Security'}]},
+{n:'PIP-5G',s:'Handover ID non corr\u00e9lables',rf:'FR2600261',f:['Nouvel ID/antenne','4G/5G/6G/satellites','Anti IMSI catchers','6 couches'],a:['Mobile','5G','Satellite','Starlink'],st:[{v:'6',l:'Layers'},{v:'5G/6G',l:'Ready'},{v:'Zero',l:'IMSI'}]},
+{n:'FANTOM INTERNET',s:'Internet anonyme sans infrastructure',rf:'FR2600245',f:['4G/satellite/WiFi/mesh','Aucun ID stable','Non g\u00e9olocalisable'],a:['Field Ops','Journalism','Humanitarian'],st:[{v:'4',l:'Connect'},{v:'Zero',l:'ID'},{v:'Zero',l:'Location'}]}]},
+{id:'time',n:'AION TIME',c:'var(--time)',ch:'#00ffaa',d:'Le temps souverain \u2014 \u03c4 = E/P et applications d\u00e9riv\u00e9es',p:[
+{n:'TUTE FONDATEUR',s:'Calcul universel temps \u00e9nerg\u00e9tique',rf:'FR-TUTE-001',f:['Loi \u03c4 = E/P','V\u00e9locit\u00e9 v\u209c = P/E','Entropie S(t)','4 modules'],a:['Batteries','CPUs','Cosmologie','Grids'],st:[{v:'34',l:'Claims'},{v:'22',l:'Examples'},{v:'\u03c4=E/P',l:'Core'}]},
+{n:'TUTE MODULAIRE',s:'Architecture modulaire int\u00e9gr\u00e9e',rf:'FR-TUTE-002',f:['Unit\u00e9 traitement','Base donn\u00e9es','API','Adaptatif'],a:['Robotics','Drones','Satellites','Cloud'],st:[{v:'8+',l:'Modules'},{v:'API',l:'Ready'},{v:'Adaptive',l:'Learn'}]},
+{n:'TUTE BATTERY',s:'BMS intelligent temps \u00e9nerg\u00e9tique',rf:'FR-TUTE-003',f:['Monitoring S\u03c4','Pr\u00e9diction d\u03c4/dt','R\u00e9gulation adaptative','+1 an dur\u00e9e vie'],a:['EV','Smartphones','Laptops'],st:[{v:'+40km',l:'Range'},{v:'+500',l:'Cycles'},{v:'0.5%',l:'CPU'}]},
+{n:'TUTE COMPUTE',s:'Optimisation CPU/GPU/FPGA',rf:'FR-TUTE-004',f:['Scheduling min S\u03c4','Analyse d\u03c4/dt','Orchestrateur','Pics thermiques'],a:['Datacenters','AI','Edge','Gaming'],st:[{v:'-30%',l:'Power'},{v:'+15%',l:'Effic'},{v:'Real',l:'Predict'}]},
+{n:'DAET ENGINEERING',s:'Gestion syst\u00e8mes \u00e9nerg\u00e9tiques',rf:'FR-DAET-001',f:['Batteries Li-ion','MPPT solaire','Smart grids','Framework unifi\u00e9'],a:['Solar','Battery','Smart Grids'],st:[{v:'MPPT',l:'Adaptive'},{v:'Grid',l:'Smart'},{v:'Unified',l:'Framework'}]},
+{n:'DAET COMPUTING',s:'Gestion syst\u00e8mes informatiques',rf:'FR-DAET-002',f:['CPU/GPU optimization','Datacenters','AI temps propre'],a:['Cloud','AI','Edge','HPC'],st:[{v:'AI',l:'Time-Aware'},{v:'Edge',l:'Optim'},{v:'Cloud',l:'Efficient'}]},
+{n:'TUTE GRID',s:'Optimisation r\u00e9seau \u00e9nerg\u00e9tique',rf:'FR2600519',f:['\u03c4_i m\u00e9trique pivot','Pr\u00e9diction risques','Routage priorit\u00e9'],a:['Smart Grids','Utilities','Emergency'],st:[{v:'\u03c4_i',l:'Metric'},{v:'Priority',l:'Routing'},{v:'Multi',l:'Tech'}]},
+{n:'TOKEN TUTE',s:'Horodatage souverain portable',rf:'FR2600542',f:['\u00c9nergie autonome','\u03c4 local','\u00c9l\u00e9ment s\u00e9curis\u00e9','Post-quantique'],a:['Horodatage','Identity','Secure Access'],st:[{v:'Local',l:'Time'},{v:'Post-Q',l:'Secure'},{v:'NFC',l:'USB BT'}]},
+{n:'AION PAY',s:'Transaction financi\u00e8re as\u00e9mantique',rf:'FR2600514',f:['Encapsulation as\u00e9mantique','Preuve ZKP','Anonymat v\u00e9rifiable','Compatible r\u00e9gulation'],a:['Finance','Donations','Commerce'],st:[{v:'ZKP',l:'Proof'},{v:'Anon',l:'Verified'},{v:'Comply',l:'Ready'}]}]}
+];
+
+// Abstracts
+
+const FL={'ORDINATEUR LIQUIDE':'fiche-ordinateur-liquide.html','PIP POLYMORPHIC':'fiche-pip.html','HEIMDALL':'fiche-heimdall.html','TOKEN TUTE':'fiche-token-tute.html','AION PAY':'fiche-aion-pay.html'};
+const A={'ORDINATEUR LIQUIDE':'Votre ordinateur est partout et nulle part. Donn\u00e9es fragment\u00e9es, chiffr\u00e9es, dispers\u00e9es. Branchez votre Token \u2014 tout appara\u00eet. D\u00e9branchez \u2014 tout dispara\u00eet.','Q-DOS':'Syst\u00e8me d\'exploitation post-quantique avec temps thermodynamique. ML-KEM, ML-DSA, anti-rollback CHRONOS.','PIP POLYMORPHIC':'Communication non corr\u00e9lable par permutation polymorphe. Fondation de l\'\u00e9cosyst\u00e8me AION.','VCH':'Cha\u00eenage d\'historique pour int\u00e9grit\u00e9 sans m\u00e9tadonn\u00e9es.','ASEMANTIX CAMELEON':'Validation sur canal hostile. Fragments indistinguables du bruit.','BRIDGE':'Validation conjointe des identifiants et fragments as\u00e9mantiques.','PIP GHOST':'Dispositif fant\u00f4me. Identifiants distincts pour chaque \u00e9change.','PIP VPN':'VPN ind\u00e9tectable par DPI. Fonctionne en Chine, Iran, Russie.','CLOAK':'Mim\u00e9tisme comportemental. Trafic indistinguable du streaming.','HYDRA':'Identit\u00e9s multiples simultan\u00e9es avec isolation cryptographique.','HEIMDALL':'Secret + empreinte \u00e9nerg\u00e9tique physique. Impossible \u00e0 usurper.','SEKHMET':'Protection autonome par monitoring \u00e9nerg\u00e9tique.','SESAME':'Commande IoT contraints. 99%+ bruit rejet\u00e9 sans computation.','BLACKBOX':'View-once offline avec preuve d\'effacement.','PIP MESH':'R\u00e9seau maill\u00e9 \u00e0 topologie invisible.','MAILBOX':'Bo\u00eete aux lettres aveugle. Serveur ne distingue rien.','SHADOW CROWD':'Anonymat collectif. Trafic identique entre membres.','ENERGYSYNC':'Coordination par \u00e9nergie locale sans horloge.','ORCHESTRATOR':'Orchestration adaptative canal-agnostique.','QUANTUM':'S\u00e9curit\u00e9 inconditionnelle post-quantique par QKD.','OCTOPUS':'Messagerie Deep Space. Terre-Mars 24 min.','RPAG':'Communication clockless interplan\u00e9taire.','PHOENIX':'Reprise de session par jeton. Sans serveur.','ANCHORS':'Resynchronisation via QR, NFC, mn\u00e9monique.','CONSTELLATION':'Handover inter-constellations sans corr\u00e9lation.','CHRONOS':'Temps thermodynamique \u03c4 = E/P endog\u00e8ne.','PONT CHRONOS':'CHRONOS + PIP + CLOAK. Triple protection.','PIP-5G':'ID non corr\u00e9lable \u00e0 chaque handover 5G/6G.','FANTOM INTERNET':'Internet anonyme sans infrastructure.','TUTE FONDATEUR':'Calcul universel \u03c4 = E/P. 34 revendications.','TUTE MODULAIRE':'Architecture modulaire TUTE. 8+ modules.','TUTE BATTERY':'BMS par temps \u00e9nerg\u00e9tique. +40km, +500 cycles.','TUTE COMPUTE':'Optimisation CPU/GPU. -30% conso.','DAET ENGINEERING':'Analyse temporelle pour batteries, solaire, grids.','DAET COMPUTING':'Analyse temporelle pour AI, CPU, GPU, Cloud.','TUTE GRID':'\u03c4_i m\u00e9trique pivot pour r\u00e9seaux \u00e9lectriques.','TOKEN TUTE':'Horodatage souverain portable post-quantique.','AION PAY':'Paiement invisible avec preuve zero-knowledge.'};
+
+// Render divisions
+const g=document.getElementById('dg');
+D.forEach(d=>{const e=document.createElement('div');e.className='dc'+(d.r?' rev':'');
+e.innerHTML='<div class="dh" onclick="this.parentElement.classList.toggle(\'open\')"><div class="dcl" style="background:'+d.c+'"></div><div class="di"><div class="dn"><span class="aion-icon">'+dI(d.id,d.ch)+'</span>'+d.n+(d.r?'<span class="rb">\u2605 R\u00c9VOLUTIONNAIRE</span>':'')+'</div><div class="dd">'+d.d+'</div></div><div class="dcnt">'+d.p.length+' BREVETS</div><div class="dtg">\u25be</div></div><div class="dp">'+d.p.map((p,i)=>'<div class="pi" onclick="oM(\''+d.id+'\','+i+')"><div><div class="pn">'+p.n+'</div><div class="ps">'+p.s+'</div></div><div style="display:flex;align-items:center;gap:0.8rem"><div class="pr">'+p.rf+'</div><div class="pa">\u2192</div></div></div>').join('')+'</div>';
+g.appendChild(e)});
+
+// Modal
+function oM(did,pi){const d=D.find(x=>x.id===did),p=d.p[pi],cv=d.c,ch=d.ch;
+var ficheBtn='';
+if(FL[p.n]){ficheBtn='<a href="'+FL[p.n]+'" target="_blank" style="display:inline-block;margin-top:0.8rem;padding:0.5rem 1rem;background:rgba(201,169,98,0.15);border:1px solid rgba(201,169,98,0.3);border-radius:5px;color:#c9a962;text-decoration:none;font-size:0.75rem;letter-spacing:0.08em">\u2728 VOIR ILLUSTRATION</a>';}
+document.getElementById('mc2').innerHTML='<button class="mc" onclick="cM()">\u00d7</button><div class="mh"><div class="mb2" style="color:'+cv+';border-color:'+cv+'">'+d.n+'</div><h2 class="mt">'+p.n+'</h2><div class="msu" style="color:'+cv+'">'+p.s+'</div><p class="mab">'+(A[p.n]||'')+'</p></div><div class="mbd"><div class="msl3" style="color:'+cv+'">CARACT\u00c9RISTIQUES CL\u00c9S</div><div class="mfs">'+p.f.map(function(f){return '<div class="mf"><div class="mfi" style="background:'+ch+'22;color:'+cv+'">\u25c6</div><div class="mft">'+f+'</div></div>';}).join('')+'</div><div class="msl3" style="color:'+cv+'">APPLICATIONS</div><div class="mta">'+p.a.map(function(a){return '<span class="mtg" style="background:'+ch+'18;color:'+cv+'">'+a+'</span>';}).join('')+'</div><div class="mss">'+p.st.map(function(s){return '<div><div class="msv" style="color:'+cv+'">'+s.v+'</div><div class="msl4">'+s.l+'</div></div>';}).join('')+'</div>'+ficheBtn+'<div class="mrf">Patent '+p.rf+'</div></div>';
+document.getElementById('mo').classList.add('active');document.body.style.overflow='hidden'}
+function cM(){document.getElementById('mo').classList.remove('active');document.body.style.overflow=''}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')cM()});
+function showPage(id){document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
+document.getElementById('page-'+id).classList.add('active');
+document.querySelectorAll('.nav-links a').forEach(function(a){a.classList.remove('active')});
+var navEl=document.getElementById('nav-'+id);if(navEl)navEl.classList.add('active');window.scrollTo(0,0)}
+</script>
 </body>
 </html>
-
-
-
