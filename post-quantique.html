@@ -1,0 +1,573 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   AION ASEMANTIX™ — Shared Styles
+   ============================================================ */
+
+:root{--bg:#06060a;--bg2:#0c0c12;--bg3:#111118;--w:#f0f0f0;--wd:#a8a8b0;--g:#c9a962;--gl:#e0c88a;--gd:#8a7340;--bd:rgba(255,255,255,0.06);--green:#00e5a0;--green-dim:#00b87f;--purple:#a78bfa;--purple-dim:#7c5fc7;--blue:#00d4ff;--red:#f87171;--orange:#f97316;--rev:#ff6b9d;--tact:#22c55e;--mesh:#eab308}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--w);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}::selection{background:var(--g);color:var(--bg)}
+
+/* NOISE TEXTURE */
+body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,6,10,0.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;padding:0.7rem 2.5rem}
+.nav-logo{display:flex;align-items:center;gap:0.8rem;text-decoration:none}
+.nav-logo img{height:34px;filter:drop-shadow(0 0 6px rgba(201,169,98,0.3))}
+.nav-logo span{font-family:'Cormorant Garamond',serif;font-size:0.85rem;color:var(--g);letter-spacing:0.2em}
+.nav-links{display:flex;gap:0.2rem;align-items:center;flex-wrap:wrap}
+.nav-links a{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--wd);text-decoration:none;transition:all 0.3s;font-weight:500;padding:0.4rem 0.6rem;border-radius:4px}
+.nav-links a:hover{color:var(--g);background:rgba(201,169,98,0.06)}
+.nav-links a.active{color:var(--g);background:rgba(201,169,98,0.08)}
+.nav-sep{width:1px;height:14px;background:var(--bd);margin:0 0.2rem}
+
+/* PARTICLES */
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;width:2px;height:2px;background:var(--g);border-radius:50%;opacity:0;animation:pf linear infinite}
+@keyframes pf{0%{opacity:0;transform:translateY(100vh) scale(0)}10%{opacity:0.4}90%{opacity:0.4}100%{opacity:0;transform:translateY(-10vh) scale(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 4px rgba(201,169,98,0.3))}50%{filter:drop-shadow(0 0 12px rgba(201,169,98,0.6))}}
+
+/* PAGE HERO */
+.page-hero{min-height:50vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:7rem 2rem 3rem;position:relative}
+.ph-label{font-family:'JetBrains Mono',monospace;font-size:1.05rem;letter-spacing:0.5em;margin-bottom:1rem}
+.ph-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:400;margin-bottom:0.8rem}
+.ph-title em{font-style:italic}
+.ph-sub{font-size:1rem;color:var(--wd);font-weight:300;max-width:650px;margin:0 auto;line-height:1.7}
+
+/* CONTENT */
+.content{max-width:900px;margin:0 auto;padding:0 2.5rem 5rem}
+.content h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:500;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid var(--bd)}
+.content h2 span{color:var(--g)}
+.content p{font-size:1.05rem;color:var(--wd);font-weight:300;line-height:1.9;margin-bottom:1rem}
+.content strong{color:var(--w);font-weight:500}
+.content em{color:var(--gl)}
+.csec{margin-bottom:3rem}
+
+/* COMPARISON */
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+@media(max-width:700px){.cmp-grid{grid-template-columns:1fr}}
+.cmp-card{padding:28px;border-radius:14px;background:var(--bg2);border:1px solid var(--bd);position:relative;overflow:hidden}
+.cmp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.cmp-card.bad{border-color:rgba(248,113,113,0.15)}.cmp-card.bad::before{background:linear-gradient(90deg,var(--red),transparent)}
+.cmp-card.good{border-color:rgba(0,229,160,0.15)}.cmp-card.good::before{background:linear-gradient(90deg,var(--green),var(--purple))}
+.cmp-card h4{font-size:1rem;font-weight:600;margin-bottom:16px}
+.cmp-card.bad h4{color:var(--red)}.cmp-card.good h4{color:var(--green)}
+.cmp-point{display:flex;gap:8px;margin-bottom:10px;font-size:1.1rem;color:var(--wd);line-height:1.5}
+
+/* LAYER STACK */
+.layer-stack{margin:24px 0}
+.ls-item{display:grid;grid-template-columns:44px 180px 1fr 100px;align-items:center;gap:12px;padding:14px 18px;border-radius:10px;margin-bottom:4px;border:1px solid transparent;transition:all 0.3s}
+.ls-item:hover{border-color:var(--bd);background:var(--bg2);transform:translateX(3px)}
+.ls-num{font-family:'JetBrains Mono',monospace;font-size:1.05rem;font-weight:600;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:6px}
+.ls-name{font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:600;letter-spacing:0.04em}
+.ls-desc{font-size:1.1rem;color:var(--wd)}
+.ls-ref{font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--wd);opacity:0.4;text-align:right}
+@media(max-width:800px){.ls-item{grid-template-columns:36px 1fr}.ls-desc,.ls-ref{display:none}}
+
+/* BARRIERS */
+.barrier-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+@media(max-width:800px){.barrier-row{grid-template-columns:1fr}}
+.barrier{padding:22px;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;border-top:2px solid var(--purple-dim)}
+.barrier-badge{font-family:'JetBrains Mono',monospace;font-size:1.05rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,0.08);padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:8px}
+.barrier h5{font-size:1.05rem;font-weight:600;margin-bottom:6px}
+.barrier p{font-size:1.05rem;color:var(--wd);line-height:1.6;margin-bottom:8px}
+.barrier-verdict{font-family:'JetBrains Mono',monospace;font-size:1.05rem;font-weight:600;color:var(--green);background:rgba(0,229,160,0.06);border:1px solid rgba(0,229,160,0.15);padding:3px 8px;border-radius:4px;display:inline-block}
+
+/* FORMULA */
+.formula-box{text-align:center;padding:32px;margin:28px 0;background:linear-gradient(135deg,rgba(167,139,250,0.04),rgba(0,229,160,0.03));border:1px solid rgba(167,139,250,0.15);border-radius:14px}
+.formula{font-family:'JetBrains Mono',monospace;font-size:clamp(0.7rem,1.6vw,0.95rem);font-weight:600;letter-spacing:1px;margin-bottom:10px;background:linear-gradient(135deg,var(--purple),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.formula-sub{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--wd);font-style:italic}
+
+/* PATENT CARDS */
+.patent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:24px 0}
+.patent-card{padding:24px;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;transition:all 0.3s;border-left:3px solid var(--g)}
+.patent-card:hover{border-color:rgba(201,169,98,0.2);transform:translateY(-2px)}
+.patent-card h4{font-family:'JetBrains Mono',monospace;font-size:1rem;margin-bottom:4px}
+.patent-card .sub{font-size:1.05rem;color:var(--wd);margin-bottom:8px}
+.patent-card p{font-size:1.1rem;color:var(--wd);line-height:1.6;margin-bottom:8px}
+.patent-card .ref{font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--wd);opacity:0.4}
+
+/* FEATURE GRID */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:24px 0}
+.feat{padding:20px;background:var(--bg2);border:1px solid var(--bd);border-radius:10px;transition:all 0.3s}
+.feat:hover{border-color:rgba(201,169,98,0.15);transform:translateY(-2px)}
+.feat-icon{font-size:1.8rem;margin-bottom:8px}
+.feat-title{font-size:1.05rem;font-weight:600;margin-bottom:4px}
+.feat-text{font-size:1.1rem;color:var(--wd);line-height:1.5}
+
+/* QUOTE */
+.quote{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--gl);border-left:2px solid var(--gd);padding:1.2rem 1.5rem;margin:1.5rem 0}
+
+/* HIGHLIGHT BOX */
+.highlight{background:linear-gradient(135deg,rgba(201,169,98,0.06),rgba(0,229,160,0.03));border-left:3px solid var(--g);padding:1.5rem;border-radius:0 10px 10px 0;margin:1.5rem 0}
+.highlight .hl-title{color:var(--g);font-size:1.1rem;font-weight:500;margin-bottom:10px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--bd);padding:2.5rem;text-align:center}
+.fb{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--g);letter-spacing:0.3em;margin-bottom:0.5rem}
+.fi{font-size:1.1rem;color:var(--wd);opacity:0.4;line-height:1.6}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(25px);transition:opacity 0.6s,transform 0.6s}.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal{animation:forceShow 0s 1.5s forwards}.reveal.visible{animation:none}@keyframes forceShow{to{opacity:1;transform:translateY(0)}}
+
+/* MOBILE */
+@media(max-width:768px){nav{padding:0.6rem 1rem;flex-wrap:wrap;gap:0.5rem}.nav-links{gap:0.1rem}.nav-links a{font-size:0.5rem;padding:0.3rem 0.4rem}.barrier-row{grid-template-columns:1fr}.cmp-grid{grid-template-columns:1fr}}
+
+</style>
+<title>Post-Quantique — AION ASEMANTIX™</title>
+</head><body>
+<div class="particles" id="pc"></div>
+<nav>
+  <a class="nav-logo" href="index.html"><img src="AION_LOGO_FIGURATIF_OR.png" alt="AION" onerror="this.style.display='none'"><span>AION ASEMANTIX™</span></a>
+  <div class="nav-links">
+    <a href="index.html" id="nav-home">Accueil</a>
+    <div class="nav-sep"></div>
+    <a href="asemantique.html" id="nav-asem">Asémanticité</a>
+    <a href="fantom.html" id="nav-fantom">FANTOM</a>
+    <a href="messageries.html" id="nav-msg">Messageries</a>
+    <div class="nav-sep"></div>
+    <a href="post-quantique.html" id="nav-pq"  class='active'>Post-Quantique</a>
+    <a href="ordinateur-liquide.html" id="nav-liquide">Ordinateur Liquide</a>
+    <a href="temps.html" id="nav-temps">Temps τ=E/P</a>
+    <div class="nav-sep"></div>
+    <a href="securite.html" id="nav-secu">Sécurité</a>
+    <a href="reseaux.html" id="nav-mesh">Réseaux</a>
+    <div class="nav-sep"></div>
+    <a href="manifeste.html" id="nav-manifeste">Manifeste</a>
+    <a href="inventrice.html" id="nav-inventrice">L'Inventrice</a>
+  </div>
+</nav>
+
+<section class="page-hero" style="background:radial-gradient(ellipse at 50% 50%,rgba(167,139,250,0.04),transparent 60%)">
+<div>
+<div class="ph-label" style="color:var(--purple)">SÉCURITÉ STRUCTURELLE</div>
+<h1 class="ph-title">Anti-quantique par <em style="color:var(--purple)">nature</em></h1>
+<p class="ph-sub">Q-DOS, Token TUTE, ML-KEM, ML-DSA. Pas un patch post-quantique sur un système vulnérable — une architecture conçue nativement pour l'ère quantique.</p>
+</div>
+</section>
+
+<div class="content">
+<div class="csec reveal">
+<h2><span>Q-DOS</span> — L'OS post-quantique natif</h2>
+<p><strong>Tout système d'exploitation actuel est vulnérable.</strong> Windows, Linux, macOS — leur boot chain repose sur RSA/ECDSA (cassable par Shor), leur chiffrement disque sur AES avec échange de clés classique, et leur horloge sur NTP (manipulable). Q-DOS remplace tout.</p>
+<div class="feat-grid">
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--purple);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">Boot sécurisé ML-DSA</div><div class="feat-text">Chaque étape du démarrage signée avec ML-DSA (post-quantique NIST). Impossible d'injecter un bootkit.</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--purple);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">Chiffrement disque ML-KEM</div><div class="feat-text">AES-256 avec encapsulation de clé ML-KEM. Store Now, Decrypt Never.</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--purple);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">Anti-rollback par τ</div><div class="feat-text">L'horloge CHRONOS (τ = E/P) empêche tout retour en arrière. Pas de NTP, pas de GPS, pas de manipulation temporelle.</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--purple);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">Anti-snapshot CHRONOS</div><div class="feat-text">Impossible de capturer l'état du système à un instant donné. Le temps thermodynamique est irréversible.</div></div>
+</div>
+</div>
+
+<!-- DEEP TECHNICAL: Q-DOS ARCHITECTURE -->
+<div class="csec reveal">
+<h2>Architecture <span>technique</span> de Q-DOS</h2>
+<p style="margin-bottom:0.5rem"><strong style="color:var(--purple)">Brevet FR2600578 — Quantum Resistant Disk Operating System</strong></p>
+<p>Q-DOS n'est pas un patch post-quantique appliqué sur un noyau existant. C'est un système d'exploitation conçu de zéro pour l'ère quantique. Chaque couche — du boot au filesystem, de l'horloge à l'authentification — est nativement post-quantique.</p>
+
+<!-- LAYER-BY-LAYER -->
+<div style="margin:1.5rem 0;padding:1.5rem;background:var(--bg2);border:1px solid var(--bd);border-radius:14px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.3em;color:var(--purple);margin-bottom:1rem;text-transform:uppercase">Architecture couche par couche</div>
+
+<!-- Layer 0: Hardware -->
+<div style="margin-bottom:1.2rem;padding:1rem;background:rgba(168,85,247,0.04);border:1px solid rgba(168,85,247,0.12);border-radius:10px;border-left:3px solid var(--purple)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.5rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--purple);font-weight:600">COUCHE 0 — MATÉRIEL (Token TUTE)</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Secure Element</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7;margin-bottom:0.5rem">Le Token TUTE contient un <strong style="color:var(--w)">élément sécurisé (SE)</strong> de type JavaCard ou ARM TrustZone, qui stocke la paire de clés racine :</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0.5rem 0">
+<div style="padding:8px 12px;background:rgba(168,85,247,0.06);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--purple)">ML-KEM-1024 (chiffrement)<br><span style="color:var(--wd);font-size:0.65rem">Encapsulation de clé post-quantique</span></div>
+<div style="padding:8px 12px;background:rgba(168,85,247,0.06);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--purple)">ML-DSA-87 (signature)<br><span style="color:var(--wd);font-size:0.65rem">Signature post-quantique NIST FIPS 204</span></div>
+</div>
+<p style="font-size:0.85rem;color:var(--wd);line-height:1.7">Les clés <strong style="color:var(--w)">ne quittent jamais le SE</strong>. Les opérations cryptographiques s'exécutent à l'intérieur du Token. L'hôte ne voit que les résultats (signatures, clés encapsulées). Même un dump mémoire complet de l'hôte ne révèle rien.</p>
+<p style="font-size:0.85rem;color:var(--wd);line-height:1.7;margin-top:0.4rem"><strong style="color:var(--g)">Horloge énergétique TUTE (τ = E/P)</strong> : le SE mesure sa propre consommation. Chaque opération crypto consomme de l'énergie mesurable → horodatage local irréfutable, sans NTP, sans GPS, sans tiers.</p>
+</div>
+
+<!-- Layer 1: Boot -->
+<div style="margin-bottom:1.2rem;padding:1rem;background:rgba(168,85,247,0.04);border:1px solid rgba(168,85,247,0.12);border-radius:10px;border-left:3px solid var(--red)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.5rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--red);font-weight:600">COUCHE 1 — BOOT CHAIN POST-QUANTIQUE</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Secure Boot PQ</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7;margin-bottom:0.5rem">La boot chain classique (UEFI Secure Boot) utilise RSA-2048 ou ECDSA — cassables par Shor. Q-DOS remplace toute la chaîne :</p>
+<div style="padding:12px;background:rgba(0,0,0,0.3);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--wd);line-height:2;margin:0.5rem 0">
+<span style="color:var(--red)">UEFI Secure Boot (RSA)</span> → <span style="color:var(--green)">Q-Boot (ML-DSA-87)</span><br>
+<span style="color:var(--wd)">Firmware → Bootloader → Noyau → Drivers → Userspace</span><br>
+<span style="color:var(--purple)">Chaque étape signée ML-DSA. Vérifiée par le Token avant exécution.</span><br>
+<span style="color:var(--g)">Anti-rollback : compteur monotone τ dans le SE. Impossible de charger une version antérieure.</span>
+</div>
+<p style="font-size:0.85rem;color:var(--wd);line-height:1.7"><strong style="color:var(--w)">Attaque bootkit → impossible.</strong> Sans la clé ML-DSA privée (dans le Token), injecter un firmware modifié échoue à la vérification de signature. Le compteur τ empêche le downgrade.</p>
+</div>
+
+<!-- Layer 2: Filesystem -->
+<div style="margin-bottom:1.2rem;padding:1rem;background:rgba(168,85,247,0.04);border:1px solid rgba(168,85,247,0.12);border-radius:10px;border-left:3px solid var(--blue)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.5rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--blue);font-weight:600">COUCHE 2 — FILESYSTEM ASÉMANTIQUE</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Fragment Store</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7;margin-bottom:0.5rem">Q-DOS n'utilise pas un filesystem classique (NTFS, ext4, APFS). <strong style="color:var(--w)">Il n'y a pas de fichiers au sens traditionnel.</strong> Chaque « fichier » est :</p>
+<div style="padding:12px;background:rgba(0,0,0,0.3);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--wd);line-height:2;margin:0.5rem 0">
+<span style="color:var(--blue)">1.</span> Fragmenté en blocs de 512 octets (OCTOPUS)<br>
+<span style="color:var(--blue)">2.</span> Chaque fragment chiffré AES-256-GCM avec clé unique (dérivée HKDF-SHA3)<br>
+<span style="color:var(--blue)">3.</span> Clé d'encapsulation ML-KEM-1024 (post-quantique)<br>
+<span style="color:var(--blue)">4.</span> Marqué CAMÉLÉON (marqueur polymorphe HMAC-SHA3, 4 octets)<br>
+<span style="color:var(--blue)">5.</span> Dispersé sur N serveurs (1 fragment = 1 serveur = du bruit)
+</div>
+<p style="font-size:0.85rem;color:var(--wd);line-height:1.7"><strong style="color:var(--w)">Le disque local ne contient rien.</strong> Tout est en RAM pendant l'utilisation, dispersé sur les relais le reste du temps. Chaque fragment passe les tests NIST SP 800-22 : indistinguable du bruit aléatoire.</p>
+</div>
+
+<!-- Layer 3: Crypto -->
+<div style="margin-bottom:1.2rem;padding:1rem;background:rgba(168,85,247,0.04);border:1px solid rgba(168,85,247,0.12);border-radius:10px;border-left:3px solid var(--green)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.5rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--green);font-weight:600">COUCHE 3 — PILE CRYPTOGRAPHIQUE</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Crypto Engine</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7;margin-bottom:0.5rem">Q-DOS remplace toute la pile TLS/PKI par une stack 100% post-quantique :</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0.5rem 0">
+<div style="padding:10px;background:rgba(255,71,87,0.04);border:1px solid rgba(255,71,87,0.1);border-radius:6px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--red);margin-bottom:4px">OS CLASSIQUE (vulnérable)</div>
+<div style="font-size:0.8rem;color:var(--wd);line-height:1.6">RSA-2048 (Shor → cassé)<br>ECDSA P-256 (Shor → cassé)<br>ECDH (échange clés → cassé)<br>AES-128 (Grover → affaibli)<br>NTP (manipulable)<br>X.509 / PKI (CA = point de défaillance)</div>
+</div>
+<div style="padding:10px;background:rgba(0,229,160,0.04);border:1px solid rgba(0,229,160,0.1);border-radius:6px">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--green);margin-bottom:4px">Q-DOS (post-quantique natif)</div>
+<div style="font-size:0.8rem;color:var(--wd);line-height:1.6">ML-KEM-1024 (FIPS 203 — résiste Shor)<br>ML-DSA-87 (FIPS 204 — résiste Shor)<br>HKDF-SHA3-256 (dérivation)<br>AES-256-GCM (Grover → 128 bits effectifs)<br>τ = E/P (horloge physique, inmanipulable)<br>Token TUTE (zéro CA, zéro PKI)</div>
+</div>
+</div>
+<p style="font-size:0.85rem;color:var(--wd);line-height:1.7;margin-top:0.5rem"><strong style="color:var(--w)">Pas de certificat X.509. Pas d'autorité de certification.</strong> L'identité est le Token. La confiance est physique (énergie), pas institutionnelle (CA).</p>
+</div>
+
+<!-- Layer 4: Horloge -->
+<div style="margin-bottom:1.2rem;padding:1rem;background:rgba(168,85,247,0.04);border:1px solid rgba(168,85,247,0.12);border-radius:10px;border-left:3px solid var(--g)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.5rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--g);font-weight:600">COUCHE 4 — HORLOGE CHRONOS (τ = E/P)</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Time Engine</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7;margin-bottom:0.5rem">Tout OS classique dépend de NTP pour l'heure. NTP est manipulable (attaque Bittau, spoofing GPS). Q-DOS utilise <strong style="color:var(--g)">CHRONOS</strong> — une horloge basée sur la thermodynamique :</p>
+<div style="padding:12px;background:rgba(0,0,0,0.3);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--wd);line-height:2;margin:0.5rem 0">
+<span style="color:var(--g)">τ = E / P</span> → le temps mesuré par l'énergie consommée / puissance instantanée<br>
+<span style="color:var(--wd)">Chaque opération crypto consomme de l'énergie → empreinte τ unique</span><br>
+<span style="color:var(--wd)">L'énergie consommée ne revient pas → temps physiquement irréversible</span><br>
+<span style="color:var(--green)">Anti-rollback : τ est monotone croissant, ancré dans les lois de la thermodynamique</span><br>
+<span style="color:var(--green)">Anti-snapshot : l'état énergétique ne peut pas être copié ni gelé</span>
+</div>
+<p style="font-size:0.85rem;color:var(--wd);line-height:1.7"><strong style="color:var(--w)">Applications :</strong> horodatage irréfutable de documents, séquençage irréversible d'événements, anti-replay sur les transactions, preuve d'antériorité d'un acte sans serveur tiers.</p>
+</div>
+
+<!-- Layer 5: Network -->
+<div style="margin-bottom:0;padding:1rem;background:rgba(168,85,247,0.04);border:1px solid rgba(168,85,247,0.12);border-radius:10px;border-left:3px solid var(--blue)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.5rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--blue);font-weight:600">COUCHE 5 — RÉSEAU FANTOM</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Transport asémantique</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7;margin-bottom:0.5rem">Q-DOS ne communique pas via TCP/IP classique. Il utilise le <strong style="color:var(--blue)">transport asémantique FANTOM</strong> comme couche réseau native :</p>
+<div style="padding:12px;background:rgba(0,0,0,0.3);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--wd);line-height:2;margin:0.5rem 0">
+<span style="color:var(--blue)">Application → Q-DOS fragmenteur → CAMÉLÉON marqueur → OCTOPUS 512 oct.</span><br>
+<span style="color:var(--blue)">→ PIP GHOST (IP/port/MAC changent) → CLOAK (profil temporel) → UDP sortant</span><br>
+<span style="color:var(--dim)">Pour le réseau : du bruit normal. Pas de TLS handshake. Pas de DNS. Pas de protocole identifiable.</span>
+</div>
+<p style="font-size:0.85rem;color:var(--wd);line-height:1.7"><strong style="color:var(--w)">Conséquence :</strong> Q-DOS est invisible sur le réseau. Pas de DPI possible, pas de filtrage, pas de blocage. Le système d'exploitation lui-même est indétectable.</p>
+</div>
+
+</div>
+</div>
+
+<!-- 8 MODULES DETAIL WITH PATENT FIGURES -->
+<div class="csec reveal">
+<h2>Les 8 <span>modules</span> de Q-DOS</h2>
+<p>Chaque module correspond à une ou plusieurs revendications du brevet FR2600578 (14 revendications). Voici le détail technique exact, illustré par les figures du brevet.</p>
+
+<!-- Q-BOOT (Revendications 1a, 2, 5) -->
+<div style="margin:1.5rem 0;padding:1.2rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;border-left:3px solid var(--red)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.6rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--red);font-weight:600">Q-BOOT — Démarrage sécurisé post-quantique</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Revendications 1a, 2, 5</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7;margin-bottom:0.8rem">Chaîne de confiance à 4 étapes, chaque composant signé ML-DSA-65 :</p>
+<div style="padding:12px;background:rgba(0,0,0,0.3);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--wd);line-height:2;margin:0.5rem 0">
+<span style="color:var(--red)">ROM</span> (pk_root ML-DSA-65, 1952 B) → vérifie <span style="color:var(--green)">Stage 1</span> (secteurs 1-63)<br>
+<span style="color:var(--green)">Stage 1</span> → vérifie sig ML-DSA de <span style="color:var(--green)">Stage 2</span> (secteurs 64-2047) avec pk_root<br>
+<span style="color:var(--green)">Stage 2</span> → vérifie sig ML-DSA de <span style="color:var(--blue)">Q-KERNEL</span> avec pk_intermediate<br>
+<span style="color:var(--blue)">Q-KERNEL</span> → vérifie modules, monte Q-DISK, lance Q-SHELL
+</div>
+<p style="font-size:0.85rem;color:var(--wd);line-height:1.7;margin-top:0.5rem"><strong style="color:var(--w)">Q-BOOT Signature Block (4096 octets) :</strong> Magic "QBOOT" (5 oct) + Version 0x0001 (2 oct) + Algorithm ML-DSA-65 (1 oct) + Hash SHA3-256 (32 oct) + <strong style="color:var(--w)">Signature ML-DSA σ = Sign(sk, H) (3293 oct)</strong> + Key Hint SHA3(pk)[0:8] (8 oct) + Padding (755 oct).</p>
+<p style="font-size:0.85rem;color:var(--wd);line-height:1.7;margin-top:0.5rem"><strong style="color:var(--w)">Mesures PCR (Q-TPM) :</strong> PCR[0] = SHA3-384(Stage1), PCR[1] = SHA3-384(Stage2), PCR[2] = SHA3-384(Kernel), PCR[3..7] = Modules, Config. Extend: PCR[n] = SHA3-384(PCR[n] ‖ measurement).</p>
+<div style="margin-top:0.8rem;text-align:center"><img src="fig2_chaine_confiance_qboot.png" alt="Figure 2 — Chaîne de confiance Q-BOOT" style="max-width:100%;border-radius:8px;border:1px solid var(--bd)"></div>
+</div>
+
+<!-- Q-DISK (Revendications 1b, 3, 11, 12) -->
+<div style="margin:1.5rem 0;padding:1.2rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;border-left:3px solid var(--green)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.6rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--green);font-weight:600">Q-DISK — Chiffrement de disque post-quantique</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Revendications 1b, 3, 11, 12</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7;margin-bottom:0.8rem">Chiffrement intégral du disque avec clé maître protégée par ML-KEM et dérivation SHAKE256 par secteur :</p>
+<div style="padding:12px;background:rgba(0,0,0,0.3);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--wd);line-height:2;margin:0.5rem 0">
+<span style="color:var(--red)">Master Key (MK)</span> : 256 bits, généré par CSPRNG<br>
+<span style="color:var(--red)">Protection MK</span> : ML-KEM-768 encapsulation → ct_MK (1088 B) + ct_wrapped = AES-GCM(K, MK)<br>
+<span style="color:var(--green)">Dérivation</span> : K[i] = SHAKE256(MK ‖ i, 256) — une clé unique par secteur<br>
+<span style="color:var(--green)">Tweak</span> : T[i] = SHA3-256(i ‖ salt)<br>
+<span style="color:var(--blue)">Chiffrement</span> : C[i] = AES-256-XTS-Enc(K[i], T[i], P[i]) — 512 octets/secteur<br>
+<span style="color:var(--blue)">Intégrité</span> : Tag[i] = SHA3-256(K_int ‖ i ‖ C[i])<br>
+<span style="color:var(--red)">⚠ MK n'est JAMAIS stockée en clair</span> — uniquement en RAM, protégée par ASLR + isolation mémoire
+</div>
+<p style="font-size:0.85rem;color:var(--wd);line-height:1.7;margin-top:0.5rem"><strong style="color:var(--w)">Flux au boot :</strong> Q-KEYSLOT (sur disque) → ML-KEM Decaps (en mémoire) → SHAKE256 dérive K[i] (à la demande) → AES-256-XTS déchiffre secteur → Données en clair (en RAM uniquement). La clé privée sk_disk = Unseal(sealed_sk) si PCR[0-2] = attendu (Q-TPM).</p>
+<div style="margin-top:0.8rem;text-align:center"><img src="fig3_architecture_qdisk.png" alt="Figure 3 — Architecture de chiffrement Q-DISK" style="max-width:100%;border-radius:8px;border:1px solid var(--bd)"></div>
+</div>
+
+<!-- LAYOUT DISQUE (Revendication 12) -->
+<div style="margin:1.5rem 0;padding:1.2rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;border-left:3px solid var(--orange)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.6rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--orange);font-weight:600">Layout du disque Q-DOS</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Revendication 12</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7;margin-bottom:0.5rem">Structure physique du support de stockage :</p>
+<div style="padding:12px;background:rgba(0,0,0,0.3);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--wd);line-height:2;margin:0.5rem 0">
+Secteur 0 : MBR<br>
+Secteurs 1-63 : <span style="color:var(--green)">Q-BOOT Stage 1</span> + signature ML-DSA<br>
+Secteurs 64-2047 : <span style="color:var(--green)">Q-BOOT Stage 2</span> + signature ML-DSA<br>
+Secteurs 2048-2111 : <span style="color:var(--orange)">Q-HEADER</span> (32 Ko) — Magic "QDOS" (4 oct), Version 0x0001 (2 oct), Algo KEM: ML-KEM-768 (1 oct), Algo SIG: ML-DSA-65 (1 oct), Salt 32 oct, Signature ML-DSA-65 (3293 oct)<br>
+Secteurs 2112-2175 : <span style="color:var(--orange)">Q-KEYSLOTS</span> (32 Ko) — 8 slots de ~4 Ko max chacun :<br>
+&nbsp;&nbsp;Slot 0 : Mot de passe — ct_MK: ML-KEM ciphertext (1088 B) | KEK: Argon2id(pwd) | ct_wrapped: AES-GCM(KEK, MK) | Auth tag: 16 B<br>
+&nbsp;&nbsp;Slot 1 : Clé de récupération — ct_MK (1088 B) | Recovery key: 256 bits imprimable<br>
+&nbsp;&nbsp;Slot 2 : Q-TPM — ct_MK (1088 B) | sk scellée par Q-TPM (PCR 0-3)<br>
+&nbsp;&nbsp;Slots 3-7 : Réservés pour extensions<br>
+Secteurs 2176+ : <span style="color:var(--blue)">Q-DATA</span> — Données chiffrées AES-256-XTS
+</div>
+<div style="margin-top:0.8rem;text-align:center"><img src="fig4_layout_disque.png" alt="Figure 4 — Layout du disque Q-DOS" style="max-width:100%;border-radius:8px;border:1px solid var(--bd)"></div>
+</div>
+
+<!-- Q-KERNEL (Revendications 1c, 4) -->
+<div style="margin:1.5rem 0;padding:1.2rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;border-left:3px solid var(--blue)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.6rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--blue);font-weight:600">Q-KERNEL — Noyau système</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Revendications 1c, 4</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7">Au démarrage, Q-KERNEL vérifie l'intégrité de tous les modules noyau et du système de fichiers avant de monter le volume Q-DISK. <strong style="color:var(--w)">Intégrité des appels système (Revendication 4) :</strong> le tableau de vecteurs syscalls et chaque module noyau chargé en mémoire sont signés ML-DSA. Tout appel système ou module dont la signature ne peut pas être vérifiée est <strong style="color:var(--red)">refusé à l'exécution</strong>. Aucun code non signé ne s'exécute dans l'espace noyau.</p>
+</div>
+
+<!-- Q-FILES (Revendications 6, 7) -->
+<div style="margin:1.5rem 0;padding:1.2rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;border-left:3px solid var(--purple)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.6rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--purple);font-weight:600">Q-FILES — Système de fichiers chiffré</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Revendications 6, 7</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7;margin-bottom:0.5rem">Chaque fichier possède sa propre clé, son propre header signé, et ses propres ACL cryptographiques :</p>
+<div style="padding:12px;background:rgba(0,0,0,0.3);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--wd);line-height:2;margin:0.5rem 0">
+<span style="color:var(--purple);font-weight:600">Q-FILE HEADER (~3400 octets) :</span><br>
+Magic "QFIL" (4 oct) + Ver 0x01 + Flags (enc|sig) + <span style="color:var(--blue)">K_file_enc (32 oct)</span> + Nonce (12 oct) + Size_orig (8 oct) + Owner_pk hash (32 oct) + Timestamp (8 oct)<br>
+<span style="color:var(--purple)">Signature ML-DSA-65</span> : σ = Sign(sk_owner, SHA3-256(header ‖ content_encrypted)) — 3293 octets<br><br>
+<span style="color:var(--blue);font-weight:600">CONTENU CHIFFRÉ :</span><br>
+AES-256-GCM(K_file, nonce, plaintext)<br>
+K_file = <span style="color:var(--green)">SHAKE256(K_volume ‖ file_id, 256)</span> — clé unique par fichier<br>
+GCM Authentication Tag — 16 octets<br><br>
+<span style="color:var(--orange);font-weight:600">Q-FILES ACL (extended attributes, Revendication 7) :</span><br>
+Owner: pk_owner (ML-KEM) | Permissions[]: {pk_principal, rights: R/W/X}...<br>
+ACL Signature: <span style="color:var(--orange)">ML-DSA(sk_owner, H(perms))</span> | Version: timestamp<br>
+<span style="color:var(--red)">→ Toute modification des permissions nécessite la clé privée du propriétaire</span>
+</div>
+<div style="margin-top:0.8rem;text-align:center"><img src="fig5_structure_qfiles.png" alt="Figure 5 — Structure d'un fichier Q-FILES" style="max-width:100%;border-radius:8px;border:1px solid var(--bd)"></div>
+</div>
+
+<!-- Q-NET (Revendication 8) -->
+<div style="margin:1.5rem 0;padding:1.2rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;border-left:3px solid var(--blue)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.6rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--blue);font-weight:600">Q-NET — Réseau TLS 1.3 hybride post-quantique</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Revendication 8</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7;margin-bottom:0.5rem">Handshake TLS 1.3 hybride combinant échange classique (X25519) et post-quantique (ML-KEM-768). Les DEUX doivent être cassés pour compromettre la session :</p>
+<div style="padding:12px;background:rgba(0,0,0,0.3);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--wd);line-height:2;margin:0.5rem 0">
+<span style="color:var(--blue)">CLIENT (Q-DOS)</span> génère x25519_priv + mlkem_priv<br>
+→ <span style="color:var(--orange)">ClientHello</span> : key_share = X25519_pub ‖ ML-KEM-768_pk | supported_groups: x25519_mlkem768<br>
+← <span style="color:var(--green)">ServerHello</span> : key_share = X25519_pub ‖ ML-KEM_ct | selected_group: x25519_mlkem768<br>
+<span style="color:var(--purple)">Key Derivation</span> : shared_secret = ECDH_secret ‖ ML-KEM_secret<br>
+&nbsp;&nbsp;&nbsp;&nbsp;K_session = <span style="color:var(--green)">HKDF-SHA3-384(shared_secret)</span><br>
+← <span style="color:var(--orange)">Certificate + CertificateVerify</span> : Cert signé par CA avec <span style="color:var(--purple)">ML-DSA-65</span><br>
+← Server Finished → Client Finished<br>
+<span style="color:var(--blue)">Application Data</span> chiffré avec K_session<br><br>
+<span style="color:var(--green)">DNS sécurisé :</span> DoH utilisant TLS 1.3 post-quantique + DNSSEC avec signatures ML-DSA<br>
+<span style="color:var(--red)">Sécurité hybride :</span> compromission X25519 OU ML-KEM insuffisante — les DEUX doivent être cassés
+</div>
+<div style="margin-top:0.8rem;text-align:center"><img src="fig6_handshake_qnet.png" alt="Figure 6 — Handshake TLS 1.3 hybride Q-NET" style="max-width:100%;border-radius:8px;border:1px solid var(--bd)"></div>
+</div>
+
+<!-- Q-TPM (Revendication 9) -->
+<div style="margin:1.5rem 0;padding:1.2rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;border-left:3px solid var(--red)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.6rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--red);font-weight:600">Q-TPM — Module de confiance post-quantique</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Revendication 9</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7;margin-bottom:0.5rem">Hiérarchie de clés et registres PCR entièrement post-quantiques :</p>
+<div style="padding:12px;background:rgba(0,0,0,0.3);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--wd);line-height:2;margin:0.5rem 0">
+<span style="color:var(--red);font-weight:600">HIÉRARCHIE DE CLÉS :</span><br>
+<span style="color:var(--red)">EK (Endorsement Key)</span> — gravée en usine, NON extractible :<br>
+&nbsp;&nbsp;ML-KEM-1024 (chiffrement) + ML-DSA-87 (attestation)<br>
+<span style="color:var(--green)">SRK (Storage Root Key)</span> — ML-KEM-768 pour encapsulation de clés dérivées<br>
+<span style="color:var(--blue)">AIK (Attestation Identity Key)</span> — ML-DSA-65 pour signature des attestations<br>
+Clés utilisateur (wrapped par SRK) : sk_user, sk_disk, sk_files... (ML-KEM / ML-DSA)<br><br>
+<span style="color:var(--purple);font-weight:600">PCR — Platform Configuration Registers :</span><br>
+SHA3-384 (48 octets chacun) | PCR[0] = Stage 1, PCR[1] = Stage 2, PCR[2] = Kernel, PCR[3-7] = Config...<br>
+Extend: PCR[n] = SHA3-384(PCR[n] ‖ measurement)<br><br>
+<span style="color:var(--orange);font-weight:600">FONCTIONS Q-TPM :</span><br>
+<span style="color:var(--green)">Seal(data, PCR_policy)</span> : chiffre data avec SRK, lie au PCR state<br>
+<span style="color:var(--green)">Unseal(sealed_blob)</span> : vérifie PCR match, déchiffre avec SRK<br>
+<span style="color:var(--blue)">Quote(PCR_select, nonce)</span> : signe PCRs avec AIK — attestation distante<br>
+<span style="color:var(--blue)">Sign(data, key_handle)</span> : ML-DSA signature, clé non extractible<br>
+<span style="color:var(--purple)">Wrap / Unwrap</span> : ML-KEM encapsulation pour import/export de clés protégées<br><br>
+<span style="color:var(--orange)">Lien Q-DISK :</span> sk_disk = Unseal(sealed_sk) si PCR[0-2] = attendu<br>
+<span style="color:var(--red)">⚠ FRONTIÈRE DE SÉCURITÉ : Clés privées JAMAIS exposées — toutes opérations internes au TPM</span>
+</div>
+<div style="margin-top:0.8rem;text-align:center"><img src="fig7_architecture_qtpm.png" alt="Figure 7 — Architecture du module Q-TPM" style="max-width:100%;border-radius:8px;border:1px solid var(--bd)"></div>
+</div>
+
+<!-- AUTH MULTI-FACTEUR (Revendication 10) -->
+<div style="margin:1.5rem 0;padding:1.2rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;border-left:3px solid var(--g)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:0.6rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--g);font-weight:600">Authentification multi-facteur post-quantique</div>
+<div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--wd)">Revendication 10</div>
+</div>
+<p style="font-size:0.9rem;color:var(--wd);line-height:1.7;margin-bottom:0.5rem">3 facteurs combinés pour déverrouiller le volume chiffré :</p>
+<div style="padding:12px;background:rgba(0,0,0,0.3);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--wd);line-height:2;margin:0.5rem 0">
+<span style="color:var(--g)">K1 (connaissance)</span> : mot de passe → Argon2id (coût mémoire + temporel) → clé K1<br>
+<span style="color:var(--green)">K2 (possession)</span> : clé privée ML-KEM sur support externe (USB, carte à puce) → Decaps → clé K2<br>
+<span style="color:var(--blue)">K3 (biométrie)</span> : optionnel, empreinte → clé K3<br>
+<span style="color:var(--purple);font-weight:600">KEK = SHA3-256(K1 ‖ K2 ‖ K3)</span><br>
+Déchiffrement de la clé maître de disque au moyen de KEK
+</div>
+<p style="font-size:0.85rem;color:var(--wd);line-height:1.7;margin-top:0.4rem">Sans les 3 facteurs (ou 2 si biométrie désactivée), il est mathématiquement impossible de dériver la KEK et donc de déchiffrer le volume.</p>
+</div>
+
+</div>
+
+<!-- COMPARISON TABLE: OS classique vs Q-DOS -->
+<div class="csec reveal">
+<h2>Comparaison <span>détaillée</span></h2>
+<p>Point par point, ce que Q-DOS change par rapport à un OS classique face à un adversaire disposant d'un ordinateur quantique :</p>
+<div style="overflow-x:auto;margin:1rem 0">
+<table style="width:100%;border-collapse:collapse;font-size:0.85rem">
+<thead>
+<tr style="border-bottom:2px solid var(--bd)">
+<td style="padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--wd);letter-spacing:0.1em">COMPOSANT</td>
+<td style="padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--red);letter-spacing:0.1em">OS CLASSIQUE</td>
+<td style="padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--red);letter-spacing:0.1em">ATTAQUE QUANTIQUE</td>
+<td style="padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--green);letter-spacing:0.1em">Q-DOS</td>
+<td style="padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--green);letter-spacing:0.1em">RÉSISTANCE</td>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--bd)">
+<td style="padding:10px 12px;color:var(--w)">Boot chain</td>
+<td style="padding:10px 12px;color:var(--wd)">RSA-2048 / ECDSA</td>
+<td style="padding:10px 12px;color:var(--red)">Shor → cassé en minutes</td>
+<td style="padding:10px 12px;color:var(--wd)">ML-DSA-87 (FIPS 204)</td>
+<td style="padding:10px 12px;color:var(--green)">Résiste à Shor</td>
+</tr>
+<tr style="border-bottom:1px solid var(--bd)">
+<td style="padding:10px 12px;color:var(--w)">Chiffrement disque</td>
+<td style="padding:10px 12px;color:var(--wd)">AES-128 + RSA</td>
+<td style="padding:10px 12px;color:var(--red)">Grover (AES-128 → 64 bits) + Shor (RSA → cassé)</td>
+<td style="padding:10px 12px;color:var(--wd)">AES-256-GCM + ML-KEM-1024</td>
+<td style="padding:10px 12px;color:var(--green)">AES-256 (128 bits effectifs) + ML-KEM résiste</td>
+</tr>
+<tr style="border-bottom:1px solid var(--bd)">
+<td style="padding:10px 12px;color:var(--w)">Échange de clés</td>
+<td style="padding:10px 12px;color:var(--wd)">ECDH / DH</td>
+<td style="padding:10px 12px;color:var(--red)">Shor → cassé</td>
+<td style="padding:10px 12px;color:var(--wd)">ML-KEM encapsulation</td>
+<td style="padding:10px 12px;color:var(--green)">Réseau de lattices (LWE)</td>
+</tr>
+<tr style="border-bottom:1px solid var(--bd)">
+<td style="padding:10px 12px;color:var(--w)">Horloge système</td>
+<td style="padding:10px 12px;color:var(--wd)">NTP / GPS</td>
+<td style="padding:10px 12px;color:var(--red)">Spoofing NTP, manipulation GPS</td>
+<td style="padding:10px 12px;color:var(--wd)">CHRONOS τ = E/P</td>
+<td style="padding:10px 12px;color:var(--green)">Thermodynamique : inmanipulable</td>
+</tr>
+<tr style="border-bottom:1px solid var(--bd)">
+<td style="padding:10px 12px;color:var(--w)">Stockage</td>
+<td style="padding:10px 12px;color:var(--wd)">Fichiers sur disque local</td>
+<td style="padding:10px 12px;color:var(--red)">Harvest Now, Decrypt Later</td>
+<td style="padding:10px 12px;color:var(--wd)">Fragments dispersés + RAM only</td>
+<td style="padding:10px 12px;color:var(--green)">Rien à stocker, rien à décrypter</td>
+</tr>
+<tr style="border-bottom:1px solid var(--bd)">
+<td style="padding:10px 12px;color:var(--w)">Identité</td>
+<td style="padding:10px 12px;color:var(--wd)">X.509, CA, certificats</td>
+<td style="padding:10px 12px;color:var(--red)">Compromission CA → game over</td>
+<td style="padding:10px 12px;color:var(--wd)">Token TUTE physique</td>
+<td style="padding:10px 12px;color:var(--green)">Zéro CA, confiance physique</td>
+</tr>
+<tr style="border-bottom:1px solid var(--bd)">
+<td style="padding:10px 12px;color:var(--w)">Réseau</td>
+<td style="padding:10px 12px;color:var(--wd)">TCP/IP + TLS 1.3</td>
+<td style="padding:10px 12px;color:var(--red)">DPI détecte TLS, Shor casse le handshake</td>
+<td style="padding:10px 12px;color:var(--wd)">Transport asémantique FANTOM</td>
+<td style="padding:10px 12px;color:var(--green)">Pas de protocole → pas de DPI → pas de Shor</td>
+</tr>
+<tr>
+<td style="padding:10px 12px;color:var(--w)">Forensique</td>
+<td style="padding:10px 12px;color:var(--wd)">Fichiers, logs, registre, cache</td>
+<td style="padding:10px 12px;color:var(--red)">Extraction complète possible</td>
+<td style="padding:10px 12px;color:var(--wd)">RAM only, zéro disque</td>
+<td style="padding:10px 12px;color:var(--green)">Cellebrite/UFED → 0 résultat</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- ALGORITHMES NIST -->
+<div class="csec reveal">
+<h2>Algorithmes <span>NIST</span> utilisés</h2>
+<p>Q-DOS utilise exclusivement les algorithmes sélectionnés par le NIST (2024). Voici les niveaux exacts par module du brevet :</p>
+<div class="feat-grid">
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--green);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">ML-KEM (FIPS 203)</div><div class="feat-text"><strong>Module-Lattice Key Encapsulation.</strong> Niveaux utilisés : ML-KEM-1024 (EK dans Q-TPM), ML-KEM-768 (Q-DISK, SRK, Q-NET, Q-KEYSLOTS). Basé sur Module-LWE. Ciphertext 1088 B (768) / 1568 B (1024).</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--green);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">ML-DSA (FIPS 204)</div><div class="feat-text"><strong>Module-Lattice Digital Signature.</strong> Niveaux utilisés : ML-DSA-87 (EK attestation dans Q-TPM), ML-DSA-65 (Q-BOOT signatures, Q-FILES, Q-NET certificats, AIK, ACL). Signature 3293 B (65) / 4627 B (87).</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--purple);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">AES-256 (XTS + GCM)</div><div class="feat-text"><strong>Chiffrement symétrique.</strong> AES-256-XTS pour le chiffrement disque par secteur (Q-DISK). AES-256-GCM pour le chiffrement par fichier (Q-FILES) et l'encapsulation MK dans les keyslots. Grover réduit à 128 bits effectifs — suffisant.</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--purple);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">SHA3 / SHAKE256</div><div class="feat-text"><strong>Hachage et dérivation.</strong> SHA3-256 pour les condensats (Q-BOOT, Q-FILES). SHA3-384 pour les PCR du Q-TPM (48 octets). SHAKE256 pour la dérivation de clés secteur K[i] = SHAKE256(MK‖i, 256) et clés fichier. HKDF-SHA3-384 pour Q-NET.</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--g);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">Argon2id</div><div class="feat-text"><strong>Dérivation de mot de passe.</strong> Utilisé dans l'authentification multi-facteur (Revendication 10) pour dériver K1 du mot de passe avec coût mémoire et temporel configurables. Résistant aux attaques par GPU/ASIC.</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--g);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">X25519 (hybride)</div><div class="feat-text"><strong>Échange de clés classique.</strong> Utilisé uniquement dans Q-NET en mode hybride avec ML-KEM-768. Sécurité hybride : les DEUX (X25519 ET ML-KEM) doivent être cassés. Transition progressive vers le 100% PQ.</div></div>
+</div>
+</div>
+
+<div class="csec reveal">
+<h2><span>Token TUTE</span> — Votre identité dans la poche</h2>
+<p><strong>Un dispositif portable qui contient votre souveraineté numérique.</strong> Autonome en énergie (mesure τ local), élément sécurisé post-quantique, NFC/USB/Bluetooth. Il ne stocke pas vos données — il détient la clé qui permet de les matérialiser depuis l'Ordinateur Liquide.</p>
+<div class="feat-grid">
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--purple);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">Énergie autonome</div><div class="feat-text">Mesure τ = E/P local. Horodatage souverain sans serveur externe.</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--purple);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">Élément sécurisé</div><div class="feat-text">Crypto post-quantique embarquée. Clés ML-KEM/ML-DSA. Extraction impossible.</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--purple);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">NFC / USB / Bluetooth</div><div class="feat-text">Compatible tout appareil. Branchez et votre monde apparaît.</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--purple);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">HEIMDALL intégré</div><div class="feat-text">Authentification par empreinte énergétique. Impossible à usurper — même clonée, la copie n'a pas le même profil énergétique.</div></div>
+</div>
+</div>
+
+<div class="csec reveal">
+<h2>Les <span>3 barrières</span> structurelles</h2>
+<div class="barrier-row">
+<div class="barrier"><div class="barrier-badge">BARRIÈRE 1</div><h5>Ce fragment est-il un message ?</h5><p>Indistinguable du bruit. Problème d'information, pas de calcul.</p><div class="barrier-verdict">QUANTIQUE → INUTILE</div></div>
+<div class="barrier"><div class="barrier-badge">BARRIÈRE 2</div><h5>Ai-je trouvé la bonne clé ?</h5><p>Grover a besoin d'un oracle de validation. Pas de structure = pas d'oracle.</p><div class="barrier-verdict">GROVER → INUTILE</div></div>
+<div class="barrier"><div class="barrier-badge">BARRIÈRE 3</div><h5>Est-ce lié à un autre fragment ?</h5><p>Marqueur polymorphe change à chaque index. Shor est hors sujet.</p><div class="barrier-verdict">SHOR → HORS SUJET</div></div>
+</div>
+<div class="formula-box"><div class="formula">ASÉMANTICITÉ × POST-QUANTIQUE × POLYMORPHISME = INVULNÉRABILITÉ</div><div class="formula-sub">Le problème est informationnel, pas calculatoire. La puissance de calcul est hors sujet.</div></div>
+</div>
+
+<div class="csec reveal">
+<div class="highlight"><div class="hl-title">Pourquoi IBM Starling ne peut rien</div><p style="font-size:1rem;color:var(--wd)">Même un ordinateur quantique à 1000+ qubits ne peut pas reconstituer les données : les fragments sont asémantiques (barrière B1), le chiffrement est post-quantique ML-KEM (barrière B2), et la corrélation entre fragments est impossible (barrière B3). <strong style="color:var(--w)">Il n'y a rien à casser.</strong></p></div>
+<div class="patent-card" style="margin-top:20px;border-left-color:var(--purple)"><h4 style="color:var(--purple)">Brevets</h4><p>Q-DOS — Quantum Resistant DOS (FR2600578) · Ordinateur Liquide (FR2600673) · Token TUTE (FR2600542) · CHRONOS (FR2600320)</p></div>
+</div>
+</div>
+
+<footer><div class="fb">AION ASEMANTIX™</div><div class="fi">© 2026 — 38 brevets INPI — asemantix.tech</div></footer>
+<script>
+// Particles
+document.addEventListener('DOMContentLoaded',()=>{
+  const pc=document.getElementById('pc');
+  if(pc){for(let i=0;i<20;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDuration=(8+Math.random()*12)+'s';p.style.animationDelay=Math.random()*10+'s';p.style.width=p.style.height=(1+Math.random()*2)+'px';pc.appendChild(p)}}
+  // Scroll reveal
+  const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+});
+
+</script>
+</body></html>
