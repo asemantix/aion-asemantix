@@ -122,6 +122,7 @@ footer{border-top:1px solid var(--bd);padding:2.5rem;text-align:center}
   <a class="nav-logo" href="index.html"><img src="AION_LOGO_FIGURATIF_OR.png" alt="AION" onerror="this.style.display='none'"><span>AION ASEMANTIX™</span></a>
   <div class="nav-links">
     <a href="index.html" id="nav-home">Accueil</a>
+    <a href="vision.html" id="nav-vision">Vision</a>
     <div class="nav-sep"></div>
     <a href="asemantique.html" id="nav-asem"  class='active'>Asémanticité</a>
     <a href="fantom.html" id="nav-fantom">FANTOM</a>
@@ -166,6 +167,14 @@ footer{border-top:1px solid var(--bd);padding:2.5rem;text-align:center}
 <h2>Le <span>marqueur polymorphe</span> (CAMÉLÉON)</h2>
 <p>Comment le destinataire distingue-t-il son message du bruit ? Le <strong>marqueur polymorphe</strong> (FR2516793) définit k positions de bits dérivées de la clé K et de l'index j. Elles changent intégralement à chaque index. Le récepteur vérifie en O(k) — nanosecondes — <strong>sans crypto</strong>. 99,8% rejeté instantanément.</p>
 </div>
+<div class="csec reveal">
+<h2>Le <span>mur</span> CAMÉLÉON — preuve visuelle</h2>
+<p><strong>Rouge = rejeté. Vert = accepté.</strong> Seuls 0.2% des fragments passent le marqueur polymorphe. Le reste est du bruit, rejeté en O(k) — avant même d'être analysé.</p>
+<div style="margin:1.5rem 0;border:1px solid var(--bd);border-radius:12px;overflow:hidden">
+<iframe src="CAMELEON_PROOF_EFFICACITE.html" style="width:100%;height:900px;border:none;background:#05060f" loading="lazy"></iframe>
+</div>
+</div>
+
 <div class="csec reveal">
 <h2>Validation <span>locale</span> en action</h2>
 <p style="margin-bottom:1.5rem">L'animation ci-dessous illustre le transit asémantique : les fragments polymorphiques traversent le réseau, validés localement par le marqueur CAMÉLÉON. Le vert signifie « accepté » — le reste est du bruit rejeté.</p>
