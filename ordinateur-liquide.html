@@ -110,6 +110,7 @@ footer{border-top:1px solid var(--bd);padding:2.5rem;text-align:center}
 
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(25px);transition:opacity 0.6s,transform 0.6s}.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal{animation:forceShow 0s 1.5s forwards}.reveal.visible{animation:none}@keyframes forceShow{to{opacity:1;transform:translateY(0)}}
 
 /* MOBILE */
 @media(max-width:768px){nav{padding:0.6rem 1rem;flex-wrap:wrap;gap:0.5rem}.nav-links{gap:0.1rem}.nav-links a{font-size:0.5rem;padding:0.3rem 0.4rem}.barrier-row{grid-template-columns:1fr}.cmp-grid{grid-template-columns:1fr}}
@@ -141,7 +142,7 @@ footer{border-top:1px solid var(--bd);padding:2.5rem;text-align:center}
 
 <section class="page-hero" style="background:radial-gradient(ellipse at 50% 50%,rgba(0,212,255,0.04),transparent 60%)">
 <div>
-<div class="ph-label" style="color:var(--blue)">PARADIGME IMPOSSIBLE</div>
+<div class="ph-label" style="color:var(--blue)">PARADIGME 100% NOMADE</div>
 <h1 class="ph-title">L'Ordinateur <em style="color:var(--blue)">Liquide</em></h1>
 <p class="ph-sub">Votre ordinateur est partout et nulle part. Branchez le Token — tout apparaît. Débranchez — tout disparaît. Aucune trace.</p>
 </div>
@@ -371,6 +372,16 @@ footer{border-top:1px solid var(--bd);padding:2.5rem;text-align:center}
 <div class="highlight"><div class="hl-title">Anti-quantique par construction</div><p style="font-size:1rem;color:var(--wd)">Les fragments sont asémantiques (NIST SP 800-22). Le chiffrement utilise ML-KEM post-quantique. La corrélation entre fragments est impossible sans le Token physique. <strong style="color:var(--w)">Même un ordinateur quantique à 1000+ qubits ne reconstitue que du bruit.</strong></p></div>
 <div class="patent-card" style="margin-top:20px;border-left-color:var(--blue)"><h4 style="color:var(--blue)">Brevets</h4><p>Ordinateur Liquide (FR2600673) · Q-DOS — Quantum Resistant DOS (FR2600578) · Token TUTE (FR2600542) · GHOST STORE</p></div>
 </div>
+
+<div class="csec reveal">
+<h2>Et si on <span>perd</span> le Token ?</h2>
+<p style="margin-bottom:1rem">Le Token TUTE ne <em>contient</em> pas vos données. Il contient les <strong>clés de reconstitution</strong> — celles qui ré-assemblent les fragments dispersés. Les fragments existent toujours sur les relais, mais sans les clés, ils sont du bruit.</p>
+<div class="feat-grid" style="margin:1rem 0">
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--green);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">Seed de secours</div><div class="feat-text">À la création du Token, une phrase de récupération (24 mots) est générée — comme un wallet crypto. Cette seed régénère toutes les clés sur un nouveau dispositif. <strong style="color:var(--green)">Si vous avez la seed, vous récupérez tout.</strong></div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--red);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">Sans la seed</div><div class="feat-text">Les fragments existent toujours mais restent du bruit. Pas de backdoor, pas de « mot de passe oublié », pas de support technique. <strong style="color:var(--red)">Les données sont irrécupérables.</strong> C'est une propriété, pas un bug.</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--purple);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">C'est ce qui le rend sûr</div><div class="feat-text">Si personne ne peut récupérer vos données sans la seed — ni nous, ni un gouvernement, ni un ordinateur quantique — alors personne ne peut les compromettre non plus.</div></div>
+</div>
+<div class="highlight" style="margin-top:1rem;border-left:3px solid var(--green);padding:1rem 1.2rem;background:rgba(0,229,160,0.03)"><p style="font-size:1rem;color:var(--wd);font-style:italic">« C'est comme un coffre-fort dont vous avez la seule clé. Si vous perdez la clé et la copie de secours, personne ne peut l'ouvrir. C'est exactement ce qui le rend inviolable. »</p></div>
 </div>
 
 <footer><div class="fb">AION ASEMANTIX™</div><div class="fi">© 2026 — 38 brevets INPI — asemantix.tech</div></footer>
