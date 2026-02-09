@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   AION ASEMANTIX™ — Shared Styles
+   ============================================================ */
+
+:root{--bg:#06060a;--bg2:#0c0c12;--bg3:#111118;--w:#f0f0f0;--wd:#a8a8b0;--g:#c9a962;--gl:#e0c88a;--gd:#8a7340;--bd:rgba(255,255,255,0.06);--green:#00e5a0;--green-dim:#00b87f;--purple:#a78bfa;--purple-dim:#7c5fc7;--blue:#00d4ff;--red:#f87171;--orange:#f97316;--rev:#ff6b9d;--tact:#22c55e;--mesh:#eab308}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--w);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}::selection{background:var(--g);color:var(--bg)}
+
+/* NOISE TEXTURE */
+body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,6,10,0.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;padding:0.7rem 2.5rem}
+.nav-logo{display:flex;align-items:center;gap:0.8rem;text-decoration:none}
+.nav-logo img{height:34px;filter:drop-shadow(0 0 6px rgba(201,169,98,0.3))}
+.nav-logo span{font-family:'Cormorant Garamond',serif;font-size:0.85rem;color:var(--g);letter-spacing:0.2em}
+.nav-links{display:flex;gap:0.2rem;align-items:center;flex-wrap:wrap}
+.nav-links a{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--wd);text-decoration:none;transition:all 0.3s;font-weight:500;padding:0.4rem 0.6rem;border-radius:4px}
+.nav-links a:hover{color:var(--g);background:rgba(201,169,98,0.06)}
+.nav-links a.active{color:var(--g);background:rgba(201,169,98,0.08)}
+.nav-sep{width:1px;height:14px;background:var(--bd);margin:0 0.2rem}
+
+/* PARTICLES */
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;width:2px;height:2px;background:var(--g);border-radius:50%;opacity:0;animation:pf linear infinite}
+@keyframes pf{0%{opacity:0;transform:translateY(100vh) scale(0)}10%{opacity:0.4}90%{opacity:0.4}100%{opacity:0;transform:translateY(-10vh) scale(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glow{0%,100%{filter:drop-shadow(0 0 4px rgba(201,169,98,0.3))}50%{filter:drop-shadow(0 0 12px rgba(201,169,98,0.6))}}
+
+/* PAGE HERO */
+.page-hero{min-height:50vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:7rem 2rem 3rem;position:relative}
+.ph-label{font-family:'JetBrains Mono',monospace;font-size:1.05rem;letter-spacing:0.5em;margin-bottom:1rem}
+.ph-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:400;margin-bottom:0.8rem}
+.ph-title em{font-style:italic}
+.ph-sub{font-size:1rem;color:var(--wd);font-weight:300;max-width:650px;margin:0 auto;line-height:1.7}
+
+/* CONTENT */
+.content{max-width:900px;margin:0 auto;padding:0 2.5rem 5rem}
+.content h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:500;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid var(--bd)}
+.content h2 span{color:var(--g)}
+.content p{font-size:1.2rem;color:var(--wd);font-weight:300;line-height:1.9;margin-bottom:1.2rem}
+.content strong{color:var(--w);font-weight:500}
+.content em{color:var(--gl)}
+.csec{margin-bottom:3rem}
+
+/* COMPARISON */
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+@media(max-width:700px){.cmp-grid{grid-template-columns:1fr}}
+.cmp-card{padding:28px;border-radius:14px;background:var(--bg2);border:1px solid var(--bd);position:relative;overflow:hidden}
+.cmp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.cmp-card.bad{border-color:rgba(248,113,113,0.15)}.cmp-card.bad::before{background:linear-gradient(90deg,var(--red),transparent)}
+.cmp-card.good{border-color:rgba(0,229,160,0.15)}.cmp-card.good::before{background:linear-gradient(90deg,var(--green),var(--purple))}
+.cmp-card h4{font-size:1rem;font-weight:600;margin-bottom:16px}
+.cmp-card.bad h4{color:var(--red)}.cmp-card.good h4{color:var(--green)}
+.cmp-point{display:flex;gap:8px;margin-bottom:10px;font-size:1.2rem;color:var(--wd);line-height:1.6}
+
+/* LAYER STACK */
+.layer-stack{margin:24px 0}
+.ls-item{display:grid;grid-template-columns:44px 180px 1fr 100px;align-items:center;gap:12px;padding:14px 18px;border-radius:10px;margin-bottom:4px;border:1px solid transparent;transition:all 0.3s}
+.ls-item:hover{border-color:var(--bd);background:var(--bg2);transform:translateX(3px)}
+.ls-num{font-family:'JetBrains Mono',monospace;font-size:1.05rem;font-weight:600;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:6px}
+.ls-name{font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:600;letter-spacing:0.04em}
+.ls-desc{font-size:1.2rem;color:var(--wd)}
+.ls-ref{font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:var(--wd);opacity:0.4;text-align:right}
+@media(max-width:800px){.ls-item{grid-template-columns:36px 1fr}.ls-desc,.ls-ref{display:none}}
+
+/* BARRIERS */
+.barrier-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+@media(max-width:800px){.barrier-row{grid-template-columns:1fr}}
+.barrier{padding:22px;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;border-top:2px solid var(--purple-dim)}
+.barrier-badge{font-family:'JetBrains Mono',monospace;font-size:1.05rem;font-weight:600;color:var(--purple);background:rgba(167,139,250,0.08);padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:8px}
+.barrier h5{font-size:1.15rem;font-weight:600;margin-bottom:6px}
+.barrier p{font-size:1.15rem;color:var(--wd);line-height:1.7;margin-bottom:8px}
+.barrier-verdict{font-family:'JetBrains Mono',monospace;font-size:1.05rem;font-weight:600;color:var(--green);background:rgba(0,229,160,0.06);border:1px solid rgba(0,229,160,0.15);padding:3px 8px;border-radius:4px;display:inline-block}
+
+/* FORMULA */
+.formula-box{text-align:center;padding:32px;margin:28px 0;background:linear-gradient(135deg,rgba(167,139,250,0.04),rgba(0,229,160,0.03));border:1px solid rgba(167,139,250,0.15);border-radius:14px}
+.formula{font-family:'JetBrains Mono',monospace;font-size:clamp(0.7rem,1.6vw,0.95rem);font-weight:600;letter-spacing:1px;margin-bottom:10px;background:linear-gradient(135deg,var(--purple),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.formula-sub{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--wd);font-style:italic}
+
+/* PATENT CARDS */
+.patent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:24px 0}
+.patent-card{padding:24px;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;transition:all 0.3s;border-left:3px solid var(--g)}
+.patent-card:hover{border-color:rgba(201,169,98,0.2);transform:translateY(-2px)}
+.patent-card h4{font-family:'JetBrains Mono',monospace;font-size:1.1rem;margin-bottom:4px}
+.patent-card .sub{font-size:1.15rem;color:var(--wd);margin-bottom:8px}
+.patent-card p{font-size:1.2rem;color:var(--wd);line-height:1.7;margin-bottom:8px}
+.patent-card .ref{font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--wd);opacity:0.4}
+
+/* FEATURE GRID */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:24px 0}
+.feat{padding:20px;background:var(--bg2);border:1px solid var(--bd);border-radius:10px;transition:all 0.3s}
+.feat:hover{border-color:rgba(201,169,98,0.15);transform:translateY(-2px)}
+.feat-icon{font-size:1.8rem;margin-bottom:8px}
+.feat-title{font-size:1.25rem;font-weight:600;margin-bottom:6px}
+.feat-text{font-size:1.2rem;color:var(--wd);line-height:1.7}
+
+/* QUOTE */
+.quote{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--gl);border-left:2px solid var(--gd);padding:1.2rem 1.5rem;margin:1.5rem 0}
+
+/* HIGHLIGHT BOX */
+.highlight{background:linear-gradient(135deg,rgba(201,169,98,0.06),rgba(0,229,160,0.03));border-left:3px solid var(--g);padding:1.5rem;border-radius:0 10px 10px 0;margin:1.5rem 0}
+.highlight .hl-title{color:var(--g);font-size:1.2rem;font-weight:500;margin-bottom:10px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--bd);padding:2.5rem;text-align:center}
+.fb{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--g);letter-spacing:0.3em;margin-bottom:0.5rem}
+.fi{font-size:1.1rem;color:var(--wd);opacity:0.4;line-height:1.6}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(25px);transition:opacity 0.6s,transform 0.6s}.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:768px){nav{padding:0.6rem 1rem;flex-wrap:wrap;gap:0.5rem}.nav-links{gap:0.1rem}.nav-links a{font-size:0.5rem;padding:0.3rem 0.4rem}.barrier-row{grid-template-columns:1fr}.cmp-grid{grid-template-columns:1fr}}
+
+</style>
+<title>FANTOM — Pas un VPN — AION ASEMANTIX™</title>
+</head><body>
+<div class="particles" id="pc"></div>
+<nav>
+  <a class="nav-logo" href="index.html"><img src="AION_LOGO_FIGURATIF_OR.png" alt="AION" onerror="this.style.display='none'"><span>AION ASEMANTIX™</span></a>
+  <div class="nav-links">
+    <a href="index.html" id="nav-home">Accueil</a>
+    <a href="vision.html" id="nav-vision">Vision</a>
+    <div class="nav-sep"></div>
+    <a href="asemantique.html" id="nav-asem">Asémanticité</a>
+    <a href="fantom.html" id="nav-fantom"  class='active'>FANTOM</a>
+    <a href="messageries.html" id="nav-msg">Messageries</a>
+    <div class="nav-sep"></div>
+    <a href="post-quantique.html" id="nav-pq">Post-Quantique</a>
+    <a href="ordinateur-liquide.html" id="nav-liquide">Ordinateur Liquide</a>
+    <a href="temps.html" id="nav-temps">Temps τ=E/P</a>
+    <div class="nav-sep"></div>
+    <a href="securite.html" id="nav-secu">Sécurité</a>
+    <a href="reseaux.html" id="nav-mesh">Réseaux</a>
+    <div class="nav-sep"></div>
+    <a href="manifeste.html" id="nav-manifeste">Manifeste</a>
+    <a href="inventrice.html" id="nav-inventrice">L'Inventrice</a>
+  </div>
+</nav>
+
+
+<section class="page-hero" style="background:radial-gradient(ellipse at 50% 50%,rgba(0,229,160,0.04),transparent 60%)">
+<div>
+<div class="ph-label" style="color:var(--green)">PILIER II — ANONYMISATION</div>
+<h1 class="ph-title">Pas un VPN.<br>Un <em style="color:var(--green)">fantôme.</em></h1>
+<p class="ph-sub">7 couches brevetées. IP change à chaque requête. Transport asémantique. Relais aveugles. Pas de serveur central.</p>
+</div>
+</section>
+<div class="content">
+<div class="csec reveal">
+<h2>Pourquoi un VPN <span>ne suffit pas</span></h2>
+<p>Un VPN classique crée un tunnel chiffré entre votre appareil et un serveur. Votre adresse IP réelle est masquée — mais c'est <strong>tout ce qu'il fait</strong>. Pendant toute votre session, vous gardez la même IP VPN, le même certificat, la même connexion au même serveur. Si vous allez sur Google puis sur Wikipedia, les deux sites voient la même IP. Un observateur sait que ces deux visites viennent de la même personne.</p>
+<p>Pire : votre opérateur Internet <strong>voit le tunnel VPN</strong>. Il ne peut pas lire le contenu, mais il sait que vous utilisez un VPN, vers quel serveur, pendant combien de temps, et combien de données transitent. Dans certains pays, cela suffit à vous identifier. Et le serveur VPN lui-même voit <strong>tout votre trafic en clair</strong>.</p>
+</div>
+
+<div class="csec reveal">
+<h2><span>PIP GHOST</span> — Comment FANTOM vous rend invisible</h2>
+<p>PIP GHOST change tout à chaque requête. Pas toutes les 30 secondes. Pas toutes les minutes. <strong>À chaque requête.</strong> Vous tapez google.com — une identité. Vous tapez wikipedia.org — une autre identité, un autre chemin, une autre IP de sortie. Voici ce qui se passe concrètement :</p>
+
+<div style="margin:1.5rem 0">
+<div style="padding:1.2rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;margin-bottom:1rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--green);margin-bottom:0.5rem">ÉTAPE 1 — Votre appareil prépare la requête</div>
+<p>Vous tapez google.com. Votre appareil (avec le Token) chiffre la requête en couches, comme un oignon. Chaque couche est destinée à un relais différent. Chaque couche est du bruit — indistinguable de données aléatoires.</p>
+</div>
+
+<div style="padding:1.2rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;margin-bottom:1rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--blue);margin-bottom:0.5rem">ÉTAPE 2 — Le relais 1 transmet sans comprendre</div>
+<p>Le premier relais (par exemple à Francfort) reçoit un bloc de bruit. Il sait juste qu'il doit le transmettre au relais 2. <strong>Il ne sait pas d'où ça vient</strong> (votre IP est déjà masquée), ni ce que c'est, ni où ça va au final.</p>
+</div>
+
+<div style="padding:1.2rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;margin-bottom:1rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--purple);margin-bottom:0.5rem">ÉTAPE 3 — Le relais 2 transmet sans comprendre</div>
+<p>Le deuxième relais (par exemple à Tokyo) reçoit un bloc, enlève sa couche de chiffrement, et transmet au relais 3. Lui non plus <strong>ne sait rien</strong> — ni l'origine, ni la destination finale.</p>
+</div>
+
+<div style="padding:1.2rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;margin-bottom:1rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--orange);margin-bottom:0.5rem">ÉTAPE 4 — Le relais de sortie contacte Google</div>
+<p>Le dernier relais (par exemple à São Paulo) enlève la dernière couche et obtient la requête : « GET google.com ». Il l'envoie à Google. Google répond. Le relais chiffre la réponse et la renvoie par le chemin inverse jusqu'à vous.</p>
+</div>
+</div>
+
+<div style="padding:1.2rem;background:rgba(0,229,160,0.04);border:1px solid rgba(0,229,160,0.12);border-radius:12px;margin-bottom:1.5rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--green);margin-bottom:0.5rem">CE QUI VOUS PROTÈGE</div>
+<p><strong>Le relais 1</strong> connaît votre IP mais pas la destination.<br>
+<strong>Le relais 3</strong> connaît la destination mais pas votre IP.<br>
+<strong>Le relais 2</strong> ne connaît ni l'un ni l'autre.<br>
+Et les trois <strong>changent à la requête suivante</strong>.</p>
+</div>
+
+<h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin:1.5rem 0 1rem">Ce qui change à chaque requête</h3>
+
+<div style="margin-bottom:1.5rem">
+<div style="padding:1rem 1.2rem;background:var(--bg2);border-left:3px solid var(--green);border-radius:0 8px 8px 0;margin-bottom:0.8rem">
+<div style="font-weight:600;margin-bottom:0.3rem">Nouvelle IP</div>
+<p style="margin:0">Votre requête sort sur Internet avec l'adresse IP du relais de sortie — pas la vôtre. La requête suivante sortira par un autre relais, avec une autre IP. Google et Wikipedia ne peuvent pas savoir que c'est la même personne.</p>
+</div>
+
+<div style="padding:1rem 1.2rem;background:var(--bg2);border-left:3px solid var(--blue);border-radius:0 8px 8px 0;margin-bottom:0.8rem">
+<div style="font-weight:600;margin-bottom:0.3rem">Nouveau relais</div>
+<p style="margin:0">Le relais est le serveur physique par lequel transite votre requête. FANTOM maintient un réseau de 50 à 100+ relais dans le monde. Pour chaque requête, FANTOM en choisit un chemin différent. Ce n'est pas comme un VPN où vous restez connecté au même serveur à Amsterdam pendant toute la session.</p>
+</div>
+
+<div style="padding:1rem 1.2rem;background:var(--bg2);border-left:3px solid var(--purple);border-radius:0 8px 8px 0;margin-bottom:0.8rem">
+<div style="font-weight:600;margin-bottom:0.3rem">Nouvelle identité cryptographique</div>
+<p style="margin:0">Pour chaque requête, FANTOM génère une nouvelle paire de clés éphémère (ML-KEM post-quantique), un nouveau handshake avec le relais, un nouveau certificat jetable. Même si quelqu'un intercepte deux de vos échanges, il ne peut pas prouver qu'ils viennent du même appareil. Les deux sont cryptographiquement indépendants.</p>
+</div>
+</div>
+
+<div class="patent-card" style="border-left-color:var(--green)"><h4 style="color:var(--green)">PIP GHOST</h4><div class="sub">Dispositif fantôme intraçable. Identifiants distincts par échange. 3 modes : autonome, cloud, hybride.</div><div class="ref">FR2600240</div></div>
+</div>
+<div class="layer-stack">
+<div class="ls-item"><div class="ls-num" style="background:rgba(251,146,60,0.1);color:var(--orange)">7</div><div class="ls-name" style="color:var(--orange)">SHADOW CROWD</div><div class="ls-desc">Anonymat collectif — profil commun</div><div class="ls-ref">FR2600341</div></div>
+<div class="ls-item"><div class="ls-num" style="background:rgba(251,146,60,0.1);color:var(--orange)">6</div><div class="ls-name" style="color:var(--orange)">HYDRA</div><div class="ls-desc">Multi-identités simultanées</div><div class="ls-ref">FR2600333</div></div>
+<div class="ls-item"><div class="ls-num" style="background:rgba(0,212,255,0.1);color:var(--blue)">5</div><div class="ls-name" style="color:var(--blue)">CLOAK</div><div class="ls-desc">Mimétisme Netflix/Zoom/gaming</div><div class="ls-ref">FR2600321</div></div>
+<div class="ls-item"><div class="ls-num" style="background:rgba(0,229,160,0.1);color:var(--green)">4</div><div class="ls-name" style="color:var(--green)">PIP GHOST</div><div class="ls-desc">IP différente par requête</div><div class="ls-ref">FR2600240</div></div>
+<div class="ls-item" style="border:1px solid rgba(167,139,250,0.15);background:rgba(167,139,250,0.03);border-radius:10px"><div class="ls-num" style="background:rgba(167,139,250,0.12);color:var(--purple)">3</div><div class="ls-name" style="color:var(--purple)">CAMÉLÉON</div><div class="ls-desc">Transport asémantique — anti-quantique</div><div class="ls-ref">FR2516793</div></div>
+<div class="ls-item"><div class="ls-num" style="background:rgba(0,229,160,0.1);color:var(--green)">2</div><div class="ls-name" style="color:var(--green)">PIP POLYMORPHE</div><div class="ls-desc">Moteur ratchet crypto</div><div class="ls-ref">FR2600202</div></div>
+<div class="ls-item"><div class="ls-num" style="background:rgba(255,255,255,0.04);color:var(--wd)">1</div><div class="ls-name" style="color:var(--wd)">FANTOM INTERNET</div><div class="ls-desc">Multi-connectivité</div><div class="ls-ref">FR2600506</div></div>
+</div>
+
+<div style="margin-top:2rem">
+
+<div style="padding:1.2rem;background:var(--bg2);border-left:3px solid var(--orange);border-radius:0 12px 12px 0;margin-bottom:1.2rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--orange);font-weight:600;margin-bottom:0.5rem">COUCHE 7 — SHADOW CROWD <span style="font-weight:400;font-size:0.85rem;color:var(--wd)">(FR2600341)</span></div>
+<p>Imaginez un stade de 50 000 personnes portant le même maillot. Qui a marqué le but ? Impossible à dire depuis les tribunes. SHADOW CROWD fait la même chose sur Internet : tous les utilisateurs FANTOM partagent un <strong>profil de trafic identique</strong>. Même volume, même rythme, même signature réseau. Un observateur qui surveille le réseau voit 10 000 flux identiques — il ne peut pas distinguer un journaliste d'un étudiant, un dissident d'un touriste. L'anonymat n'est plus individuel, il est <strong>collectif</strong>.</p>
+</div>
+
+<div style="padding:1.2rem;background:var(--bg2);border-left:3px solid var(--orange);border-radius:0 12px 12px 0;margin-bottom:1.2rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--orange);font-weight:600;margin-bottom:0.5rem">COUCHE 6 — HYDRA <span style="font-weight:400;font-size:0.85rem;color:var(--wd)">(FR2600333)</span></div>
+<p>Avec un VPN, vous avez une identité. Avec FANTOM, vous en avez <strong>cinq simultanément</strong>. HYDRA crée plusieurs personnalités réseau actives en même temps : une consulte les actualités, une autre envoie un mail, une troisième navigue sur un forum. Pour un observateur extérieur, ce sont <strong>cinq personnes différentes</strong> — pas cinq sessions d'un même utilisateur. Si l'une est compromise, les quatre autres restent intactes. Comme l'hydre de la mythologie : coupez une tête, les autres survivent.</p>
+</div>
+
+<div style="padding:1.2rem;background:var(--bg2);border-left:3px solid var(--blue);border-radius:0 12px 12px 0;margin-bottom:1.2rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--blue);font-weight:600;margin-bottom:0.5rem">COUCHE 5 — CLOAK <span style="font-weight:400;font-size:0.85rem;color:var(--wd)">(FR2600321)</span></div>
+<p>Certains pays et entreprises bloquent les VPN en détectant leur signature réseau. CLOAK rend FANTOM <strong>indétectable</strong> en déguisant le trafic : vos données ressemblent à un flux Netflix, un appel Zoom ou une partie de jeu en ligne. L'inspection profonde de paquets (DPI) — la technique utilisée par la Chine, la Russie et l'Iran pour bloquer les VPN — ne voit <strong>rien d'anormal</strong>. Pour le réseau, vous regardez simplement une série.</p>
+</div>
+
+<div style="padding:1.2rem;background:var(--bg2);border-left:3px solid var(--green);border-radius:0 12px 12px 0;margin-bottom:1.2rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--green);font-weight:600;margin-bottom:0.5rem">COUCHE 4 — PIP GHOST <span style="font-weight:400;font-size:0.85rem;color:var(--wd)">(FR2600240)</span></div>
+<p>Détaillé ci-dessus. Chaque requête sort avec une <strong>IP différente</strong>, un <strong>relais différent</strong> et une <strong>identité cryptographique différente</strong>. Aucune corrélation possible entre deux requêtes successives.</p>
+</div>
+
+<div style="padding:1.2rem;background:var(--bg2);border-left:3px solid var(--purple);border-radius:0 12px 12px 0;margin-bottom:1.2rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--purple);font-weight:600;margin-bottom:0.5rem">COUCHE 3 — CAMÉLÉON <span style="font-weight:400;font-size:0.85rem;color:var(--wd)">(FR2516793)</span></div>
+<p>Le cœur de l'asémanticité. CAMÉLÉON transforme chaque fragment de données en quelque chose qui <strong>ressemble exactement à du bruit aléatoire</strong>. Ce n'est pas du chiffrement classique (qui produit des données structurées reconnaissables). C'est un marquage polymorphe : chaque fragment passe les tests statistiques du NIST SP 800-22. Un mathématicien, un ordinateur quantique, une IA — personne ne peut distinguer vos données du bruit cosmique. Et le marqueur change à chaque échange, donc même deux fragments consécutifs n'ont aucun lien visible entre eux.</p>
+</div>
+
+<div style="padding:1.2rem;background:var(--bg2);border-left:3px solid var(--green);border-radius:0 12px 12px 0;margin-bottom:1.2rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--green);font-weight:600;margin-bottom:0.5rem">COUCHE 2 — PIP POLYMORPHE <span style="font-weight:400;font-size:0.85rem;color:var(--wd)">(FR2600202)</span></div>
+<p>Le moteur cryptographique qui fait tourner tout le reste. PIP POLYMORPHE est un « ratchet » — un mécanisme qui avance toujours et ne recule jamais, comme un cliquet mécanique. À chaque échange, il dérive de nouvelles clés à partir des précédentes. Résultat : même si un attaquant capture une clé à l'instant T, il ne peut <strong>ni déchiffrer le passé</strong> (les anciennes clés sont détruites) <strong>ni prédire le futur</strong> (les prochaines clés dépendent d'aléa frais). C'est ce qu'on appelle la « forward secrecy » et la « backward secrecy » — FANTOM a les deux.</p>
+</div>
+
+<div style="padding:1.2rem;background:var(--bg2);border-left:3px solid var(--wd);border-radius:0 12px 12px 0;margin-bottom:1.2rem">
+<div style="font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--wd);font-weight:600;margin-bottom:0.5rem">COUCHE 1 — FANTOM INTERNET <span style="font-weight:400;font-size:0.85rem;color:var(--dim)">(FR2600506)</span></div>
+<p>La fondation. FANTOM ne dépend pas d'un seul type de connexion. Si le WiFi tombe, FANTOM bascule sur la 4G. Si la 4G est brouillée, FANTOM utilise le Bluetooth mesh, le satellite ou la radio. Tout ça <strong>automatiquement</strong>, sans intervention de l'utilisateur, sans interruption. En zone de guerre, après une catastrophe naturelle, sous censure étatique — tant qu'il existe <strong>un</strong> canal de communication quelque part, FANTOM fonctionne.</p>
+</div>
+
+</div>
+</div>
+<div style="max-width:900px;margin:0 auto;padding:0 2.5rem">
+<div class="csec reveal">
+<h2><span>L'app</span></h2>
+<p><strong>Android + iOS.</strong> Cœur Rust, interface React Native. Gratuit : 500 Mo/jour, 1 identité. <strong>Fantôme (7,99€/mois)</strong> : illimité, 5 identités HYDRA, 50-100+ relais, tous les profils CLOAK, P2P, proxy système. <strong>Paiement anonyme</strong> : crypto, prépayé, ou contribuez un relais.</p>
+</div>
+
+<div class="csec reveal">
+<h2><span>FANTOM Home</span> — Votre box Internet, en invisible</h2>
+<p>FANTOM Home transforme votre smartphone en <strong>routeur WiFi asémantique</strong>. Tous les appareils du foyer se connectent au hotspot — TV, PC, tablette, IoT. Le trafic sort via FANTOM sur le réseau mobile : fragmenté, marqué CAMÉLÉON, noyé dans le bruit. Votre opérateur mobile ne voit que du trafic 4G/5G normal.</p>
+
+<div style="margin:1.5rem auto;max-width:550px;padding:1.5rem;background:var(--bg2);border:1px solid var(--bd);border-radius:12px;font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--wd);text-align:center;line-height:2.5">
+🖥 TV &nbsp; 💻 PC &nbsp; 📱 Tablette &nbsp; 🏠 IoT<br>
+<span style="color:var(--dim)">↓ WiFi « FANTOM-XXXX »</span><br>
+<span style="color:var(--green);font-weight:600">📱 FANTOM Home</span><br>
+<span style="font-size:0.6rem;color:var(--dim)">Hotspot WiFi + fantom-core</span><br>
+<span style="color:var(--dim)">↓ 4G/5G (opérateur ne voit que du bruit)</span><br>
+<span style="color:var(--green)">🌐 Internet</span>
+</div>
+
+<div class="feat-grid">
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--green);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">Tout le foyer protégé</div><div class="feat-text">Un seul abonnement couvre tous les appareils connectés au hotspot. Pas d'installation par appareil.</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--green);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">Remplace la box FAI</div><div class="feat-text">Plus de box, plus de ligne fixe, plus de frais cachés. Votre smartphone devient votre point d'accès Internet pour tout le foyer.</div></div>
+<div class="feat"><div class="feat-icon" style="font-size:1.2rem;color:var(--green);font-family:'JetBrains Mono',monospace">◆</div><div class="feat-title">Zéro trace</div><div class="feat-text">Votre FAI mobile voit du trafic 4G/5G normal. Pas de VPN détectable, pas de protocole identifiable, pas de DPI possible.</div></div>
+</div>
+
+<div style="margin:1.2rem auto;max-width:600px;padding:1.2rem;background:linear-gradient(135deg,rgba(0,229,160,0.04),rgba(0,229,160,0.01));border:1px solid rgba(0,229,160,0.15);border-radius:12px;text-align:center">
+<div style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--green)">9,99€<span style="font-size:1rem;color:var(--wd);font-weight:400">/mois</span></div>
+<div style="font-size:1.1rem;color:var(--wd);margin-top:0.3rem">FANTOM App + FANTOM Home dans le même abonnement.</div>
+</div>
+</div>
+</div><!-- end app+home wrapper -->
+
+<div style="text-align:center;padding:2rem 0 3rem;max-width:900px;margin:0 auto"><a href="https://fantominternet.tech" target="_blank" style="display:inline-block;padding:0.8rem 2rem;background:linear-gradient(135deg,rgba(0,229,160,0.15),rgba(0,229,160,0.05));border:1px solid rgba(0,229,160,0.3);border-radius:8px;color:var(--green);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:1.1rem;letter-spacing:0.1em;transition:all 0.3s">DÉCOUVRIR L'APP FANTOM →</a></div>
+<footer><div class="fb">AION ASEMANTIX™</div><div class="fi">© 2026 — 39 brevets INPI — asemantix.tech</div></footer>
+<script>
+// Particles
+document.addEventListener('DOMContentLoaded',()=>{
+  const pc=document.getElementById('pc');
+  if(pc){for(let i=0;i<20;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDuration=(8+Math.random()*12)+'s';p.style.animationDelay=Math.random()*10+'s';p.style.width=p.style.height=(1+Math.random()*2)+'px';pc.appendChild(p)}}
+  // Scroll reveal
+  const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+});
+
+</script>
+
+</body></html>
