@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AION ASEMANTIX — Harvest Now, Decrypt Never | Brevets en licence</title>
+<meta name="description" content="Portefeuille de brevets INPI en communication asémantique, cryptographie post-quantique et temps énergétique τ=E/P. Licence, co-développement, cession.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0c10;--bg2:#161a24;--bg2h:#1c2130;--gold:#c9a84c;--goldL:#e4cb7a;--goldD:rgba(201,168,76,.15);--blue:#4a7fff;--blueD:rgba(74,127,255,.12);--grn:#3ecf8e;--grnD:rgba(62,207,142,.12);--pur:#a78bfa;--purD:rgba(167,139,250,.12);--red:#f87171;--redD:rgba(248,113,113,.12);--cyan:#22d3ee;--cyanD:rgba(34,211,238,.12);--t1:#e8e6e3;--t2:#9ca3af;--t3:#6b7280;--bdr:rgba(255,255,255,.06);--bdrH:rgba(255,255,255,.12)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;overflow-x:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 50%,rgba(201,168,76,.04) 0%,transparent 50%),radial-gradient(ellipse at 70% 30%,rgba(74,127,255,.03) 0%,transparent 50%);animation:drift 20s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(-2%,1%)}}
+.hero-c{position:relative;z-index:1;max-width:900px}
+.badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:.5rem 1.2rem;border-radius:2px;margin-bottom:2.5rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem}.accent{color:var(--gold)}
+.b2b-banner{display:inline-block;background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(74,127,255,.1));border:1px solid rgba(201,168,76,.25);border-radius:3px;padding:.8rem 2rem;margin:1.5rem auto 2rem;font-family:'JetBrains Mono',monospace;font-size:.85rem;letter-spacing:.06em;color:var(--goldL)}
+.hero-sub2{font-size:1.3rem;color:var(--t1);font-style:italic;max-width:650px;margin:0 auto 1.2rem}
+.hero-sub{font-size:1.05rem;color:var(--t2);max-width:680px;margin:0 auto 2rem}
+.stats{display:flex;gap:3rem;justify-content:center;flex-wrap:wrap}
+.st{text-align:center}.st-n{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--gold)}.st-l{font-size:.8rem;color:var(--t3);text-transform:uppercase;letter-spacing:.1em;margin-top:.25rem}
+.scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:var(--t3);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,12,16,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:.85rem;font-weight:500;letter-spacing:.08em;color:var(--gold);text-decoration:none}
+.nav-links{display:flex;gap:1.5rem;flex-wrap:wrap}.nav-links a{font-size:.8rem;color:var(--t2);text-decoration:none;letter-spacing:.04em;transition:color .2s}.nav-links a:hover{color:var(--gold)}
+.usp{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.2rem;padding:3rem 2rem;max-width:1200px;margin:0 auto}
+.usp-c{background:var(--bg2);border:1px solid var(--bdr);border-radius:4px;padding:1.5rem;text-align:center;transition:border-color .3s,transform .3s}.usp-c:hover{border-color:var(--gold);transform:translateY(-2px)}
+.usp-i{font-size:1.8rem;margin-bottom:.6rem}.usp-t{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.05em;color:var(--goldL);margin-bottom:.3rem}.usp-d{font-size:.78rem;color:var(--t2)}
+.market{padding:4rem 2rem;max-width:1200px;margin:0 auto;border-top:1px solid var(--bdr)}
+.mh{display:flex;align-items:flex-start;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.mi{width:56px;height:56px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.minfo{flex:1;min-width:250px}.mn{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;margin-bottom:.5rem}.mp{color:var(--t2);font-size:.93rem;max-width:680px}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1rem}
+.pc{background:var(--bg2);border:1px solid var(--bdr);border-radius:4px;padding:1.5rem;transition:all .3s}.pc:hover{border-color:var(--bdrH);background:var(--bg2h)}
+.pt{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.6rem}
+.pn{font-family:'JetBrains Mono',monospace;font-size:.88rem;font-weight:500;color:var(--t1)}
+.pr{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--t3);background:rgba(255,255,255,.04);padding:.2rem .5rem;border-radius:2px;flex-shrink:0;margin-left:.5rem}
+.pd{font-size:.84rem;color:var(--t2);line-height:1.5;margin-bottom:.5rem}
+.details{font-size:.78rem;color:var(--t3);line-height:1.5;margin-bottom:.6rem;padding:.6rem .8rem;background:rgba(255,255,255,.02);border-radius:3px;border-left:2px solid var(--gold);display:none}.details.open{display:block}
+.toggle{font-size:.68rem;color:var(--gold);cursor:pointer;font-family:'JetBrains Mono',monospace;letter-spacing:.04em;margin-bottom:.6rem;display:inline-block;opacity:.7;transition:opacity .2s}.toggle:hover{opacity:1}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.tg{font-size:.62rem;padding:.2rem .55rem;border-radius:2px;font-family:'JetBrains Mono',monospace;letter-spacing:.03em}
+.tg-g{background:var(--goldD);color:var(--gold)}.tg-b{background:var(--blueD);color:var(--blue)}.tg-gr{background:var(--grnD);color:var(--grn)}.tg-p{background:var(--purD);color:var(--pur)}.tg-c{background:var(--cyanD);color:var(--cyan)}.tg-r{background:var(--redD);color:var(--red)}
+.section{padding:5rem 2rem;max-width:1200px;margin:0 auto}.sh{text-align:center;margin-bottom:4rem}
+.stag{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;margin-bottom:1rem}
+.sdesc{color:var(--t2);max-width:600px;margin:0 auto;font-size:1rem}
+.lo{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
+.lc{background:var(--bg2);border:1px solid var(--bdr);border-radius:4px;padding:2.5rem 2rem;text-align:center;transition:all .3s}.lc:hover{border-color:var(--gold);transform:translateY(-2px)}
+.lc.feat{border-color:rgba(201,168,76,.4);background:linear-gradient(135deg,var(--bg2) 0%,rgba(201,168,76,.05) 100%)}
+.lt{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.ltitle{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;margin-bottom:1rem}
+.ldesc{font-size:.85rem;color:var(--t2);line-height:1.6}
+.cta{text-align:center;padding:6rem 2rem;position:relative}.cta::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at center,rgba(201,168,76,.06) 0%,transparent 60%)}
+.btn{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.85rem;letter-spacing:.08em;color:var(--bg);background:var(--gold);padding:1rem 2.5rem;border:none;border-radius:2px;text-decoration:none;margin-top:2rem;transition:all .3s;cursor:pointer;position:relative;z-index:1}.btn:hover{background:var(--goldL);transform:translateY(-1px)}
+footer{border-top:1px solid var(--bdr);padding:3rem 2rem;text-align:center;color:var(--t3);font-size:.8rem}footer a{color:var(--gold);text-decoration:none}
+@media(max-width:768px){nav{padding:.8rem 1rem;flex-direction:column;gap:.5rem}.nav-links{gap:.8rem;justify-content:center}.stats{gap:2rem}.mh{flex-direction:column}.pg{grid-template-columns:1fr}.b2b-banner{font-size:.75rem;padding:.6rem 1.2rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://asemantix.tech" target="_blank" class="nav-logo">AION ASEMANTIX</a>
+  <div class="nav-links">
+    <a href="#defense">Défense</a>
+    <a href="#cyber">Cybersécurité</a>
+    <a href="#telecom">Télécom</a>
+    <a href="#asemantic">Asémantique</a>
+    <a href="#energy">Énergie</a>
+    <a href="#sovereignty">Souveraineté</a>
+    <a href="#licensing">Modalités</a>
+    <a href="#contact">Contact</a>
+    <a href="https://www.linkedin.com/in/suzanne-dite-tha%C3%B4ra-de-larouziere/" target="_blank" style="color:var(--gold)">LinkedIn</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-c">
+    <div class="badge">Portefeuille de brevets — Licence & Co-développement</div>
+    <h1><span class="accent">Harvest Now,<br>Decrypt Never.</span></h1>
+    <p class="hero-sub2">La sécurité qui repose sur les lois de la physique.</p>
+    <div class="b2b-banner">INDUSTRIELS · INTÉGRATEURS · DONNEURS D'ORDRES · DÉFENSE · R&D<br>Explorez notre portefeuille technologique disponible en licence, co-développement ou cession</div>
+    <p class="hero-sub">Communication asémantique, identifiants polymorphes, cryptographie post-quantique et temps énergétique τ=E/P. Un écosystème de technologies souveraines brevetées, conçues pour un monde où le GPS est brouillé, le câble coupé, le réseau compromis — et l'ordinateur quantique à l'horizon.</p>
+    <div class="stats">
+      <div class="st"><div class="st-n">23</div><div class="st-l">Brevets INPI</div></div>
+      <div class="st"><div class="st-n">6</div><div class="st-l">Marchés cibles</div></div>
+      <div class="st"><div class="st-n">0</div><div class="st-l">Dépendance externe</div></div>
+    </div>
+  </div>
+  <div class="scroll">↓ Découvrir le portefeuille</div>
+</section>
+
+<div class="usp">
+  <div class="usp-c"><div class="usp-i">📡</div><div class="usp-t">Sans Internet</div><div class="usp-d">Canaux bruts : radio, optique, acoustique, réseau dégradé.</div></div>
+  <div class="usp-c"><div class="usp-i">🛰️</div><div class="usp-t">Sans GPS</div><div class="usp-d">Coordination par énergie locale. Aucun satellite requis.</div></div>
+  <div class="usp-c"><div class="usp-i">⏱️</div><div class="usp-t">Sans horloge</div><div class="usp-d">Temps émergent τ=E/P. Irréversibilité thermodynamique.</div></div>
+  <div class="usp-c"><div class="usp-i">🔮</div><div class="usp-t">Decrypt Never</div><div class="usp-d">Post-quantique natif (ML-DSA, ML-KEM). Rien à décrypter : le signal est du bruit.</div></div>
+  <div class="usp-c"><div class="usp-i">👁️‍🗨️</div><div class="usp-t">Asémantique</div><div class="usp-d">Transmissions indistinguables du bruit. Zéro métadonnée.</div></div>
+  <div class="usp-c"><div class="usp-i">🇫🇷</div><div class="usp-t">Souverain</div><div class="usp-d">100% français. Aucune dépendance à un tiers, un serveur ou une autorité.</div></div>
+</div>
+
+<!-- DÉFENSE -->
+<section class="market" id="defense">
+  <div class="mh"><div class="mi" style="background:var(--redD)">🎯</div><div class="minfo"><div class="mn">Défense & Essaims de drones <span style="font-size:.85rem;color:var(--t3)">(5 brevets)</span></div><div class="mp">Coordination d'essaims sans GPS, commande indétectable sur canal hostile, communication interplanétaire clockless. Pour les environnements où toute infrastructure est compromise.</div></div></div>
+  <div class="pg">
+    <div class="pc"><div class="pt"><span class="pn">ENERGYSYNC</span><span class="pr">FR2600343</span></div><div class="pd">Coordination de dispositifs par indicateur énergétique local. Synchronisation d'essaims sans GPS, sans NTP, sans horloge externe.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Chaque dispositif calcule un indicateur reflétant sa consommation d'énergie. Un paramètre de groupe définit une séquence de seuils communs. Le temps commun émerge de la consommation d'énergie.<br><strong>Sans :</strong> GPS, NTP, horloge externe, infrastructure centralisée.<br><strong>Applications :</strong> Essaims de drones, capteurs IoT, véhicules communicants, SCADA.</div><div class="tags"><span class="tg tg-r">Sans GPS</span><span class="tg tg-g">Drones</span><span class="tg tg-b">IoT industriel</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">SÉSAME</span><span class="pr">FR2600010</span></div><div class="pd">Commande et contrôle de dispositifs sur canal hostile. Commandes indistinguables du bruit aléatoire.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Les commandes sont codées en portions asémantiques avec marqueur polymorphe. Le dispositif filtre localement le flux sans calcul cryptographique coûteux. Anti-rejeu par avancement irréversible.<br><strong>Sans :</strong> métadonnées, en-têtes, identifiants visibles.<br><strong>Applications :</strong> Drones, SCADA, IoT industriel, dispositifs médicaux, contrôle d'accès.</div><div class="tags"><span class="tg tg-r">Canal hostile</span><span class="tg tg-g">SCADA</span><span class="tg tg-b">Médical</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">RPAG</span><span class="pr">FR2600021</span></div><div class="pd">Communication polymorphique autonome clockless. Conçu pour les liaisons Terre-Mars.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Graine initiale partagée une fois hors bande. Chaque dispositif dérive localement une suite de paramètres de rendu (fréquence radio, slot optique, masque QR). Le récepteur valide par recomputation locale.<br><strong>Sans :</strong> horloge, compteur, signalisation, infrastructure.<br><strong>Applications :</strong> Communications Terre-Mars, blackouts urbains, réseaux tactiques.</div><div class="tags"><span class="tg tg-p">Interplanétaire</span><span class="tg tg-r">Tactique</span><span class="tg tg-b">Clockless</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">PIP SATELLITE</span><span class="pr">FR2600716</span></div><div class="pd">Communication multi-réseaux non corrélable entre constellations et réseaux terrestres.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Le terminal stocke une graine maîtresse. Pour chaque réseau (LEO, MEO, GEO, 5G, WiFi, mesh), une graine spécifique est dérivée. Les identifiants de session sont non corrélables entre réseaux.<br><strong>Applications :</strong> Communications maritimes/aériennes, zones blanches, IoT satellite.</div><div class="tags"><span class="tg tg-c">Satellite</span><span class="tg tg-g">Maritime</span><span class="tg tg-b">5G/6G</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">Orchestrateur</span><span class="pr">INPI</span></div><div class="pd">Orchestration adaptative de transport asémantique sur canaux bruts hétérogènes.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Pour chaque fenêtre, le système agrège des métriques locales, dérive un temps thermodynamique, puis choisit une posture d'émission. Coordination multi-chemins avec duplication ou codes correcteurs.<br><strong>Canaux :</strong> TCP/IP, TLS, HTTP, MQTT, radio, optique, acoustique.<br><strong>Applications :</strong> Communications spatiales, sous-marines, zones sinistrées.</div><div class="tags"><span class="tg tg-r">Canaux bruts</span><span class="tg tg-p">Spatial</span><span class="tg tg-c">Sous-marin</span></div></div>
+  </div>
+</section>
+
+<!-- CYBERSÉCURITÉ -->
+<section class="market" id="cyber">
+  <div class="mh"><div class="mi" style="background:var(--purD)">🛡️</div><div class="minfo"><div class="mn">Cybersécurité post-quantique — <em style="color:var(--gold)">Decrypt Never</em> <span style="font-size:.85rem;color:var(--t3)">(5 brevets)</span></div><div class="mp">La menace « Harvest Now, Decrypt Later » suppose qu'il y aura quelque chose à décrypter. Nos brevets éliminent cette hypothèse : OS quantum-safe by design, antivirus par profil énergétique, infrastructure de confiance sans CA.</div></div></div>
+  <div class="pg">
+    <div class="pc"><div class="pt"><span class="pn">Q-DOS</span><span class="pr">FR2600578</span></div><div class="pd">Système d'exploitation entièrement post-quantique. Quantum-safe by design.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Architecture :</strong> Chaîne de confiance post-quantique complète : boot → disque → noyau → fichiers → réseau → module de confiance. Aucune primitive vulnérable à l'ordinateur quantique dans toute la chaîne.</div><div class="tags"><span class="tg tg-p">Post-quantique</span><span class="tg tg-g">OS souverain</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">KERNEL CHRONOS</span><span class="pr">FR2600659</span></div><div class="pd">Noyau OS à temps énergétique τ=E/P. Sécurité temporelle fondée sur la physique.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Modules :</strong> Mesure énergétique, temps logique, ordonnanceur, journalisation, sécurité. Anti-rollback et anti-snapshot garantis par l'irréversibilité thermodynamique.</div><div class="tags"><span class="tg tg-p">Noyau OS</span><span class="tg tg-g">τ=E/P</span><span class="tg tg-gr">Anti-rollback</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">SEKHMET</span><span class="pr">FR2600447</span></div><div class="pd">Antivirus autonome par profil énergétique. Détecte les rootkits, neutralise localement.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Profil énergétique de référence. Surveillance continue. Détection d'anomalie = écart. Contre-mesures graduées. Journal chaîné = preuve infalsifiable. Détecte menaces connues et inconnues, y compris rootkits. Aucun serveur requis.</div><div class="tags"><span class="tg tg-r">Antivirus</span><span class="tg tg-gr">Autonome</span><span class="tg tg-b">Forensique</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">HEIMDALL</span><span class="pr">FR2600400</span></div><div class="pd">Authentification par empreinte énergétique du dispositif — PUF énergétique.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Propriété clé :</strong> Un attaquant possédant le secret ne peut pas usurper depuis un matériel distinct. Un attaquant possédant le profil ne peut pas forger la signature sans le secret.<br><strong>Applications :</strong> IoT, défense, anti-contrefaçon, machine-to-machine.</div><div class="tags"><span class="tg tg-g">PUF énergétique</span><span class="tg tg-p">Anti-contrefaçon</span><span class="tg tg-b">IoT</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">EPKI</span><span class="pr">FR2501916</span></div><div class="pd">PKI décentralisée : sans CA, sans X.509, sans serveur d'horodatage.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Triple preuve physique :</strong> Empreinte énergétique non clonable + horodatage thermodynamique irréversible + signature post-quantique. Aucune autorité de certification, aucun certificat, aucune connexion réseau requise.<br><strong>Applications :</strong> Notariat numérique, signature de contrats, IoT, réseaux militaires.</div><div class="tags"><span class="tg tg-g">Sans CA/TSA</span><span class="tg tg-p">Post-quantique</span><span class="tg tg-gr">Hors ligne</span></div></div>
+  </div>
+</section>
+
+<!-- TÉLÉCOM -->
+<section class="market" id="telecom">
+  <div class="mh"><div class="mi" style="background:var(--cyanD)">🌐</div><div class="minfo"><div class="mn">Télécom & Réseaux furtifs <span style="font-size:.85rem;color:var(--t3)">(5 brevets)</span></div><div class="mp">Identifiants non corrélables, VPN indétectable par DPI et ML, mimétisme comportemental. Pour les réseaux 5G/6G, l'anti-censure et les communications souveraines.</div></div></div>
+  <div class="pg">
+    <div class="pc"><div class="pt"><span class="pn">PIP POLYMORPHIQUE</span><span class="pr">FR2600202</span></div><div class="pd">Identifiants réseau non corrélables (IP, port, MAC, IoT, mobile). Brevet fondateur de toute la furtivité réseau.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Ratchet cryptographique unidirectionnel à partir d'une graine partagée. Validation par fenêtre glissante calculée localement. Non-corrélabilité : probabilité de liaison négligeable.<br><strong>Sans :</strong> horloge externe, serveur, métadonnée de synchronisation.<br><strong>Applications :</strong> VPN indétectable, anti-censure, IoT, 5G/6G, mesh, satellite.</div><div class="tags"><span class="tg tg-g">Brevet père</span><span class="tg tg-c">Non corrélable</span><span class="tg tg-b">Clockless</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">CLOAK</span><span class="pr">FR2600321</span></div><div class="pd">Mimétisme comportemental du trafic tunnel. Indistinguabilité statistique formelle.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Sélection d'un profil comportemental cible. Transformations adaptatives. Score d'écart par métrique statistique. Ajustement en boucle fermée.<br><strong>Différenciant :</strong> Opère au niveau du comportement de service, pas du protocole.</div><div class="tags"><span class="tg tg-c">Anti-ML</span><span class="tg tg-b">Anti-DPI</span><span class="tg tg-gr">Adaptatif</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">HYDRA</span><span class="pr">FR2600333</span></div><div class="pd">Multi-identités réseau simultanées non corrélables sur un seul dispositif.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Chaque identité possède sa propre graine, son propre contexte réseau isolé. Décorrélation active inter-identités. Isolation cryptographique = zéro état partagé.<br><strong>Applications :</strong> Séparation vie privée/pro, protection de sources, compartimentage, IoT multi-rôles.</div><div class="tags"><span class="tg tg-c">Multi-identité</span><span class="tg tg-p">Isolation crypto</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">QUANTUM</span><span class="pr">FR2600313</span></div><div class="pd">Identifiants initialisés par distribution quantique de clés (QKD). Sécurité inconditionnelle.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Propriété :</strong> Un attaquant disposant d'une puissance de calcul illimitée ne peut pas reconstituer la séquence d'identifiants. Protège le graphe de communication, pas seulement le contenu.<br><strong>Applications :</strong> Défense, télécom quantique, infrastructure critique.</div><div class="tags"><span class="tg tg-p">QKD</span><span class="tg tg-g">Inconditionnel</span><span class="tg tg-r">Decrypt Never</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">SHADOW CROWD</span><span class="pr">FR2600341</span></div><div class="pd">Anonymat collectif de groupe. Profil commun avec décorrélation active inter-membres.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Profil de référence commun. Les dispositifs produisent du trafic conforme mais avec des règles différentes. Un observateur ne peut pas attribuer un flux à un dispositif.<br><strong>Sans :</strong> serveurs de mélange dédiés.</div><div class="tags"><span class="tg tg-c">Anonymat groupe</span><span class="tg tg-b">Anti-attribution</span></div></div>
+  </div>
+</section>
+
+<!-- COMMUNICATION ASÉMANTIQUE -->
+<section class="market" id="asemantic">
+  <div class="mh"><div class="mi" style="background:var(--grnD)">👁️‍🗨️</div><div class="minfo"><div class="mn">Communication asémantique <span style="font-size:.85rem;color:var(--t3)">(1 brevet fondateur)</span></div><div class="mp">La technologie fondamentale qui rend toute transmission indistinguable du bruit aléatoire. Zéro métadonnée, zéro signature de protocole. Le message n'existe que pour le destinataire.</div></div></div>
+  <div class="pg">
+    <div class="pc"><div class="pt"><span class="pn">ASEMANTIX / CAMÉLÉON</span><span class="pr">FR2516793</span></div><div class="pd">Marqueur polymorphe pour validation locale. Brevet fondateur de toute la communication asémantique. Filtrage rejetant la majorité du bruit sans calcul cryptographique.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Portion utile construite à partir d'un secret partagé et d'un paramètre évolutif. Marqueur variant intégré, dérivé de façon déterministe. Récepteur valide par recomputation locale sans métadonnée. Avancement irréversible empêchant le rejeu.<br><strong>Propriétés :</strong> Indistinguabilité du bruit, construction temps constant, agnostique au canal, état minimal, confidentialité persistante optionnelle.<br><strong>Applications :</strong> IoT contraint, communications tactiques, résistance à la censure, liaisons spatiales, commande de dispositifs.</div><div class="tags"><span class="tg tg-g">Brevet père</span><span class="tg tg-gr">Asémantique</span><span class="tg tg-b">Polymorphe</span><span class="tg tg-r">Canal hostile</span></div></div>
+  </div>
+</section>
+
+<!-- ÉNERGIE -->
+<section class="market" id="energy">
+  <div class="mh"><div class="mi" style="background:var(--goldD)">⚡</div><div class="minfo"><div class="mn">Énergie & Batteries <span style="font-size:.85rem;color:var(--t3)">(3 brevets)</span></div><div class="mp">Optimisation de réseaux énergétiques et gestion prédictive de batteries par la métrique temporelle τ=E/P. Le temps comme indicateur universel d'état énergétique.</div></div></div>
+  <div class="pg">
+    <div class="pc"><div class="pt"><span class="pn">TUTE GRID</span><span class="pr">FR2600676</span></div><div class="pd">Optimisation de réseau énergétique par temps énergétique τ. Métrique pivot commune pour nœuds hétérogènes.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Chaque nœud se voit attribuer un indicateur temporel énergétique. Les indicateurs sont comparables entre nœuds de natures différentes. Prédiction de risques, routage prioritaire, coordination stockage/production.<br><strong>Applications :</strong> Smart grids, EV, énergies renouvelables.</div><div class="tags"><span class="tg tg-g">Smart grid</span><span class="tg tg-gr">Prédictif</span><span class="tg tg-b">EV</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">BATTERIES v2</span><span class="pr">FR2602027</span></div><div class="pd">Gestion prédictive de batteries par métrique énergétique. SoH, autonomie, journalisation infalsifiable.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Métrique énergétique mesurée en temps réel. Surveillance de l'usure, prédiction d'autonomie, état de santé. Temps monotone pour journalisation infalsifiable. ML intégré.<br><strong>Applications :</strong> Véhicules électriques, stockage stationnaire, flottes multi-batteries.</div><div class="tags"><span class="tg tg-g">BMS</span><span class="tg tg-gr">ML intégré</span><span class="tg tg-b">Véhicules</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">TUTE GÉNÉRALISTE</span><span class="pr">FR2503522</span></div><div class="pd">Métrique temporelle universelle τ=E/(P+ε). Brevet fondateur de tout le temps énergétique.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Principe :</strong> Dispositif modulaire : unité de traitement énergétique, base de données dynamique, interface logicielle/API/SDK.<br><strong>Applications :</strong> Simulation cosmologique, navigation autonome, informatique quantique, surveillance environnementale, intelligence artificielle.</div><div class="tags"><span class="tg tg-g">Brevet père</span><span class="tg tg-p">Universel</span><span class="tg tg-c">τ=E/P</span></div></div>
+  </div>
+</section>
+
+<!-- SOUVERAINETÉ -->
+<section class="market" id="sovereignty">
+  <div class="mh"><div class="mi" style="background:var(--blueD)">🏛️</div><div class="minfo"><div class="mn">Souveraineté numérique <span style="font-size:.85rem;color:var(--t3)">(4 brevets)</span></div><div class="mp">L'environnement informatique qui n'existe nulle part et partout. Internet sans infrastructure fixe. Paiement invisible. Confiance sans autorité centrale.</div></div></div>
+  <div class="pg">
+    <div class="pc"><div class="pt"><span class="pn">ORDINATEUR LIQUIDE</span><span class="pr">FR2600673</span></div><div class="pd">Environnement distribué en P2P. Se matérialise sur n'importe quel hôte. Zéro trace à la déconnexion.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Architecture :</strong> Dispositif portable personnel avec source d'énergie autonome et module sécurisé. Stockage distribué chiffré, fragmenté, indistinguable du bruit. Identités éphémères non corrélables. L'hôte n'a jamais accès aux clés ni aux données en clair. À la déconnexion, l'environnement se dématérialise sans trace.</div><div class="tags"><span class="tg tg-b">Visionnaire</span><span class="tg tg-p">P2P chiffré</span><span class="tg tg-g">Post-quantique</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">FANTOM INTERNET</span><span class="pr">FR2600506</span></div><div class="pd">Internet anonyme sans infrastructure fixe. Pas de box, pas d'identifiant stable.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Système :</strong> Terminal multi-connectivité (4G/5G/6G, satellite, WiFi, mesh) + permutation d'identifiants → échanges successifs non corrélables. Aucune infrastructure fixe, non géolocalisable.</div><div class="tags"><span class="tg tg-b">Sans infra fixe</span><span class="tg tg-r">Non traçable</span><a href="https://fantominternet.tech" target="_blank" style="font-size:.65rem;color:var(--gold);text-decoration:none;margin-left:auto">fantominternet.tech →</a></div></div>
+    <div class="pc"><div class="pt"><span class="pn">TOKEN TUTE</span><span class="pr">FR2600671</span></div><div class="pd">Dispositif portable d'horodatage souverain. Temps énergétique indépendant de NTP/GPS.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Composants :</strong> Source d'énergie autonome, moyens de calcul de τ, élément sécurisé, interface de communication. L'appareil hôte est réduit au rôle de simple écran. Post-quantique.<br><strong>Applications :</strong> Notariat numérique, documents classifiés, IoT, réseaux militaires.</div><div class="tags"><span class="tg tg-g">Hardware</span><span class="tg tg-p">Souverain</span><span class="tg tg-gr">Autonome</span></div></div>
+    <div class="pc"><div class="pt"><span class="pn">AION PAY</span><span class="pr">FR2600514</span></div><div class="pd">Transactions financières asémantiques. Indistinguable du bruit, ZK-proofs, engagements homomorphes.</div><span class="toggle" onclick="this.nextElementSibling.classList.toggle('open')">▸ Détails techniques</span><div class="details"><strong>Étapes :</strong> Encapsulation indistinguable du bruit. Preuve cryptographique (ZK) de validité sans divulgation du contenu. Règlement dissimulant la relation entrées/sorties. Anonymat vérifiable compatible régulation.</div><div class="tags"><span class="tg tg-g">Fintech</span><span class="tg tg-p">ZK-proof</span><span class="tg tg-gr">Anonyme</span></div></div>
+  </div>
+</section>
+
+<!-- MODALITÉS -->
+<section class="section" id="licensing">
+  <div class="sh"><div class="stag">Modalités</div><div class="stitle">Modèles de collaboration</div><div class="sdesc">Chaque brevet est disponible selon le modèle qui correspond à votre besoin. Nous accompagnons techniquement chaque partenariat.</div></div>
+  <div class="lo">
+    <div class="lc"><div class="lt">Option 1</div><div class="ltitle">Licence d'exploitation</div><div class="ldesc">Licence exclusive ou non exclusive. Vous exploitez la technologie dans votre produit. Redevances négociables selon le volume et l'exclusivité.</div></div>
+    <div class="lc feat"><div class="lt">Option 2</div><div class="ltitle">Co-développement</div><div class="ldesc">Développement conjoint d'un produit ou PoC. Partage de la propriété intellectuelle résultante. Accompagnement technique complet de l'inventrice.</div></div>
+    <div class="lc"><div class="lt">Option 3</div><div class="ltitle">Cession de brevet</div><div class="ldesc">Transfert complet de propriété. Prix de cession négociable. Accompagnement technique inclus pendant la phase de transfert.</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="sh" style="position:relative;z-index:1">
+    <div class="stag">Contact</div>
+    <div class="stitle">Explorons les possibilités</div>
+    <div class="sdesc">23 brevets INPI. 0 dépendance externe. Post-quantique natif. 100% souverain.<br><strong style="color:var(--gold);font-size:1.2rem">Harvest Now, Decrypt Never.</strong><br><br>Discutons de ce que ces technologies peuvent apporter à votre feuille de route.</div>
+    <a class="btn" id="ctabtn">Contactez-nous →</a>
+    <p style="margin-top:1.5rem;color:var(--t3);font-size:.9rem;position:relative;z-index:1">
+      <a id="emaillink" style="color:var(--gold);text-decoration:none;cursor:pointer"></a> &nbsp;·&nbsp; +33 6 35 03 46 55
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p><strong>ThaÔra</strong> — Inventrice, titulaire du portefeuille AION ASEMANTIX</p>
+  <p style="margin-top:.5rem">23 brevets INPI · Communication asémantique · Cryptographie post-quantique · Temps énergétique τ=E/P</p>
+  <p style="margin-top:.8rem;font-size:.85rem">
+    <a id="footeremail"></a> &nbsp;·&nbsp; +33 6 35 03 46 55 &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/suzanne-dite-tha%C3%B4ra-de-larouziere/" target="_blank">LinkedIn</a>
+  </p>
+  <p style="margin-top:1rem">
+    <a href="https://asemantix.tech" target="_blank">asemantix.tech</a> &nbsp;·&nbsp;
+    <a href="https://cute-cosmologie.com" target="_blank">cute-cosmologie.com</a> &nbsp;·&nbsp;
+    <a href="https://fantominternet.tech" target="_blank">fantominternet.tech</a>
+  </p>
+  <p style="margin-top:1rem;color:var(--t3)">© 2026 ThaÔra · AION ASEMANTIX™ · Tous droits réservés</p>
+</footer>
+
+<script>
+(function(){
+  var u='asemantix',d='proton.me',e=u+'@'+d,ml='mailto:'+e;
+  document.getElementById('ctabtn').href=ml;
+  var el=document.getElementById('emaillink');el.href=ml;el.textContent=e;
+  var fe=document.getElementById('footeremail');fe.href=ml;fe.textContent=e;
+})();
+</script>
+</body>
+</html>
